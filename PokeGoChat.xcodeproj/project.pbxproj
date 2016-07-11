@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8964EFD70C33A4DDA4B26882 /* Pods_PokeGoChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */; };
+		B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3501D34565F0037A97D /* AppDelegate.swift */; };
+		B260C3561D34565F0037A97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3541D34565F0037A97D /* Main.storyboard */; };
+		B260C3581D34565F0037A97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260C3571D34565F0037A97D /* Assets.xcassets */; };
+		B260C35B1D34565F0037A97D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3591D34565F0037A97D /* LaunchScreen.storyboard */; };
+		B260C3691D3456EA0037A97D /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3621D3456EA0037A97D /* MapsViewController.swift */; };
+		B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3631D3456EA0037A97D /* MyProfileViewController.swift */; };
+		B260C36B1D3456EA0037A97D /* PersonOfInterestProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3641D3456EA0037A97D /* PersonOfInterestProfileViewController.swift */; };
+		B260C36C1D3456EA0037A97D /* AllChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3651D3456EA0037A97D /* AllChatsViewController.swift */; };
+		B260C36D1D3456EA0037A97D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3661D3456EA0037A97D /* ChatViewController.swift */; };
+		B260C36E1D3456EA0037A97D /* AllFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3671D3456EA0037A97D /* AllFriendsViewController.swift */; };
+		B260C36F1D3456EA0037A97D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */; };
+		B260C3711D345DA10037A97D /* DisplayFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */; };
+		B260C3731D3465EA0037A97D /* AllPreviewChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeGoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C6D7846DF943CDC01FA98E4 /* Pods-PokeGoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.debug.xcconfig"; sourceTree = "<group>"; };
+		B260C34D1D34565F0037A97D /* PokeGoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeGoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B260C3501D34565F0037A97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B260C3551D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B260C3571D34565F0037A97D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B260C35A1D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B260C35C1D34565F0037A97D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B260C3621D3456EA0037A97D /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		B260C3631D3456EA0037A97D /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		B260C3641D3456EA0037A97D /* PersonOfInterestProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonOfInterestProfileViewController.swift; sourceTree = "<group>"; };
+		B260C3651D3456EA0037A97D /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
+		B260C3661D3456EA0037A97D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B260C3671D3456EA0037A97D /* AllFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFriendsViewController.swift; sourceTree = "<group>"; };
+		B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayFriendTableViewCell.swift; sourceTree = "<group>"; };
+		B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPreviewChatTableViewCell.swift; sourceTree = "<group>"; };
+		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B260C34A1D34565F0037A97D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8964EFD70C33A4DDA4B26882 /* Pods_PokeGoChat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3BC470FEA9F511B04E7F481D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49DAD48D644FDF1476C0A581 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C6D7846DF943CDC01FA98E4 /* Pods-PokeGoChat.debug.xcconfig */,
+				DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B260C3441D34565F0037A97D = {
+			isa = PBXGroup;
+			children = (
+				B260C34F1D34565F0037A97D /* PokeGoChat */,
+				B260C34E1D34565F0037A97D /* Products */,
+				49DAD48D644FDF1476C0A581 /* Pods */,
+				3BC470FEA9F511B04E7F481D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B260C34E1D34565F0037A97D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B260C34D1D34565F0037A97D /* PokeGoChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B260C34F1D34565F0037A97D /* PokeGoChat */ = {
+			isa = PBXGroup;
+			children = (
+				B260C3501D34565F0037A97D /* AppDelegate.swift */,
+				B260C3751D3467E60037A97D /* Controllers */,
+				B260C3761D3468100037A97D /* Views */,
+				B260C3571D34565F0037A97D /* Assets.xcassets */,
+				B260C35C1D34565F0037A97D /* Info.plist */,
+			);
+			path = PokeGoChat;
+			sourceTree = "<group>";
+		};
+		B260C3751D3467E60037A97D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B260C3621D3456EA0037A97D /* MapsViewController.swift */,
+				B260C3631D3456EA0037A97D /* MyProfileViewController.swift */,
+				B260C3641D3456EA0037A97D /* PersonOfInterestProfileViewController.swift */,
+				B260C3651D3456EA0037A97D /* AllChatsViewController.swift */,
+				B260C3661D3456EA0037A97D /* ChatViewController.swift */,
+				B260C3671D3456EA0037A97D /* AllFriendsViewController.swift */,
+				B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B260C3761D3468100037A97D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B260C3541D34565F0037A97D /* Main.storyboard */,
+				B260C3591D34565F0037A97D /* LaunchScreen.storyboard */,
+				B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */,
+				B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B260C34C1D34565F0037A97D /* PokeGoChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B260C35F1D34565F0037A97D /* Build configuration list for PBXNativeTarget "PokeGoChat" */;
+			buildPhases = (
+				086ECF512F2B14854433D353 /* [CP] Check Pods Manifest.lock */,
+				B260C3491D34565F0037A97D /* Sources */,
+				B260C34A1D34565F0037A97D /* Frameworks */,
+				B260C34B1D34565F0037A97D /* Resources */,
+				7D7035E129D136602CE9E379 /* [CP] Embed Pods Frameworks */,
+				B8F194D3E4370C3B809F668D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PokeGoChat;
+			productName = PokeGoChat;
+			productReference = B260C34D1D34565F0037A97D /* PokeGoChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B260C3451D34565F0037A97D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Parth Shah";
+				TargetAttributes = {
+					B260C34C1D34565F0037A97D = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 493DDHJJ42;
+					};
+				};
+			};
+			buildConfigurationList = B260C3481D34565F0037A97D /* Build configuration list for PBXProject "PokeGoChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B260C3441D34565F0037A97D;
+			productRefGroup = B260C34E1D34565F0037A97D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B260C34C1D34565F0037A97D /* PokeGoChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B260C34B1D34565F0037A97D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B260C35B1D34565F0037A97D /* LaunchScreen.storyboard in Resources */,
+				B260C3581D34565F0037A97D /* Assets.xcassets in Resources */,
+				B260C3561D34565F0037A97D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		086ECF512F2B14854433D353 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7D7035E129D136602CE9E379 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8F194D3E4370C3B809F668D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B260C3491D34565F0037A97D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B260C36C1D3456EA0037A97D /* AllChatsViewController.swift in Sources */,
+				B260C3691D3456EA0037A97D /* MapsViewController.swift in Sources */,
+				B260C36D1D3456EA0037A97D /* ChatViewController.swift in Sources */,
+				B260C36E1D3456EA0037A97D /* AllFriendsViewController.swift in Sources */,
+				B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */,
+				B260C3711D345DA10037A97D /* DisplayFriendTableViewCell.swift in Sources */,
+				B260C3731D3465EA0037A97D /* AllPreviewChatTableViewCell.swift in Sources */,
+				B260C36F1D3456EA0037A97D /* AddFriendsViewController.swift in Sources */,
+				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,
+				B260C36B1D3456EA0037A97D /* PersonOfInterestProfileViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B260C3541D34565F0037A97D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B260C3551D34565F0037A97D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B260C3591D34565F0037A97D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B260C35A1D34565F0037A97D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B260C35D1D34565F0037A97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B260C35E1D34565F0037A97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B260C3601D34565F0037A97D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C6D7846DF943CDC01FA98E4 /* Pods-PokeGoChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PokeGoChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B260C3611D34565F0037A97D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PokeGoChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B260C3481D34565F0037A97D /* Build configuration list for PBXProject "PokeGoChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B260C35D1D34565F0037A97D /* Debug */,
+				B260C35E1D34565F0037A97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B260C35F1D34565F0037A97D /* Build configuration list for PBXNativeTarget "PokeGoChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B260C3601D34565F0037A97D /* Debug */,
+				B260C3611D34565F0037A97D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B260C3451D34565F0037A97D /* Project object */;
+}
