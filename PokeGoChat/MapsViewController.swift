@@ -12,8 +12,15 @@ class MapsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		
+//		Firebase.createUserWithEmail("test4@test.com", AndPassword: "test123") { (userKey) in
+//			print(userKey)
+//		}
+		
+		Firebase.loginWithEmail("test1@test.com", AndPassword: "test123"){ userKey in
+			print("user key: \(userKey)")
+		}
+		
     }
 
     override func didReceiveMemoryWarning() {
