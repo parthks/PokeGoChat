@@ -21,6 +21,7 @@
 		B260C36F1D3456EA0037A97D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */; };
 		B260C3711D345DA10037A97D /* DisplayFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */; };
 		B260C3731D3465EA0037A97D /* AllPreviewChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */; };
+		B260C3781D3552A20037A97D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B260C3771D3552A20037A97D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayFriendTableViewCell.swift; sourceTree = "<group>"; };
 		B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPreviewChatTableViewCell.swift; sourceTree = "<group>"; };
+		B260C3771D3552A20037A97D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				B260C3761D3468100037A97D /* Views */,
 				B260C3571D34565F0037A97D /* Assets.xcassets */,
 				B260C35C1D34565F0037A97D /* Info.plist */,
+				B260C3771D3552A20037A97D /* GoogleService-Info.plist */,
 			);
 			path = PokeGoChat;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B260C35B1D34565F0037A97D /* LaunchScreen.storyboard in Resources */,
+				B260C3781D3552A20037A97D /* GoogleService-Info.plist in Resources */,
 				B260C3581D34565F0037A97D /* Assets.xcassets in Resources */,
 				B260C3561D34565F0037A97D /* Main.storyboard in Resources */,
 			);

@@ -172,9 +172,6 @@
                                             <outlet property="playerDescription" destination="Hlp-Qv-knn" id="YAj-mZ-4M3"/>
                                             <outlet property="profilePic" destination="sHu-lg-zdf" id="NS9-Tn-hV5"/>
                                             <outlet property="teamName" destination="wjK-7C-hQI" id="sEK-jp-anW"/>
-                                            <segue destination="KkG-9K-6Lu" kind="popoverPresentation" popoverAnchorView="SkO-ny-Mvo" id="9vv-JX-Knk">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="80" id="kWr-Hd-dNM" customClass="DisplayFriendTableViewCell" customModule="PokeGoChat" customModuleProvider="target">
@@ -212,6 +209,7 @@
                                             <outlet property="playerDescription" destination="d3j-Yb-5SO" id="8sK-tz-gkx"/>
                                             <outlet property="profilePic" destination="o58-uT-aG9" id="5Pi-3A-pFb"/>
                                             <outlet property="teamName" destination="vHY-9g-u6F" id="F8F-JI-67f"/>
+                                            <segue destination="KkG-9K-6Lu" kind="show" id="S3d-bL-vnA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -484,6 +482,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="RwH-Nc-22o" secondAttribute="trailing" id="p5r-le-qcI"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="p5r-le-qcI"/>
+                                                    </mask>
+                                                </variation>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -503,7 +506,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jjZ-nH-BZq">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jjZ-nH-BZq">
                                 <rect key="frame" x="180" y="79" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="32y-VP-MHh"/>
@@ -526,6 +529,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1MT-uC-hU9"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bioTexView" destination="RwH-Nc-22o" id="9GW-cN-xMZ"/>
+                        <outlet property="locationSwitch" destination="M5X-hw-s0b" id="z8y-w5-SQi"/>
+                        <outlet property="nameLabel" destination="LeL-BT-CeU" id="tMg-AT-uHc"/>
+                        <outlet property="profilePic" destination="jjZ-nH-BZq" id="5JH-Gr-BDn"/>
+                        <outlet property="teamSelection" destination="sQq-L2-OZc" id="9F8-Ws-OVx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1C-zy-pwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -669,6 +679,6 @@
         <image name="check" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DCi-oz-wUD"/>
+        <segue reference="S3d-bL-vnA"/>
     </inferredMetricsTieBreakers>
 </document>

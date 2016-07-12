@@ -9,7 +9,13 @@
 import UIKit
 
 class MyProfileViewController: UIViewController {
-
+	
+	@IBOutlet weak var nameLabel: UITextField!
+	@IBOutlet weak var locationSwitch: UISwitch!
+	@IBOutlet weak var bioTexView: UITextView!
+	@IBOutlet weak var teamSelection: UISegmentedControl!
+	@IBOutlet weak var profilePic: UIImageView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
