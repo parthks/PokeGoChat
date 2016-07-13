@@ -34,7 +34,7 @@ class TeamChatViewController: UIViewController {
 			print(self.messages)
 			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
-			self.tableView.reloadData()
+			//self.tableView.reloadData()
 		}
 	}
 	
