@@ -1,20 +1,27 @@
 //
-//  MapsViewController.swift
-//  test
+//  MainScreenViewController.swift
+//  PokeGoChat
 //
-//  Created by Parth Shah on 11/07/16.
-//  Copyright © 2016 testFirebase. All rights reserved.
+//  Created by Parth Shah on 13/07/16.
+//  Copyright © 2016 Parth Shah. All rights reserved.
 //
 
 import UIKit
 
-class MapsViewController: UIViewController {
+class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-	
+
+//		Firebase.createUserWithEmail("test4@test.com", AndPassword: "test123") { (userKey) in
+//			print(userKey)
+//		}
 		
-    }
+		Firebase.loginWithEmail("test1@test.com", AndPassword: "test123"){ userKey in
+			print("user key: \(userKey)")
+		}
+	
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

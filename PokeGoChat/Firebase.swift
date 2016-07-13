@@ -12,6 +12,8 @@ import Firebase
 
 enum dataType: String{
 	case Users = "users"
+	case GeneralMessages = "generalMessages"
+	case TeamMessages = "teamMessages"
 	
 }
 
@@ -50,15 +52,17 @@ class Firebase{
 	
 	
 	//MARK: Saving data
-	static func saveData(data: FirebaseCompatible, OfType type: dataType){
-		
+	static func saveMessageData(data: [String: String], OfType type: dataType, WithKey key: String){
+		print("saving...")
+		_rootRef.child(type.rawValue).child(key).childByAutoId().setValue(data)
+		print("sent message")
 	}
 	
 	
 	//MARK: Listeners
-	static func listenForNewMessagesWithBlock(completion: (FIRDataSnapshot) -> Void){
-		print("setting up listener for messages")
-		_rootRef.child("messages").observeEventType(.ChildAdded, withBlock: completion)
+	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (FIRDataSnapshot) -> Void){
+		print("setting up listener for \(dtype.rawValue) in room id \(key)")
+		_rootRef.child(dtype.rawValue).child(key).observeEventType(.ChildAdded, withBlock: completion)
 	}
 	
 	

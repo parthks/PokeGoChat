@@ -15,22 +15,26 @@ class TeamChatViewController: UIViewController {
 	@IBOutlet weak var inputText: UITextField!
 	
 	var messages: [FIRDataSnapshot] = []
-	let maxMesLength = 10 //in characters
+	let chatRoomName = "random"
+	let maxMesLength = 140 //in characters
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
 		listenForChatChanges()
         // Do any additional setup after loading the view.
     }
 	
 	func listenForChatChanges(){
-		Firebase.listenForNewMessagesWithBlock() { (snapshot) in
+		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomName){ (snapshot) in
 			print("got a new message")
 			self.messages.append(snapshot)
 			print(self.messages)
 			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
+			self.tableView.reloadData()
 		}
 	}
 	
@@ -67,9 +71,13 @@ extension TeamChatViewController: UITextFieldDelegate{
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
-		let data = ["name": CurrentUser.currentUser().name, "messages": textField.text!]
+		//guard let text = textField.text else {return true}
+		guard textField.text != "" else {return true}
+		let data = ["name": CurrentUser.currentUser().name, "text": textField.text!]
 		print(data)
 		inputText.endEditing(true)
+		inputText.text = ""
+		Firebase.saveMessageData(data, OfType: dataType.TeamMessages, WithKey: chatRoomName)
 		return true
 	}
 	
@@ -78,12 +86,14 @@ extension TeamChatViewController: UITextFieldDelegate{
 	}
 	
 	func textFieldDidBeginEditing(textField: UITextField) {
+		//inputText.frame.origin.y -= 500
 		self.view.frame.origin.y -= 250
+
 		
 	}
 	
 	func textFieldDidEndEditing(textField: UITextField) {
-		inputText.text = ""
+		//inputText.frame.origin.y += 500
 		self.view.frame.origin.y += 250
 		
 	}
@@ -112,3 +122,5 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate{
 		return cell
 	}
 }
+
+

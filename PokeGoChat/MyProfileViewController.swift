@@ -18,7 +18,7 @@ class MyProfileViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
@@ -41,4 +41,16 @@ class MyProfileViewController: UIViewController {
     }
     */
 
+}
+
+
+extension UIViewController {
+	func hideKeyboardWhenTappedAround() {
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+		view.addGestureRecognizer(tap)
+	}
+	
+	func dismissKeyboard() {
+		view.endEditing(true)
+	}
 }

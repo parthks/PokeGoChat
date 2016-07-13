@@ -19,6 +19,7 @@
 		B260C3801D35716F0037A97D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C37F1D35716F0037A97D /* User.swift */; };
 		B260C3821D35B13C0037A97D /* TeamChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3811D35B13C0037A97D /* TeamChatViewController.swift */; };
 		B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3831D35B1500037A97D /* GeneralChatViewController.swift */; };
+		B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3851D36E3630037A97D /* MainScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		B260C37F1D35716F0037A97D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B260C3811D35B13C0037A97D /* TeamChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamChatViewController.swift; sourceTree = "<group>"; };
 		B260C3831D35B1500037A97D /* GeneralChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralChatViewController.swift; sourceTree = "<group>"; };
+		B260C3851D36E3630037A97D /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				B260C3631D3456EA0037A97D /* MyProfileViewController.swift */,
 				B260C3811D35B13C0037A97D /* TeamChatViewController.swift */,
 				B260C3831D35B1500037A97D /* GeneralChatViewController.swift */,
+				B260C3851D36E3630037A97D /* MainScreenViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */,
 				B260C37C1D3564D30037A97D /* Firebase.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
+				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
 				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,
 				B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */,
 			);
