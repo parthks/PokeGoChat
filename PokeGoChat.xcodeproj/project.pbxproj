@@ -14,15 +14,11 @@
 		B260C35B1D34565F0037A97D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3591D34565F0037A97D /* LaunchScreen.storyboard */; };
 		B260C3691D3456EA0037A97D /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3621D3456EA0037A97D /* MapsViewController.swift */; };
 		B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3631D3456EA0037A97D /* MyProfileViewController.swift */; };
-		B260C36B1D3456EA0037A97D /* PersonOfInterestProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3641D3456EA0037A97D /* PersonOfInterestProfileViewController.swift */; };
-		B260C36C1D3456EA0037A97D /* AllChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3651D3456EA0037A97D /* AllChatsViewController.swift */; };
-		B260C36D1D3456EA0037A97D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3661D3456EA0037A97D /* ChatViewController.swift */; };
-		B260C36E1D3456EA0037A97D /* AllFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3671D3456EA0037A97D /* AllFriendsViewController.swift */; };
-		B260C36F1D3456EA0037A97D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */; };
-		B260C3711D345DA10037A97D /* DisplayFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */; };
-		B260C3731D3465EA0037A97D /* AllPreviewChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */; };
 		B260C37C1D3564D30037A97D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C37B1D3564D30037A97D /* Firebase.swift */; };
 		B260C37E1D356B7F0037A97D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B260C37D1D356B7F0037A97D /* GoogleService-Info.plist */; };
+		B260C3801D35716F0037A97D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C37F1D35716F0037A97D /* User.swift */; };
+		B260C3821D35B13C0037A97D /* TeamChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3811D35B13C0037A97D /* TeamChatViewController.swift */; };
+		B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3831D35B1500037A97D /* GeneralChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,15 +32,11 @@
 		B260C35C1D34565F0037A97D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B260C3621D3456EA0037A97D /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		B260C3631D3456EA0037A97D /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
-		B260C3641D3456EA0037A97D /* PersonOfInterestProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonOfInterestProfileViewController.swift; sourceTree = "<group>"; };
-		B260C3651D3456EA0037A97D /* AllChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllChatsViewController.swift; sourceTree = "<group>"; };
-		B260C3661D3456EA0037A97D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		B260C3671D3456EA0037A97D /* AllFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFriendsViewController.swift; sourceTree = "<group>"; };
-		B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
-		B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayFriendTableViewCell.swift; sourceTree = "<group>"; };
-		B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPreviewChatTableViewCell.swift; sourceTree = "<group>"; };
 		B260C37B1D3564D30037A97D /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		B260C37D1D356B7F0037A97D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B260C37F1D35716F0037A97D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B260C3811D35B13C0037A97D /* TeamChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamChatViewController.swift; sourceTree = "<group>"; };
+		B260C3831D35B1500037A97D /* GeneralChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralChatViewController.swift; sourceTree = "<group>"; };
 		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,11 +106,8 @@
 			children = (
 				B260C3621D3456EA0037A97D /* MapsViewController.swift */,
 				B260C3631D3456EA0037A97D /* MyProfileViewController.swift */,
-				B260C3641D3456EA0037A97D /* PersonOfInterestProfileViewController.swift */,
-				B260C3651D3456EA0037A97D /* AllChatsViewController.swift */,
-				B260C3661D3456EA0037A97D /* ChatViewController.swift */,
-				B260C3671D3456EA0037A97D /* AllFriendsViewController.swift */,
-				B260C3681D3456EA0037A97D /* AddFriendsViewController.swift */,
+				B260C3811D35B13C0037A97D /* TeamChatViewController.swift */,
+				B260C3831D35B1500037A97D /* GeneralChatViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -128,8 +117,6 @@
 			children = (
 				B260C3541D34565F0037A97D /* Main.storyboard */,
 				B260C3591D34565F0037A97D /* LaunchScreen.storyboard */,
-				B260C3701D345DA10037A97D /* DisplayFriendTableViewCell.swift */,
-				B260C3721D3465EA0037A97D /* AllPreviewChatTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -138,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B260C37B1D3564D30037A97D /* Firebase.swift */,
+				B260C37F1D35716F0037A97D /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -266,17 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B260C36C1D3456EA0037A97D /* AllChatsViewController.swift in Sources */,
 				B260C3691D3456EA0037A97D /* MapsViewController.swift in Sources */,
-				B260C36D1D3456EA0037A97D /* ChatViewController.swift in Sources */,
-				B260C36E1D3456EA0037A97D /* AllFriendsViewController.swift in Sources */,
+				B260C3821D35B13C0037A97D /* TeamChatViewController.swift in Sources */,
 				B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */,
-				B260C3711D345DA10037A97D /* DisplayFriendTableViewCell.swift in Sources */,
-				B260C3731D3465EA0037A97D /* AllPreviewChatTableViewCell.swift in Sources */,
 				B260C37C1D3564D30037A97D /* Firebase.swift in Sources */,
-				B260C36F1D3456EA0037A97D /* AddFriendsViewController.swift in Sources */,
+				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,
-				B260C36B1D3456EA0037A97D /* PersonOfInterestProfileViewController.swift in Sources */,
+				B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
