@@ -358,8 +358,8 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
-                                            <outlet property="dataSource" destination="ydW-Be-fiu" id="QaG-43-FsY"/>
-                                            <outlet property="delegate" destination="ydW-Be-fiu" id="zJA-ej-dN0"/>
+                                            <outlet property="dataSource" destination="gj7-07-ujk" id="8dX-O4-hj2"/>
+                                            <outlet property="delegate" destination="gj7-07-ujk" id="lzx-OT-n1C"/>
                                         </connections>
                                     </tableView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Message" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2xx-YR-9x9">
@@ -367,7 +367,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
-                                            <outlet property="delegate" destination="ydW-Be-fiu" id="Eh9-uT-r2X"/>
+                                            <outlet property="delegate" destination="gj7-07-ujk" id="tbT-F9-XAA"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYs-Ou-Pdb">
@@ -375,6 +375,7 @@
                                         <state key="normal" title="Send"/>
                                         <connections>
                                             <action selector="sendMessage:" destination="ydW-Be-fiu" eventType="touchUpInside" id="AFV-WF-lUE"/>
+                                            <action selector="sendMessage:" destination="gj7-07-ujk" eventType="touchUpInside" id="SsI-8j-MIM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -407,8 +408,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="General Chat" id="6Gv-f4-Wep">
-                        <barButtonItem key="leftBarButtonItem" title="Leave Chat" id="KGa-Fn-YwV"/>
+                        <barButtonItem key="leftBarButtonItem" title="Leave Chat" id="KGa-Fn-YwV">
+                            <connections>
+                                <action selector="leaveChat:" destination="gj7-07-ujk" id="XK8-Sr-o68"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="inputText" destination="2xx-YR-9x9" id="MVa-L0-sve"/>
+                        <outlet property="tableView" destination="iN7-jJ-Mp6" id="mT0-Yj-Y1U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LTg-LE-gB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

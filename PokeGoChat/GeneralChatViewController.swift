@@ -7,32 +7,117 @@
 //
 
 import UIKit
+import Firebase
 
 class GeneralChatViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-	@IBAction func leaveChat(sender: UIButton) {
+	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var inputText: UITextField!
+	
+	
+	
+	var messages: [FIRDataSnapshot] = []
+	let chatRoomName = "random"
+	let maxMesLength = 140 //in characters
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		self.hideKeyboardWhenTappedAround()
+		inputText.delegate = self
+		listenForChatChanges()
+		// Do any additional setup after loading the view.
+	}
+	
+	func listenForChatChanges(){
+		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomName){ (snapshot) in
+			print("got a new message")
+			self.messages.append(snapshot)
+			print(self.messages)
+			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
+			print("got messages into tableView")
+			self.tableView.reloadData()
+		}
+	}
+	
+	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	
+	/*
+	// MARK: - Navigation
+	
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	// Get the new view controller using segue.destinationViewController.
+	// Pass the selected object to the new view controller.
+	}
+	*/
+	
 }
+
+
+//MARK: textField
+extension GeneralChatViewController: UITextFieldDelegate{
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		guard let text = textField.text else {return true}
+		let newLength = text.utf16.count + string.utf16.count - range.length
+		return newLength <= maxMesLength
+		
+	}
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		//guard let text = textField.text else {return true}
+		guard textField.text != "" else {return true}
+		let data = ["name": CurrentUser.currentUser().name, "text": textField.text!]
+		print(data)
+		inputText.endEditing(true)
+		inputText.text = ""
+		Firebase.saveMessageData(data, OfType: dataType.GeneralMessages, WithKey: chatRoomName)
+		return true
+	}
+	
+	@IBAction func sendMessage(sender: UIButton) {
+		textFieldShouldReturn(inputText)
+	}
+	
+	
+	func textFieldDidBeginEditing(textField: UITextField) {
+		//inputText.frame.origin.y -= 500
+		self.view.frame.origin.y -= 250
+		
+		
+	}
+	
+	func textFieldDidEndEditing(textField: UITextField) {
+		//inputText.frame.origin.y += 500
+		self.view.frame.origin.y += 250
+		
+	}
+	
+}
+
+
+//MARK: tableView
+extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate{
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return messages.count
+	}
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		print("making cell...")
+		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+		let message = messages[indexPath.row].value as! [String: String]
+		let name = message["name"]!
+		let text = message["text"]!
+		cell.textLabel?.text = name
+		cell.detailTextLabel?.text = text
+		return cell
+	}
+}
+
+
