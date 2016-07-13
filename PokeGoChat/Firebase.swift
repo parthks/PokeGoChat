@@ -21,6 +21,9 @@ protocol FirebaseCompatible {
 
 class Firebase{
 	
+	//Database reference
+	static var _rootRef = FIRDatabase.database().reference()
+	
 	//MARK: Authentication
 	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void) {
 		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
@@ -45,9 +48,17 @@ class Firebase{
 	}
 	
 	
+	
 	//MARK: Saving data
 	static func saveData(data: FirebaseCompatible, OfType type: dataType){
 		
+	}
+	
+	
+	//MARK: Listeners
+	static func listenForNewMessagesWithBlock(completion: (FIRDataSnapshot) -> Void){
+		print("setting up listener for messages")
+		_rootRef.child("messages").observeEventType(.ChildAdded, withBlock: completion)
 	}
 	
 	

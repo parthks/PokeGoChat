@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import Firebase
 
 class TeamChatViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
+	
+	var messages: [FIRDataSnapshot] = []
+	let maxMesLength = 10 //in characters
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		inputText.delegate = self
+		listenForChatChanges()
         // Do any additional setup after loading the view.
     }
-
+	
+	func listenForChatChanges(){
+		Firebase.listenForNewMessagesWithBlock() { (snapshot) in
+			print("got a new message")
+			self.messages.append(snapshot)
+			print(self.messages)
+			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
+			print("got messages into tableView")
+		}
+	}
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+	
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -38,4 +54,61 @@ class TeamChatViewController: UIViewController {
     }
     */
 
+}
+
+
+//MARK: textField
+extension TeamChatViewController: UITextFieldDelegate{
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		guard let text = textField.text else {return true}
+		let newLength = text.utf16.count + string.utf16.count - range.length
+		return newLength <= maxMesLength
+
+	}
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		let data = ["name": CurrentUser.currentUser().name, "messages": textField.text!]
+		print(data)
+		inputText.endEditing(true)
+		return true
+	}
+	
+	@IBAction func sendMessage(sender: UIButton) {
+		textFieldShouldReturn(inputText)
+	}
+	
+	func textFieldDidBeginEditing(textField: UITextField) {
+		self.view.frame.origin.y -= 250
+		
+	}
+	
+	func textFieldDidEndEditing(textField: UITextField) {
+		inputText.text = ""
+		self.view.frame.origin.y += 250
+		
+	}
+	
+}
+
+
+//MARK: tableView
+extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate{
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return messages.count
+	}
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		print("making cell...")
+		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+		let message = messages[indexPath.row].value as! [String: String]
+		let name = message["name"]!
+		let text = message["text"]!
+		cell.textLabel?.text = name
+		cell.detailTextLabel?.text = text
+		return cell
+	}
 }
