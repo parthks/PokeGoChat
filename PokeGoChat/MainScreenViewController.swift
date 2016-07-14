@@ -7,28 +7,66 @@
 //
 
 import UIKit
+import MapKit
 
 class MainScreenViewController: UIViewController {
 
+	
+	@IBOutlet weak var gettingLocationLabel: UILabel!
+	@IBOutlet weak var mapView: MKMapView!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
+	var locationManager = CLLocationManager()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		//Firebase.loginWithEmail("testuser1@test.com", AndPassword: "123456"){ key in print("back...")}
+
+		locationManager.delegate = self
+		locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		locationManager.requestWhenInUseAuthorization()
+		//activityIndicator.startAnimating()
 	
 	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	
 
-    /*
-    // MARK: - Navigation
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		locationManager.requestLocation()
+	}
+	
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension MainScreenViewController: CLLocationManagerDelegate {
+	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+		if status == .AuthorizedWhenInUse {
+			locationManager.requestLocation()
+		}
+	}
+ 
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		activityIndicator.stopAnimating()
+		gettingLocationLabel.hidden = true
+		
+		if let location = locations.first {
+			print("location:: \(location.coordinate)")
+			
+			Firebase.saveLocationOfUserWithKey(CurrentUser.currentUser.id, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+			
+			let span = MKCoordinateSpanMake(0.005, 0.005)
+			let region = MKCoordinateRegion(center: location.coordinate, span: span)
+			mapView.setRegion(region, animated: true)
+			
+			CurrentUser.currentUser.latitude = location.coordinate.latitude
+			CurrentUser.currentUser.longitude = location.coordinate.longitude
+		}
+	}
+ 
+	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+		print("ERROR!!")
+		print("error:: \(error)")
+	}
 }

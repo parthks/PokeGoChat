@@ -58,16 +58,17 @@ class Firebase{
 		print("sent message")
 	}
 	
-//	static func saveNewUser(user: User){
-//		print("saving new user...")
-//		_rootRef.child(dataType.Users.rawValue).childByAutoId().setValue(user.convertToFirebase())
-//		print("saved user")
-//	}
-	
 	static func saveUser(user: User, WithKey key: String){
 		print("saving user")
 		_rootRef.child(dataType.Users.rawValue).child(key).setValue(user.convertToFirebase())
 		print("saved user")
+	}
+	
+	static func saveLocationOfUserWithKey(key: String, latitude: Double, longitude: Double){
+		print("saving user location")
+		_rootRef.child(dataType.Users.rawValue).child(key).child("latitude").setValue(latitude)
+		_rootRef.child(dataType.Users.rawValue).child(key).child("longitude").setValue(longitude)
+		print("saved user location")
 	}
 	
 	
@@ -91,8 +92,9 @@ class Firebase{
 			}
 	
 			let key = snappedUser["id"]
-			
-			let user = User(id: key!, name: name!, team: team!, location: location)
+			let longitude = Double(snappedUser["longitude"] ?? "nil")
+			let latitude = Double(snappedUser["latitude"] ?? "nil")
+			let user = User(id: key!, name: name!, team: team!, location: location, latitude: latitude, longitude: longitude)
 			print("going back to controller...")
 			completion(user)
 		}

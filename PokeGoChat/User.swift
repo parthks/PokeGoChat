@@ -20,9 +20,11 @@ struct User: FirebaseCompatible {
 	var name: String
 	let team: String
 	var location: Bool
+	var latitude: Double?
+	var longitude: Double?
 	
 	func convertToFirebase() -> [String : AnyObject] {
-		var firebaseUserData = [String: String]()
+		var firebaseUserData = [String: AnyObject]()
 		firebaseUserData["id"] = id
 		firebaseUserData["name"] = name
 		firebaseUserData["team"] = team
@@ -31,6 +33,8 @@ struct User: FirebaseCompatible {
 			locationString = "true"
 		}
 		firebaseUserData["location"] = locationString
+		firebaseUserData["longitude"] = longitude ?? "nil"
+		firebaseUserData["latitude"] = latitude ?? "nil"
 		
 		return firebaseUserData
 	}

@@ -19,11 +19,14 @@ class MyProfileViewController: UIViewController {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
 		
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		nameLabel.text = CurrentUser.currentUser.name
 		teamName.text = CurrentUser.currentUser.team
 		locationSwitch.setOn(CurrentUser.currentUser.location, animated: false)
-		
-    }
+	}
 	
 	
     override func didReceiveMemoryWarning() {

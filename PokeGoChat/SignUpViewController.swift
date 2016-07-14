@@ -11,6 +11,9 @@ import Firebase
 
 class SignUpViewController: UIViewController {
 
+	@IBOutlet weak var createAccLabel: UILabel!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
 	@IBAction func cancel(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -37,6 +40,10 @@ class SignUpViewController: UIViewController {
 		guard emailTextField.text != "" else {return}
 		guard passwordTextField.text != "" else {return}
 		guard nameTextField.text != "" else {return}
+		
+		createAccLabel.hidden = false
+		activityIndicator.startAnimating()
+		
 		print("signing up...")
 		let email = emailTextField.text!
 		let password = passwordTextField.text!
@@ -45,12 +52,8 @@ class SignUpViewController: UIViewController {
 		
 		Firebase.createUserWithEmail(email, AndPassword: password) { (userKey) in
 			print("back in the program")
-//			if error != nil{
-//				print(error)
-//				return
-//			}
 			
-			let user = User(id: userKey, name: name, team: team, location: true)
+			let user = User(id: userKey, name: name, team: team, location: true, latitude: nil, longitude: nil)
 			CurrentUser.currentUser = user
 			print("MADE USER: \(name)")
 			Firebase.saveUser(user, WithKey: userKey)
@@ -68,6 +71,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
+		createAccLabel.hidden = true
         // Do any additional setup after loading the view.
     }
 
