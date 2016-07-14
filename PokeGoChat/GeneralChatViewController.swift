@@ -69,7 +69,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		//guard let text = textField.text else {return true}
 		guard textField.text != "" else {return true}
-		let data = ["name": CurrentUser.currentUser().name, "text": textField.text!]
+		let data = ["name": CurrentUser.currentUser.name, "text": textField.text!]
 		print(data)
 		inputText.endEditing(true)
 		inputText.text = ""

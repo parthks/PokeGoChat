@@ -29,9 +29,9 @@ class Firebase{
 	//MARK: Authentication
 	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void) {
 		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
-			if error != nil{
+			if let error = error{
 				print("ERROR CREATING USER")
-				print(error!)
+				print(error)
 			}else if let user = user{
 				takeKey(key: user.uid)
 			}
@@ -40,9 +40,9 @@ class Firebase{
 	
 	static func loginWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void){
 		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
-			if error != nil{
+			if let error = error{
 				print("ERROR LOGGING IN USER")
-				print(error!)
+				print(error)
 			}else if let user = user{
 				takeKey(key: user.uid)
 			}

@@ -9,19 +9,16 @@
 import Foundation
 
 class CurrentUser {
-	static func currentUser() -> User{
-		return User(name: "Parth", picture: nil, team: "Yellow", bio: "Hello World", location: true)
-	}
 	
-	
+	static var currentUser: User!
+
 }
 
 struct User: FirebaseCompatible {
 	
+	let id: String
 	var name: String
-	var picture: NSData?
 	let team: String
-	var bio: String
 	var location: Bool
 	
 	func convertToFirebase() -> [String : AnyObject] {

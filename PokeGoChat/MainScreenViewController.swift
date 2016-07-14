@@ -12,14 +12,6 @@ class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//		Firebase.createUserWithEmail("test4@test.com", AndPassword: "test123") { (userKey) in
-//			print(userKey)
-//		}
-		
-		Firebase.loginWithEmail("test1@test.com", AndPassword: "test123"){ userKey in
-			print("user key: \(userKey)")
-		}
 	
 	}
 
