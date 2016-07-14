@@ -30,7 +30,16 @@ class MainScreenViewController: UIViewController {
 	}
 
 	
-	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "teamChat"{
+			let destination = segue.destinationViewController as! TeamChatViewController
+			destination.chatRoomKey = GetChatRoomKey.returnTeamRoomKey()
+		} else if segue.identifier == "generalChat"{
+			let destination = segue.destinationViewController as! GeneralChatViewController
+			destination.chatRoomKey = GetChatRoomKey.returnGeneralRoomKey()
+			
+		}
+	}
 
 	
 	override func viewDidAppear(animated: Bool) {
@@ -48,17 +57,17 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 	}
  
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		activityIndicator.stopAnimating()
+		activityIndicator.startAnimating()
 		gettingLocationLabel.hidden = true
 		
 		if let location = locations.first {
 			print("location:: \(location.coordinate)")
-			
-			Firebase.saveLocationOfUserWithKey(CurrentUser.currentUser.id, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-			
+	
 			let span = MKCoordinateSpanMake(0.005, 0.005)
 			let region = MKCoordinateRegion(center: location.coordinate, span: span)
 			mapView.setRegion(region, animated: true)
+			
+			Firebase.saveLocationOfUserWithKey(CurrentUser.currentUser.id, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 			
 			CurrentUser.currentUser.latitude = location.coordinate.latitude
 			CurrentUser.currentUser.longitude = location.coordinate.longitude

@@ -132,7 +132,7 @@
                                         </constraints>
                                         <state key="normal" title="Team Chat"/>
                                         <connections>
-                                            <segue destination="5AB-TL-QDT" kind="presentation" id="FJq-UW-mU3"/>
+                                            <segue destination="5AB-TL-QDT" kind="presentation" identifier="teamChat" id="FJq-UW-mU3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-S6-F8J">
@@ -142,7 +142,7 @@
                                         </constraints>
                                         <state key="normal" title="General Chat"/>
                                         <connections>
-                                            <segue destination="YUk-rW-UGe" kind="presentation" id="AvX-Pm-yjV"/>
+                                            <segue destination="YUk-rW-UGe" kind="presentation" identifier="generalChat" id="AvX-Pm-yjV"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -15,7 +15,7 @@ class TeamChatViewController: UIViewController {
 	@IBOutlet weak var inputText: UITextField!
 	
 	var messages: [FIRDataSnapshot] = []
-	let chatRoomName = "random"
+	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
 	
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class TeamChatViewController: UIViewController {
     }
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomName){ (snapshot) in
+		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ (snapshot) in
 			print("got a new message")
 			self.messages.append(snapshot)
 			print(self.messages)
@@ -71,7 +71,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 		print(data)
 		inputText.endEditing(true)
 		inputText.text = ""
-		Firebase.saveMessageData(data, OfType: dataType.TeamMessages, WithKey: chatRoomName)
+		Firebase.saveMessageData(data, OfType: dataType.TeamMessages, WithKey: chatRoomKey)
 		return true
 	}
 	

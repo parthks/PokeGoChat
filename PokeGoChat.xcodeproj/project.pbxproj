@@ -22,6 +22,7 @@
 		B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3851D36E3630037A97D /* MainScreenViewController.swift */; };
 		B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3871D36F0340037A97D /* SIgnInViewController.swift */; };
 		B260C38A1D36F0650037A97D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3891D36F0650037A97D /* SignUpViewController.swift */; };
+		B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38B1D3840320037A97D /* GetChatRoomKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		B260C3851D36E3630037A97D /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		B260C3871D36F0340037A97D /* SIgnInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIgnInViewController.swift; sourceTree = "<group>"; };
 		B260C3891D36F0650037A97D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B260C38B1D3840320037A97D /* GetChatRoomKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetChatRoomKey.swift; sourceTree = "<group>"; };
 		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 			children = (
 				B260C37B1D3564D30037A97D /* Firebase.swift */,
 				B260C37F1D35716F0037A97D /* User.swift */,
+				B260C38B1D3840320037A97D /* GetChatRoomKey.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
+				B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */,
 				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,
 				B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */,
 			);

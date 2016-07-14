@@ -17,7 +17,7 @@ class GeneralChatViewController: UIViewController {
 	
 	
 	var messages: [FIRDataSnapshot] = []
-	let chatRoomName = "random"
+	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
 	
 	override func viewDidLoad() {
@@ -30,7 +30,7 @@ class GeneralChatViewController: UIViewController {
 	}
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomName){ (snapshot) in
+		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ (snapshot) in
 			print("got a new message")
 			self.messages.append(snapshot)
 			print(self.messages)
@@ -73,7 +73,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 		print(data)
 		inputText.endEditing(true)
 		inputText.text = ""
-		Firebase.saveMessageData(data, OfType: dataType.GeneralMessages, WithKey: chatRoomName)
+		Firebase.saveMessageData(data, OfType: dataType.GeneralMessages, WithKey: chatRoomKey)
 		return true
 	}
 	
