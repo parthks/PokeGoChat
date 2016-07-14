@@ -12,23 +12,32 @@ class MyProfileViewController: UIViewController {
 	
 	@IBOutlet weak var nameLabel: UITextField!
 	@IBOutlet weak var locationSwitch: UISwitch!
-	@IBOutlet weak var bioTexView: UITextView!
-	@IBOutlet weak var teamSelection: UISegmentedControl!
+	@IBOutlet weak var teamName: UILabel!
 	@IBOutlet weak var profilePic: UIImageView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
-        // Do any additional setup after loading the view.
+		
+		nameLabel.text = CurrentUser.currentUser.name
+		teamName.text = CurrentUser.currentUser.team
+		locationSwitch.setOn(CurrentUser.currentUser.location, animated: false)
+		
     }
-
+	
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	
+	
 	@IBAction func save(sender: UIBarButtonItem) {
-		self.dismissViewControllerAnimated(true, completion: nil)
+		CurrentUser.currentUser.name = nameLabel.text ?? "Default Name"
+		CurrentUser.currentUser.location = locationSwitch.on
+		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentUser.id)
+		self.navigationController?.popViewControllerAnimated(true)
 	}
 
     /*

@@ -90,7 +90,7 @@ class Firebase{
 				location = false
 			}
 	
-			let key = snappedUser["key"]
+			let key = snappedUser["id"]
 			
 			let user = User(id: key!, name: name!, team: team!, location: location)
 			print("going back to controller...")

@@ -101,6 +101,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profilePic" destination="jjZ-nH-BZq" id="5JH-Gr-BDn"/>
+                        <outlet property="teamName" destination="Gq3-IZ-aho" id="h13-WQ-M4b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1C-zy-pwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
