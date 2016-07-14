@@ -466,7 +466,7 @@
                                                 <state key="normal" title="Create Account"/>
                                                 <connections>
                                                     <action selector="createAccButtontapped:" destination="4g5-2F-UuW" eventType="touchUpInside" id="QWU-Kg-9Lu"/>
-                                                    <segue destination="uyj-hn-2aH" kind="presentation" id="Xhe-Vm-dAo"/>
+                                                    <segue destination="uyj-hn-2aH" kind="presentation" identifier="goingToSignUp" id="Xhe-Vm-dAo"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -502,6 +502,7 @@
                                         <state key="normal" title="SIGN IN"/>
                                         <connections>
                                             <action selector="signInButtonTapped:" destination="4g5-2F-UuW" eventType="touchUpInside" id="mdn-1r-Pl9"/>
+                                            <segue destination="aUQ-Ll-X0A" kind="show" identifier="loggedInUser" id="COU-0v-AZq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -538,13 +539,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDl-ko-sgc">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancel:" destination="uyj-hn-2aH" eventType="touchUpInside" id="1m3-WU-8He"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="IFS-3v-xdq">
                                 <rect key="frame" x="140" y="76" width="321" height="448"/>
                                 <subviews>
@@ -647,11 +641,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDl-ko-sgc">
+                                <rect key="frame" x="20" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="uyj-hn-2aH" eventType="touchUpInside" id="1m3-WU-8He"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QDl-ko-sgc" firstAttribute="top" secondItem="dhY-wU-nEe" secondAttribute="bottom" id="CKs-IO-9fR"/>
                             <constraint firstItem="IFS-3v-xdq" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="bSB-xP-x20"/>
                             <constraint firstItem="IFS-3v-xdq" firstAttribute="centerY" secondItem="elk-Si-E6l" secondAttribute="centerY" id="cVv-RZ-8J8"/>
+                            <constraint firstItem="QDl-ko-sgc" firstAttribute="leading" secondItem="elk-Si-E6l" secondAttribute="leadingMargin" id="tKo-20-Cyk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -663,7 +666,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQx-vH-Cfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="-709"/>
+            <point key="canvasLocation" x="-10" y="-667"/>
         </scene>
         <!--Map-->
         <scene sceneID="jfa-HS-Lhq">
@@ -724,4 +727,7 @@
     <resources>
         <image name="Image" width="238" height="212"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wts-gd-a0d"/>
+    </inferredMetricsTieBreakers>
 </document>

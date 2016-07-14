@@ -15,8 +15,42 @@ class SIgnInViewController: UIViewController {
 	@IBOutlet weak var passwordTextField: UITextField!
 	
 	@IBAction func signInButtonTapped(sender: UIButton) {
+		view.endEditing(true)
+		signIn()
 	}
 	
+	var userSignedInSucessfully: Bool = false
+	func signIn(){
+		guard emailTextField.text != "" else {return}
+		guard passwordTextField.text != "" else {return}
+		
+		print("signing in...")
+		let email = emailTextField.text!
+		let password = passwordTextField.text!
+		
+		Firebase.loginWithEmail(email, AndPassword: password) { (userKey) in
+			print("finished logging in")
+			Firebase.getUserDataWithKey(userKey) { (user) in
+				CurrentUser.currentUser = user
+				print("LOGGED IN USER: \(user.name)")
+				self.userSignedInSucessfully = true
+				self.performSegueWithIdentifier("loggedInUser", sender: nil)
+			}
+			
+		}
+		
+		print("waiting for Firebase to log in user")
+
+	}
+	
+	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+		if identifier == "goingToSignUp"{
+			return true
+		}else{
+			return userSignedInSucessfully
+		}
+		
+	}
 	
 	@IBAction func forgotPassButtonTapped(sender: UIButton) {
 		let prompt = UIAlertController.init(title: "Password Reset", message: "Enter Email:", preferredStyle: UIAlertControllerStyle.Alert)
@@ -39,9 +73,7 @@ class SIgnInViewController: UIViewController {
 	
 	
 
-	@IBAction func createAccButtontapped(sender: UIButton) {
-		
-	}
+	@IBAction func createAccButtontapped(sender: UIButton) { } //segue in storyboard
 	
 	
     override func viewDidLoad() {

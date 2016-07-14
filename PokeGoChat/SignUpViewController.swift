@@ -26,7 +26,10 @@ class SignUpViewController: UIViewController {
 	@IBOutlet weak var teamSelection: UISegmentedControl!
 	
 	
-	@IBAction func createAccAndSignIn(sender: UIButton) {signUp()}
+	@IBAction func createAccAndSignIn(sender: UIButton) {
+		view.endEditing(true)
+		signUp()
+	}
 	
 	var userMadeSuccessfully: Bool = false
 	
@@ -50,6 +53,7 @@ class SignUpViewController: UIViewController {
 			let user = User(id: userKey, name: name, team: team, location: true)
 			CurrentUser.currentUser = user
 			print("MADE USER: \(name)")
+			Firebase.saveUser(user, WithKey: userKey)
 			self.userMadeSuccessfully = true
 			self.performSegueWithIdentifier("madeNewuser", sender: nil)
 		}

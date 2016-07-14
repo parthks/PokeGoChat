@@ -22,6 +22,16 @@ struct User: FirebaseCompatible {
 	var location: Bool
 	
 	func convertToFirebase() -> [String : AnyObject] {
-		return [:]
+		var firebaseUserData = [String: String]()
+		firebaseUserData["id"] = id
+		firebaseUserData["name"] = name
+		firebaseUserData["team"] = team
+		var locationString = "false"
+		if location{
+			locationString = "true"
+		}
+		firebaseUserData["location"] = locationString
+		
+		return firebaseUserData
 	}
 }
