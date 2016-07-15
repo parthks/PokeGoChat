@@ -13,7 +13,6 @@ class MapsViewController: UIViewController {
 
 	@IBOutlet weak var labelBelowMap: UILabel!
 	@IBOutlet weak var mapView: MKMapView!
-	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	var users = [User]() {
 		didSet{
@@ -53,9 +52,6 @@ class MapsViewController: UIViewController {
 
 	}
 	
-	func doneLoadingAllUsers(){
-		activityIndicator.stopAnimating()
-	}
 	
 	func placePinAtLongitude(longitude: Double?, latitude: Double?, userName: String) {
 		

@@ -15,6 +15,13 @@ class TeamChatViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
+	@IBOutlet weak var myLocationSwitch: UISwitch!
+	
+	
+	@IBAction func locationChanged(sender: UISwitch) {
+		CurrentUser.currentUser.location = myLocationSwitch.selected
+		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentUser.id)
+	}
 	
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
@@ -25,10 +32,10 @@ class TeamChatViewController: UIViewController {
         super.viewDidLoad()
 		
 		self.navigationItem.title = "Team \(CurrentUser.currentUser.team)"
+		myLocationSwitch.on = CurrentUser.currentUser.location
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
 		listenForChatChanges()
-        // Do any additional setup after loading the view.
     }
 	
 	func listenForChatChanges(){

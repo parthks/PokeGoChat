@@ -91,7 +91,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Pne-2c-fLd">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="aeI-Km-WfH"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1MT-uC-hU9">
                             <connections>
                                 <action selector="save:" destination="oQd-59-szp" id="buv-El-VXB"/>
@@ -164,7 +163,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-di-Cw7">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-di-Cw7">
                                 <rect key="frame" x="231" y="422" width="139" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-JL-28O">
@@ -173,12 +172,12 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fNx-ma-Elw">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fNx-ma-Elw">
                                         <rect key="frame" x="119" y="0.0" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-p9-jTd">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-p9-jTd">
                                 <rect key="frame" x="20" y="132" width="560" height="282"/>
                                 <connections>
                                     <outlet property="delegate" destination="uKa-LV-nec" id="DUa-w3-FSD"/>
@@ -273,7 +272,7 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Message" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="146-uO-4BL">
-                                <rect key="frame" x="20" y="550" width="500" height="30"/>
+                                <rect key="frame" x="82" y="550" width="438" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -287,23 +286,56 @@
                                     <action selector="sendMessage:" destination="ydW-Be-fiu" eventType="touchUpInside" id="UW2-W2-tz7"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-hb-IUE">
+                                <rect key="frame" x="20" y="572" width="32" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="CRA-9r-QzJ"/>
+                                    <constraint firstAttribute="height" constant="20" id="Mdi-cq-bEr"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="locationChanged:" destination="ydW-Be-fiu" eventType="valueChanged" id="JgK-zI-2vI"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFe-dQ-7Kk">
+                                <rect key="frame" x="5" y="550" width="69" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="eLi-dX-evm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eLi-dX-evm"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="C6x-hb-IUE" secondAttribute="bottom" constant="8" symbolic="YES" id="1z2-oO-qmI"/>
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="top" secondItem="n5l-V5-G5G" secondAttribute="bottom" constant="8" symbolic="YES" id="5R1-sr-Rhr"/>
                             <constraint firstAttribute="trailing" secondItem="n5l-V5-G5G" secondAttribute="trailing" id="8ey-KY-0gx"/>
+                            <constraint firstItem="rFe-dQ-7Kk" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="top" id="8kM-mL-FhO"/>
+                            <constraint firstItem="C6x-hb-IUE" firstAttribute="top" secondItem="rFe-dQ-7Kk" secondAttribute="bottom" constant="1" id="Bhb-HL-BXc"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leadingMargin" id="Eh5-qq-Mh7"/>
                             <constraint firstItem="n5l-V5-G5G" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" id="HsV-jA-S8o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rk3-2r-z2l" secondAttribute="trailing" constant="5" id="Lk8-Rb-sOM"/>
                             <constraint firstItem="n5l-V5-G5G" firstAttribute="top" secondItem="6V5-y9-0oC" secondAttribute="bottom" id="P8p-D8-tXE"/>
+                            <constraint firstItem="C6x-hb-IUE" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leadingMargin" id="QjB-h0-pVV"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="top" secondItem="n5l-V5-G5G" secondAttribute="bottom" constant="8" id="RrL-WD-Ef1"/>
+                            <constraint firstItem="rFe-dQ-7Kk" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" constant="5" id="TMP-d0-9a4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rk3-2r-z2l" secondAttribute="trailing" constant="8" id="WV3-mE-Myy"/>
                             <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="bottom" constant="20" id="bDS-Lz-mmF"/>
                             <constraint firstAttribute="bottom" secondItem="Rk3-2r-z2l" secondAttribute="bottom" constant="20" symbolic="YES" id="fkR-xY-ETH"/>
+                            <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="C6x-hb-IUE" secondAttribute="trailing" constant="94" id="foK-rl-fVe"/>
+                            <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="rFe-dQ-7Kk" secondAttribute="trailing" constant="8" id="j6w-1i-Q3g"/>
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="leading" secondItem="146-uO-4BL" secondAttribute="trailing" constant="16" id="ytt-OQ-j87"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Eh5-qq-Mh7"/>
+                                <exclude reference="foK-rl-fVe"/>
                                 <exclude reference="Lk8-Rb-sOM"/>
                             </mask>
                         </variation>
@@ -322,6 +354,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inputText" destination="146-uO-4BL" id="V8z-Qg-Wph"/>
+                        <outlet property="myLocationSwitch" destination="C6x-hb-IUE" id="n8b-f8-RHb"/>
                         <outlet property="tableView" destination="n5l-V5-G5G" id="YZB-aO-xjE"/>
                     </connections>
                 </viewController>
@@ -341,7 +374,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmc-Lt-rRD">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmc-Lt-rRD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="475"/>
                                 <connections>
                                     <outlet property="delegate" destination="Lg0-ed-vVc" id="2lo-cH-y4z"/>
@@ -353,16 +386,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-pD-UJF">
-                                <rect key="frame" x="379" y="560" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QSO-1K-X5I" firstAttribute="centerX" secondItem="qYg-z3-RNo" secondAttribute="centerX" id="2c0-VF-dmt"/>
                             <constraint firstItem="OgP-mY-Jpi" firstAttribute="top" secondItem="QSO-1K-X5I" secondAttribute="bottom" constant="20" id="5Fk-If-4Jc"/>
-                            <constraint firstItem="OgP-mY-Jpi" firstAttribute="top" secondItem="ezJ-pD-UJF" secondAttribute="bottom" constant="20" id="BLH-eO-BKu"/>
-                            <constraint firstItem="ezJ-pD-UJF" firstAttribute="leading" secondItem="QSO-1K-X5I" secondAttribute="trailing" constant="8" id="D9T-yo-v0s"/>
                             <constraint firstItem="Hmc-Lt-rRD" firstAttribute="leading" secondItem="qYg-z3-RNo" secondAttribute="leading" id="HE5-tx-TMI"/>
                             <constraint firstItem="QSO-1K-X5I" firstAttribute="top" secondItem="Hmc-Lt-rRD" secondAttribute="bottom" constant="20" id="HP7-Ky-ys8"/>
                             <constraint firstItem="Hmc-Lt-rRD" firstAttribute="top" secondItem="e76-6T-lnX" secondAttribute="bottom" id="oqT-bl-93a"/>
@@ -376,7 +404,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="ezJ-pD-UJF" id="2bQ-XO-1Y8"/>
                         <outlet property="labelBelowMap" destination="QSO-1K-X5I" id="aCn-0l-iYy"/>
                         <outlet property="mapView" destination="Hmc-Lt-rRD" id="GGt-6f-qAG"/>
                     </connections>
