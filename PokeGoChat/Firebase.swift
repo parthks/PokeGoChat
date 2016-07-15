@@ -14,6 +14,7 @@ enum dataType: String{
 	case Users = "users"
 	case GeneralMessages = "generalMessages"
 	case TeamMessages = "teamMessages"
+	case TeamUsers = "teamUsers"
 	
 }
 
@@ -58,6 +59,13 @@ class Firebase{
 		print("sent message")
 	}
 	
+	static func saveUserWithKey(userKey: String, ToTeamWithKey teamKey: String){
+		print("saving user key to team")
+		_rootRef.child(dataType.TeamUsers.rawValue).child(teamKey).child(userKey).setValue("1")
+		//_rootRef.child(dataType.TeamUsers.rawValue).child("Num").setValue(1+TeamChatViewController.numberOfUsers)
+		print("saved user key to team")
+	}
+	
 	static func saveUser(user: User, WithKey key: String){
 		print("saving user")
 		_rootRef.child(dataType.Users.rawValue).child(key).setValue(user.convertToFirebase())
@@ -82,22 +90,38 @@ class Firebase{
 		print("getting user data for key: \(key)")
 		_rootRef.child(dataType.Users.rawValue).child(key).observeSingleEventOfType(.Value) { (snap, error) in
 			print("got snap: \(snap)")
-			let snappedUser = snap.value as! [String: String]
-			let name = snappedUser["name"]
-			let team = snappedUser["team"]
-			let locationString = snappedUser["location"]
+			let snappedUser = snap.value as! [String: AnyObject]
+			let name = snappedUser["name"] as! String
+			let team = snappedUser["team"] as! String
+			let locationString = snappedUser["location"] as! String
 			var location = true
 			if locationString == "false"{
 				location = false
 			}
 	
-			let key = snappedUser["id"]
-			let longitude = Double(snappedUser["longitude"] ?? "nil")
-			let latitude = Double(snappedUser["latitude"] ?? "nil")
-			let user = User(id: key!, name: name!, team: team!, location: location, latitude: latitude, longitude: longitude)
+			let key = snappedUser["id"] as! String
+			let longitude = snappedUser["longitude"] as? Double
+			let latitude = snappedUser["latitude"] as? Double
+			let user = User(id: key, name: name, team: team, location: location, latitude: latitude, longitude: longitude)
 			print("going back to controller...")
 			completion(user)
 		}
+	}
+	
+	static func getUsersFromTeamWithKey(teamKey: String, WithBlock completion: (User) -> Void) {
+		print("getting users from team with key \(teamKey)")
+		
+		_rootRef.child(dataType.TeamUsers.rawValue).child(teamKey).observeEventType(.ChildAdded) { (snap, error) in
+			
+			let userKey = snap.key
+			print("got userKey!")
+			Firebase.getUserDataWithKey(userKey){ (user) in
+				print("got another user")
+				completion(user)
+			}
+		}
+		
+		
 	}
 	
 }

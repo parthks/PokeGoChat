@@ -32,11 +32,15 @@ class MainScreenViewController: UIViewController {
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "teamChat"{
-			let destination = segue.destinationViewController as! TeamChatViewController
+			let destinationNav = segue.destinationViewController as! UINavigationController
+			let destination = destinationNav.viewControllers[0] as! TeamChatViewController
 			destination.chatRoomKey = GetChatRoomKey.returnTeamRoomKey()
+			
 		} else if segue.identifier == "generalChat"{
-			let destination = segue.destinationViewController as! GeneralChatViewController
+			let destinationNav = segue.destinationViewController as! UINavigationController
+			let destination = destinationNav.viewControllers[0] as! GeneralChatViewController
 			destination.chatRoomKey = GetChatRoomKey.returnGeneralRoomKey()
+			
 			
 		}
 	}
@@ -57,7 +61,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 	}
  
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		activityIndicator.startAnimating()
+		activityIndicator.stopAnimating()
 		gettingLocationLabel.hidden = true
 		
 		if let location = locations.first {

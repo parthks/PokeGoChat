@@ -11,16 +11,20 @@ import Firebase
 
 class TeamChatViewController: UIViewController {
 
+	//static var numberOfUsers = 0
+	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
 	
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
+	
 	let maxMesLength = 140 //in characters
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		self.navigationItem.title = "Team \(CurrentUser.currentUser.team)"
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
 		listenForChatChanges()

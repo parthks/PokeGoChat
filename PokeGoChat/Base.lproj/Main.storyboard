@@ -340,8 +340,46 @@
                     <view key="view" contentMode="scaleToFill" id="qYg-z3-RNo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmc-Lt-rRD">
+                                <rect key="frame" x="0.0" y="64" width="600" height="475"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Lg0-ed-vVc" id="2lo-cH-y4z"/>
+                                </connections>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Populating Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSO-1K-X5I">
+                                <rect key="frame" x="230" y="559" width="141" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ezJ-pD-UJF">
+                                <rect key="frame" x="379" y="560" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QSO-1K-X5I" firstAttribute="centerX" secondItem="qYg-z3-RNo" secondAttribute="centerX" id="2c0-VF-dmt"/>
+                            <constraint firstItem="OgP-mY-Jpi" firstAttribute="top" secondItem="QSO-1K-X5I" secondAttribute="bottom" constant="20" id="5Fk-If-4Jc"/>
+                            <constraint firstItem="OgP-mY-Jpi" firstAttribute="top" secondItem="ezJ-pD-UJF" secondAttribute="bottom" constant="20" id="BLH-eO-BKu"/>
+                            <constraint firstItem="ezJ-pD-UJF" firstAttribute="leading" secondItem="QSO-1K-X5I" secondAttribute="trailing" constant="8" id="D9T-yo-v0s"/>
+                            <constraint firstItem="Hmc-Lt-rRD" firstAttribute="leading" secondItem="qYg-z3-RNo" secondAttribute="leading" id="HE5-tx-TMI"/>
+                            <constraint firstItem="QSO-1K-X5I" firstAttribute="top" secondItem="Hmc-Lt-rRD" secondAttribute="bottom" constant="20" id="HP7-Ky-ys8"/>
+                            <constraint firstItem="Hmc-Lt-rRD" firstAttribute="top" secondItem="e76-6T-lnX" secondAttribute="bottom" id="oqT-bl-93a"/>
+                            <constraint firstItem="OgP-mY-Jpi" firstAttribute="top" secondItem="Hmc-Lt-rRD" secondAttribute="bottom" id="rWA-OC-1LL"/>
+                            <constraint firstAttribute="trailing" secondItem="Hmc-Lt-rRD" secondAttribute="trailing" id="rYz-W6-9fz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rWA-OC-1LL"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ezJ-pD-UJF" id="2bQ-XO-1Y8"/>
+                        <outlet property="labelBelowMap" destination="QSO-1K-X5I" id="aCn-0l-iYy"/>
+                        <outlet property="mapView" destination="Hmc-Lt-rRD" id="GGt-6f-qAG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93x-fG-hom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

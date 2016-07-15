@@ -13,6 +13,8 @@ struct GetChatRoomKey {
 	
 	
 	static func returnTeamRoomKey() -> String {
+		CurrentUser.currentTeamChatRoomKey = "random" //for mapsViewCon to retrive users in team
+		Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: "random") //for location of all team members
 		return "random"
 	}
 	
