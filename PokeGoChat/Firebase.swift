@@ -15,6 +15,7 @@ enum dataType: String{
 	case GeneralMessages = "generalMessages"
 	case TeamMessages = "teamMessages"
 	case TeamUsers = "teamUsers"
+	case TeamLocations = "teamLocations"
 	
 }
 
@@ -79,6 +80,15 @@ class Firebase{
 		print("saved user location")
 	}
 	
+	static func saveNewTeamChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
+		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		print(locationString)
+		let ref = _rootRef.child(dataType.TeamLocations.rawValue).child(locationString).childByAutoId()
+		let key = ref.key
+		ref.setValue(["latitude" : latitude, "longitude" : longitude])
+		return key
+	}
+	
 	
 	//MARK: Listeners
 	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (FIRDataSnapshot) -> Void){
@@ -120,8 +130,22 @@ class Firebase{
 				completion(user)
 			}
 		}
-		
-		
 	}
+	
+	static func getTeamsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
+		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		print(locationString)
+		_rootRef.child(dataType.TeamLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
+			print("Checking if snap(teams at int lat and long) exists")
+			if snap.exists() {
+				completion(snap.value as? [String: AnyObject])
+			}else{
+				completion(nil)
+			}
+			
+		}
+	}
+	
+	
 	
 }

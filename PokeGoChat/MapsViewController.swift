@@ -38,8 +38,8 @@ class MapsViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		let span = MKCoordinateSpanMake(0.015, 0.015)
-		let location = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(CurrentUser.currentUser.latitude!),
-		                                           longitude: CLLocationDegrees(CurrentUser.currentUser.longitude!))
+		let location = CLLocationCoordinate2D.init(latitude: (CurrentUser.currentUser.latitude!),
+		                                           longitude: (CurrentUser.currentUser.longitude!))
 		
 		let region = MKCoordinateRegion(center: location, span: span)
 		mapView.setRegion(region, animated: true)

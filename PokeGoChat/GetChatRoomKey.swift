@@ -7,18 +7,71 @@
 //
 
 import Foundation
+import MapKit
 
-struct GetChatRoomKey {
+class GetChatRoomKey {
 	
+	let userLat: Double
+	let userLong: Double
 	
+	var roomKey: String = ""
+	var inARoom = false
 	
-	static func returnTeamRoomKey() -> String {
-		CurrentUser.currentTeamChatRoomKey = "random" //for mapsViewCon to retrive users in team
-		Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: "random") //for location of all team members
-		return "random"
+	let userLocation: CLLocation
+	
+	init() {
+		userLat = CurrentUser.currentUser.latitude!
+		userLong = CurrentUser.currentUser.longitude!
+		
+		userLocation = CLLocation(latitude: userLat, longitude: userLong)
 	}
 	
-	static func returnGeneralRoomKey() -> String {
+	//var lat = 37.787359000000002
+	//var long = -122.408227
+	
+	
+	func returnTeamRoomKeyWithBlock(completion: (key: String) -> Void){
+		
+		print("Getting all team chat rooms at int lat and long")
+		Firebase.getTeamsAtLatitude(userLat, AndLongitude: userLong) { (teams) in
+			if let teams = teams{
+				
+				
+				print("Indexing through all team chat room to find close chat room")
+				for (roomKey, loc) in teams{
+					let latNlong = loc as! [String: Double]
+					let location = CLLocation(latitude: latNlong["latitude"]!, longitude: latNlong["longitude"]!)
+					if self.userLocation.distanceFromLocation(location) < 5{
+						self.roomKey = roomKey
+						self.inARoom = true
+						break
+					}
+				}
+				
+				if !self.inARoom {
+					print("MAKING A TEAM CHAT ROOM")
+					self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+				}
+			
+			
+				
+				
+			} else {
+				print("MAKING A CHAT ROOM IN A NEW LAT AND LONG")
+				self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+				
+			}
+			
+			CurrentUser.currentTeamChatRoomKey = self.roomKey
+			Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: self.roomKey) //for location of all team members
+			completion(key: self.roomKey)
+		}
+
+	}
+	
+		
+	
+	func returnGeneralRoomKey() -> String {
 		return "random"
 	}
 }

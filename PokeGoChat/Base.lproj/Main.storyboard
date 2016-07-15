@@ -43,7 +43,7 @@
                                                     <constraint firstAttribute="width" constant="150" id="A39-ek-9CT"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -124,23 +124,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-IU-5Ke">
                                 <rect key="frame" x="0.0" y="450" width="600" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-22-rk3">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-22-rk3">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="34a-r9-itj"/>
                                         </constraints>
                                         <state key="normal" title="Team Chat"/>
                                         <connections>
-                                            <segue destination="5AB-TL-QDT" kind="presentation" identifier="teamChat" id="FJq-UW-mU3"/>
+                                            <action selector="teamChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="ctH-Gx-eyx"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-S6-F8J">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-S6-F8J">
                                         <rect key="frame" x="300" y="0.0" width="300" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="lbQ-ZT-HY3"/>
                                         </constraints>
                                         <state key="normal" title="General Chat"/>
                                         <connections>
+                                            <action selector="generalChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="DTE-mV-Xx0"/>
                                             <segue destination="YUk-rW-UGe" kind="presentation" identifier="generalChat" id="AvX-Pm-yjV"/>
                                         </connections>
                                     </button>
@@ -217,8 +218,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="fNx-ma-Elw" id="28a-qP-QJ9"/>
+                        <outlet property="generalChat" destination="NKO-S6-F8J" id="SWc-BF-aFL"/>
                         <outlet property="gettingLocationLabel" destination="t7L-JL-28O" id="JVz-p6-ICZ"/>
                         <outlet property="mapView" destination="Qra-p9-jTd" id="TnH-AR-8Ta"/>
+                        <outlet property="teamChat" destination="cNE-22-rk3" id="Rgb-vx-fRc"/>
+                        <segue destination="5AB-TL-QDT" kind="presentation" identifier="teamChat" id="Qlv-IS-qS0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXG-8F-IF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,18 +290,8 @@
                                     <action selector="sendMessage:" destination="ydW-Be-fiu" eventType="touchUpInside" id="UW2-W2-tz7"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-hb-IUE">
-                                <rect key="frame" x="20" y="572" width="32" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="CRA-9r-QzJ"/>
-                                    <constraint firstAttribute="height" constant="20" id="Mdi-cq-bEr"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="locationChanged:" destination="ydW-Be-fiu" eventType="valueChanged" id="JgK-zI-2vI"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFe-dQ-7Kk">
-                                <rect key="frame" x="5" y="550" width="69" height="21"/>
+                                <rect key="frame" x="5" y="543" width="69" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="eLi-dX-evm"/>
                                 </constraints>
@@ -310,14 +304,24 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-hb-IUE">
+                                <rect key="frame" x="20" y="560" width="32" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="CRA-9r-QzJ"/>
+                                    <constraint firstAttribute="height" constant="20" id="Mdi-cq-bEr"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="locationChanged:" destination="ydW-Be-fiu" eventType="valueChanged" id="JgK-zI-2vI"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="C6x-hb-IUE" secondAttribute="bottom" constant="8" symbolic="YES" id="1z2-oO-qmI"/>
+                            <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="C6x-hb-IUE" secondAttribute="bottom" constant="20" id="1z2-oO-qmI"/>
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="top" secondItem="n5l-V5-G5G" secondAttribute="bottom" constant="8" symbolic="YES" id="5R1-sr-Rhr"/>
                             <constraint firstAttribute="trailing" secondItem="n5l-V5-G5G" secondAttribute="trailing" id="8ey-KY-0gx"/>
-                            <constraint firstItem="rFe-dQ-7Kk" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="top" id="8kM-mL-FhO"/>
-                            <constraint firstItem="C6x-hb-IUE" firstAttribute="top" secondItem="rFe-dQ-7Kk" secondAttribute="bottom" constant="1" id="Bhb-HL-BXc"/>
+                            <constraint firstItem="rFe-dQ-7Kk" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="top" constant="-7" id="8kM-mL-FhO"/>
+                            <constraint firstItem="C6x-hb-IUE" firstAttribute="top" secondItem="rFe-dQ-7Kk" secondAttribute="bottom" constant="-4" id="Bhb-HL-BXc"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leadingMargin" id="Eh5-qq-Mh7"/>
                             <constraint firstItem="n5l-V5-G5G" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" id="HsV-jA-S8o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rk3-2r-z2l" secondAttribute="trailing" constant="5" id="Lk8-Rb-sOM"/>
@@ -802,7 +806,6 @@
         <!--Map-->
         <scene sceneID="jfa-HS-Lhq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0hr-Oi-RxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUQ-Ll-X0A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" id="lid-pl-JfX"/>
                     <toolbarItems/>
@@ -815,6 +818,7 @@
                         <segue destination="uKa-LV-nec" kind="relationship" relationship="rootViewController" id="l1f-0h-yhi"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0hr-Oi-RxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="796" y="71"/>
         </scene>

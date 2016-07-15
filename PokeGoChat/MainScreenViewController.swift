@@ -12,6 +12,9 @@ import MapKit
 class MainScreenViewController: UIViewController {
 
 	
+	@IBOutlet weak var teamChat: UIButton!
+	@IBOutlet weak var generalChat: UIButton!
+	
 	@IBOutlet weak var gettingLocationLabel: UILabel!
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -30,16 +33,32 @@ class MainScreenViewController: UIViewController {
 	}
 
 	
+	@IBAction func teamChatGo(sender: UIButton) {
+	
+		let roomKey = GetChatRoomKey()
+		roomKey.returnTeamRoomKeyWithBlock() { key in
+			self.performSegueWithIdentifier("teamChat", sender: key)
+		}
+
+	}
+	
+	
+	@IBAction func generalChatGo(sender: UIButton) {
+		let roomKey = GetChatRoomKey()
+	}
+	
+	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "teamChat"{
 			let destinationNav = segue.destinationViewController as! UINavigationController
 			let destination = destinationNav.viewControllers[0] as! TeamChatViewController
-			destination.chatRoomKey = GetChatRoomKey.returnTeamRoomKey()
+			destination.chatRoomKey = sender as! String
 			
 		} else if segue.identifier == "generalChat"{
 			let destinationNav = segue.destinationViewController as! UINavigationController
 			let destination = destinationNav.viewControllers[0] as! GeneralChatViewController
-			destination.chatRoomKey = GetChatRoomKey.returnGeneralRoomKey()
+			
+			destination.chatRoomKey = sender as! String
 			
 			
 		}
@@ -75,6 +94,9 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 			
 			CurrentUser.currentUser.latitude = location.coordinate.latitude
 			CurrentUser.currentUser.longitude = location.coordinate.longitude
+			
+			teamChat.enabled = true
+			teamChat.enabled = true
 		}
 	}
  
