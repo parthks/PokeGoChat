@@ -45,6 +45,9 @@ class MainScreenViewController: UIViewController {
 	
 	@IBAction func generalChatGo(sender: UIButton) {
 		let roomKey = GetChatRoomKey()
+		roomKey.returnGeneralRoomKeyWithBlock() { key in
+			self.performSegueWithIdentifier("generalChat", sender: key)
+		}
 	}
 	
 	
@@ -57,7 +60,7 @@ class MainScreenViewController: UIViewController {
 		} else if segue.identifier == "generalChat"{
 			let destinationNav = segue.destinationViewController as! UINavigationController
 			let destination = destinationNav.viewControllers[0] as! GeneralChatViewController
-			
+			print(sender as? String)
 			destination.chatRoomKey = sender as! String
 			
 			
@@ -96,7 +99,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 			CurrentUser.currentUser.longitude = location.coordinate.longitude
 			
 			teamChat.enabled = true
-			teamChat.enabled = true
+			generalChat.enabled = true
 		}
 	}
  

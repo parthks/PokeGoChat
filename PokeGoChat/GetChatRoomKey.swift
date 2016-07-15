@@ -15,7 +15,8 @@ class GetChatRoomKey {
 	let userLong: Double
 	
 	var roomKey: String = ""
-	var inARoom = false
+	var inATeamRoom = false
+	var inAGenRoom = false
 	
 	let userLocation: CLLocation
 	
@@ -33,7 +34,7 @@ class GetChatRoomKey {
 	func returnTeamRoomKeyWithBlock(completion: (key: String) -> Void){
 		
 		print("Getting all team chat rooms at int lat and long")
-		Firebase.getTeamsAtLatitude(userLat, AndLongitude: userLong) { (teams) in
+		Firebase.getTeamRoomsAtLatitude(userLat, AndLongitude: userLong) { (teams) in
 			if let teams = teams{
 				
 				
@@ -43,12 +44,12 @@ class GetChatRoomKey {
 					let location = CLLocation(latitude: latNlong["latitude"]!, longitude: latNlong["longitude"]!)
 					if self.userLocation.distanceFromLocation(location) < 5{
 						self.roomKey = roomKey
-						self.inARoom = true
+						self.inATeamRoom = true
 						break
 					}
 				}
 				
-				if !self.inARoom {
+				if !self.inATeamRoom {
 					print("MAKING A TEAM CHAT ROOM")
 					self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
 				}
@@ -69,9 +70,54 @@ class GetChatRoomKey {
 
 	}
 	
-		
+
 	
-	func returnGeneralRoomKey() -> String {
-		return "random"
+	
+	func returnGeneralRoomKeyWithBlock(completion: (key: String) -> Void){
+		
+		print("Getting all general chat rooms at int lat and long")
+		Firebase.getGeneralRoomsAtLatitude(userLat, AndLongitude: userLong) { (generalRooms) in
+			if let generalRooms = generalRooms {
+				
+				
+				print("Indexing through all team chat room to find close chat room")
+				for (roomKey, loc) in generalRooms{
+					let latNlong = loc as! [String: Double]
+					let location = CLLocation(latitude: latNlong["latitude"]!, longitude: latNlong["longitude"]!)
+					print("\n\n\n")
+					print(self.userLocation.distanceFromLocation(location))
+					print("\n\n\n")
+					if self.userLocation.distanceFromLocation(location) < 20{
+						self.roomKey = roomKey
+						self.inAGenRoom = true
+						break
+					}
+				}
+				
+				if !self.inAGenRoom {
+					print("MAKING A GENERAL CHAT ROOM")
+					self.roomKey = Firebase.saveNewGeneralChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+				}
+				
+				
+				
+				
+			} else {
+				print("MAKING A GENERAL CHAT ROOM IN A NEW LAT AND LONG")
+				self.roomKey = Firebase.saveNewGeneralChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+				
+			}
+			
+			CurrentUser.currentGeneralChatRoomKey = self.roomKey
+			//Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: self.roomKey) //for location of all team members -> NOT NEEDED FOR GENERAL CHAT ROOM
+			print(self.roomKey)
+			completion(key: self.roomKey)
+		}
+		
 	}
+	
+
+	
+	
+	
 }

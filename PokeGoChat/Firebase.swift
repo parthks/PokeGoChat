@@ -16,6 +16,7 @@ enum dataType: String{
 	case TeamMessages = "teamMessages"
 	case TeamUsers = "teamUsers"
 	case TeamLocations = "teamLocations"
+	case GeneralLocations = "generalLocations"
 	
 }
 
@@ -86,6 +87,17 @@ class Firebase{
 		let ref = _rootRef.child(dataType.TeamLocations.rawValue).child(locationString).childByAutoId()
 		let key = ref.key
 		ref.setValue(["latitude" : latitude, "longitude" : longitude])
+		print("done saving new team chat")
+		return key
+	}
+	
+	static func saveNewGeneralChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
+		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		print(locationString)
+		let ref = _rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).childByAutoId()
+		let key = ref.key
+		ref.setValue(["latitude" : latitude, "longitude" : longitude])
+		print("done saving new general chat")
 		return key
 	}
 	
@@ -132,11 +144,26 @@ class Firebase{
 		}
 	}
 	
-	static func getTeamsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
+	static func getTeamRoomsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
 		let locationString = "\(Int(latitude)) \(Int(longitude))"
 		print(locationString)
 		_rootRef.child(dataType.TeamLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
-			print("Checking if snap(teams at int lat and long) exists")
+			print("Checking if snap(team rooms at int lat and long) exists")
+			if snap.exists() {
+				completion(snap.value as? [String: AnyObject])
+			}else{
+				completion(nil)
+			}
+			
+		}
+	}
+	
+	
+	static func getGeneralRoomsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
+		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		print(locationString)
+		_rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
+			print("Checking if snap(general rooms at int lat and long) exists")
 			if snap.exists() {
 				completion(snap.value as? [String: AnyObject])
 			}else{

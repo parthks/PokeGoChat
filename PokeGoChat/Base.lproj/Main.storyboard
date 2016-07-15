@@ -142,7 +142,6 @@
                                         <state key="normal" title="General Chat"/>
                                         <connections>
                                             <action selector="generalChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="DTE-mV-Xx0"/>
-                                            <segue destination="YUk-rW-UGe" kind="presentation" identifier="generalChat" id="AvX-Pm-yjV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -223,6 +222,7 @@
                         <outlet property="mapView" destination="Qra-p9-jTd" id="TnH-AR-8Ta"/>
                         <outlet property="teamChat" destination="cNE-22-rk3" id="Rgb-vx-fRc"/>
                         <segue destination="5AB-TL-QDT" kind="presentation" identifier="teamChat" id="Qlv-IS-qS0"/>
+                        <segue destination="YUk-rW-UGe" kind="presentation" identifier="generalChat" id="Nfh-YB-N0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXG-8F-IF7" userLabel="First Responder" sceneMemberID="firstResponder"/>

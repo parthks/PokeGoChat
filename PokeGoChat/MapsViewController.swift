@@ -16,8 +16,11 @@ class MapsViewController: UIViewController {
 	
 	var users = [User]() {
 		didSet{
-			self.labelBelowMap.text = "Displaying location of \(self.users.count) teammates"
-			self.placePinAtLongitude(users.last!.longitude, latitude: users.last!.latitude, userName: (users.last!.name))
+			if (users.last!.location) {
+				self.labelBelowMap.text = "Displaying location of \(self.users.count) teammates"
+				self.placePinAtLongitude(users.last!.longitude, latitude: users.last!.latitude, userName: (users.last!.name))
+			}
+			
 		}
 	}
 	//var currentLocation: (latitude: Double, longitude: Double) = (CurrentUser.currentUser.latitude!,
