@@ -34,7 +34,10 @@ class TeamChatViewController: UIViewController {
 	
 	
 	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
 		locationManager.stopUpdatingLocation()
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+
 	}
 	
 	@IBAction func locationChanged(sender: UISwitch) {
@@ -50,6 +53,10 @@ class TeamChatViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+
+		
 		let timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
@@ -133,18 +140,23 @@ extension TeamChatViewController: UITextFieldDelegate{
 		textFieldShouldReturn(inputText)
 	}
 	
-	func textFieldDidBeginEditing(textField: UITextField) {
-		//inputText.frame.origin.y -= 500
-		self.view.frame.origin.y -= 250
-
-		
+	
+	func moveKeyboardUp(notification: NSNotification) {
+		let userInfo:NSDictionary = notification.userInfo!
+		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+		let keyboardRectangle = keyboardFrame.CGRectValue()
+		let keyboardHeight = keyboardRectangle.height
+		self.view.frame.origin.y -= keyboardHeight
 	}
 	
-	func textFieldDidEndEditing(textField: UITextField) {
-		//inputText.frame.origin.y += 500
-		self.view.frame.origin.y += 250
-		
+	func moveKeyboardDown(notification: NSNotification) {
+		let userInfo:NSDictionary = notification.userInfo!
+		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+		let keyboardRectangle = keyboardFrame.CGRectValue()
+		let keyboardHeight = keyboardRectangle.height
+		self.view.frame.origin.y += keyboardHeight
 	}
+	
 	
 }
 

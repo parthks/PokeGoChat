@@ -80,13 +80,33 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
+                                <rect key="frame" x="210" y="506" width="181" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love the App =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
+                                        <rect key="frame" x="131" y="0.0" width="50" height="30"/>
+                                        <state key="normal" title="Donate"/>
+                                        <connections>
+                                            <action selector="donateButton:" destination="oQd-59-szp" eventType="touchUpInside" id="Q62-Zn-8Bx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="4XC-fC-01U"/>
+                            <constraint firstItem="USd-yR-xzC" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="FDv-et-kr0"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerY" secondItem="xDo-Eg-INf" secondAttribute="centerY" id="Rir-vj-XIu"/>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="top" secondItem="2pe-RR-ojg" secondAttribute="bottom" constant="15" id="tnE-iL-dog"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="wI9-tf-bzi"/>
+                            <constraint firstItem="800-vE-vGC" firstAttribute="top" secondItem="USd-yR-xzC" secondAttribute="bottom" constant="20" id="zNu-vm-rdA"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -146,23 +166,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="51q-zx-eGl">
-                                <rect key="frame" x="20" y="72" width="42" height="52"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5d-IC-EkM">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-qJ-6vw">
-                                        <rect key="frame" x="0.0" y="31" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-di-Cw7">
                                 <rect key="frame" x="231" y="422" width="139" height="20"/>
                                 <subviews>
@@ -178,7 +181,7 @@
                                 </subviews>
                             </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-p9-jTd">
-                                <rect key="frame" x="20" y="132" width="560" height="282"/>
+                                <rect key="frame" x="20" y="84" width="560" height="330"/>
                                 <connections>
                                     <outlet property="delegate" destination="uKa-LV-nec" id="DUa-w3-FSD"/>
                                 </connections>
@@ -188,14 +191,12 @@
                         <constraints>
                             <constraint firstItem="EJb-fm-eFc" firstAttribute="top" secondItem="iAH-IU-5Ke" secondAttribute="bottom" constant="50" id="2kY-8W-1gg"/>
                             <constraint firstItem="Qra-p9-jTd" firstAttribute="centerX" secondItem="iAH-IU-5Ke" secondAttribute="centerX" id="7N4-Eh-0O7"/>
+                            <constraint firstItem="Qra-p9-jTd" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leadingMargin" id="FrF-nZ-fmx"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="centerX" secondItem="6bp-5d-J9Z" secondAttribute="centerX" id="HmE-lz-IWE"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" id="Hzt-CS-ZIZ"/>
-                            <constraint firstItem="Qra-p9-jTd" firstAttribute="top" secondItem="51q-zx-eGl" secondAttribute="bottom" constant="8" symbolic="YES" id="Jlh-ct-iNY"/>
-                            <constraint firstItem="51q-zx-eGl" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leadingMargin" id="XtB-M3-EU7"/>
+                            <constraint firstItem="Qra-p9-jTd" firstAttribute="top" secondItem="zLZ-FV-vFU" secondAttribute="bottom" constant="20" id="STS-W0-8ON"/>
                             <constraint firstItem="SuY-di-Cw7" firstAttribute="centerX" secondItem="iAH-IU-5Ke" secondAttribute="centerX" id="dHN-0D-e8q"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="30" id="eJ4-Kr-yOp"/>
-                            <constraint firstItem="51q-zx-eGl" firstAttribute="top" secondItem="zLZ-FV-vFU" secondAttribute="bottom" constant="8" id="hbC-re-CDD"/>
-                            <constraint firstItem="Qra-p9-jTd" firstAttribute="leading" secondItem="51q-zx-eGl" secondAttribute="leading" id="kWR-mJ-1fx"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="top" secondItem="t7L-JL-28O" secondAttribute="bottom" constant="8" id="uVW-wy-i51"/>
                             <constraint firstAttribute="trailing" secondItem="iAH-IU-5Ke" secondAttribute="trailing" id="wGC-eN-qE0"/>
                             <constraint firstItem="t7L-JL-28O" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="8" id="xTJ-36-xeA"/>
@@ -207,6 +208,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="PokeGo Team Chat" id="Ebv-4L-dLp">
+                        <barButtonItem key="leftBarButtonItem" title="Info" id="vmd-B1-DzD"/>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="RFS-03-zdb">
                             <connections>
                                 <segue destination="oQd-59-szp" kind="show" id="J1k-ME-GdA">

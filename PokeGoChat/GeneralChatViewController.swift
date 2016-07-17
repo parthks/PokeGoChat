@@ -20,8 +20,16 @@ class GeneralChatViewController: UIViewController {
 	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
 	
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 		
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
@@ -82,18 +90,22 @@ extension GeneralChatViewController: UITextFieldDelegate{
 	}
 	
 	
-	func textFieldDidBeginEditing(textField: UITextField) {
-		//inputText.frame.origin.y -= 500
-		self.view.frame.origin.y -= 250
-		
-		
+	func moveKeyboardUp(notification: NSNotification) {
+		let userInfo:NSDictionary = notification.userInfo!
+		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+		let keyboardRectangle = keyboardFrame.CGRectValue()
+		let keyboardHeight = keyboardRectangle.height
+		self.view.frame.origin.y -= keyboardHeight
 	}
 	
-	func textFieldDidEndEditing(textField: UITextField) {
-		//inputText.frame.origin.y += 500
-		self.view.frame.origin.y += 250
-		
+	func moveKeyboardDown(notification: NSNotification) {
+		let userInfo:NSDictionary = notification.userInfo!
+		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+		let keyboardRectangle = keyboardFrame.CGRectValue()
+		let keyboardHeight = keyboardRectangle.height
+		self.view.frame.origin.y += keyboardHeight
 	}
+
 	
 }
 

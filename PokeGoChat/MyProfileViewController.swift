@@ -21,6 +21,10 @@ class MyProfileViewController: UIViewController {
 		
 	}
 	
+	@IBAction func donateButton(sender: AnyObject) {
+		UIApplication.sharedApplication().openURL(NSURL(string:"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=S6KB5Y78T7RQ4&lc=US&item_name=Pokemon%20Chat%20Apple%20App&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted")!)
+	}
+	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		nameLabel.text = CurrentUser.currentUser.name

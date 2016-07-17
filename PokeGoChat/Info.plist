@@ -6,6 +6,8 @@
 	<string>en</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find team members and other pokemon users nearby</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -36,6 +38,7 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>location-services</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
