@@ -42,7 +42,7 @@ class GetChatRoomKey {
 				for (roomKey, loc) in teams{
 					let latNlong = loc as! [String: Double]
 					let location = CLLocation(latitude: latNlong["latitude"]!, longitude: latNlong["longitude"]!)
-					if self.userLocation.distanceFromLocation(location) < 5{
+					if self.userLocation.distanceFromLocation(location) < 20{
 						self.roomKey = roomKey
 						self.inATeamRoom = true
 						break

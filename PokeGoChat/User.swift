@@ -13,6 +13,7 @@ class CurrentUser {
 	static var currentUser: User!
 	static var currentTeamChatRoomKey: String!
 	static var currentGeneralChatRoomKey: String!
+	
 
 }
 

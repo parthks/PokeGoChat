@@ -16,12 +16,21 @@ class MapsViewController: UIViewController {
 	
 	var users = [User]() {
 		didSet{
-			if (users.last!.location) {
-				self.labelBelowMap.text = "Displaying location of \(self.users.count) teammates"
-				self.placePinAtLongitude(users.last!.longitude, latitude: users.last!.latitude, userName: (users.last!.name))
+			if (users.count > 0) {
+				if (users.last!.location && users.last!.id != CurrentUser.currentUser.id) {
+					self.labelBelowMap.text = "Displaying location of \(self.users.count) teammates"
+					self.placePinAtLongitude(users.last!.longitude, latitude: users.last!.latitude, userName: (users.last!.name))
+				}
 			}
 			
+			
 		}
+	}
+	
+	@IBAction func refreshView(sender: UIBarButtonItem) {
+		users.removeAll()
+		refreshMapView()
+		
 	}
 	//var currentLocation: (latitude: Double, longitude: Double) = (CurrentUser.currentUser.latitude!,
 	//CurrentUser.currentUser.longitude!)
@@ -36,9 +45,20 @@ class MapsViewController: UIViewController {
 //		mapView.setRegion(region, animated: true)
 //
 //	}
-
+	
+	override func viewDidDisappear(animated: Bool) {
+		super.viewDidDisappear(animated)
+		mapView = nil
+		users.removeAll()
+	}
+	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		refreshMapView()
+	}
+	
+	
+	func refreshMapView(){
 		
 		let span = MKCoordinateSpanMake(0.015, 0.015)
 		let location = CLLocationCoordinate2D.init(latitude: (CurrentUser.currentUser.latitude!),
@@ -54,7 +74,6 @@ class MapsViewController: UIViewController {
 		}
 
 	}
-	
 	
 	func placePinAtLongitude(longitude: Double?, latitude: Double?, userName: String) {
 		

@@ -82,7 +82,9 @@ class Firebase{
 	}
 	
 	static func saveNewTeamChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
-		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		let roundedLat = Double(round(latitude * 100) / 100)
+		let roundedLong = Double(round(longitude * 100) / 100)
+		let locationString = "\((roundedLat)) \(roundedLong)"
 		print(locationString)
 		let ref = _rootRef.child(dataType.TeamLocations.rawValue).child(locationString).childByAutoId()
 		let key = ref.key
@@ -92,7 +94,9 @@ class Firebase{
 	}
 	
 	static func saveNewGeneralChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
-		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		let roundedLat = Double(round(latitude * 100) / 100)
+		let roundedLong = Double(round(longitude * 100) / 100)
+		let locationString = "\((roundedLat)) \(roundedLong)"
 		print(locationString)
 		let ref = _rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).childByAutoId()
 		let key = ref.key
@@ -145,8 +149,12 @@ class Firebase{
 	}
 	
 	static func getTeamRoomsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
-		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		let roundedLat = Double(round(latitude * 100) / 100)
+		let roundedLong = Double(round(longitude * 100) / 100)
+		let locationString = "\((roundedLat)) \(roundedLong)"
+
 		print(locationString)
+		
 		_rootRef.child(dataType.TeamLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
 			print("Checking if snap(team rooms at int lat and long) exists")
 			if snap.exists() {
@@ -160,7 +168,10 @@ class Firebase{
 	
 	
 	static func getGeneralRoomsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
-		let locationString = "\(Int(latitude)) \(Int(longitude))"
+		let roundedLat = Double(round(latitude * 100) / 100)
+		let roundedLong = Double(round(longitude * 100) / 100)
+		let locationString = "\((roundedLat)) \(roundedLong)"
+
 		print(locationString)
 		_rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
 			print("Checking if snap(general rooms at int lat and long) exists")

@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="1880" y="-653"/>
         </scene>
-        <!--Main Screen View Controller-->
+        <!--PokeGo Team Chat-->
         <scene sceneID="Nbg-t2-WE9">
             <objects>
                 <viewController id="uKa-LV-nec" customClass="MainScreenViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
@@ -206,7 +206,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Ebv-4L-dLp">
+                    <navigationItem key="navigationItem" title="PokeGo Team Chat" id="Ebv-4L-dLp">
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="RFS-03-zdb">
                             <connections>
                                 <segue destination="oQd-59-szp" kind="show" id="J1k-ME-GdA">
@@ -366,7 +366,7 @@
             </objects>
             <point key="canvasLocation" x="1302" y="835"/>
         </scene>
-        <!--Maps View Controller-->
+        <!--Map of Teammates-->
         <scene sceneID="5L8-QW-4hr">
             <objects>
                 <viewController id="Lg0-ed-vVc" customClass="MapsViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
@@ -378,13 +378,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmc-Lt-rRD">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmc-Lt-rRD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="475"/>
                                 <connections>
                                     <outlet property="delegate" destination="Lg0-ed-vVc" id="2lo-cH-y4z"/>
                                 </connections>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Populating Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSO-1K-X5I">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Populating Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSO-1K-X5I">
                                 <rect key="frame" x="230" y="559" width="141" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -407,6 +407,15 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Map of Teammates" id="6xI-fY-QGs">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="Fac-CM-LPu">
+                            <connections>
+                                <action selector="refreshView:" destination="Lg0-ed-vVc" id="muz-I3-a7K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="labelBelowMap" destination="QSO-1K-X5I" id="aCn-0l-iYy"/>
                         <outlet property="mapView" destination="Hmc-Lt-rRD" id="GGt-6f-qAG"/>

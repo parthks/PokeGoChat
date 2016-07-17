@@ -19,14 +19,15 @@ class TeamChatViewController: UIViewController {
 	
 	
 	@IBAction func locationChanged(sender: UISwitch) {
-		CurrentUser.currentUser.location = myLocationSwitch.selected
+		CurrentUser.currentUser.location = myLocationSwitch.on
 		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentUser.id)
+		print("UPDATED LOCATION")
 	}
 	
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
 	
-	let maxMesLength = 140 //in characters
+	let maxMesLength = 140 //in characters - a tweet!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +123,9 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate{
 		let message = messages[indexPath.row].value as! [String: String]
 		let name = message["name"]!
 		let text = message["text"]!
+		if name == CurrentUser.currentUser.name {
+			
+		}
 		cell.textLabel?.text = name
 		cell.detailTextLabel?.text = text
 		return cell
