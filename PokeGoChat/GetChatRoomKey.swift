@@ -33,7 +33,7 @@ class GetChatRoomKey {
 	
 	func returnTeamRoomKeyWithBlock(completion: (key: String) -> Void){
 		
-		print("Getting all team chat rooms at int lat and long")
+		print("Getting all team chat rooms at rounded lat and long")
 		Firebase.getTeamRoomsAtLatitude(userLat, AndLongitude: userLong) { (teams) in
 			if let teams = teams{
 				

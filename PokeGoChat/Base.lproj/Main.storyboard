@@ -242,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-V5-G5G">
-                                <rect key="frame" x="0.0" y="64" width="600" height="478"/>
+                                <rect key="frame" x="0.0" y="292" width="600" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="M99-Df-PW0" detailTextLabel="mnz-m7-WGE" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="oIt-GQ-adR">
@@ -290,6 +290,16 @@
                                     <action selector="sendMessage:" destination="ydW-Be-fiu" eventType="touchUpInside" id="UW2-W2-tz7"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-hb-IUE">
+                                <rect key="frame" x="20" y="560" width="32" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="CRA-9r-QzJ"/>
+                                    <constraint firstAttribute="height" constant="20" id="Mdi-cq-bEr"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="locationChanged:" destination="ydW-Be-fiu" eventType="valueChanged" id="JgK-zI-2vI"/>
+                                </connections>
+                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFe-dQ-7Kk">
                                 <rect key="frame" x="5" y="543" width="69" height="21"/>
                                 <constraints>
@@ -304,36 +314,35 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-hb-IUE">
-                                <rect key="frame" x="20" y="560" width="32" height="20"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-7s-4uh">
+                                <rect key="frame" x="0.0" y="64" width="600" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="CRA-9r-QzJ"/>
-                                    <constraint firstAttribute="height" constant="20" id="Mdi-cq-bEr"/>
+                                    <constraint firstAttribute="height" constant="220" id="VHl-yO-ZqY"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="locationChanged:" destination="ydW-Be-fiu" eventType="valueChanged" id="JgK-zI-2vI"/>
-                                </connections>
-                            </switch>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="C6x-hb-IUE" secondAttribute="bottom" constant="20" id="1z2-oO-qmI"/>
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="top" secondItem="n5l-V5-G5G" secondAttribute="bottom" constant="8" symbolic="YES" id="5R1-sr-Rhr"/>
+                            <constraint firstItem="n5l-V5-G5G" firstAttribute="top" secondItem="hnr-7s-4uh" secondAttribute="bottom" constant="8" id="7cO-Fm-NEL"/>
                             <constraint firstAttribute="trailing" secondItem="n5l-V5-G5G" secondAttribute="trailing" id="8ey-KY-0gx"/>
                             <constraint firstItem="rFe-dQ-7Kk" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="top" constant="-7" id="8kM-mL-FhO"/>
                             <constraint firstItem="C6x-hb-IUE" firstAttribute="top" secondItem="rFe-dQ-7Kk" secondAttribute="bottom" constant="-4" id="Bhb-HL-BXc"/>
+                            <constraint firstItem="hnr-7s-4uh" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" id="CNV-Za-O0c"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leadingMargin" id="Eh5-qq-Mh7"/>
                             <constraint firstItem="n5l-V5-G5G" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" id="HsV-jA-S8o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rk3-2r-z2l" secondAttribute="trailing" constant="5" id="Lk8-Rb-sOM"/>
-                            <constraint firstItem="n5l-V5-G5G" firstAttribute="top" secondItem="6V5-y9-0oC" secondAttribute="bottom" id="P8p-D8-tXE"/>
                             <constraint firstItem="C6x-hb-IUE" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leadingMargin" id="QjB-h0-pVV"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="top" secondItem="n5l-V5-G5G" secondAttribute="bottom" constant="8" id="RrL-WD-Ef1"/>
                             <constraint firstItem="rFe-dQ-7Kk" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" constant="5" id="TMP-d0-9a4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rk3-2r-z2l" secondAttribute="trailing" constant="8" id="WV3-mE-Myy"/>
+                            <constraint firstAttribute="trailing" secondItem="hnr-7s-4uh" secondAttribute="trailing" id="Z2p-2U-Tab"/>
                             <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="bottom" constant="20" id="bDS-Lz-mmF"/>
                             <constraint firstAttribute="bottom" secondItem="Rk3-2r-z2l" secondAttribute="bottom" constant="20" symbolic="YES" id="fkR-xY-ETH"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="C6x-hb-IUE" secondAttribute="trailing" constant="94" id="foK-rl-fVe"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="rFe-dQ-7Kk" secondAttribute="trailing" constant="8" id="j6w-1i-Q3g"/>
+                            <constraint firstItem="hnr-7s-4uh" firstAttribute="top" secondItem="6V5-y9-0oC" secondAttribute="bottom" id="toU-Xe-0d9"/>
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="leading" secondItem="146-uO-4BL" secondAttribute="trailing" constant="16" id="ytt-OQ-j87"/>
                         </constraints>
                         <variation key="default">
@@ -350,14 +359,10 @@
                                 <action selector="leaveChat:" destination="ydW-Be-fiu" id="t59-N4-crL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="ZWT-ig-497">
-                            <connections>
-                                <segue destination="Lg0-ed-vVc" kind="show" id="FJ4-hn-1N2"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="inputText" destination="146-uO-4BL" id="V8z-Qg-Wph"/>
+                        <outlet property="mapView" destination="hnr-7s-4uh" id="70m-c3-cPA"/>
                         <outlet property="myLocationSwitch" destination="C6x-hb-IUE" id="n8b-f8-RHb"/>
                         <outlet property="tableView" destination="n5l-V5-G5G" id="YZB-aO-xjE"/>
                     </connections>

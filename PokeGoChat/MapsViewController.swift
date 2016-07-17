@@ -18,7 +18,7 @@ class MapsViewController: UIViewController {
 		didSet{
 			if (users.count > 0) {
 				if (users.last!.location && users.last!.id != CurrentUser.currentUser.id) {
-					self.labelBelowMap.text = "Displaying location of \(self.users.count) teammates"
+					//self.labelBelowMap.text = "Displaying location of \(self.users.count) teammates"
 					self.placePinAtLongitude(users.last!.longitude, latitude: users.last!.latitude, userName: (users.last!.name))
 				}
 			}

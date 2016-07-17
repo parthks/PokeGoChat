@@ -34,7 +34,7 @@ class Firebase{
 		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
 			if let error = error{
 				print("ERROR CREATING USER")
-				print(error)
+				print(error.localizedDescription)
 			}else if let user = user{
 				takeKey(key: user.uid)
 			}
@@ -45,7 +45,7 @@ class Firebase{
 		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
 			if let error = error{
 				print("ERROR LOGGING IN USER")
-				print(error)
+				print(error.localizedDescription)
 			}else if let user = user{
 				takeKey(key: user.uid)
 			}
@@ -82,11 +82,9 @@ class Firebase{
 	}
 	
 	static func saveNewTeamChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
-		let roundedLat = Double(round(latitude * 100) / 100)
-		let roundedLong = Double(round(longitude * 100) / 100)
-		let locationString = "\((roundedLat)) \(roundedLong)"
+		let locationString = getLocationString(latitude: latitude, longitude: longitude)
 		print(locationString)
-		let ref = _rootRef.child(dataType.TeamLocations.rawValue).child(locationString).childByAutoId()
+		let ref = _rootRef.child(dataType.TeamLocations.rawValue).child(locationString).child(CurrentUser.currentUser.team).childByAutoId()
 		let key = ref.key
 		ref.setValue(["latitude" : latitude, "longitude" : longitude])
 		print("done saving new team chat")
@@ -94,9 +92,7 @@ class Firebase{
 	}
 	
 	static func saveNewGeneralChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
-		let roundedLat = Double(round(latitude * 100) / 100)
-		let roundedLong = Double(round(longitude * 100) / 100)
-		let locationString = "\((roundedLat)) \(roundedLong)"
+		let locationString = getLocationString(latitude: latitude, longitude: longitude)
 		print(locationString)
 		let ref = _rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).childByAutoId()
 		let key = ref.key
@@ -149,30 +145,25 @@ class Firebase{
 	}
 	
 	static func getTeamRoomsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
-		let roundedLat = Double(round(latitude * 100) / 100)
-		let roundedLong = Double(round(longitude * 100) / 100)
-		let locationString = "\((roundedLat)) \(roundedLong)"
-
-		print(locationString)
 		
-		_rootRef.child(dataType.TeamLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
+		let locationString = getLocationString(latitude: latitude, longitude: longitude)
+		print(locationString)
+		print("getting team chat rooms at all lat and long")
+		_rootRef.child(dataType.TeamLocations.rawValue).child(locationString).child(CurrentUser.currentUser.team).observeSingleEventOfType(.Value) { (snap, error) in
 			print("Checking if snap(team rooms at int lat and long) exists")
 			if snap.exists() {
 				completion(snap.value as? [String: AnyObject])
 			}else{
 				completion(nil)
 			}
-			
+		
 		}
 	}
 	
 	
 	static func getGeneralRoomsAtLatitude(latitude: Double, AndLongitude longitude: Double, WithBlock completion: [String: AnyObject]? -> Void) {
-		let roundedLat = Double(round(latitude * 100) / 100)
-		let roundedLong = Double(round(longitude * 100) / 100)
-		let locationString = "\((roundedLat)) \(roundedLong)"
-
-		print(locationString)
+	
+		let locationString = getLocationString(latitude: latitude, longitude: longitude)
 		_rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).observeSingleEventOfType(.Value) { (snap, error) in
 			print("Checking if snap(general rooms at int lat and long) exists")
 			if snap.exists() {
@@ -184,6 +175,15 @@ class Firebase{
 		}
 	}
 	
-	
-	
 }
+
+private func getLocationString(latitude latitude: Double, longitude: Double) -> String{
+	let roundedLat = Double(round(latitude * 100) / 100)
+	let roundedLong = Double(round(longitude * 100) / 100)
+	let decimalLong = Int((abs(roundedLong) % 1) * 100)
+	let decimalLat = Int((abs(roundedLat) % 1) * 100)
+	
+	let locationString = "\(Int(roundedLat))-\(decimalLat) \(Int(roundedLong))-\(decimalLong) "
+	return locationString
+}
+

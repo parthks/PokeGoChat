@@ -23,18 +23,17 @@ class MainScreenViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		//Firebase.loginWithEmail("testuser1@test.com", AndPassword: "123456"){ key in print("back...")}
+		//Firebase.loginWithEmail("location@test.com", AndPassword: "123456"){ key in print("back...")}
 
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
-		//activityIndicator.startAnimating()
-	
+		//locationManager.requestLocation()
 	}
 
 	
 	@IBAction func teamChatGo(sender: UIButton) {
-	
+		locationManager.requestLocation()
 		let roomKey = GetChatRoomKey()
 		roomKey.returnTeamRoomKeyWithBlock() { key in
 			self.performSegueWithIdentifier("teamChat", sender: key)
@@ -44,6 +43,7 @@ class MainScreenViewController: UIViewController {
 	
 	
 	@IBAction func generalChatGo(sender: UIButton) {
+		locationManager.requestLocation()
 		let roomKey = GetChatRoomKey()
 		roomKey.returnGeneralRoomKeyWithBlock() { key in
 			self.performSegueWithIdentifier("generalChat", sender: key)
@@ -86,7 +86,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 		activityIndicator.stopAnimating()
 		gettingLocationLabel.hidden = true
 		
-		if let location = locations.first {
+		if let location = locations.last {
 			print("location:: \(location.coordinate)")
 	
 			let span = MKCoordinateSpanMake(0.005, 0.005)
