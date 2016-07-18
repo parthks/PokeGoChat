@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var createAccLabel: UILabel!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -41,8 +41,8 @@ class SignUpViewController: UIViewController {
 		guard passwordTextField.text != "" else {return}
 		guard nameTextField.text != "" else {return}
 		
-		createAccLabel.hidden = false
-		activityIndicator.startAnimating()
+//		createAccLabel.hidden = false
+//		activityIndicator.startAnimating()
 		
 		print("signing up...")
 		let email = emailTextField.text!
@@ -71,7 +71,10 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
-		createAccLabel.hidden = true
+		//createAccLabel.hidden = true
+		nameTextField.delegate = self
+		passwordTextField.delegate = self
+		emailTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -79,7 +82,21 @@ class SignUpViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		
+		if textField.tag == 0{
+			textField.endEditing(true)
+			passwordTextField.becomeFirstResponder()
+		}else if textField.tag == 1{
+			textField.endEditing(true)
+			nameTextField.becomeFirstResponder()
+		}else{
+			textField.endEditing(true)
+		}
+		
+		return true
+	}
 
     /*
     // MARK: - Navigation

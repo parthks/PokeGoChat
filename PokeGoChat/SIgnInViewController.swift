@@ -9,20 +9,28 @@
 import UIKit
 import Firebase
 
-class SIgnInViewController: UIViewController {
+class SIgnInViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
+	@IBOutlet weak var signInLabel: UILabel!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
 	@IBAction func signInButtonTapped(sender: UIButton) {
 		view.endEditing(true)
+		
 		signIn()
 	}
 	
 	var userSignedInSucessfully: Bool = false
+	
 	func signIn(){
 		guard emailTextField.text != "" else {return}
 		guard passwordTextField.text != "" else {return}
+//		signInLabel.hidden = false
+//		activityIndicator.hidden = false
+//		activityIndicator.startAnimating()
 		
 		print("signing in...")
 		let email = emailTextField.text!
@@ -79,14 +87,34 @@ class SIgnInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
-
-        // Do any additional setup after loading the view.
-    }
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		
+	}
+	
+//	override func viewDidAppear(animated: Bool) {
+//		super.viewDidAppear(animated)
+//		signInLabel.hidden = true
+//		activityIndicator.hidden = true
+//
+//	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		if textField.tag == 0{
+			textField.endEditing(true)
+			passwordTextField.becomeFirstResponder()
+		}else {
+			textField.endEditing(true)
+			signIn()
+		}
+		
+		return true
+	}
     
 
     /*
