@@ -37,7 +37,7 @@ class GetChatRoomKey {
 		Firebase.getTeamRoomsAtLatitude(userLat, AndLongitude: userLong) { (teams) in
 			if let teams = teams{
 				
-				
+				//var tempLocToGetMin = [String: AnyObject]()
 				print("Indexing through all team chat room to find close chat room")
 				for (roomKey, loc) in teams{
 					let latNlong = loc as! [String: Double]
@@ -45,9 +45,12 @@ class GetChatRoomKey {
 					if self.userLocation.distanceFromLocation(location) < 20{
 						self.roomKey = roomKey
 						self.inATeamRoom = true
-						break
+//						tempLocToGetMin["roomkey"] = roomKey
+//						tempLocToGetMin["location"] = latNlong
 					}
 				}
+				
+				
 				
 				if !self.inATeamRoom {
 					print("MAKING A TEAM CHAT ROOM")
@@ -65,6 +68,7 @@ class GetChatRoomKey {
 			
 			CurrentUser.currentTeamChatRoomKey = self.roomKey
 			Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: self.roomKey) //for location of all team members
+			CurrentUser.inAChatRoom = "team"
 			completion(key: self.roomKey)
 		}
 
@@ -109,8 +113,9 @@ class GetChatRoomKey {
 			}
 			
 			CurrentUser.currentGeneralChatRoomKey = self.roomKey
-			//Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: self.roomKey) //for location of all team members -> NOT NEEDED FOR GENERAL CHAT ROOM
+			Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToGeneralWithKey: self.roomKey)
 			print(self.roomKey)
+			CurrentUser.inAChatRoom = "general"
 			completion(key: self.roomKey)
 		}
 		

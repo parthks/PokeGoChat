@@ -15,6 +15,7 @@ enum dataType: String{
 	case GeneralMessages = "generalMessages"
 	case TeamMessages = "teamMessages"
 	case TeamUsers = "teamUsers"
+	case GeneralUsers = "generalUsers"
 	case TeamLocations = "teamLocations"
 	case GeneralLocations = "generalLocations"
 	
@@ -24,7 +25,7 @@ protocol FirebaseCompatible {
 	func convertToFirebase() -> [String: AnyObject]
 }
 
-class Firebase{
+class Firebase {
 	
 	//Database reference
 	static var _rootRef = FIRDatabase.database().reference()
@@ -83,6 +84,13 @@ class Firebase{
 		_rootRef.child(dataType.TeamUsers.rawValue).child(teamKey).child(userKey).setValue("1")
 		//_rootRef.child(dataType.TeamUsers.rawValue).child("Num").setValue(1+TeamChatViewController.numberOfUsers)
 		print("saved user key to team")
+	}
+	
+	static func saveUserWithKey(userKey: String, ToGeneralWithKey generalKey: String){
+		print("saving user key to general")
+		_rootRef.child(dataType.GeneralUsers.rawValue).child(generalKey).child(userKey).setValue("1")
+		//_rootRef.child(dataType.TeamUsers.rawValue).child("Num").setValue(1+TeamChatViewController.numberOfUsers)
+		print("saved user key to general")
 	}
 	
 	static func saveUser(user: User, WithKey key: String){
@@ -217,22 +225,60 @@ class Firebase{
 			}else{
 				completion(nil)
 			}
-		
-		
-			
 			
 		}
 	}
 	
+	
+	//MARK: Removers
+	
+	static func removeTeamRoomAtRoundedCoor() {
+		print("removing team room")
+		_rootRef.child(dataType.TeamLocations.rawValue).child(CurrentFirebaseLocationData.RoundedLocation).child(CurrentUser.currentUser.team).child(CurrentUser.currentTeamChatRoomKey).removeValue()
+		_rootRef.child(dataType.TeamMessages.rawValue).child(CurrentUser.currentTeamChatRoomKey).removeValue()
+		print("removed team room")
+	}
+	
+	static func removeUserAtCurrentTeamRoom() {
+		_rootRef.child(dataType.TeamUsers.rawValue).child(CurrentUser.currentTeamChatRoomKey).child(CurrentUser.currentUser.id).removeValue()
+		_rootRef.child(dataType.TeamUsers.rawValue).child(CurrentUser.currentTeamChatRoomKey).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
+			
+			print("Checking if snap(general rooms at int lat and long) exists")
+			if !snap.exists() {
+				Firebase.removeTeamRoomAtRoundedCoor()
+			}
+		}
+	}
+	
+	static func removeUserAtCurrentGeneralRoom() {
+		_rootRef.child(dataType.GeneralUsers.rawValue).child(CurrentUser.currentGeneralChatRoomKey).child(CurrentUser.currentUser.id).removeValue()
+		_rootRef.child(dataType.GeneralUsers.rawValue).child(CurrentUser.currentGeneralChatRoomKey).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
+			
+			print("Checking if snap(general rooms at int lat and long) exists")
+			if !snap.exists() {
+				Firebase.removeGeneralRoomAtRoundedCoor()
+			}
+		}
+	}
+	
+	static func removeGeneralRoomAtRoundedCoor() {
+		print("removing general room")
+		_rootRef.child(dataType.GeneralLocations.rawValue).child(CurrentFirebaseLocationData.RoundedLocation).child(CurrentUser.currentGeneralChatRoomKey).removeValue()
+		_rootRef.child(dataType.GeneralMessages.rawValue).child(CurrentUser.currentGeneralChatRoomKey).removeValue()
+		print("removed general room")
+	}
+	
 }
 
-private func getLocationString(latitude latitude: Double, longitude: Double) -> String{
+func getLocationString(latitude latitude: Double, longitude: Double) -> String{
 	let roundedLat = Double(round(latitude * 100) / 100)
 	let roundedLong = Double(round(longitude * 100) / 100)
 	let decimalLong = Int((abs(roundedLong) % 1) * 100)
 	let decimalLat = Int((abs(roundedLat) % 1) * 100)
 	
-	let locationString = "\(Int(roundedLat))-\(decimalLat) \(Int(roundedLong))-\(decimalLong) "
+	let locationString = "\(Int(roundedLat))-\(decimalLat) \(Int(roundedLong))-\(decimalLong)"
+	CurrentFirebaseLocationData.RoundedLocation = locationString
 	return locationString
 }
+
 

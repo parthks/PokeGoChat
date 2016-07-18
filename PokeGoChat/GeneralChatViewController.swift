@@ -48,7 +48,9 @@ class GeneralChatViewController: UIViewController {
 	}
 	
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
+		Firebase.removeUserAtCurrentGeneralRoom()
 		self.dismissViewControllerAnimated(true, completion: nil)
+		CurrentUser.inAChatRoom = nil
 	}
 	
 	/*

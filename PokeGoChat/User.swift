@@ -13,15 +13,19 @@ class CurrentUser {
 	static var currentUser: User!
 	static var currentTeamChatRoomKey: String!
 	static var currentGeneralChatRoomKey: String!
-	
+	static var inAChatRoom: String? = nil //nil, "team", "general"
 
+}
+
+class CurrentFirebaseLocationData {
+	static var RoundedLocation: String!
 }
 
 struct User: FirebaseCompatible {
 	
 	let id: String
 	var name: String
-	let team: String
+	var team: String
 	var location: Bool
 	var latitude: Double?
 	var longitude: Double?

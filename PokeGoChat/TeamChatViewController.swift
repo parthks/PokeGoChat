@@ -35,9 +35,9 @@ class TeamChatViewController: UIViewController {
 	
 	override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
-		locationManager.stopUpdatingLocation()
+		//locationManager.stopUpdatingLocation()
 		NSNotificationCenter.defaultCenter().removeObserver(self)
-
+		timer.invalidate()
 	}
 	
 	@IBAction func locationChanged(sender: UISwitch) {
@@ -48,7 +48,7 @@ class TeamChatViewController: UIViewController {
 	
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
-	
+	var timer: NSTimer = NSTimer()
 	let maxMesLength = 140 //in characters - a tweet!
 	
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class TeamChatViewController: UIViewController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 
 		
-		let timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
 		self.navigationItem.title = "Team \(CurrentUser.currentUser.team)"
@@ -99,7 +99,9 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
+		Firebase.removeUserAtCurrentTeamRoom()
 		self.dismissViewControllerAnimated(true, completion: nil)
+		CurrentUser.inAChatRoom = nil
 		//mapView = nil
 	}
 

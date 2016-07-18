@@ -132,7 +132,7 @@ For any technical difficulties or questions plese email:</string>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
-                                <rect key="frame" x="191" y="506" width="218" height="30"/>
+                                <rect key="frame" x="160" y="506" width="280" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay Free =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
                                         <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
@@ -141,8 +141,8 @@ For any technical difficulties or questions plese email:</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
-                                        <rect key="frame" x="168" y="0.0" width="50" height="30"/>
-                                        <state key="normal" title="Donate"/>
+                                        <rect key="frame" x="168" y="0.0" width="112" height="30"/>
+                                        <state key="normal" title="Support My App"/>
                                         <connections>
                                             <action selector="donateButton:" destination="oQd-59-szp" eventType="touchUpInside" id="Q62-Zn-8Bx"/>
                                         </connections>
