@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import MapKit
-import iAd
 
 class TeamChatViewController: UIViewController {
 
@@ -54,7 +53,6 @@ class TeamChatViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		canDisplayBannerAds = true
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 

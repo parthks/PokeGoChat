@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import iAd
 
 class MainScreenViewController: UIViewController {
 
@@ -25,7 +24,6 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		//Firebase.loginWithEmail("location@test.com", AndPassword: "123456"){ key in print("back...")}
-		canDisplayBannerAds = true
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()

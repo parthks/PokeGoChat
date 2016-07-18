@@ -24,7 +24,6 @@
 		B260C38A1D36F0650037A97D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3891D36F0650037A97D /* SignUpViewController.swift */; };
 		B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38B1D3840320037A97D /* GetChatRoomKey.swift */; };
 		B260C38E1D3863100037A97D /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38D1D3863100037A97D /* MapPin.swift */; };
-		B260C3901D3C64530037A97D /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B260C38F1D3C64530037A97D /* iAd.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B260C3901D3C64530037A97D /* iAd.framework in Frameworks */,
 				8964EFD70C33A4DDA4B26882 /* Pods_PokeGoChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

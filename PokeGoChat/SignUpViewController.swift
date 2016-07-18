@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import iAd
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -76,7 +75,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		nameTextField.delegate = self
 		passwordTextField.delegate = self
 		emailTextField.delegate = self
-		self.canDisplayBannerAds = true
         // Do any additional setup after loading the view.
     }
 
