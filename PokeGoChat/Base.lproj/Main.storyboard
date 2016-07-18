@@ -680,39 +680,20 @@ For any technical difficulties or questions plese email:</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8K-CS-H9p">
-                                <rect key="frame" x="250" y="370" width="100" height="20"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signing in " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFP-d4-KvA">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yFn-Ce-Ucd">
-                                        <rect key="frame" x="80" y="0.0" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wku-v5-6Gb" firstAttribute="top" secondItem="J2U-tM-d9D" secondAttribute="bottom" constant="50" id="5FX-z8-rlE"/>
-                            <constraint firstItem="Wku-v5-6Gb" firstAttribute="top" secondItem="k8K-CS-H9p" secondAttribute="bottom" constant="15" id="8Le-Uk-7OG"/>
-                            <constraint firstItem="k8K-CS-H9p" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="EpV-qT-9bJ"/>
                             <constraint firstItem="Wku-v5-6Gb" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="LY3-x3-Uqo"/>
                             <constraint firstItem="J2U-tM-d9D" firstAttribute="top" secondItem="GMc-F2-KQM" secondAttribute="bottom" constant="80" id="Mj1-oA-M8d"/>
                             <constraint firstItem="J2U-tM-d9D" firstAttribute="centerY" secondItem="pTc-Q7-naA" secondAttribute="centerY" id="fxb-5m-Iew"/>
                             <constraint firstItem="GMc-F2-KQM" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="m2G-6h-G4Q"/>
-                            <constraint firstItem="k8K-CS-H9p" firstAttribute="top" secondItem="J2U-tM-d9D" secondAttribute="bottom" constant="15" id="nrG-kN-hnE"/>
                             <constraint firstItem="J2U-tM-d9D" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="uJM-Lc-DL2"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="yFn-Ce-Ucd" id="aua-gf-oAt"/>
                         <outlet property="emailTextField" destination="cvh-2J-rGl" id="50w-HJ-qj4"/>
                         <outlet property="passwordTextField" destination="4fQ-mb-mIf" id="v13-oT-ELg"/>
-                        <outlet property="signInLabel" destination="UFP-d4-KvA" id="r7B-kL-1Ia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07h-3r-rlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -735,13 +716,13 @@ For any technical difficulties or questions plese email:</string>
                                 <rect key="frame" x="140" y="63" width="321" height="473"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make a PokeGo Team Chat Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
-                                        <rect key="frame" x="0.0" y="0.0" width="321" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-uz-MFo">
-                                        <rect key="frame" x="68" y="74" width="185" height="101"/>
+                                        <rect key="frame" x="68" y="81" width="185" height="101"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-Z3-h0v">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="21"/>
@@ -768,7 +749,7 @@ For any technical difficulties or questions plese email:</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="62A-qh-IwR">
-                                        <rect key="frame" x="68" y="225" width="185" height="143"/>
+                                        <rect key="frame" x="68" y="238" width="185" height="144"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-pW-hho">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
@@ -790,7 +771,7 @@ For any technical difficulties or questions plese email:</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93J-12-8Dg">
-                                                <rect key="frame" x="0.0" y="81" width="185" height="62"/>
+                                                <rect key="frame" x="0.0" y="81" width="185" height="63"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyu-uG-gHw">
                                                         <rect key="frame" x="67" y="0.0" width="51" height="21"/>
@@ -799,7 +780,7 @@ For any technical difficulties or questions plese email:</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="03A-Q3-9Ac">
-                                                        <rect key="frame" x="12" y="21" width="161" height="29"/>
+                                                        <rect key="frame" x="12" y="21" width="161" height="30"/>
                                                         <segments>
                                                             <segment title="Yellow"/>
                                                             <segment title="Red"/>
@@ -807,7 +788,7 @@ For any technical difficulties or questions plese email:</string>
                                                         </segments>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9P-B0-Mct">
-                                                        <rect key="frame" x="32" y="49" width="122" height="13"/>
+                                                        <rect key="frame" x="32" y="50" width="121" height="13"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Your team decision is final">
                                                                 <attributes>
@@ -821,6 +802,7 @@ For any technical difficulties or questions plese email:</string>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="G9P-B0-Mct" firstAttribute="leading" secondItem="93J-12-8Dg" secondAttribute="leading" constant="32" id="Pg2-Ua-wqL"/>
                                                     <constraint firstItem="G9P-B0-Mct" firstAttribute="leading" secondItem="93J-12-8Dg" secondAttribute="leading" constant="32" id="XQJ-8D-8ew"/>
                                                 </constraints>
                                                 <variation key="default">
@@ -830,37 +812,29 @@ For any technical difficulties or questions plese email:</string>
                                                 </variation>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="93J-12-8Dg" firstAttribute="top" secondItem="62A-qh-IwR" secondAttribute="top" constant="81" id="QUE-2J-thu"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ORW-Bw-SsT">
-                                        <rect key="frame" x="67" y="418" width="187" height="55"/>
+                                        <rect key="frame" x="67" y="438" width="187" height="35"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-Ef-Nqq">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-Ef-Nqq">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="35"/>
                                                 <state key="normal" title="Create Account and Sign In"/>
                                                 <connections>
                                                     <action selector="createAccAndSignIn:" destination="uyj-hn-2aH" eventType="touchUpInside" id="KcH-qr-ern"/>
                                                     <segue destination="aUQ-Ll-X0A" kind="show" identifier="madeNewuser" id="Wts-gd-a0d"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ScP-lq-TfW">
-                                                <rect key="frame" x="0.0" y="35" width="187" height="20"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creating your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-ST-E3u">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sWl-hw-O3N">
-                                                        <rect key="frame" x="187" y="0.0" width="0.0" height="20"/>
-                                                    </activityIndicatorView>
-                                                </subviews>
-                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nE5-uz-MFo" firstAttribute="leading" secondItem="62A-qh-IwR" secondAttribute="leading" id="CMd-8f-qbA"/>
+                                    <constraint firstItem="62A-qh-IwR" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="top" constant="238" id="CZq-Z1-ghY"/>
+                                    <constraint firstItem="nE5-uz-MFo" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="top" constant="81" id="V0R-Nu-L82"/>
+                                    <constraint firstItem="ORW-Bw-SsT" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="top" constant="438" id="Wfn-53-HKG"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDl-ko-sgc">
@@ -881,8 +855,6 @@ For any technical difficulties or questions plese email:</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="sWl-hw-O3N" id="09E-li-03C"/>
-                        <outlet property="createAccLabel" destination="6gs-ST-E3u" id="zX9-Wl-qe7"/>
                         <outlet property="emailTextField" destination="6jS-HE-uRo" id="r45-2U-wmo"/>
                         <outlet property="nameTextField" destination="bTJ-T2-Nge" id="fMl-Dn-OTF"/>
                         <outlet property="passwordTextField" destination="JEM-p6-kg6" id="ACs-Kt-g7p"/>
@@ -953,6 +925,6 @@ For any technical difficulties or questions plese email:</string>
         <image name="Image" width="238" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wts-gd-a0d"/>
+        <segue reference="COU-0v-AZq"/>
     </inferredMetricsTieBreakers>
 </document>

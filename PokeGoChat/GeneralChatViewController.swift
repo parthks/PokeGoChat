@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import iAd
 
 class GeneralChatViewController: UIViewController {
 
@@ -27,7 +28,7 @@ class GeneralChatViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		canDisplayBannerAds = true
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 		

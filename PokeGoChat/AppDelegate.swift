@@ -8,16 +8,28 @@
 
 import UIKit
 import Firebase
+import iAd
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
+	var bannerView: ADBannerView!
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
 		FIRApp.configure()
+//		
+//		bannerView = ADBannerView(adType: .Banner)
+//		bannerView.translatesAutoresizingMaskIntoConstraints = false
+//		bannerView.delegate = self
+//		bannerView.hidden = true
+//		view.addSubview(bannerView)
+//		
+//		let viewsDictionary = ["bannerView": bannerView]
+//		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
+//		view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
+		
 		return true
 	}
 

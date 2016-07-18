@@ -8,14 +8,15 @@
 
 import UIKit
 import Firebase
+import iAd
 
 class SIgnInViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
-	@IBOutlet weak var signInLabel: UILabel!
-	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	//@IBOutlet weak var signInLabel: UILabel!
+	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	@IBAction func signInButtonTapped(sender: UIButton) {
 		view.endEditing(true)
@@ -89,7 +90,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		self.hideKeyboardWhenTappedAround()
 		emailTextField.delegate = self
 		passwordTextField.delegate = self
-		
+		self.canDisplayBannerAds = true
 	}
 	
 //	override func viewDidAppear(animated: Bool) {

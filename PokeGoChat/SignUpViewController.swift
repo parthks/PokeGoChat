@@ -8,11 +8,12 @@
 
 import UIKit
 import Firebase
+import iAd
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
-	@IBOutlet weak var createAccLabel: UILabel!
-	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//	@IBOutlet weak var createAccLabel: UILabel!
+//	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	@IBAction func cancel(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
@@ -75,6 +76,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		nameTextField.delegate = self
 		passwordTextField.delegate = self
 		emailTextField.delegate = self
+		self.canDisplayBannerAds = true
         // Do any additional setup after loading the view.
     }
 
