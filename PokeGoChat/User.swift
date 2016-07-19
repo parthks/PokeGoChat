@@ -14,7 +14,7 @@ class CurrentUser {
 	static var currentTeamChatRoomKey: String!
 	static var currentGeneralChatRoomKey: String!
 	static var inAChatRoom: String? = nil //nil, "team", "general"
-
+	static var didFinishcheckingForNumOfusersUponTermination = false
 }
 
 class CurrentFirebaseLocationData {
@@ -29,6 +29,7 @@ struct User: FirebaseCompatible {
 	var location: Bool
 	var latitude: Double?
 	var longitude: Double?
+	
 	
 	func convertToFirebase() -> [String : AnyObject] {
 		var firebaseUserData = [String: AnyObject]()

@@ -23,6 +23,16 @@ class MainScreenViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+//		let defaults = NSUserDefaults.standardUserDefaults()
+//		if let inAChat = defaults.stringForKey("inAChat") {
+//			if inAChat == "team" {
+//				print("team stuff..")
+//				CurrentUser.currentTeamChatRoomKey = defaults.stringForKey("teamRoomKey")!
+//				CurrentFirebaseLocationData.RoundedLocation = defaults.stringForKey("roundedLoc")!
+//				Firebase.removeTeamRoomAtRoundedCoor()
+//			}
+//		}
+	
 		//Firebase.loginWithEmail("location@test.com", AndPassword: "123456"){ key in print("back...")}
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest

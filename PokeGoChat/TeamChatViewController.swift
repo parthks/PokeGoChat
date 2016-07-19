@@ -46,18 +46,19 @@ class TeamChatViewController: UIViewController {
 		print("UPDATED LOCATION")
 	}
 	
-	var messages: [FIRDataSnapshot] = []
+	var messages = [FIRDataSnapshot]()
 	var chatRoomKey: String = ""
 	var timer: NSTimer = NSTimer()
 	let maxMesLength = 140 //in characters - a tweet!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		print("entered TeamChatViewConctroller")
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 
 		
-		timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
 		self.navigationItem.title = "Team \(CurrentUser.currentUser.team)"
@@ -88,13 +89,12 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ (snapshot) in
-			print("got a new message")
-			self.messages.append(snapshot)
-			print(self.messages)
-			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
-			print("got messages into tableView")
-			//self.tableView.reloadData()
+		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ (snap) in
+			//print("got a new message")
+			self.messages.append(snap)
+			//print(self.messages)
+			//print("got message into tableView")
+			self.tableView.reloadData()
 		}
 	}
 	
@@ -131,7 +131,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 		//guard let text = textField.text else {return true}
 		guard textField.text != "" else {return true}
 		let data = ["name": CurrentUser.currentUser.name, "text": textField.text!]
-		print(data)
+		//print(data)
 		inputText.endEditing(true)
 		inputText.text = ""
 		Firebase.saveMessageData(data, OfType: dataType.TeamMessages, WithKey: chatRoomKey)
@@ -148,6 +148,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
 		let keyboardRectangle = keyboardFrame.CGRectValue()
 		let keyboardHeight = keyboardRectangle.height
+		//inputText.frame.origin.y = keyboardHeight
 		self.view.frame.origin.y -= keyboardHeight
 	}
 	
@@ -164,7 +165,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 
 
 //MARK: tableView
-extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate{
+extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, ReportAndBlockUserButtonPressedDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
@@ -174,17 +175,41 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		print("making cell...")
-		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+		//print("making cell...")
+		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
 		let message = messages[indexPath.row].value as! [String: String]
 		let name = message["name"]!
 		let text = message["text"]!
-		if name == CurrentUser.currentUser.name {
+		let key = message["messageKey"]!
+		let userID = message["userId"]!
+		
+		cell.userID = userID
+		cell.messageKey = key
+		cell.nameOfUser.text = name
+		cell.message.text = text
+		cell.delegate = self
+		return cell
+	}
+	
+	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
+		Firebase.displayAlertWithtitle("Reported Message", message: "The meesage has been reported to the admins")
+		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, inRoomType: "Team")
+	}
+	
+	func blockUserOnCell(cell: DisplayMessageTableViewCell) {
+		if CurrentUser.currentUser.id == cell.userID {
+			Firebase.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
+		} else{
+			Firebase.displayAlertWithtitle("Blocked User", message: "All messages from this user have been blocked")
+			Firebase.saveNewBlockedUserWithId(cell.userID)
+			//messages.removeAll()
+			messages = []
+			Firebase.removeTeamMessageListener()
+			//listenForChatChanges()
 			
 		}
-		cell.textLabel?.text = name
-		cell.detailTextLabel?.text = text
-		return cell
+
+		
 	}
 }
 
@@ -194,6 +219,9 @@ extension TeamChatViewController: MKMapViewDelegate {
 	
 	func refreshMapView(){
 		users.removeAll()
+		let allAnnotations = self.mapView.annotations
+		self.mapView.removeAnnotations(allAnnotations)
+		
 		let teamKey = CurrentUser.currentTeamChatRoomKey
 		Firebase.getUsersFromTeamWithKey(teamKey) { (user) in
 			self.users.append(user)

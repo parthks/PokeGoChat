@@ -11,7 +11,7 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
 	var window: UIWindow?
 	let defaults = NSUserDefaults.standardUserDefaults()
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		// Override point for customization after application launch.varFIRApp.configure()
 //		if let inAChat = defaults.stringForKey("inAChat"){
 //			if inAChat == "team"{
-//				CurrentUser.currentUser.team = defaults.stringForKey("team")!
 //				CurrentUser.currentTeamChatRoomKey = defaults.stringForKey("teamRoomKey")!
 //				CurrentFirebaseLocationData.RoundedLocation = defaults.stringForKey("roundedLoc")!
 //				Firebase.removeTeamRoomAtRoundedCoor()
@@ -54,15 +53,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		print("quitting app...")
 		if CurrentUser.inAChatRoom != nil {
 			if CurrentUser.inAChatRoom == "team"{
+				
 				Firebase.removeUserAtCurrentTeamRoom()
 //				defaults.setValue(CurrentUser.currentTeamChatRoomKey, forKey: "teamRoomKey")
 //				defaults.setValue(CurrentFirebaseLocationData.RoundedLocation, forKey: "roundedLoc")
-//				defaults.setValue(CurrentUser.currentUser.team, forKey: "team")
 //				defaults.setValue("team", forKey: "inAChat")
+//				while(!CurrentUser.didFinishcheckingForNumOfusersUponTermination){
+//					
+//				}
+				print("here")
+				//Firebase.removeTeamRoomAtRoundedCoor()
+
 			} else {
 				Firebase.removeUserAtCurrentGeneralRoom()
 			}
-		}
+			
+					}
 		
 		//does not remove the team/general room in locations and messages when the user is the last 
 		//perosn in the room and force quits the app! - closure block to check if users left is not

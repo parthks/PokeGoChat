@@ -42,7 +42,7 @@ class GetChatRoomKey {
 				for (roomKey, loc) in teams{
 					let latNlong = loc as! [String: Double]
 					let location = CLLocation(latitude: latNlong["latitude"]!, longitude: latNlong["longitude"]!)
-					if self.userLocation.distanceFromLocation(location) < 20{
+					if self.userLocation.distanceFromLocation(location) < 500{
 						self.roomKey = roomKey
 						self.inATeamRoom = true
 //						tempLocToGetMin["roomkey"] = roomKey
@@ -69,6 +69,7 @@ class GetChatRoomKey {
 			CurrentUser.currentTeamChatRoomKey = self.roomKey
 			Firebase.saveUserWithKey(CurrentUser.currentUser.id, ToTeamWithKey: self.roomKey) //for location of all team members
 			CurrentUser.inAChatRoom = "team"
+			print("returning chat room key from GetChatRoomKey")
 			completion(key: self.roomKey)
 		}
 

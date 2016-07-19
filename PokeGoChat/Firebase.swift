@@ -18,6 +18,8 @@ enum dataType: String{
 	case GeneralUsers = "generalUsers"
 	case TeamLocations = "teamLocations"
 	case GeneralLocations = "generalLocations"
+	case ReportedMessages = "reportedMessages"
+	case BlockedUsers = "userFollowedByBlockedUsers"
 	
 }
 
@@ -31,8 +33,13 @@ class Firebase {
 	static var _rootRef = FIRDatabase.database().reference()
 	
 	static func displayErrorAlert(error: String){
-		print("\n\n\n\nERROR\n\n\n\n")
 		let alert = UIAlertController(title: "ERROR!", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+		UIApplication.topViewController()!.presentViewController(alert, animated: true, completion: nil)
+	}
+	
+	static func displayAlertWithtitle(title: String, message: String){
+		let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
 		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
 		UIApplication.topViewController()!.presentViewController(alert, animated: true, completion: nil)
 	}
@@ -64,10 +71,13 @@ class Firebase {
 	
 	//MARK: Saving data
 	static func saveMessageData(data: [String: String], OfType type: dataType, WithKey key: String){
-		print("saving message...")
+		print("saving message...\(type)")
 		var fdata = data
 		fdata["userId"] = CurrentUser.currentUser.id
-		_rootRef.child(type.rawValue).child(key).childByAutoId().setValue(fdata, withCompletionBlock: {
+		let ref = _rootRef.child(type.rawValue).child(key).childByAutoId()
+		let key = ref.key
+		fdata["messageKey"] = key
+		ref.setValue(fdata, withCompletionBlock: {
 			(error:NSError?, ref:FIRDatabaseReference!) in
 			if error != nil{
 				print("EEROR\n\n\n\n\n")
@@ -94,21 +104,21 @@ class Firebase {
 	}
 	
 	static func saveUser(user: User, WithKey key: String){
-		print("saving user")
+		//print("saving user")
 		_rootRef.child(dataType.Users.rawValue).child(key).setValue(user.convertToFirebase(), withCompletionBlock: {
 			(error:NSError?, ref:FIRDatabaseReference!) in
 			if error != nil{
-				print("EEROR\n\n\n\n\n")
+				//print("EEROR\n\n\n\n\n")
 				displayErrorAlert((error!.localizedDescription))
 			}
 			
 		})
 
-		print("saved user")
+		//print("saved user")
 	}
 	
 	static func saveLocationOfUserWithKey(key: String, latitude: Double, longitude: Double){
-		print("saving user location")
+		//print("saving user location")
 		_rootRef.child(dataType.Users.rawValue).child(key).child("latitude").setValue(latitude)
 		_rootRef.child(dataType.Users.rawValue).child(key).child("longitude").setValue(longitude, withCompletionBlock: {
 			(error:NSError?, ref:FIRDatabaseReference!) in
@@ -118,16 +128,16 @@ class Firebase {
 			}
 			
 		})
-		print("saved user location")
+		//print("saved user location")
 	}
 	
 	static func saveNewTeamChatRoomAtLatitude(latitude: Double, AndLongitude longitude: Double) -> String{
 		let locationString = getLocationString(latitude: latitude, longitude: longitude)
-		print(locationString)
+		//print(locationString)
 		let ref = _rootRef.child(dataType.TeamLocations.rawValue).child(locationString).child(CurrentUser.currentUser.team).childByAutoId()
 		let key = ref.key
 		ref.setValue(["latitude" : latitude, "longitude" : longitude])
-		print("done saving new team chat")
+		//print("done saving new team chat")
 		return key
 	}
 	
@@ -137,23 +147,42 @@ class Firebase {
 		let ref = _rootRef.child(dataType.GeneralLocations.rawValue).child(locationString).childByAutoId()
 		let key = ref.key
 		ref.setValue(["latitude" : latitude, "longitude" : longitude])
-		print("done saving new general chat")
+		//print("done saving new general chat")
 		return key
 	}
 	
 	
 	//MARK: Listeners
 	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (FIRDataSnapshot) -> Void){
-		print("setting up listener for \(dtype.rawValue) in room id \(key)")
-		_rootRef.child(dtype.rawValue).child(key).queryLimitedToLast(50).observeEventType(.ChildAdded, withBlock: completion)
+		Firebase.getAllBlockedUsersForCurrentUserWithBlock() { (blockedUsers) in
+			
+			//print("setting up listener for \(dtype.rawValue) in room id \(key)")
+			_rootRef.child(dtype.rawValue).child(key).queryLimitedToLast(50).observeEventType(.ChildAdded){
+				(snap, prevChildKey) in
+				print("got into message listiner...")
+				if snap.exists(){
+					let data = snap.value as! [String: String]
+						
+					if !blockedUsers.contains(data["userId"]!) {
+						completion(snap)
+					}else{
+						return
+					}
+					
+				}
+				
+			}
+
+		
+		}
 	}
 	
 	static func getUserDataWithKey(key: String, WithBlock completion: (User) -> Void){
-		print("getting user data for key: \(key)")
+		//print("getting user data for key: \(key)")
 		_rootRef.child(dataType.Users.rawValue).child(key).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
 			
 		
-			print("got snap: \(snap)")
+			//print("got snap: \(snap)")
 			let snappedUser = snap.value as! [String: AnyObject]
 			let name = snappedUser["name"] as! String
 			let team = snappedUser["team"] as! String
@@ -167,7 +196,7 @@ class Firebase {
 			let longitude = snappedUser["longitude"] as? Double
 			let latitude = snappedUser["latitude"] as? Double
 			let user = User(id: key, name: name, team: team, location: location, latitude: latitude, longitude: longitude)
-			print("going back to controller...")
+			//print("going back to controller...")
 			completion(user)
 			}
 		
@@ -175,14 +204,14 @@ class Firebase {
 
 	
 	static func getUsersFromTeamWithKey(teamKey: String, WithBlock completion: (User) -> Void) {
-		print("getting users from team with key \(teamKey)")
+		//print("getting users from team with key \(teamKey)")
 		
 		_rootRef.child(dataType.TeamUsers.rawValue).child(teamKey).observeEventType(.ChildAdded, withBlock: { snap in
 	
 			let userKey = snap.key
-			print("got userKey!")
+			//print("got userKey!")
 			Firebase.getUserDataWithKey(userKey){ (user) in
-				print("got another user")
+				//print("got another user")
 				completion(user)
 			}
 		
@@ -195,11 +224,11 @@ class Firebase {
 		
 		let locationString = getLocationString(latitude: latitude, longitude: longitude)
 		print(locationString)
-		print("getting team chat rooms at all lat and long")
+		//print("getting team chat rooms at all lat and long")
 		_rootRef.child(dataType.TeamLocations.rawValue).child(locationString).child(CurrentUser.currentUser.team).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
 			
 	
-			print("Checking if snap(team rooms at int lat and long) exists")
+			//print("Checking if snap(team rooms at int lat and long) exists")
 			if snap.exists() {
 				completion(snap.value as? [String: AnyObject])
 			}else{
@@ -245,6 +274,8 @@ class Firebase {
 			
 			print("Checking if snap(general rooms at int lat and long) exists")
 			if !snap.exists() {
+				print("Changed didFinishcheckingForNumOfusersUponTermination...!")
+				CurrentUser.didFinishcheckingForNumOfusersUponTermination = true
 				Firebase.removeTeamRoomAtRoundedCoor()
 			}
 		}
@@ -268,6 +299,65 @@ class Firebase {
 		print("removed general room")
 	}
 	
+	
+	//MARK: Remove Observers
+	static func removeTeamMessageListener() {
+		_rootRef.child(dataType.TeamMessages.rawValue).child(CurrentUser.currentTeamChatRoomKey).removeAllObservers()
+		
+	}
+	
+	
+	
+	
+	//MARK: Report message
+	static func reportMessageWithKey(messageKey: String, WithMessage message:String, inRoomType roomType: String) {
+		
+		_rootRef.child(dataType.ReportedMessages.rawValue).child(messageKey).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
+			if !snap.exists(){
+				//make new reported message!
+				var reportedMessage = [String: String]()
+				reportedMessage["message"] = message
+				reportedMessage["messageKey"] = messageKey
+				reportedMessage["roomType"] = roomType
+				reportedMessage["numberOfTimesReported"] = "1"
+				reportedMessage["userID"] = CurrentUser.currentUser.id
+				if roomType == "Team"{
+					reportedMessage["roomKey"] = CurrentUser.currentTeamChatRoomKey
+				}else{
+					reportedMessage["roomKey"] = CurrentUser.currentGeneralChatRoomKey
+				}
+				
+				_rootRef.child(dataType.ReportedMessages.rawValue).child(messageKey).setValue(reportedMessage)
+
+			} else{
+				var reportedMessage = snap.value as! [String: String]
+				let num = Int(reportedMessage["numberOfTimesReported"]!)!
+				reportedMessage["numberOfTimesReported"] = "\(num+1)"
+				_rootRef.child(dataType.ReportedMessages.rawValue).child(messageKey).setValue(reportedMessage)
+			}
+		}
+		
+	}
+	
+	
+	//MARK: Blocked Users
+	static func saveNewBlockedUserWithId(blockedUserid: String) {
+		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).child(blockedUserid).setValue("1")
+	}
+	
+	static func getAllBlockedUsersForCurrentUserWithBlock(completion: [String] -> Void) {
+		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).observeEventType(.Value) { (snap, prevChildKey) in
+			let blockedUsers: [String]
+			if snap.exists() {
+				let data = snap.value as! [String: String]
+				blockedUsers = Array(data.keys)
+			}else{
+				blockedUsers = []
+			}
+			
+			completion(blockedUsers)
+		}
+	}
 }
 
 func getLocationString(latitude latitude: Double, longitude: Double) -> String{

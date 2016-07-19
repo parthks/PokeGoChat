@@ -83,6 +83,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 		inputText.endEditing(true)
 		inputText.text = ""
 		Firebase.saveMessageData(data, OfType: dataType.GeneralMessages, WithKey: chatRoomKey)
+		print("returning from textfield...")
 		return true
 	}
 	
@@ -112,7 +113,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 
 
 //MARK: tableView
-extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate{
+extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate, ReportAndBlockUserButtonPressedDelegate {
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
@@ -123,14 +124,36 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate{
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		print("making cell...")
-		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
 		let message = messages[indexPath.row].value as! [String: String]
 		let name = message["name"]!
 		let text = message["text"]!
-		cell.textLabel?.text = name
-		cell.detailTextLabel?.text = text
+		let key = message["messageKey"]!
+		let userID = message["userId"]!
+		
+		cell.userID = userID
+		cell.messageKey = key
+		cell.nameOfUser.text = name
+		cell.message.text = text
+		cell.delegate = self
 		return cell
 	}
+	
+	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
+		Firebase.displayAlertWithtitle("Reported Message", message: "The meesage has been reported to the admins")
+		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, inRoomType: "General")
+	}
+	
+	func blockUserOnCell(cell: DisplayMessageTableViewCell) {
+		if CurrentUser.currentUser.id == cell.userID {
+			Firebase.displayAlertWithtitle("That's yourself!", message: "You can't block yourself!")
+		} else{
+			Firebase.displayAlertWithtitle("Blocked User", message: "All messages from this user have been blocked")
+			Firebase.saveNewBlockedUserWithId(cell.userID)
+			tableView.reloadData()
+		}
+	}
+
 }
 
 
