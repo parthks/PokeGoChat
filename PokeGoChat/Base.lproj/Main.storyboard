@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4g5-2F-UuW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,7 +9,7 @@
         <!--App Info-->
         <scene sceneID="4Ve-C7-fMY">
             <objects>
-                <viewController id="Qrf-Vn-ybO" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Qrf-Vn-ybO" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IQh-b7-kdK"/>
                         <viewControllerLayoutGuide type="bottom" id="Cvf-2F-lc6"/>
@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Clicking Team Messages, will place you in a group chat with nearby members in your team.
+                                        <string key="content">Clicking Team Messages, will place you in a group chat with nearby members in your team. Similarly, clicking General Messages will place you in a group chat with nearby members of all teams
 
 </string>
                                         <attributes>
@@ -31,9 +31,10 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">To leave the group / find another group, click on the leave chat on the top left. This will again use your location to find a group nearby. Note: This may find your original group, try moving to a different location and try again
+                                        <string key="content">To find another group, click on the leave chat on the top left. This will again use your location to find a group nearby. 
+Note: This may find your original group. Try moving to a different location and try again
 
-For any technical difficulties or questions plese email:</string>
+For any technical difficulties or questions plese email: pikanect@gmail.com or post a review on the app store</string>
                                         <attributes>
                                             <font key="NSFont" size="15" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -51,7 +52,7 @@ For any technical difficulties or questions plese email:</string>
                             <constraint firstItem="rYM-vO-au7" firstAttribute="top" secondItem="IQh-b7-kdK" secondAttribute="bottom" constant="8" symbolic="YES" id="Xky-mi-brm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="App Info" id="x0k-YP-KcA"/>
+                    <navigationItem key="navigationItem" title="App Info" id="pIG-bb-Ntq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chq-aO-9aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,7 +61,7 @@ For any technical difficulties or questions plese email:</string>
         <!--My Profile View Controller-->
         <scene sceneID="7AV-F4-UFU">
             <objects>
-                <viewController id="oQd-59-szp" customClass="MyProfileViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oQd-59-szp" customClass="MyProfileViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2pe-RR-ojg"/>
                         <viewControllerLayoutGuide type="bottom" id="800-vE-vGC"/>
@@ -179,7 +180,13 @@ For any technical difficulties or questions plese email:</string>
                             </mask>
                         </variation>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Sign Out" width="581" id="K2o-GM-LOJ">
+                            <connections>
+                                <action selector="signOutButton:" destination="oQd-59-szp" id="WZV-f4-OWu"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Pne-2c-fLd">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1MT-uC-hU9">
                             <connections>
@@ -202,7 +209,7 @@ For any technical difficulties or questions plese email:</string>
         <!--My Blocked Users-->
         <scene sceneID="gXT-7t-NHL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="aoY-YU-A2x" customClass="MyBlockedUsersViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="aoY-YU-A2x" customClass="MyBlockedUsersViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KZG-X7-EDD"/>
                         <viewControllerLayoutGuide type="bottom" id="57n-rs-fu0"/>
@@ -269,10 +276,10 @@ For any technical difficulties or questions plese email:</string>
             </objects>
             <point key="canvasLocation" x="2606" y="-653"/>
         </scene>
-        <!--PokeGo Team Chat-->
+        <!--Pikanect-->
         <scene sceneID="Nbg-t2-WE9">
             <objects>
-                <viewController id="uKa-LV-nec" customClass="MainScreenViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainScreen" id="uKa-LV-nec" customClass="MainScreenViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zLZ-FV-vFU"/>
                         <viewControllerLayoutGuide type="bottom" id="EJb-fm-eFc"/>
@@ -347,7 +354,7 @@ For any technical difficulties or questions plese email:</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="PokeGo Team Chat" id="Ebv-4L-dLp">
+                    <navigationItem key="navigationItem" title="Pikanect" id="Ebv-4L-dLp">
                         <barButtonItem key="leftBarButtonItem" title="Info" id="vmd-B1-DzD">
                             <connections>
                                 <segue destination="Qrf-Vn-ybO" kind="show" id="ivC-NX-dF3"/>
@@ -378,7 +385,7 @@ For any technical difficulties or questions plese email:</string>
         <!--Team (Color)-->
         <scene sceneID="Fms-Ft-dJ8">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ydW-Be-fiu" customClass="TeamChatViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ydW-Be-fiu" customClass="TeamChatViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6V5-y9-0oC"/>
                         <viewControllerLayoutGuide type="bottom" id="eMj-YP-HSM"/>
@@ -391,7 +398,7 @@ For any technical difficulties or questions plese email:</string>
                                 <rect key="frame" x="0.0" y="292" width="600" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="oIt-GQ-adR" customClass="DisplayMessageTableViewCell" customModule="PokeGoChat" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="oIt-GQ-adR" customClass="DisplayMessageTableViewCell" customModule="Pikanect" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="20" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oIt-GQ-adR" id="40N-oh-2Ez">
@@ -559,7 +566,7 @@ For any technical difficulties or questions plese email:</string>
         <!--General Chat-->
         <scene sceneID="y3J-D5-hUe">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gj7-07-ujk" customClass="GeneralChatViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gj7-07-ujk" customClass="GeneralChatViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oFf-op-Oa8"/>
                         <viewControllerLayoutGuide type="bottom" id="Zje-88-uDw"/>
@@ -575,7 +582,7 @@ For any technical difficulties or questions plese email:</string>
                                         <rect key="frame" x="0.0" y="64" width="600" height="478"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="LX2-Aj-29e" customClass="DisplayMessageTableViewCell" customModule="PokeGoChat" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="LX2-Aj-29e" customClass="DisplayMessageTableViewCell" customModule="Pikanect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="20" width="600" height="68"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LX2-Aj-29e" id="cst-Ct-qyX">
@@ -706,7 +713,7 @@ For any technical difficulties or questions plese email:</string>
         <!--Ign In View Controller-->
         <scene sceneID="NlD-VW-lSv">
             <objects>
-                <viewController id="4g5-2F-UuW" customClass="SIgnInViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginScreen" id="4g5-2F-UuW" customClass="SIgnInViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qBm-Wo-ijd"/>
                         <viewControllerLayoutGuide type="bottom" id="ejv-Gt-ysA"/>
@@ -752,12 +759,6 @@ For any technical difficulties or questions plese email:</string>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PokeGo Team Chat " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-F2-KQM">
-                                <rect key="frame" x="178" y="131" width="245" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="Wku-v5-6Gb">
                                 <rect key="frame" x="194" y="405" width="213" height="95"/>
                                 <subviews>
@@ -796,6 +797,12 @@ For any technical difficulties or questions plese email:</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikanect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-F2-KQM">
+                                <rect key="frame" x="246" y="131" width="108" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.81169871794871784" green="0.81169871794871784" blue="0.81169871794871784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -817,10 +824,60 @@ For any technical difficulties or questions plese email:</string>
             </objects>
             <point key="canvasLocation" x="42" y="90"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MYg-4Z-J5O">
+            <objects>
+                <viewController id="ZPt-ks-ECo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2hA-Ic-M3B"/>
+                        <viewControllerLayoutGuide type="bottom" id="V21-y6-HrX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Lz-T5-vSD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-KY-HWZ">
+                                <rect key="frame" x="20" y="58" width="560" height="534"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQ0-32-dCQ">
+                                <rect key="frame" x="20" y="28" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <segue destination="YPu-Pe-b2G" kind="unwind" unwindAction="unwindFromUserPolicyScene:" id="Pic-5U-ZPS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slR-FZ-P8C">
+                                <rect key="frame" x="257" y="32" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="v1j-KY-HWZ" secondAttribute="trailing" constant="20" id="Fxg-xk-Fwn"/>
+                            <constraint firstItem="slR-FZ-P8C" firstAttribute="baseline" secondItem="LQ0-32-dCQ" secondAttribute="baseline" id="NfO-lJ-luF"/>
+                            <constraint firstItem="v1j-KY-HWZ" firstAttribute="top" secondItem="LQ0-32-dCQ" secondAttribute="bottom" id="cDx-qj-4rB"/>
+                            <constraint firstItem="slR-FZ-P8C" firstAttribute="centerX" secondItem="v1j-KY-HWZ" secondAttribute="centerX" id="meP-og-7Ke"/>
+                            <constraint firstItem="LQ0-32-dCQ" firstAttribute="leading" secondItem="v1j-KY-HWZ" secondAttribute="leading" id="qbd-nH-xAQ"/>
+                            <constraint firstItem="V21-y6-HrX" firstAttribute="top" secondItem="v1j-KY-HWZ" secondAttribute="bottom" constant="8" id="vgp-of-aui"/>
+                            <constraint firstItem="LQ0-32-dCQ" firstAttribute="top" secondItem="2hA-Ic-M3B" secondAttribute="bottom" constant="8" symbolic="YES" id="xRD-ui-cQB"/>
+                            <constraint firstItem="v1j-KY-HWZ" firstAttribute="leading" secondItem="1Lz-T5-vSD" secondAttribute="leading" constant="20" id="z1p-Tb-YaW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vKZ-dP-yvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YPu-Pe-b2G" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="144" y="-1403"/>
+        </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="6Oa-qL-c5G">
             <objects>
-                <viewController id="uyj-hn-2aH" customClass="SignUpViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uyj-hn-2aH" customClass="SignUpViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dhY-wU-nEe"/>
                         <viewControllerLayoutGuide type="bottom" id="rh5-Kt-usg"/>
@@ -837,16 +894,16 @@ For any technical difficulties or questions plese email:</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="IFS-3v-xdq">
-                                <rect key="frame" x="203" y="63" width="195" height="473"/>
+                                <rect key="frame" x="175" y="49" width="250" height="503"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Make an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
-                                        <rect key="frame" x="20" y="0.0" width="156" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
+                                        <rect key="frame" x="47" y="0.0" width="156" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-uz-MFo">
-                                        <rect key="frame" x="5" y="81" width="185" height="101"/>
+                                        <rect key="frame" x="33" y="81" width="185" height="101"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-Z3-h0v">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="21"/>
@@ -873,7 +930,7 @@ For any technical difficulties or questions plese email:</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="62A-qh-IwR">
-                                        <rect key="frame" x="5" y="238" width="185" height="144"/>
+                                        <rect key="frame" x="33" y="238" width="185" height="144"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-pW-hho">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
@@ -907,8 +964,8 @@ For any technical difficulties or questions plese email:</string>
                                                         <rect key="frame" x="12" y="21" width="161" height="30"/>
                                                         <segments>
                                                             <segment title="Yellow"/>
-                                                            <segment title="Red"/>
                                                             <segment title="Blue"/>
+                                                            <segment title="Red"/>
                                                         </segments>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="G9P-B0-Mct">
@@ -941,11 +998,40 @@ For any technical difficulties or questions plese email:</string>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ORW-Bw-SsT">
-                                        <rect key="frame" x="0.0" y="438" width="195" height="35"/>
+                                        <rect key="frame" x="0.0" y="438" width="250" height="65"/>
                                         <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEA-OG-oca">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking below you agree to this policy =&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTt-h1-DNt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-Ec-mJb">
+                                                        <rect key="frame" x="125" y="0.0" width="125" height="30"/>
+                                                        <state key="normal" title="Policy"/>
+                                                        <connections>
+                                                            <segue destination="ZPt-ks-ECo" kind="presentation" id="7WZ-ec-RMj"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="aTt-h1-DNt" secondAttribute="bottom" id="6Ql-L9-nuV"/>
+                                                    <constraint firstItem="aTt-h1-DNt" firstAttribute="leading" secondItem="IEA-OG-oca" secondAttribute="leading" id="Ir9-h6-qMz"/>
+                                                    <constraint firstAttribute="width" constant="250" id="WrD-cU-8Jk"/>
+                                                    <constraint firstItem="vNV-Ec-mJb" firstAttribute="leading" secondItem="aTt-h1-DNt" secondAttribute="trailing" id="YHh-cN-KUN"/>
+                                                    <constraint firstItem="aTt-h1-DNt" firstAttribute="top" secondItem="IEA-OG-oca" secondAttribute="top" id="pN8-SG-dVG"/>
+                                                </constraints>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-Ef-Nqq">
-                                                <rect key="frame" x="0.0" y="0.0" width="195" height="35"/>
+                                                <rect key="frame" x="0.0" y="35" width="250" height="30"/>
                                                 <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="wMM-uH-MHw"/>
+                                                    <constraint firstAttribute="height" constant="30" id="wsL-MQ-QRe"/>
+                                                </constraints>
                                                 <state key="normal" title=" Create Account and Sign In ">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -955,6 +1041,16 @@ For any technical difficulties or questions plese email:</string>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="195" id="Mti-pz-rmx"/>
+                                            <constraint firstAttribute="height" constant="35" id="hi0-r1-HfK"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Mti-pz-rmx"/>
+                                                <exclude reference="hi0-r1-HfK"/>
+                                            </mask>
+                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -973,6 +1069,11 @@ For any technical difficulties or questions plese email:</string>
                             <constraint firstItem="IFS-3v-xdq" firstAttribute="centerY" secondItem="elk-Si-E6l" secondAttribute="centerY" id="cVv-RZ-8J8"/>
                             <constraint firstItem="QDl-ko-sgc" firstAttribute="leading" secondItem="elk-Si-E6l" secondAttribute="leadingMargin" id="tKo-20-Cyk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bgr-cO-bzI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="createAccButton" destination="lhH-Ef-Nqq" id="Kn0-xR-vBG"/>
@@ -1046,6 +1147,6 @@ For any technical difficulties or questions plese email:</string>
         <image name="Image" width="238" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wts-gd-a0d"/>
+        <segue reference="COU-0v-AZq"/>
     </inferredMetricsTieBreakers>
 </document>

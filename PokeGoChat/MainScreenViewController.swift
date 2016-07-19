@@ -23,6 +23,8 @@ class MainScreenViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		print("enterned main screen")
+		
 //		let defaults = NSUserDefaults.standardUserDefaults()
 //		if let inAChat = defaults.stringForKey("inAChat") {
 //			if inAChat == "team" {

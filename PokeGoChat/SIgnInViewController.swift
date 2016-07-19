@@ -14,7 +14,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var signInButton: UIButton!
-	
+		
 	//@IBOutlet weak var signInLabel: UILabel!
 	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
@@ -44,6 +44,11 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 				CurrentUser.currentUser = user
 				print("LOGGED IN USER: \(user.name)")
 				self.userSignedInSucessfully = true
+				
+				let defaults = NSUserDefaults.standardUserDefaults()
+				defaults.setObject(email, forKey: "email")
+				defaults.setObject(password, forKey: "password")
+				
 				self.performSegueWithIdentifier("loggedInUser", sender: nil)
 			}
 			
@@ -88,6 +93,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		self.hideKeyboardWhenTappedAround()
 		emailTextField.delegate = self
 		passwordTextField.delegate = self

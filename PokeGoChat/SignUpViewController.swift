@@ -30,6 +30,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var teamSelection: UISegmentedControl!
 	
 	
+	@IBAction func unwindFromUserPolicyScene(segue:UIStoryboardSegue) {}
+	
+	
 	@IBAction func createAccAndSignIn(sender: UIButton) {
 		view.endEditing(true)
 		signUp()
@@ -37,6 +40,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	var userMadeSuccessfully: Bool = false
 	
+
 	func signUp(){
 		guard emailTextField.text != "" else {return}
 		guard passwordTextField.text != "" else {return}
@@ -60,6 +64,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			print("MADE USER: \(name)")
 			Firebase.saveUser(user, WithKey: userKey)
 			self.userMadeSuccessfully = true
+			
+			let defaults = NSUserDefaults.standardUserDefaults()
+			defaults.setObject(email, forKey: "email")
+			defaults.setObject(password, forKey: "password")
+			
 			self.performSegueWithIdentifier("madeNewuser", sender: nil)
 		}
 		
