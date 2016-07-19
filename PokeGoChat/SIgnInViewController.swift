@@ -13,6 +13,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var signInButton: UIButton!
 	
 	//@IBOutlet weak var signInLabel: UILabel!
 	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -37,6 +38,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		let password = passwordTextField.text!
 		
 		Firebase.loginWithEmail(email, AndPassword: password) { (userKey) in
+			self.signInButton.enabled = false
 			print("finished logging in")
 			Firebase.getUserDataWithKey(userKey) { (user) in
 				CurrentUser.currentUser = user

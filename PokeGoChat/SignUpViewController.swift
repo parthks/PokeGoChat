@@ -14,6 +14,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 //	@IBOutlet weak var createAccLabel: UILabel!
 //	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
+	@IBOutlet weak var createAccButton: UIButton!
 	@IBAction func cancel(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -51,6 +52,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		let team = teamSelection.titleForSegmentAtIndex(teamSelection.selectedSegmentIndex)!
 		
 		Firebase.createUserWithEmail(email, AndPassword: password) { (userKey) in
+			self.createAccButton.enabled = false
 			print("back in the program")
 			
 			let user = User(id: userKey, name: name, team: team, location: true, latitude: nil, longitude: nil)

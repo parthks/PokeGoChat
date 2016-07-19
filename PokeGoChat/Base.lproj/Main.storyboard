@@ -690,6 +690,7 @@ For any technical difficulties or questions plese email:</string>
                     <connections>
                         <outlet property="emailTextField" destination="cvh-2J-rGl" id="50w-HJ-qj4"/>
                         <outlet property="passwordTextField" destination="4fQ-mb-mIf" id="v13-oT-ELg"/>
+                        <outlet property="signInButton" destination="Wcq-jD-s2E" id="Jxh-AP-jPe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="07h-3r-rlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -851,6 +852,7 @@ For any technical difficulties or questions plese email:</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="createAccButton" destination="lhH-Ef-Nqq" id="Kn0-xR-vBG"/>
                         <outlet property="emailTextField" destination="6jS-HE-uRo" id="r45-2U-wmo"/>
                         <outlet property="nameTextField" destination="bTJ-T2-Nge" id="fMl-Dn-OTF"/>
                         <outlet property="passwordTextField" destination="JEM-p6-kg6" id="ACs-Kt-g7p"/>

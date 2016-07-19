@@ -8,13 +8,12 @@
 
 import UIKit
 import Firebase
+import GoogleMobileAds
 
 class GeneralChatViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
-	
-	
 	
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
@@ -30,6 +29,8 @@ class GeneralChatViewController: UIViewController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 		
+		let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
 		listenForChatChanges()
@@ -92,20 +93,26 @@ extension GeneralChatViewController: UITextFieldDelegate{
 	}
 	
 	
-	func moveKeyboardUp(notification: NSNotification) {
-		let userInfo:NSDictionary = notification.userInfo!
-		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-		let keyboardRectangle = keyboardFrame.CGRectValue()
-		let keyboardHeight = keyboardRectangle.height
-		self.view.frame.origin.y -= keyboardHeight
+	func moveKeyboardUp(sender: NSNotification) {
+		let userInfo: [NSObject : AnyObject] = sender.userInfo!
+		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+		
+		if keyboardSize.height == offset.height {
+			UIView.animateWithDuration(0.1, animations: { () -> Void in
+				self.view.frame.origin.y -= keyboardSize.height
+			})
+		} else {
+			UIView.animateWithDuration(0.1, animations: { () -> Void in
+				self.view.frame.origin.y += keyboardSize.height - offset.height
+			})
+		}
 	}
 	
-	func moveKeyboardDown(notification: NSNotification) {
-		let userInfo:NSDictionary = notification.userInfo!
-		let keyboardFrame:NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
-		let keyboardRectangle = keyboardFrame.CGRectValue()
-		let keyboardHeight = keyboardRectangle.height
-		self.view.frame.origin.y += keyboardHeight
+	func moveKeyboardDown(sender: NSNotification) {
+		let userInfo: [NSObject : AnyObject] = sender.userInfo!
+		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+		self.view.frame.origin.y += keyboardSize.height
 	}
 
 	

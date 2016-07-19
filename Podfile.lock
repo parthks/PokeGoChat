@@ -1,6 +1,9 @@
 PODS:
   - Firebase (3.2.1):
     - Firebase/Core (= 3.2.1)
+  - Firebase/AdMob (3.2.1):
+    - Firebase/Analytics (= 3.2.1)
+    - Google-Mobile-Ads-SDK (= 7.8.1)
   - Firebase/Analytics (3.2.1):
     - FirebaseAnalytics (= 3.2.0)
   - Firebase/Auth (3.2.1):
@@ -23,6 +26,7 @@ PODS:
   - FirebaseDatabase (3.0.1):
     - FirebaseAnalytics (~> 3.2)
   - FirebaseInstanceID (1.0.6)
+  - Google-Mobile-Ads-SDK (7.8.1)
   - GoogleInterchangeUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
   - GoogleNetworkingUtilities (1.2.1):
@@ -33,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase
+  - Firebase/AdMob
   - Firebase/Auth
   - Firebase/Database
 
@@ -42,11 +47,12 @@ SPEC CHECKSUMS:
   FirebaseAuth: 94b851fc345ce98036dfedfdc2eddeaef8fa3b4c
   FirebaseDatabase: 34301d11621a83546f39f670d256477ba6f7fcea
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
+  Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleNetworkingUtilities: 3e83269048cfb498dc7ec83ab36813360965c74f
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-PODFILE CHECKSUM: ad0fa534f8c0083aaf6aab79264a7432b5361e5c
+PODFILE CHECKSUM: 996813bb11b26d35c37c5113678cba8b04619543
 
 COCOAPODS: 1.0.1
