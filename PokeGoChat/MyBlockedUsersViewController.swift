@@ -21,6 +21,8 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 			}
 		}
 		
+		self.navigationController?.popViewControllerAnimated(true)
+		
 	}
 	
 	
@@ -33,6 +35,7 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 				Firebase.getUserDataWithKey(key) { user in
 					self.blockedUsers.append(user)
 					self.currentlyBlocked.append(true)
+					self.tableView.reloadData()
 				}
 
 			}
@@ -42,6 +45,8 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		currentlyBlocked[indexPath.row] = !currentlyBlocked[indexPath.row]
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		tableView.reloadData()
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

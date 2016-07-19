@@ -38,6 +38,12 @@ class MainScreenViewController: UIViewController {
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
 		//locationManager.requestLocation()
+		
+		let bgImage     = UIImage(named: CurrentUser.currentUser.team);
+		let imageView   = UIImageView(frame: self.view.bounds);
+		imageView.image = bgImage
+		self.view.addSubview(imageView)
+		self.view.sendSubviewToBack(imageView)
 	}
 
 	

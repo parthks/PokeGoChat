@@ -91,6 +91,18 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		self.hideKeyboardWhenTappedAround()
 		emailTextField.delegate = self
 		passwordTextField.delegate = self
+		
+//		let backgroundImage = UIImage(named: "TriColor")
+//		if let image = backgroundImage {
+//			self.view.backgroundColor = UIColor(patternImage: image)
+//		}
+		
+		let bgImage     = UIImage(named: "TriColor");
+		let imageView   = UIImageView(frame: self.view.bounds);
+		imageView.image = bgImage
+		self.view.addSubview(imageView)
+		self.view.sendSubviewToBack(imageView)
+	
 	}
 	
 //	override func viewDidAppear(animated: Bool) {

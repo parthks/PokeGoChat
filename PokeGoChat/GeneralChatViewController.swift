@@ -29,7 +29,10 @@ class GeneralChatViewController: UIViewController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 		
-		let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 140
+		
+		//let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
 
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self

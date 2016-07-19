@@ -77,6 +77,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		nameTextField.delegate = self
 		passwordTextField.delegate = self
 		emailTextField.delegate = self
+		
+//		let backgroundImage = UIImage(named: "TriColor")
+//		if let image = backgroundImage {
+//			self.view.backgroundColor = UIColor(patternImage: image)
+//		}
+		
+		let bgImage     = UIImage(named: "TriColor");
+		let imageView   = UIImageView(frame: self.view.bounds);
+		imageView.image = bgImage
+		self.view.addSubview(imageView)
+		self.view.sendSubviewToBack(imageView)
+		
         // Do any additional setup after loading the view.
     }
 

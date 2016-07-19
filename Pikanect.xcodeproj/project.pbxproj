@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeGoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6D7846DF943CDC01FA98E4 /* Pods-PokeGoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.debug.xcconfig"; sourceTree = "<group>"; };
-		B260C34D1D34565F0037A97D /* PokeGoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeGoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B260C34D1D34565F0037A97D /* Pikanect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pikanect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260C3501D34565F0037A97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B260C3551D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B260C3571D34565F0037A97D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		B260C34E1D34565F0037A97D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B260C34D1D34565F0037A97D /* PokeGoChat.app */,
+				B260C34D1D34565F0037A97D /* Pikanect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B260C34C1D34565F0037A97D /* PokeGoChat */ = {
+		B260C34C1D34565F0037A97D /* Pikanect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B260C35F1D34565F0037A97D /* Build configuration list for PBXNativeTarget "PokeGoChat" */;
+			buildConfigurationList = B260C35F1D34565F0037A97D /* Build configuration list for PBXNativeTarget "Pikanect" */;
 			buildPhases = (
 				086ECF512F2B14854433D353 /* [CP] Check Pods Manifest.lock */,
 				B260C3491D34565F0037A97D /* Sources */,
@@ -171,9 +171,9 @@
 			);
 			dependencies = (
 			);
-			name = PokeGoChat;
+			name = Pikanect;
 			productName = PokeGoChat;
-			productReference = B260C34D1D34565F0037A97D /* PokeGoChat.app */;
+			productReference = B260C34D1D34565F0037A97D /* Pikanect.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,7 +192,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B260C3481D34565F0037A97D /* Build configuration list for PBXProject "PokeGoChat" */;
+			buildConfigurationList = B260C3481D34565F0037A97D /* Build configuration list for PBXProject "Pikanect" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -205,7 +205,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B260C34C1D34565F0037A97D /* PokeGoChat */,
+				B260C34C1D34565F0037A97D /* Pikanect */,
 			);
 		};
 /* End PBXProject section */
@@ -410,7 +410,7 @@
 				INFOPLIST_FILE = PokeGoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pikanect;
 			};
 			name = Debug;
 		};
@@ -423,14 +423,14 @@
 				INFOPLIST_FILE = PokeGoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pikanect;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B260C3481D34565F0037A97D /* Build configuration list for PBXProject "PokeGoChat" */ = {
+		B260C3481D34565F0037A97D /* Build configuration list for PBXProject "Pikanect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B260C35D1D34565F0037A97D /* Debug */,
@@ -439,7 +439,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B260C35F1D34565F0037A97D /* Build configuration list for PBXNativeTarget "PokeGoChat" */ = {
+		B260C35F1D34565F0037A97D /* Build configuration list for PBXNativeTarget "Pikanect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B260C3601D34565F0037A97D /* Debug */,

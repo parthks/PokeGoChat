@@ -80,6 +80,10 @@ class TeamChatViewController: UIViewController {
 		//locationManager.startUpdatingLocation()
 		locationManager.requestLocation()
 		
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 140
+		
+		
 		listenForChatChanges()
     }
 	
@@ -194,6 +198,7 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Re
 		cell.nameOfUser.text = name
 		cell.message.text = text
 		cell.delegate = self
+		
 		return cell
 	}
 	
