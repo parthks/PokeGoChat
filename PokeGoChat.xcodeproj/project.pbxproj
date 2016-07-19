@@ -25,6 +25,7 @@
 		B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38B1D3840320037A97D /* GetChatRoomKey.swift */; };
 		B260C38E1D3863100037A97D /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38D1D3863100037A97D /* MapPin.swift */; };
 		B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */; };
+		B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B260C38D1D3863100037A97D /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		B260C38F1D3C64530037A97D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMessageTableViewCell.swift; sourceTree = "<group>"; };
+		B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBlockedUsersViewController.swift; sourceTree = "<group>"; };
 		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 				B260C3851D36E3630037A97D /* MainScreenViewController.swift */,
 				B260C3871D36F0340037A97D /* SIgnInViewController.swift */,
 				B260C3891D36F0650037A97D /* SignUpViewController.swift */,
+				B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */,
 				B260C37C1D3564D30037A97D /* Firebase.swift in Sources */,
 				B260C38A1D36F0650037A97D /* SignUpViewController.swift in Sources */,
+				B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */,
 				B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
@@ -405,7 +409,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PokeGoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.Pikanect;
+				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -418,7 +422,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PokeGoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.Pikanect;
+				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

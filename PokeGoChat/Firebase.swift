@@ -350,6 +350,10 @@ class Firebase {
 		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).child(blockedUserid).setValue("1")
 	}
 	
+	static func removeBlockedUserWithId(blockedUserid: String) {
+		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).child(blockedUserid).removeValue()
+	}
+	
 	static func getAllBlockedUsersForCurrentUserWithBlock(completion: [String] -> Void) {
 		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).observeEventType(.Value) { (snap, prevChildKey) in
 			let blockedUsers: [String]

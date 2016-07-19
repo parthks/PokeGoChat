@@ -76,8 +76,26 @@ For any technical difficulties or questions plese email:</string>
                                     <constraint firstAttribute="height" constant="128" id="4uh-Ux-equ"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
+                                <rect key="frame" x="160" y="506" width="280" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay Free =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
+                                        <rect key="frame" x="168" y="0.0" width="112" height="30"/>
+                                        <state key="normal" title="Support My App"/>
+                                        <connections>
+                                            <action selector="donateButton:" destination="oQd-59-szp" eventType="touchUpInside" id="Q62-Zn-8Bx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xVz-bm-UDE">
-                                <rect key="frame" x="190" y="234" width="220" height="132"/>
+                                <rect key="frame" x="190" y="227" width="220" height="187"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cda-bO-SNo">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
@@ -129,22 +147,14 @@ For any technical difficulties or questions plese email:</string>
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
-                                <rect key="frame" x="160" y="506" width="280" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay Free =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
-                                        <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
-                                        <rect key="frame" x="168" y="0.0" width="112" height="30"/>
-                                        <state key="normal" title="Support My App"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-Ft-XJd">
+                                        <rect key="frame" x="0.0" y="157" width="124" height="30"/>
+                                        <color key="backgroundColor" red="0.34515415202272459" green="0.61167918714351677" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="My Blocked Users">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
-                                            <action selector="donateButton:" destination="oQd-59-szp" eventType="touchUpInside" id="Q62-Zn-8Bx"/>
+                                            <segue destination="aoY-YU-A2x" kind="show" id="y7x-oy-fp6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -157,8 +167,14 @@ For any technical difficulties or questions plese email:</string>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerY" secondItem="xDo-Eg-INf" secondAttribute="centerY" id="Rir-vj-XIu"/>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="top" secondItem="2pe-RR-ojg" secondAttribute="bottom" constant="15" id="tnE-iL-dog"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="wI9-tf-bzi"/>
+                            <constraint firstItem="xVz-bm-UDE" firstAttribute="top" secondItem="jjZ-nH-BZq" secondAttribute="bottom" constant="20" id="xPJ-3F-i4K"/>
                             <constraint firstItem="800-vE-vGC" firstAttribute="top" secondItem="USd-yR-xzC" secondAttribute="bottom" constant="20" id="zNu-vm-rdA"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Rir-vj-XIu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Pne-2c-fLd">
@@ -179,6 +195,76 @@ For any technical difficulties or questions plese email:</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1C-zy-pwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="-653"/>
+        </scene>
+        <!--My Blocked Users-->
+        <scene sceneID="gXT-7t-NHL">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="aoY-YU-A2x" customClass="MyBlockedUsersViewController" customModule="PokeGoChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KZG-X7-EDD"/>
+                        <viewControllerLayoutGuide type="bottom" id="57n-rs-fu0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="voR-Mh-7k1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XwC-Z3-8fs">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Wm5-Ar-BI4" detailTextLabel="Qai-XD-Ck3" style="IBUITableViewCellStyleValue1" id="ReL-dJ-AQ5">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ReL-dJ-AQ5" id="iFc-Bv-oNd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wm5-Ar-BI4">
+                                                    <rect key="frame" x="15" y="12" width="32" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qai-XD-Ck3">
+                                                    <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aoY-YU-A2x" id="O0a-5v-agt"/>
+                                    <outlet property="delegate" destination="aoY-YU-A2x" id="0sw-0S-Ey5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XwC-Z3-8fs" firstAttribute="leading" secondItem="voR-Mh-7k1" secondAttribute="leading" id="7aC-Yv-7CC"/>
+                            <constraint firstAttribute="trailing" secondItem="XwC-Z3-8fs" secondAttribute="trailing" id="sZY-8d-D5s"/>
+                            <constraint firstItem="XwC-Z3-8fs" firstAttribute="top" secondItem="KZG-X7-EDD" secondAttribute="bottom" id="yUX-3c-ALn"/>
+                            <constraint firstItem="57n-rs-fu0" firstAttribute="top" secondItem="XwC-Z3-8fs" secondAttribute="bottom" id="yYe-gF-1Lg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Blocked Users" id="4WM-Up-H0H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iM1-kq-lhn">
+                            <connections>
+                                <action selector="save:" destination="aoY-YU-A2x" id="jdr-D6-tB0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="XwC-Z3-8fs" id="PUI-az-AQz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6K7-Bg-hY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2606" y="-653"/>
         </scene>
         <!--PokeGo Team Chat-->
         <scene sceneID="Nbg-t2-WE9">
@@ -631,7 +717,10 @@ For any technical difficulties or questions plese email:</string>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcq-jD-s2E">
                                         <rect key="frame" x="0.0" y="80" width="185" height="30"/>
-                                        <state key="normal" title="SIGN IN"/>
+                                        <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="SIGN IN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="signInButtonTapped:" destination="4g5-2F-UuW" eventType="touchUpInside" id="mdn-1r-Pl9"/>
                                             <segue destination="aUQ-Ll-X0A" kind="show" identifier="loggedInUser" id="COU-0v-AZq"/>
@@ -650,7 +739,10 @@ For any technical difficulties or questions plese email:</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N6-0e-z00">
                                         <rect key="frame" x="45" y="0.0" width="115" height="30"/>
-                                        <state key="normal" title="Forgot Password"/>
+                                        <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Forgot Password">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="forgotPassButtonTapped:" destination="4g5-2F-UuW" eventType="touchUpInside" id="Heg-8Y-kdv"/>
                                         </connections>
@@ -673,6 +765,7 @@ For any technical difficulties or questions plese email:</string>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -825,7 +918,10 @@ For any technical difficulties or questions plese email:</string>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-Ef-Nqq">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="35"/>
-                                                <state key="normal" title="Create Account and Sign In"/>
+                                                <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Create Account and Sign In">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="createAccAndSignIn:" destination="uyj-hn-2aH" eventType="touchUpInside" id="KcH-qr-ern"/>
                                                     <segue destination="aUQ-Ll-X0A" kind="show" identifier="madeNewuser" id="Wts-gd-a0d"/>
@@ -923,6 +1019,6 @@ For any technical difficulties or questions plese email:</string>
         <image name="Image" width="238" height="212"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wts-gd-a0d"/>
+        <segue reference="COU-0v-AZq"/>
     </inferredMetricsTieBreakers>
 </document>

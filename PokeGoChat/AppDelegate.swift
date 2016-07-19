@@ -53,22 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		print("quitting app...")
 		if CurrentUser.inAChatRoom != nil {
 			if CurrentUser.inAChatRoom == "team"{
-				
 				Firebase.removeUserAtCurrentTeamRoom()
-//				defaults.setValue(CurrentUser.currentTeamChatRoomKey, forKey: "teamRoomKey")
-//				defaults.setValue(CurrentFirebaseLocationData.RoundedLocation, forKey: "roundedLoc")
-//				defaults.setValue("team", forKey: "inAChat")
-//				while(!CurrentUser.didFinishcheckingForNumOfusersUponTermination){
-//					
-//				}
-				print("here")
-				//Firebase.removeTeamRoomAtRoundedCoor()
-
 			} else {
 				Firebase.removeUserAtCurrentGeneralRoom()
 			}
 			
-					}
+		}
 		
 		//does not remove the team/general room in locations and messages when the user is the last 
 		//perosn in the room and force quits the app! - closure block to check if users left is not
