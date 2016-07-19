@@ -8,13 +8,13 @@
 
 import UIKit
 import Firebase
-
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
-	
+
 	
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -23,39 +23,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		
 		let defaults = NSUserDefaults.standardUserDefaults()
-		var goToLoginPage = false
 		
-		let email = defaults.stringForKey("email")
-		let password = defaults.stringForKey("password")
+		let userID = defaults.stringForKey("id")
 		
 		self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		
 		
-		if email != nil && password != nil{
-			goToLoginPage = false
-			print("not going to login page")
-			
-			
+		if userID != nil {
+			print("going to main screen")
 			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreen")
-			print("got controller")
-			self.window?.rootViewController = initialViewController
-			print("going frm here")
-			self.window?.makeKeyAndVisible()
+			CurrentUser.currentUser = User(id: defaults.stringForKey("id")!,
+			                               name: defaults.stringForKey("name")!,
+			                               team: defaults.stringForKey("team")!,
+			                               location: defaults.boolForKey("location"),
+			                               latitude: nil,
+			                               longitude: nil)
 			
-			Firebase.loginWithEmail(email!, AndPassword: password!) { (userKey) in
-				print("finished logging in")
-				Firebase.getUserDataWithKey(userKey) { (user) in
-					CurrentUser.currentUser = user
-					print("LOGGED IN USER: \(user.name)")
-					
-					goToLoginPage = true
-				}
-			}
+			
+			self.window?.rootViewController = initialViewController
+			self.window?.makeKeyAndVisible()
 			
 		} else {
 			print("going to login page")
-			goToLoginPage = true
 			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
 			self.window?.rootViewController = initialViewController
 			self.window?.makeKeyAndVisible()
@@ -74,8 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		let initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
 //		self.window?.rootViewController = initialViewController
 //		//self.window?.makeKeyAndVisible()
-		print("end of func")
-		return goToLoginPage
+		return true
 	}
 
 	func applicationWillResignActive(application: UIApplication) {

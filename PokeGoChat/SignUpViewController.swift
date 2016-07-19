@@ -68,6 +68,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			let defaults = NSUserDefaults.standardUserDefaults()
 			defaults.setObject(email, forKey: "email")
 			defaults.setObject(password, forKey: "password")
+			defaults.setObject(CurrentUser.currentUser.id, forKey: "id")
+			defaults.setObject(CurrentUser.currentUser.name, forKey: "name")
+			defaults.setObject(CurrentUser.currentUser.team, forKey: "team")
+			defaults.setBool(CurrentUser.currentUser.location, forKey: "location")
+			defaults.setObject(CurrentUser.currentUser.latitude, forKey: "latitude")
+			defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
 			
 			self.performSegueWithIdentifier("madeNewuser", sender: nil)
 		}

@@ -58,7 +58,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
             </objects>
             <point key="canvasLocation" x="1176" y="-712"/>
         </scene>
-        <!--My Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="7AV-F4-UFU">
             <objects>
                 <viewController id="oQd-59-szp" customClass="MyProfileViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,27 +77,6 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                     <constraint firstAttribute="height" constant="128" id="4uh-Ux-equ"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
-                                <rect key="frame" x="156" y="506" width="288" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay Free =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
-                                        <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
-                                        <rect key="frame" x="168" y="0.0" width="120" height="30"/>
-                                        <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title=" Support My App ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="donateButton:" destination="oQd-59-szp" eventType="touchUpInside" id="Q62-Zn-8Bx"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xVz-bm-UDE">
                                 <rect key="frame" x="190" y="227" width="220" height="187"/>
                                 <subviews>
@@ -163,16 +142,53 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2e-Zx-TBk">
+                                <rect key="frame" x="0.0" y="498" width="600" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.32167069858205322" blue="0.3181964818201517" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4rq-ER-Ua1"/>
+                                </constraints>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOut:" destination="oQd-59-szp" eventType="touchUpInside" id="R1y-nj-QBI"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
+                                <rect key="frame" x="156" y="448" width="288" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay Free =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
+                                        <rect key="frame" x="168" y="0.0" width="120" height="30"/>
+                                        <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title=" Support My App ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="donateButton:" destination="oQd-59-szp" eventType="touchUpInside" id="Q62-Zn-8Bx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="4XC-fC-01U"/>
+                            <constraint firstItem="a2e-Zx-TBk" firstAttribute="top" secondItem="USd-yR-xzC" secondAttribute="bottom" constant="20" id="A5d-pA-egH"/>
                             <constraint firstItem="USd-yR-xzC" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="FDv-et-kr0"/>
+                            <constraint firstItem="a2e-Zx-TBk" firstAttribute="leading" secondItem="xDo-Eg-INf" secondAttribute="leading" id="NHZ-xZ-Z80"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerY" secondItem="xDo-Eg-INf" secondAttribute="centerY" id="Rir-vj-XIu"/>
+                            <constraint firstItem="800-vE-vGC" firstAttribute="top" secondItem="a2e-Zx-TBk" secondAttribute="bottom" constant="8" id="Ytu-pL-ewd"/>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="top" secondItem="2pe-RR-ojg" secondAttribute="bottom" constant="15" id="tnE-iL-dog"/>
+                            <constraint firstAttribute="trailing" secondItem="a2e-Zx-TBk" secondAttribute="trailing" id="umW-nt-15p"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="wI9-tf-bzi"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="top" secondItem="jjZ-nH-BZq" secondAttribute="bottom" constant="20" id="xPJ-3F-i4K"/>
-                            <constraint firstItem="800-vE-vGC" firstAttribute="top" secondItem="USd-yR-xzC" secondAttribute="bottom" constant="20" id="zNu-vm-rdA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -180,14 +196,9 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                             </mask>
                         </variation>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Sign Out" width="581" id="K2o-GM-LOJ">
-                            <connections>
-                                <action selector="signOutButton:" destination="oQd-59-szp" id="WZV-f4-OWu"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="Pne-2c-fLd">
+                    <tabBarItem key="tabBarItem" title="Item" id="ZwB-Xc-x8r"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Profile" id="Pne-2c-fLd">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1MT-uC-hU9">
                             <connections>
                                 <action selector="save:" destination="oQd-59-szp" id="buv-El-VXB"/>
@@ -204,7 +215,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1C-zy-pwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="-653"/>
+            <point key="canvasLocation" x="2278" y="-555"/>
         </scene>
         <!--My Blocked Users-->
         <scene sceneID="gXT-7t-NHL">
@@ -274,12 +285,12 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6K7-Bg-hY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="-653"/>
+            <point key="canvasLocation" x="3004" y="-555"/>
         </scene>
         <!--Pikanect-->
         <scene sceneID="Nbg-t2-WE9">
             <objects>
-                <viewController storyboardIdentifier="mainScreen" id="uKa-LV-nec" customClass="MainScreenViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uKa-LV-nec" customClass="MainScreenViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zLZ-FV-vFU"/>
                         <viewControllerLayoutGuide type="bottom" id="EJb-fm-eFc"/>
@@ -362,9 +373,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="RFS-03-zdb">
                             <connections>
-                                <segue destination="oQd-59-szp" kind="show" id="J1k-ME-GdA">
-                                    <nil key="action"/>
-                                </segue>
+                                <segue destination="oQd-59-szp" kind="show" id="arF-RK-OHp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1090,7 +1099,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
         <!--Map-->
         <scene sceneID="jfa-HS-Lhq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUQ-Ll-X0A" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainScreen" automaticallyAdjustsScrollViewInsets="NO" id="aUQ-Ll-X0A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" id="lid-pl-JfX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rep-2j-NoD">

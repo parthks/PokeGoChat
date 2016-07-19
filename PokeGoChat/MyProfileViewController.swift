@@ -22,9 +22,13 @@ class MyProfileViewController: UIViewController {
 	}
 	
 	
-	
-	@IBAction func signOutButton(sender: UIBarButtonItem) {
-		
+	@IBAction func signOut(sender: UIButton) {
+		NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+		self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		self.view.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
+
+
 	}
 	
 	

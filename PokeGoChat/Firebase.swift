@@ -178,11 +178,12 @@ class Firebase {
 	}
 	
 	static func getUserDataWithKey(key: String, WithBlock completion: (User) -> Void){
-		//print("getting user data for key: \(key)")
+		print("getting user data for key: \(key)")
 		_rootRef.child(dataType.Users.rawValue).child(key).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
 			
 		
 			//print("got snap: \(snap)")
+			print("got user")
 			let snappedUser = snap.value as! [String: AnyObject]
 			let name = snappedUser["name"] as! String
 			let team = snappedUser["team"] as! String
