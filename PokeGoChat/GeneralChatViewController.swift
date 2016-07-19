@@ -150,7 +150,9 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		} else{
 			Firebase.displayAlertWithtitle("Blocked User", message: "All messages from this user have been blocked")
 			Firebase.saveNewBlockedUserWithId(cell.userID)
-			tableView.reloadData()
+			//tableView.reloadData()
+			messages = []
+			Firebase.removeGeneralMessageListener()
 		}
 	}
 

@@ -716,16 +716,16 @@ For any technical difficulties or questions plese email:</string>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="IFS-3v-xdq">
-                                <rect key="frame" x="140" y="63" width="321" height="473"/>
+                                <rect key="frame" x="207" y="63" width="187" height="473"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make a PokeGo Team Chat Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
-                                        <rect key="frame" x="0.0" y="0.0" width="321" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
+                                        <rect key="frame" x="16" y="0.0" width="156" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-uz-MFo">
-                                        <rect key="frame" x="68" y="81" width="185" height="101"/>
+                                        <rect key="frame" x="1" y="81" width="185" height="101"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-Z3-h0v">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="21"/>
@@ -752,7 +752,7 @@ For any technical difficulties or questions plese email:</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="62A-qh-IwR">
-                                        <rect key="frame" x="68" y="238" width="185" height="144"/>
+                                        <rect key="frame" x="1" y="238" width="185" height="144"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-pW-hho">
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
@@ -820,7 +820,7 @@ For any technical difficulties or questions plese email:</string>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ORW-Bw-SsT">
-                                        <rect key="frame" x="67" y="438" width="187" height="35"/>
+                                        <rect key="frame" x="0.0" y="438" width="187" height="35"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-Ef-Nqq">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="35"/>

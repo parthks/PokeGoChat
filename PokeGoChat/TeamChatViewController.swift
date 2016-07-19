@@ -38,6 +38,7 @@ class TeamChatViewController: UIViewController {
 		//locationManager.stopUpdatingLocation()
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 		timer.invalidate()
+		Firebase.removeTeamMessageListener()
 	}
 	
 	@IBAction func locationChanged(sender: UISwitch) {

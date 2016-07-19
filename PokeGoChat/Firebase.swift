@@ -306,6 +306,11 @@ class Firebase {
 		
 	}
 	
+	static func removeGeneralMessageListener() {
+		_rootRef.child(dataType.GeneralMessages.rawValue).child(CurrentUser.currentTeamChatRoomKey).removeAllObservers()
+		
+	}
+	
 	
 	
 	
