@@ -7,44 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70FD2FC2AD179BF693F64339BCCBBCA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		C721075358ABB31E4C8EDDEF78CA8019 /* Pods-PokeGoChat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EDEA3D93592892C884F8934927A3F4 /* Pods-PokeGoChat-dummy.m */; };
-		EEF698817DDB1479A09341C78344FD20 /* Pods-PokeGoChat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E9A1018865093703A2E3C96DA947A4C /* Pods-PokeGoChat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		424CF7DEDC52CA8AAC428FA2493E4392 /* Pods-Pikanect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 921387C2819980336E43439190C02F95 /* Pods-Pikanect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD814DAACEBE790E3BA3714ED6936866 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		E4896C3B45A301812D5226E0F82240EE /* Pods-Pikanect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCAE7B78F8D51A7428321DF34021E72 /* Pods-Pikanect-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		067C3F570D0253ACD608585A5F417265 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
-		31EDEA3D93592892C884F8934927A3F4 /* Pods-PokeGoChat-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PokeGoChat-dummy.m"; sourceTree = "<group>"; };
-		41536686DF0EFCF0575C5A3A271169D5 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
+		1BCAE7B78F8D51A7428321DF34021E72 /* Pods-Pikanect-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pikanect-dummy.m"; sourceTree = "<group>"; };
+		1BFEB7D617CAF53E9A197626C89D259B /* Pods-Pikanect-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pikanect-acknowledgements.markdown"; sourceTree = "<group>"; };
+		389B6DF63C3863F486CDF09E6DE8D1B8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F4339A1640D5BD19001CFED940E5FC7 /* Pods-Pikanect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pikanect.debug.xcconfig"; sourceTree = "<group>"; };
 		45BD1E0EC3A205BB988C0F04FF27B64C /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
-		55239FE0D3B08C432D86DEB0D500C8DA /* Pods-PokeGoChat-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokeGoChat-frameworks.sh"; sourceTree = "<group>"; };
-		61C0BAE27D1BF93F223581A55D9DEE6E /* Pods-PokeGoChat-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokeGoChat-resources.sh"; sourceTree = "<group>"; };
 		66DBFE686BC1A65A3EAD87247ABD39AF /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
-		79E485FF85E3420AFE605C81B7EBB8E9 /* Pods-PokeGoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokeGoChat.debug.xcconfig"; sourceTree = "<group>"; };
 		80581BC98D0A7385587C11FF68611C51 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		89CCA0F7A10655C93A117CED4C6321BC /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
-		8E9A1018865093703A2E3C96DA947A4C /* Pods-PokeGoChat-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PokeGoChat-umbrella.h"; sourceTree = "<group>"; };
+		921387C2819980336E43439190C02F95 /* Pods-Pikanect-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pikanect-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AB27E668F997AB16679F55CE5D93CA0D /* Pods_PokeGoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeGoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACC2AB1F2DFA82FBF65F41D2A2452C33 /* Pods-Pikanect-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pikanect-acknowledgements.plist"; sourceTree = "<group>"; };
 		B685BD2A7C826B38464745E073E406F9 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		BCF86639ECBF0CAB921EE61AF9203439 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		BD41BA0B59AAF6C62A90850FF1D7B7B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF2E9AC652F671412A846039F26BA4CF /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
 		C4CB0FEF8139CA6E53667592AD02C467 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		C6E766D32A822F0312C79148B3638562 /* Pods-PokeGoChat-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PokeGoChat-acknowledgements.plist"; sourceTree = "<group>"; };
 		CE8511CAA77009E0AB90907C7633E45F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E0FCAD430A2E71BC4108366950980A3E /* Pods-PokeGoChat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PokeGoChat.modulemap"; sourceTree = "<group>"; };
+		D2BD221C67E45FAFD33E8DED85D228F7 /* Pods_Pikanect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pikanect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D518A3D0A9737A03489001E9FC0734A6 /* Pods-Pikanect-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pikanect-resources.sh"; sourceTree = "<group>"; };
+		E9924EC810174EBF3C562FD7AA2C8E34 /* Pods-Pikanect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Pikanect.modulemap"; sourceTree = "<group>"; };
+		EDF1EF9585CFDAEEE57B33F1B479D987 /* Pods-Pikanect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pikanect.release.xcconfig"; sourceTree = "<group>"; };
+		F4E800485A392BDDD2375D3D1B04199A /* Pods-Pikanect-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pikanect-frameworks.sh"; sourceTree = "<group>"; };
 		F773DAFAF9ADEB448FA0F7A9653ADA63 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
-		F93B7F215B4B2FEC1789F1D66D7A6547 /* Pods-PokeGoChat-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PokeGoChat-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F06667737488FCE6E996D1905F99D421 /* Frameworks */ = {
+		F8ED53118C7CD59B562F562B1336A6EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70FD2FC2AD179BF693F64339BCCBBCA7 /* Foundation.framework in Frameworks */,
+				BD814DAACEBE790E3BA3714ED6936866 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,12 +59,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		10C48F12A558EE98FFFD7A85B4DB7E4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2BD221C67E45FAFD33E8DED85D228F7 /* Pods_Pikanect.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2323D6EC256B9FF12F90A05F03C1F28C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				66DBFE686BC1A65A3EAD87247ABD39AF /* FirebaseAuth.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A80208DC0F07004423C16769125DBDA /* Pods-Pikanect */ = {
+			isa = PBXGroup;
+			children = (
+				389B6DF63C3863F486CDF09E6DE8D1B8 /* Info.plist */,
+				E9924EC810174EBF3C562FD7AA2C8E34 /* Pods-Pikanect.modulemap */,
+				1BFEB7D617CAF53E9A197626C89D259B /* Pods-Pikanect-acknowledgements.markdown */,
+				ACC2AB1F2DFA82FBF65F41D2A2452C33 /* Pods-Pikanect-acknowledgements.plist */,
+				1BCAE7B78F8D51A7428321DF34021E72 /* Pods-Pikanect-dummy.m */,
+				F4E800485A392BDDD2375D3D1B04199A /* Pods-Pikanect-frameworks.sh */,
+				D518A3D0A9737A03489001E9FC0734A6 /* Pods-Pikanect-resources.sh */,
+				921387C2819980336E43439190C02F95 /* Pods-Pikanect-umbrella.h */,
+				3F4339A1640D5BD19001CFED940E5FC7 /* Pods-Pikanect.debug.xcconfig */,
+				EDF1EF9585CFDAEEE57B33F1B479D987 /* Pods-Pikanect.release.xcconfig */,
+			);
+			name = "Pods-Pikanect";
+			path = "Target Support Files/Pods-Pikanect";
 			sourceTree = "<group>";
 		};
 		326965F3282F57BEE7EC303A5D3FEBA8 /* Firebase */ = {
@@ -146,8 +172,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				4603E24B915967C623F2F2765D383919 /* Pods */,
-				A99F9C96B4ED062D9A48CCBA7C631F6A /* Products */,
-				A22E0A39DF358BEA1953C8DBA391531A /* Targets Support Files */,
+				10C48F12A558EE98FFFD7A85B4DB7E4E /* Products */,
+				DB518B0A87DE51BB54510A663844F356 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,22 +234,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A22E0A39DF358BEA1953C8DBA391531A /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				EB25F8DA21A0CA5E2901F5D059DE65B0 /* Pods-PokeGoChat */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		A99F9C96B4ED062D9A48CCBA7C631F6A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AB27E668F997AB16679F55CE5D93CA0D /* Pods_PokeGoChat.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DB518B0A87DE51BB54510A663844F356 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A80208DC0F07004423C16769125DBDA /* Pods-Pikanect */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		E30EC37EDFE386EDF95687BEE2EF1F84 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,53 +290,35 @@
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
-		EB25F8DA21A0CA5E2901F5D059DE65B0 /* Pods-PokeGoChat */ = {
-			isa = PBXGroup;
-			children = (
-				BD41BA0B59AAF6C62A90850FF1D7B7B2 /* Info.plist */,
-				E0FCAD430A2E71BC4108366950980A3E /* Pods-PokeGoChat.modulemap */,
-				F93B7F215B4B2FEC1789F1D66D7A6547 /* Pods-PokeGoChat-acknowledgements.markdown */,
-				C6E766D32A822F0312C79148B3638562 /* Pods-PokeGoChat-acknowledgements.plist */,
-				31EDEA3D93592892C884F8934927A3F4 /* Pods-PokeGoChat-dummy.m */,
-				55239FE0D3B08C432D86DEB0D500C8DA /* Pods-PokeGoChat-frameworks.sh */,
-				61C0BAE27D1BF93F223581A55D9DEE6E /* Pods-PokeGoChat-resources.sh */,
-				8E9A1018865093703A2E3C96DA947A4C /* Pods-PokeGoChat-umbrella.h */,
-				79E485FF85E3420AFE605C81B7EBB8E9 /* Pods-PokeGoChat.debug.xcconfig */,
-				41536686DF0EFCF0575C5A3A271169D5 /* Pods-PokeGoChat.release.xcconfig */,
-			);
-			name = "Pods-PokeGoChat";
-			path = "Target Support Files/Pods-PokeGoChat";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A8FB2C21932DD252F0DFE40550D86775 /* Headers */ = {
+		614A0700B885BABBEAF8CC51D2108E91 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF698817DDB1479A09341C78344FD20 /* Pods-PokeGoChat-umbrella.h in Headers */,
+				424CF7DEDC52CA8AAC428FA2493E4392 /* Pods-Pikanect-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0F418FF01E074443DA2766C2A3B247E8 /* Pods-PokeGoChat */ = {
+		D52BDD14C1B374350156C45DA08C42E7 /* Pods-Pikanect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 75F42C7C9438FF79B24073015F48CF8A /* Build configuration list for PBXNativeTarget "Pods-PokeGoChat" */;
+			buildConfigurationList = 93A2D1D60B8945A85BE45417ECF959AA /* Build configuration list for PBXNativeTarget "Pods-Pikanect" */;
 			buildPhases = (
-				53AF67639EBCFA2DB849E065D0168A2B /* Sources */,
-				F06667737488FCE6E996D1905F99D421 /* Frameworks */,
-				A8FB2C21932DD252F0DFE40550D86775 /* Headers */,
+				1837C4A9CCB04C7B2C0D9BE6980127B4 /* Sources */,
+				F8ED53118C7CD59B562F562B1336A6EF /* Frameworks */,
+				614A0700B885BABBEAF8CC51D2108E91 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-PokeGoChat";
-			productName = "Pods-PokeGoChat";
-			productReference = AB27E668F997AB16679F55CE5D93CA0D /* Pods_PokeGoChat.framework */;
+			name = "Pods-Pikanect";
+			productName = "Pods-Pikanect";
+			productReference = D2BD221C67E45FAFD33E8DED85D228F7 /* Pods_Pikanect.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -338,21 +338,21 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = A99F9C96B4ED062D9A48CCBA7C631F6A /* Products */;
+			productRefGroup = 10C48F12A558EE98FFFD7A85B4DB7E4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0F418FF01E074443DA2766C2A3B247E8 /* Pods-PokeGoChat */,
+				D52BDD14C1B374350156C45DA08C42E7 /* Pods-Pikanect */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		53AF67639EBCFA2DB849E065D0168A2B /* Sources */ = {
+		1837C4A9CCB04C7B2C0D9BE6980127B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C721075358ABB31E4C8EDDEF78CA8019 /* Pods-PokeGoChat-dummy.m in Sources */,
+				E4896C3B45A301812D5226E0F82240EE /* Pods-Pikanect-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,9 +439,9 @@
 			};
 			name = Debug;
 		};
-		7677B8745A9EE9F5A1F727719F0B56D5 /* Release */ = {
+		83EAFF224876201A92ECF11AD7092473 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41536686DF0EFCF0575C5A3A271169D5 /* Pods-PokeGoChat.release.xcconfig */;
+			baseConfigurationReference = EDF1EF9585CFDAEEE57B33F1B479D987 /* Pods-Pikanect.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -452,18 +452,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PokeGoChat/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pikanect/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Pikanect/Pods-Pikanect.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PokeGoChat;
+				PRODUCT_NAME = Pods_Pikanect;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,9 +472,9 @@
 			};
 			name = Release;
 		};
-		D18C0DA4F2612871BEB53AECE5DA434E /* Debug */ = {
+		95F248085A6BC973563E04308A1387E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79E485FF85E3420AFE605C81B7EBB8E9 /* Pods-PokeGoChat.debug.xcconfig */;
+			baseConfigurationReference = 3F4339A1640D5BD19001CFED940E5FC7 /* Pods-Pikanect.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -485,18 +485,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PokeGoChat/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pikanect/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Pikanect/Pods-Pikanect.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PokeGoChat;
+				PRODUCT_NAME = Pods_Pikanect;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -517,11 +517,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75F42C7C9438FF79B24073015F48CF8A /* Build configuration list for PBXNativeTarget "Pods-PokeGoChat" */ = {
+		93A2D1D60B8945A85BE45417ECF959AA /* Build configuration list for PBXNativeTarget "Pods-Pikanect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D18C0DA4F2612871BEB53AECE5DA434E /* Debug */,
-				7677B8745A9EE9F5A1F727719F0B56D5 /* Release */,
+				95F248085A6BC973563E04308A1387E8 /* Debug */,
+				83EAFF224876201A92ECF11AD7092473 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-PokeGoChat.xcscheme</key>
+		<key>Pods-Pikanect.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F418FF01E074443DA2766C2A3B247E8</key>
+		<key>D52BDD14C1B374350156C45DA08C42E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -15,6 +15,8 @@ class GeneralChatViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
 	
+	@IBOutlet weak var bannerView: GADBannerView!
+	
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
@@ -26,13 +28,20 @@ class GeneralChatViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		//let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
+		bannerView.rootViewController = self
+		let request = GADRequest()
+		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+		bannerView.loadRequest(request)
+		
+		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
 		
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
 		
-		//let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
 
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self

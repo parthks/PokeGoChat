@@ -9,11 +9,13 @@
 import UIKit
 import Firebase
 import MapKit
+import GoogleMobileAds
 
 class TeamChatViewController: UIViewController {
 
 	//static var numberOfUsers = 0
 	
+	@IBOutlet weak var bannerView: GADBannerView!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
 	@IBOutlet weak var myLocationSwitch: UISwitch!
@@ -54,6 +56,14 @@ class TeamChatViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
+		bannerView.rootViewController = self
+		let request = GADRequest()
+		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+		bannerView.loadRequest(request)
+
+		
 		print("entered TeamChatViewConctroller")
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
@@ -82,7 +92,7 @@ class TeamChatViewController: UIViewController {
 		
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
-		
+		myLocationSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75)
 		
 		listenForChatChanges()
     }

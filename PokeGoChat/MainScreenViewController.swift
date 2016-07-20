@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import GoogleMobileAds
 
 class MainScreenViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class MainScreenViewController: UIViewController {
 	@IBOutlet weak var teamChat: UIButton!
 	@IBOutlet weak var generalChat: UIButton!
 	
+	@IBOutlet weak var bannerView: GADBannerView!
 	@IBOutlet weak var gettingLocationLabel: UILabel!
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -24,6 +26,11 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		print("enterned main screen")
+		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
+		bannerView.rootViewController = self
+		let request = GADRequest()
+		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+		bannerView.loadRequest(request)
 		
 //		let defaults = NSUserDefaults.standardUserDefaults()
 //		if let inAChat = defaults.stringForKey("inAChat") {
@@ -85,9 +92,9 @@ class MainScreenViewController: UIViewController {
 	}
 
 	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		locationManager.requestLocation()
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		locationManager.startUpdatingLocation()
 	}
 	
 }
@@ -118,6 +125,8 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 			teamChat.enabled = true
 			generalChat.enabled = true
 		}
+		
+		locationManager.stopUpdatingLocation()
 	}
  
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
