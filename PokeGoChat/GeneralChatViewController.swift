@@ -21,8 +21,8 @@ class GeneralChatViewController: UIViewController {
 	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
 	
-	override func viewDidDisappear(animated: Bool) {
-		super.viewDidDisappear(animated)
+	
+	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
@@ -39,14 +39,14 @@ class GeneralChatViewController: UIViewController {
 		let imageView   = UIImageView(frame: tableView.bounds)
 		imageView.image = bgImage
 		tableView.backgroundView = imageView
-		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-		
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
 		
-
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appHasComeBackFromBackground), name: UIApplicationDidBecomeActiveNotification, object: nil)
+		
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
 		listenForChatChanges()
@@ -57,7 +57,7 @@ class GeneralChatViewController: UIViewController {
 		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ (snapshot) in
 			print("got a new message")
 			self.messages.append(snapshot)
-			print(self.messages)
+			//print(self.messages)
 			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
 			//self.tableView.reloadData()
@@ -92,6 +92,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 		
 	}
 	
+	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		//guard let text = textField.text else {return true}
 		guard textField.text != "" else {return true}
@@ -123,6 +124,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 				self.view.frame.origin.y += keyboardSize.height - offset.height
 			})
 		}
+		
 	}
 	
 	func moveKeyboardDown(sender: NSNotification) {
@@ -131,6 +133,19 @@ extension GeneralChatViewController: UITextFieldDelegate{
 		self.view.frame.origin.y += keyboardSize.height
 	}
 
+	
+	func appEnteredBackground(sender: NSNotification) {
+		//inputText.resignFirstResponder()
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+	}
+	
+	func appHasComeBackFromBackground(sender: NSNotification) {
+		print("back from background")
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+		inputText.becomeFirstResponder()
+	}
 	
 }
 

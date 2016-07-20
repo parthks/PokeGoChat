@@ -108,6 +108,11 @@ class MainScreenViewController: UIViewController {
 		main_timer.invalidate()
 	}
 	
+	deinit {
+		print("removed main timer...")
+		main_timer.invalidate()
+	}
+	
 }
 
 
@@ -123,6 +128,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 		gettingLocationLabel.hidden = true
 		
 		if let location = locations.last {
+			print("PRINTING LOCATION FROM MAIN")
 			print("location:: \(location.coordinate)")
 	
 			let span = MKCoordinateSpanMake(0.005, 0.005)

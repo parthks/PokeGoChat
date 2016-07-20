@@ -14,7 +14,6 @@ import GoogleMobileAds
 class TeamChatViewController: UIViewController {
 
 	//static var numberOfUsers = 0
-	
 	@IBOutlet weak var bannerView: GADBannerView!
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var inputText: UITextField!
@@ -37,11 +36,20 @@ class TeamChatViewController: UIViewController {
 	
 	override func viewDidDisappear(animated: Bool) {
 		super.viewDidDisappear(animated)
-		//locationManager.stopUpdatingLocation()
+		locationManager.stopUpdatingLocation()
+		//NSNotificationCenter.defaultCenter().removeObserver(self)
+		timer.invalidate()
+		//Firebase.removeTeamMessageListener()
+	}
+	
+	deinit {
+		print("removing team chat...")
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 		timer.invalidate()
-		Firebase.removeTeamMessageListener()
 	}
+	
+	
+	
 	
 	@IBAction func locationChanged(sender: UISwitch) {
 		CurrentUser.currentUser.location = myLocationSwitch.on
@@ -65,9 +73,13 @@ class TeamChatViewController: UIViewController {
 
 		
 		print("entered TeamChatViewConctroller")
+		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appHasComeBackFromBackground), name: UIApplicationDidBecomeActiveNotification, object: nil)
+		
+		
 		
 		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
@@ -220,6 +232,29 @@ extension TeamChatViewController: UITextFieldDelegate{
 		self.view.frame.origin.y += keyboardSize.height
 	}
 	
+	func appEnteredBackground(sender: NSNotification) {
+
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+		//self.view.userInteractionEnabled = false
+		timer.invalidate()
+		
+	}
+	
+	func appHasComeBackFromBackground(sender: NSNotification) {
+		print("back from background")
+		
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+		inputText.becomeFirstResponder()
+		
+		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+		
+	}
+
+	
 	
 }
 
@@ -335,6 +370,7 @@ extension TeamChatViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		
 		if let location = locations.last {
+			print("PRINTING LOCATION FROM TEAM")
 			print("location:: \(location.coordinate)")
 			Firebase.saveLocationOfUserWithKey(CurrentUser.currentUser.id, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 			
