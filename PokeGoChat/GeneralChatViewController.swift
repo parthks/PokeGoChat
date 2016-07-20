@@ -23,6 +23,7 @@ class GeneralChatViewController: UIViewController {
 	
 	
 	deinit {
+		print("removing general view controller...")
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
@@ -42,10 +43,10 @@ class GeneralChatViewController: UIViewController {
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appHasComeBackFromBackground), name: UIApplicationDidBecomeActiveNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appHasComeBackFromBackground), name: UIApplicationDidBecomeActiveNotification, object: nil)
 		
 		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
@@ -54,7 +55,7 @@ class GeneralChatViewController: UIViewController {
 	}
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ (snapshot) in
+		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (snapshot) in
 			print("got a new message")
 			self.messages.append(snapshot)
 			//print(self.messages)
@@ -110,42 +111,69 @@ extension GeneralChatViewController: UITextFieldDelegate{
 	}
 	
 	
-	func moveKeyboardUp(sender: NSNotification) {
-		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
-		
-		if keyboardSize.height == offset.height {
-			UIView.animateWithDuration(0.1, animations: { () -> Void in
-				self.view.frame.origin.y -= keyboardSize.height
-			})
-		} else {
-			UIView.animateWithDuration(0.1, animations: { () -> Void in
-				self.view.frame.origin.y += keyboardSize.height - offset.height
-			})
+//	func moveKeyboardUp(sender: NSNotification) {
+//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
+//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+//		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+//		
+//		if keyboardSize.height == offset.height {
+//			UIView.animateWithDuration(0.1, animations: { () -> Void in
+//				self.view.frame.origin.y -= keyboardSize.height
+//			})
+//		} else {
+//			UIView.animateWithDuration(0.1, animations: { () -> Void in
+//				self.view.frame.origin.y += keyboardSize.height - offset.height
+//			})
+//		}
+//		
+//	}
+//	
+//	func moveKeyboardDown(sender: NSNotification) {
+//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
+//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+//		self.view.frame.origin.y += keyboardSize.height
+//	}
+
+	
+	func keyboardWillShow(notification: NSNotification) {
+		if inputText.editing {
+			if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+				if view.frame.origin.y == 0{
+					self.view.frame.origin.y -= keyboardSize.height
+				}
+				else {
+					
+				}
+			}
 		}
 		
 	}
 	
-	func moveKeyboardDown(sender: NSNotification) {
-		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-		self.view.frame.origin.y += keyboardSize.height
-	}
-
-	
-	func appEnteredBackground(sender: NSNotification) {
-		//inputText.resignFirstResponder()
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+	func keyboardWillHide(notification: NSNotification) {
+		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+			if view.frame.origin.y != 0 {
+				self.view.frame.origin.y += keyboardSize.height
+			}
+			else {
+				
+			}
+		}
 	}
 	
-	func appHasComeBackFromBackground(sender: NSNotification) {
-		print("back from background")
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-		inputText.becomeFirstResponder()
-	}
+	
+	
+//	func appEnteredBackground(sender: NSNotification) {
+//		//inputText.resignFirstResponder()
+//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+//	}
+//	
+//	func appHasComeBackFromBackground(sender: NSNotification) {
+//		print("back from background")
+//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+//		inputText.becomeFirstResponder()
+//	}
 	
 }
 
@@ -204,7 +232,7 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 			let alert = UIAlertController(title: "Are you sure you want to block this user?", message: "All messages from this user will be hidden", preferredStyle: .Alert)
 			let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 			
-			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { (alert) in
+			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { [unowned self] (alert) in
 				Firebase.displayAlertWithtitle("Successfully Blocked User", message: "All messages from this user have been blocked")
 				Firebase.saveNewBlockedUserWithId(cell.userID)
 				//messages.removeAll()

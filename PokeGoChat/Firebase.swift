@@ -275,8 +275,8 @@ class Firebase {
 			
 			print("Checking if snap(general rooms at int lat and long) exists")
 			if !snap.exists() {
-				print("Changed didFinishcheckingForNumOfusersUponTermination...!")
-				CurrentUser.didFinishcheckingForNumOfusersUponTermination = true
+				//print("Changed didFinishcheckingForNumOfusersUponTermination...!")
+				//CurrentUser.didFinishcheckingForNumOfusersUponTermination = true
 				Firebase.removeTeamRoomAtRoundedCoor()
 			}
 		}

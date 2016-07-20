@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ReportAndBlockUserButtonPressedDelegate {
+protocol ReportAndBlockUserButtonPressedDelegate: class{
 	func reportUserOnCell(cell: DisplayMessageTableViewCell)
 	func blockUserOnCell(cell: DisplayMessageTableViewCell)
 }
@@ -19,7 +19,7 @@ class DisplayMessageTableViewCell: UITableViewCell {
 	@IBOutlet weak var message: UILabel!
 	@IBOutlet weak var reportButton: UIButton!
 	
-	var delegate: ReportAndBlockUserButtonPressedDelegate!
+	weak var delegate: ReportAndBlockUserButtonPressedDelegate!
 	var messageKey: String = ""
 	var userID: String = ""
 	var reported: String = "false"

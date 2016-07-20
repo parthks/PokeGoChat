@@ -75,8 +75,8 @@ class TeamChatViewController: UIViewController {
 		
 		print("entered TeamChatViewConctroller")
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appHasComeBackFromBackground), name: UIApplicationDidBecomeActiveNotification, object: nil)
 		
@@ -123,7 +123,7 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ (snap) in
+		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ [unowned self] (snap) in
 			//print("got a new message")
 			self.messages.append(snap)
 			//print(self.messages)
@@ -146,7 +146,7 @@ class TeamChatViewController: UIViewController {
 		
 		
 		let alert = UIAlertController(title: "Rate Pikanect", message: "How do you like this app? We would love to hear your feedback ", preferredStyle: .Alert)
-		let rateButton = UIAlertAction(title: "Rate Now!", style: .Default) { (alert) in
+		let rateButton = UIAlertAction(title: "Rate Now!", style: .Default) { [unowned self] (alert) in
 			UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id1136003010")!)
 			defaults.setBool(true, forKey: "doneAppRating")
 			self.dismissViewControllerAnimated(true, completion: nil)
@@ -157,7 +157,7 @@ class TeamChatViewController: UIViewController {
 		}
 		
 		
-		let remindLater = UIAlertAction(title: "Remind Me Later", style: .Default) { alert in
+		let remindLater = UIAlertAction(title: "Remind Me Later", style: .Default) { [unowned self] alert in
 			defaults.setBool(false, forKey: "doneAppRating")
 			defaults.setBool(false, forKey: "quitApp")
 			self.dismissViewControllerAnimated(true, completion: nil)
@@ -211,32 +211,61 @@ extension TeamChatViewController: UITextFieldDelegate{
 	}
 	
 	
-	func moveKeyboardUp(sender: NSNotification) {
-		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
-		
-		if keyboardSize.height == offset.height {
-			UIView.animateWithDuration(0.1, animations: { () -> Void in
-				self.view.frame.origin.y -= keyboardSize.height
-			})
-		} else {
-			UIView.animateWithDuration(0.1, animations: { () -> Void in
-				self.view.frame.origin.y += keyboardSize.height - offset.height
-			})
+//	func moveKeyboardUp(sender: NSNotification) {
+//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
+//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+//		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+//		
+//		if keyboardSize.height == offset.height {
+//			UIView.animateWithDuration(0.1, animations: { () -> Void in
+//				self.view.frame.origin.y -= keyboardSize.height
+//			})
+//		} else {
+//			UIView.animateWithDuration(0.1, animations: { () -> Void in
+//				self.view.frame.origin.y += keyboardSize.height - offset.height
+//			})
+//		}
+//	}
+//	
+//	func moveKeyboardDown(sender: NSNotification) {
+//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
+//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+//		self.view.frame.origin.y += keyboardSize.height
+//	}
+
+	
+	func keyboardWillShow(notification: NSNotification) {
+		if inputText.editing {
+			if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+				if view.frame.origin.y == 0{
+					self.view.frame.origin.y -= keyboardSize.height
+				}
+				else {
+					
+				}
+			}
 		}
+		
 	}
 	
-	func moveKeyboardDown(sender: NSNotification) {
-		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-		self.view.frame.origin.y += keyboardSize.height
+	func keyboardWillHide(notification: NSNotification) {
+		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+			if view.frame.origin.y != 0 {
+				self.view.frame.origin.y += keyboardSize.height
+			}
+			else {
+				
+			}
+		}
 	}
+
+	
+	
 	
 	func appEnteredBackground(sender: NSNotification) {
 
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
 		//self.view.userInteractionEnabled = false
 		timer.invalidate()
 		
@@ -246,11 +275,12 @@ extension TeamChatViewController: UITextFieldDelegate{
 		print("back from background")
 		
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-		inputText.becomeFirstResponder()
+//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+//		inputText.becomeFirstResponder()
 		
 		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		timer.fire()
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
 	}
@@ -316,7 +346,7 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Re
 			let alert = UIAlertController(title: "Are you sure you want to block this user?", message: "All messages from this user will be hidden", preferredStyle: .Alert)
 			let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 			
-			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { (alert) in
+			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { [unowned self] (alert) in
 				Firebase.displayAlertWithtitle("Successfully Blocked User", message: "All messages from this user have been blocked")
 				Firebase.saveNewBlockedUserWithId(cell.userID)
 				//messages.removeAll()
@@ -411,6 +441,7 @@ extension TeamChatViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		print("ERROR!!")
 		print("error:: \(error)")
+		Firebase.displayErrorAlert(error.localizedDescription)
 	}
 
 }
