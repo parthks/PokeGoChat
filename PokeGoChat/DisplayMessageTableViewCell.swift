@@ -27,7 +27,7 @@ class DisplayMessageTableViewCell: UITableViewCell {
 	@IBAction func reportButton(sender: AnyObject) {
 		print("report message")
 		delegate.reportUserOnCell(self)
-		reportButton.enabled = false
+		//reportButton.enabled = false
 	}
 	
 	

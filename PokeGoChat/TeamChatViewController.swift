@@ -34,10 +34,11 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	
-	override func viewDidDisappear(animated: Bool) {
-		super.viewDidDisappear(animated)
-		locationManager.stopUpdatingLocation()
-		//NSNotificationCenter.defaultCenter().removeObserver(self)
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		print("removing team chat timer...")
+		//locationManager.stopUpdatingLocation()
+		NSNotificationCenter.defaultCenter().removeObserver(self)
 		timer.invalidate()
 		//Firebase.removeTeamMessageListener()
 	}
@@ -290,20 +291,45 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Re
 	}
 	
 	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
-		Firebase.displayAlertWithtitle("Reported Message", message: "The meesage has been reported to the admins")
-		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, inRoomType: "Team")
+		
+		let alert = UIAlertController(title: "Are you sure you want to report this message?", message: cell.message.text, preferredStyle: .Alert)
+		let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+		
+		let reportButton = UIAlertAction(title: "Report!", style: .Destructive) { (alert) in
+			Firebase.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
+			Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "Team")
+			//self.dismissViewControllerAnimated(true, completion: nil)
+		}
+		
+		alert.addAction(cancelButton)
+		alert.addAction(reportButton)
+		
+		presentViewController(alert, animated: true, completion: nil)
 	}
+	
 	
 	func blockUserOnCell(cell: DisplayMessageTableViewCell) {
 		if CurrentUser.currentUser.id == cell.userID {
 			Firebase.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
 		} else{
-			Firebase.displayAlertWithtitle("Blocked User", message: "All messages from this user have been blocked")
-			Firebase.saveNewBlockedUserWithId(cell.userID)
-			//messages.removeAll()
-			messages = []
-			Firebase.removeTeamMessageListener()
-			//listenForChatChanges()
+			
+			let alert = UIAlertController(title: "Are you sure you want to block this user?", message: "All messages from this user will be hidden", preferredStyle: .Alert)
+			let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+			
+			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { (alert) in
+				Firebase.displayAlertWithtitle("Successfully Blocked User", message: "All messages from this user have been blocked")
+				Firebase.saveNewBlockedUserWithId(cell.userID)
+				//messages.removeAll()
+				self.messages = []
+				Firebase.removeTeamMessageListener()
+				//listenForChatChanges()
+				//self.dismissViewControllerAnimated(true, completion: nil)
+			}
+			
+			alert.addAction(cancelButton)
+			alert.addAction(reportButton)
+			
+			presentViewController(alert, animated: true, completion: nil)
 			
 		}
 
