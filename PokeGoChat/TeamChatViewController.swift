@@ -207,6 +207,8 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Re
 		cell.messageKey = key
 		cell.nameOfUser.text = name
 		cell.message.text = text
+		
+		
 		cell.delegate = self
 		
 		return cell

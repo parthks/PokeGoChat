@@ -22,8 +22,10 @@ class DisplayMessageTableViewCell: UITableViewCell {
 	var delegate: ReportAndBlockUserButtonPressedDelegate!
 	var messageKey: String = ""
 	var userID: String = ""
+	var reported: String = "false"
 	
 	@IBAction func reportButton(sender: AnyObject) {
+		print("report message")
 		delegate.reportUserOnCell(self)
 		reportButton.enabled = false
 	}

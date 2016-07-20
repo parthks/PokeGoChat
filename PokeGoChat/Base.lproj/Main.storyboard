@@ -673,6 +673,9 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                                     <state key="normal" title="Report">
                                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </state>
+                                                                    <state key="disabled">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="reportButton:" destination="LX2-Aj-29e" eventType="touchUpInside" id="4NX-ad-ayC"/>
                                                                     </connections>
@@ -698,6 +701,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                 <connections>
                                                     <outlet property="message" destination="AVO-gr-gli" id="Kcj-me-0j5"/>
                                                     <outlet property="nameOfUser" destination="93L-v2-dJ4" id="x01-7c-eyT"/>
+                                                    <outlet property="reportButton" destination="IJ9-jg-HqZ" id="Grq-mN-2P4"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

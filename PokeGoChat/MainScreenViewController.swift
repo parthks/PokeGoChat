@@ -91,13 +91,25 @@ class MainScreenViewController: UIViewController {
 		}
 	}
 
-	
+	var main_timer = NSTimer()
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		main_timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		NSRunLoop.currentRunLoop().addTimer(main_timer, forMode: NSRunLoopCommonModes)
+		
+	}
+	
+	func getLocation(){
 		locationManager.startUpdatingLocation()
 	}
 	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		main_timer.invalidate()
+	}
+	
 }
+
 
 extension MainScreenViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

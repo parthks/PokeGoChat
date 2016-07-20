@@ -154,13 +154,16 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		cell.messageKey = key
 		cell.nameOfUser.text = name
 		cell.message.text = text
+		
 		cell.delegate = self
 		return cell
 	}
 	
 	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
 		Firebase.displayAlertWithtitle("Reported Message", message: "The meesage has been reported to the admins")
-		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, inRoomType: "General")
+		print("alerted with popup general")
+		print(cell.message.text)
+		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "General")
 	}
 	
 	func blockUserOnCell(cell: DisplayMessageTableViewCell) {
