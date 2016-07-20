@@ -22,14 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FIRApp.configure()
 
 		let defaults = NSUserDefaults.standardUserDefaults()
-		
 		let userID = defaults.stringForKey("id")
 		
 		self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		
 		
-		if userID != nil {
+		if userID != nil { //If user id is stored then everything is
 			print("going to main screen")
 			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreen")
 			CurrentUser.currentUser = User(id: defaults.stringForKey("id")!,
@@ -67,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillResignActive(application: UIApplication) {
+		NSNotificationCenter.defaultCenter().removeObserver(TeamChatViewController)
+
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 		
@@ -82,12 +83,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationDidBecomeActive(application: UIApplication) {
+//		if self.window?.rootViewController is TeamChatViewController {
+//			NSNotificationCenter.defaultCenter().addObserver(TeamChatViewController(), selector: #selector(TeamChatViewController.moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
+//			NSNotificationCenter.defaultCenter().addObserver(TeamChatViewController(), selector: #selector(TeamChatViewController.moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
+//		}
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 	}
 
 	func applicationWillTerminate(application: UIApplication) {
 
 		print("quitting app...")
+		NSUserDefaults.standardUserDefaults().setBool(true, forKey: "quitApp")
+		
 		if CurrentUser.inAChatRoom != nil {
 			if CurrentUser.inAChatRoom == "team"{
 				Firebase.removeUserAtCurrentTeamRoom()

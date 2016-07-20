@@ -316,7 +316,7 @@ class Firebase {
 	
 	
 	//MARK: Report message
-	static func reportMessageWithKey(messageKey: String, WithMessage message:String,ByUser userid: String, inRoomType roomType: String) {
+	static func reportMessageWithKey(messageKey: String, WithMessage message:String, inRoomType roomType: String) {
 		
 		_rootRef.child(dataType.ReportedMessages.rawValue).child(messageKey).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
 			if !snap.exists(){
@@ -326,7 +326,7 @@ class Firebase {
 				reportedMessage["messageKey"] = messageKey
 				reportedMessage["roomType"] = roomType
 				reportedMessage["numberOfTimesReported"] = "1"
-				reportedMessage["userID"] = userid
+				//reportedMessage["userID"] = userid
 				if roomType == "Team"{
 					reportedMessage["roomKey"] = CurrentUser.currentTeamChatRoomKey
 				}else{

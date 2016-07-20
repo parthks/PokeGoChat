@@ -35,6 +35,10 @@ class GeneralChatViewController: UIViewController {
 		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
 		bannerView.loadRequest(request)
 		
+		let bgImage     = UIImage(named: "TriColor")
+		let imageView   = UIImageView(frame: tableView.bounds)
+		imageView.image = bgImage
+		tableView.backgroundView = imageView
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
@@ -163,7 +167,7 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		Firebase.displayAlertWithtitle("Reported Message", message: "The meesage has been reported to the admins")
 		print("alerted with popup general")
 		print(cell.message.text)
-		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "General")
+		Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, inRoomType: "General")
 	}
 	
 	func blockUserOnCell(cell: DisplayMessageTableViewCell) {

@@ -109,8 +109,8 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 //			self.view.backgroundColor = UIColor(patternImage: image)
 //		}
 		
-		let bgImage     = UIImage(named: "TriColor");
-		let imageView   = UIImageView(frame: self.view.bounds);
+		let bgImage		= UIImage(named: "TriColor")
+		let imageView   = UIImageView(frame: self.view.bounds)
 		imageView.image = bgImage
 		self.view.addSubview(imageView)
 		self.view.sendSubviewToBack(imageView)

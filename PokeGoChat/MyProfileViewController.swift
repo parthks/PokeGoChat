@@ -23,10 +23,20 @@ class MyProfileViewController: UIViewController {
 	
 	
 	@IBAction func signOut(sender: UIButton) {
-		NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+		
+		let defaults = NSUserDefaults.standardUserDefaults()
+		let doneAppRating = defaults.boolForKey("doneAppRating")
+		let quitApp = defaults.boolForKey("quitApp")
+		
+		defaults.removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
 		self.view.window!.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+		
+		defaults.setBool(doneAppRating, forKey: "doneAppRating")
+		defaults.setBool(quitApp, forKey: "quitApp")
+		
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		self.view.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
+		
 
 
 	}

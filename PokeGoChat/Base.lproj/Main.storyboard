@@ -480,6 +480,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                 <constraint firstItem="OWP-fb-Fcl" firstAttribute="leading" secondItem="C7z-aE-NGq" secondAttribute="leading" id="y9F-a2-9xU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="message" destination="C7z-aE-NGq" id="CC3-LB-6Pn"/>
                                             <outlet property="nameOfUser" destination="OWP-fb-Fcl" id="19t-PW-v5t"/>
@@ -698,6 +699,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                         <constraint firstItem="3ee-ti-oGJ" firstAttribute="leading" secondItem="AVO-gr-gli" secondAttribute="trailing" constant="20" id="sbd-73-W7G"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="1" green="0.32167069858205322" blue="0.3181964818201517" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <outlet property="message" destination="AVO-gr-gli" id="Kcj-me-0j5"/>
                                                     <outlet property="nameOfUser" destination="93L-v2-dJ4" id="x01-7c-eyT"/>

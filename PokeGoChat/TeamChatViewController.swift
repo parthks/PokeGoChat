@@ -94,6 +94,12 @@ class TeamChatViewController: UIViewController {
 		tableView.estimatedRowHeight = 140
 		myLocationSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75)
 		
+		let bgImage     = UIImage(named: CurrentUser.currentUser.team)
+		let imageView   = UIImageView(frame: tableView.bounds)
+		imageView.image = bgImage
+		tableView.backgroundView = imageView
+		
+		
 		listenForChatChanges()
     }
 	
@@ -115,11 +121,45 @@ class TeamChatViewController: UIViewController {
 	
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		Firebase.removeUserAtCurrentTeamRoom()
-		self.dismissViewControllerAnimated(true, completion: nil)
 		CurrentUser.inAChatRoom = nil
-		//mapView = nil
+		
+		let defaults = NSUserDefaults.standardUserDefaults()
+	
+		guard !defaults.boolForKey("doneAppRating") && defaults.boolForKey("quitApp") else {
+			self.dismissViewControllerAnimated(true, completion: nil);
+			return
+		}
+		
+		
+		
+		let alert = UIAlertController(title: "Rate Pikanect", message: "How do you like this app? We would love to hear your feedback ", preferredStyle: .Alert)
+		let rateButton = UIAlertAction(title: "Rate Now!", style: .Default) { (alert) in
+			UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id1136003010")!)
+			defaults.setBool(true, forKey: "doneAppRating")
+			self.dismissViewControllerAnimated(true, completion: nil)
+		}
+		
+		let dontWantToRate = UIAlertAction(title: "Never remind me again!", style: .Cancel) { (alert) in
+			defaults.setBool(true, forKey: "doneAppRating")
+		}
+		
+		
+		let remindLater = UIAlertAction(title: "Remind Me Later", style: .Default) { alert in
+			defaults.setBool(false, forKey: "doneAppRating")
+			defaults.setBool(false, forKey: "quitApp")
+			self.dismissViewControllerAnimated(true, completion: nil)
+		}
+		
+		
+		alert.addAction(dontWantToRate)
+		alert.addAction(remindLater)
+		alert.addAction(rateButton)
+		
+		presentViewController(alert, animated: true, completion: nil)
+		
 	}
-
+	
+	
     /*
     // MARK: - Navigation
 
