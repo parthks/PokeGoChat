@@ -27,6 +27,7 @@
 		B260C38E1D3863100037A97D /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38D1D3863100037A97D /* MapPin.swift */; };
 		B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */; };
 		B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */; };
+		B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C1E71A1D401768007E36B6 /* SImple controllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		B260C38F1D3C64530037A97D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBlockedUsersViewController.swift; sourceTree = "<group>"; };
+		B2C1E71A1D401768007E36B6 /* SImple controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SImple controllers.swift"; sourceTree = "<group>"; };
 		B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pikanect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCD2EF3082668CBF8C44405 /* Pods-Pikanect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pikanect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pikanect/Pods-Pikanect.release.xcconfig"; sourceTree = "<group>"; };
 		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				B260C3871D36F0340037A97D /* SIgnInViewController.swift */,
 				B260C3891D36F0650037A97D /* SignUpViewController.swift */,
 				B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */,
+				B2C1E71A1D401768007E36B6 /* SImple controllers.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
+				B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */,
 				B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */,
 				B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */,
 				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,

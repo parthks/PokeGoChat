@@ -9,7 +9,7 @@
         <!--App Info-->
         <scene sceneID="4Ve-C7-fMY">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Qrf-Vn-ybO" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Qrf-Vn-ybO" customClass="AppInfo" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IQh-b7-kdK"/>
                         <viewControllerLayoutGuide type="bottom" id="Cvf-2F-lc6"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-vO-au7">
-                                <rect key="frame" x="20" y="72" width="560" height="508"/>
+                                <rect key="frame" x="20" y="72" width="560" height="380"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -34,7 +34,7 @@
                                         <string key="content">To find another group, click on the leave chat on the top left. This will again use your location to find a group nearby. 
 Note: This may find your original group. Try moving to a different location and try again
 
-For any technical difficulties or questions plese email: pikanect@gmail.com or post a review on the app store</string>
+For any technical difficulties or questions plese contact using the links below: </string>
                                         <attributes>
                                             <font key="NSFont" size="15" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -43,14 +43,56 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="haF-AK-gTy">
+                                <rect key="frame" x="149" y="472" width="302" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-c7-Z3F">
+                                        <rect key="frame" x="0.0" y="9" width="52" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="Gy0-OM-yyL"/>
+                                            <constraint firstAttribute="height" constant="52" id="hEw-9x-55b"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Twitterbird_round"/>
+                                        <connections>
+                                            <action selector="twitter:" destination="Qrf-Vn-ybO" eventType="touchUpInside" id="55C-wN-uNg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oh3-tr-l2X">
+                                        <rect key="frame" x="92" y="3" width="100" height="64"/>
+                                        <state key="normal" image="Mail_Icon_clip_art_medium"/>
+                                        <connections>
+                                            <action selector="mail:" destination="Qrf-Vn-ybO" eventType="touchUpInside" id="a8g-sM-oJm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VC0-rV-aYU">
+                                        <rect key="frame" x="232" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="9MC-sQ-ueK"/>
+                                            <constraint firstAttribute="width" constant="70" id="KpI-ns-nSp"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Facebook_round"/>
+                                        <connections>
+                                            <action selector="facebook:" destination="Qrf-Vn-ybO" eventType="touchUpInside" id="c9H-Yu-HgX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rYM-vO-au7" firstAttribute="trailing" secondItem="cwf-Jk-Z1h" secondAttribute="trailingMargin" id="1iO-Ab-BSZ"/>
                             <constraint firstItem="rYM-vO-au7" firstAttribute="leading" secondItem="cwf-Jk-Z1h" secondAttribute="leadingMargin" id="4fV-Uj-sPJ"/>
+                            <constraint firstItem="haF-AK-gTy" firstAttribute="top" secondItem="rYM-vO-au7" secondAttribute="bottom" constant="20" id="8wk-Ud-ndZ"/>
                             <constraint firstAttribute="bottom" secondItem="rYM-vO-au7" secondAttribute="bottom" constant="20" symbolic="YES" id="EQ8-Sq-79q"/>
                             <constraint firstItem="rYM-vO-au7" firstAttribute="top" secondItem="IQh-b7-kdK" secondAttribute="bottom" constant="8" symbolic="YES" id="Xky-mi-brm"/>
+                            <constraint firstItem="Cvf-2F-lc6" firstAttribute="top" secondItem="haF-AK-gTy" secondAttribute="bottom" constant="58" id="c1k-4Y-Trq"/>
+                            <constraint firstItem="haF-AK-gTy" firstAttribute="centerX" secondItem="cwf-Jk-Z1h" secondAttribute="centerX" id="iS3-zz-pis"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EQ8-Sq-79q"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="App Info" id="pIG-bb-Ntq"/>
                 </viewController>
@@ -71,14 +113,14 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jjZ-nH-BZq">
-                                <rect key="frame" x="180" y="79" width="240" height="128"/>
+                                <rect key="frame" x="250" y="79" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="32y-VP-MHh"/>
-                                    <constraint firstAttribute="height" constant="128" id="4uh-Ux-equ"/>
+                                    <constraint firstAttribute="width" constant="100" id="32y-VP-MHh"/>
+                                    <constraint firstAttribute="height" constant="100" id="4uh-Ux-equ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xVz-bm-UDE">
-                                <rect key="frame" x="190" y="227" width="220" height="187"/>
+                                <rect key="frame" x="190" y="199" width="220" height="187"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cda-bO-SNo">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
@@ -299,25 +341,36 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-IU-5Ke">
-                                <rect key="frame" x="0.0" y="417" width="600" height="125"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-IU-5Ke">
+                                <rect key="frame" x="20" y="415" width="560" height="125"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-22-rk3">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="125"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="125" id="34a-r9-itj"/>
                                         </constraints>
-                                        <state key="normal" title="Team Chat"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Team Chat">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.01570512820512826" green="0.01570512820512826" blue="0.01570512820512826" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="teamChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="ctH-Gx-eyx"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-S6-F8J">
-                                        <rect key="frame" x="300" y="0.0" width="300" height="125"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="125" id="lbQ-ZT-HY3"/>
-                                        </constraints>
-                                        <state key="normal" title="General Chat"/>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-S6-F8J">
+                                        <rect key="frame" x="290" y="0.0" width="270" height="125"/>
+                                        <color key="backgroundColor" red="0.81384214745384609" green="0.81384214745384609" blue="0.81384214745384609" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="General Chat">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.01570512820512826" green="0.01570512820512826" blue="0.01570512820512826" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="generalChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="DTE-mV-Xx0"/>
                                         </connections>
@@ -325,7 +378,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                 </subviews>
                             </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-p9-jTd">
-                                <rect key="frame" x="20" y="84" width="560" height="297"/>
+                                <rect key="frame" x="20" y="84" width="560" height="295"/>
                                 <connections>
                                     <outlet property="delegate" destination="uKa-LV-nec" id="DUa-w3-FSD"/>
                                 </connections>
@@ -338,7 +391,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-di-Cw7">
-                                <rect key="frame" x="231" y="389" width="139" height="20"/>
+                                <rect key="frame" x="231" y="387" width="139" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-JL-28O">
                                         <rect key="frame" x="0.0" y="0.0" width="114" height="20"/>
@@ -354,18 +407,18 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EJb-fm-eFc" firstAttribute="top" secondItem="iAH-IU-5Ke" secondAttribute="bottom" constant="58" id="2kY-8W-1gg"/>
+                            <constraint firstItem="EJb-fm-eFc" firstAttribute="top" secondItem="iAH-IU-5Ke" secondAttribute="bottom" constant="60" id="2kY-8W-1gg"/>
                             <constraint firstItem="Qra-p9-jTd" firstAttribute="centerX" secondItem="iAH-IU-5Ke" secondAttribute="centerX" id="7N4-Eh-0O7"/>
                             <constraint firstItem="Qra-p9-jTd" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leadingMargin" id="FrF-nZ-fmx"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="centerX" secondItem="6bp-5d-J9Z" secondAttribute="centerX" id="HmE-lz-IWE"/>
-                            <constraint firstItem="iAH-IU-5Ke" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" id="Hzt-CS-ZIZ"/>
+                            <constraint firstItem="iAH-IU-5Ke" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" constant="20" id="Hzt-CS-ZIZ"/>
                             <constraint firstItem="Qra-p9-jTd" firstAttribute="top" secondItem="zLZ-FV-vFU" secondAttribute="bottom" constant="20" id="STS-W0-8ON"/>
                             <constraint firstItem="Goh-d9-RJq" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" id="VMl-MT-R6G"/>
                             <constraint firstItem="SuY-di-Cw7" firstAttribute="centerX" secondItem="iAH-IU-5Ke" secondAttribute="centerX" id="dHN-0D-e8q"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="30" id="eJ4-Kr-yOp"/>
                             <constraint firstAttribute="trailing" secondItem="Goh-d9-RJq" secondAttribute="trailing" id="lmQ-0A-rjE"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="top" secondItem="t7L-JL-28O" secondAttribute="bottom" constant="8" id="uVW-wy-i51"/>
-                            <constraint firstAttribute="trailing" secondItem="iAH-IU-5Ke" secondAttribute="trailing" id="wGC-eN-qE0"/>
+                            <constraint firstAttribute="trailing" secondItem="iAH-IU-5Ke" secondAttribute="trailing" constant="20" id="wGC-eN-qE0"/>
                             <constraint firstItem="t7L-JL-28O" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="8" id="xTJ-36-xeA"/>
                             <constraint firstItem="EJb-fm-eFc" firstAttribute="top" secondItem="Goh-d9-RJq" secondAttribute="bottom" id="xc7-nK-Sxm"/>
                         </constraints>
@@ -782,7 +835,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J2U-tM-d9D">
-                                <rect key="frame" x="208" y="245" width="185" height="110"/>
+                                <rect key="frame" x="208" y="198" width="185" height="110"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="10" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cvh-2J-rGl">
                                         <rect key="frame" x="0.0" y="0.0" width="185" height="30"/>
@@ -818,11 +871,41 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zaK-wH-G3k">
+                                <rect key="frame" x="241" y="316" width="119" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="auto-login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ru1-CA-hHL">
+                                        <rect key="frame" x="0.0" y="5" width="79" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDJ-lz-gKP">
+                                        <rect key="frame" x="89" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="9v8-7X-qUk"/>
+                                            <constraint firstAttribute="width" constant="30" id="w0e-WE-XpT"/>
+                                        </constraints>
+                                        <state key="normal" image="unchecked box"/>
+                                        <state key="disabled" image="unchecked box"/>
+                                        <state key="selected" image="checked box"/>
+                                        <connections>
+                                            <action selector="autoLoginCheckbox:" destination="4g5-2F-UuW" eventType="touchUpInside" id="DOt-3b-jMP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikanect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-F2-KQM">
+                                <rect key="frame" x="224" y="100" width="152" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="Wku-v5-6Gb">
-                                <rect key="frame" x="194" y="405" width="213" height="95"/>
+                                <rect key="frame" x="176" y="406" width="248" height="101"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N6-0e-z00">
-                                        <rect key="frame" x="45" y="0.0" width="123" height="30"/>
+                                        <rect key="frame" x="63" y="0.0" width="123" height="30"/>
                                         <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title=" Forgot Password ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -832,17 +915,18 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXZ-3i-hNx">
-                                        <rect key="frame" x="0.0" y="65" width="213" height="30"/>
+                                        <rect key="frame" x="0.0" y="65" width="248" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1st time? =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-IY-StC">
-                                                <rect key="frame" x="0.0" y="0.0" width="98" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="98" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXH-AD-szr">
-                                                <rect key="frame" x="98" y="0.0" width="115" height="30"/>
+                                                <rect key="frame" x="98" y="0.0" width="150" height="36"/>
                                                 <color key="backgroundColor" red="0.34515415199999999" green="0.61167918710000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title=" Create Account ">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -856,24 +940,21 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikanect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-F2-KQM">
-                                <rect key="frame" x="246" y="131" width="108" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.81169871794871784" green="0.81169871794871784" blue="0.81169871794871784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Wku-v5-6Gb" firstAttribute="top" secondItem="J2U-tM-d9D" secondAttribute="bottom" constant="50" id="5FX-z8-rlE"/>
+                            <constraint firstItem="zaK-wH-G3k" firstAttribute="top" secondItem="J2U-tM-d9D" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ag-68-JSN"/>
+                            <constraint firstItem="Wku-v5-6Gb" firstAttribute="top" secondItem="zaK-wH-G3k" secondAttribute="bottom" constant="60" id="6yL-aF-ewN"/>
+                            <constraint firstItem="zaK-wH-G3k" firstAttribute="centerX" secondItem="J2U-tM-d9D" secondAttribute="centerX" id="IfA-j7-uTa"/>
                             <constraint firstItem="Wku-v5-6Gb" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="LY3-x3-Uqo"/>
-                            <constraint firstItem="J2U-tM-d9D" firstAttribute="top" secondItem="GMc-F2-KQM" secondAttribute="bottom" constant="80" id="Mj1-oA-M8d"/>
-                            <constraint firstItem="J2U-tM-d9D" firstAttribute="centerY" secondItem="pTc-Q7-naA" secondAttribute="centerY" id="fxb-5m-Iew"/>
                             <constraint firstItem="GMc-F2-KQM" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="m2G-6h-G4Q"/>
+                            <constraint firstItem="GMc-F2-KQM" firstAttribute="top" secondItem="qBm-Wo-ijd" secondAttribute="bottom" constant="80" id="mNn-3x-TfR"/>
+                            <constraint firstItem="J2U-tM-d9D" firstAttribute="top" secondItem="GMc-F2-KQM" secondAttribute="bottom" constant="50" id="mTU-Mf-bo0"/>
                             <constraint firstItem="J2U-tM-d9D" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="uJM-Lc-DL2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkboxButton" destination="aDJ-lz-gKP" id="BfX-HU-iOy"/>
                         <outlet property="emailTextField" destination="cvh-2J-rGl" id="50w-HJ-qj4"/>
                         <outlet property="passwordTextField" destination="4fQ-mb-mIf" id="v13-oT-ELg"/>
                         <outlet property="signInButton" destination="Wcq-jD-s2E" id="Jxh-AP-jPe"/>
@@ -883,10 +964,10 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
             </objects>
             <point key="canvasLocation" x="42" y="90"/>
         </scene>
-        <!--View Controller-->
+        <!--User Policy-->
         <scene sceneID="MYg-4Z-J5O">
             <objects>
-                <viewController id="ZPt-ks-ECo" sceneMemberID="viewController">
+                <viewController id="ZPt-ks-ECo" customClass="UserPolicy" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2hA-Ic-M3B"/>
                         <viewControllerLayoutGuide type="bottom" id="V21-y6-HrX"/>
@@ -895,9 +976,18 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-KY-HWZ">
-                                <rect key="frame" x="20" y="58" width="560" height="534"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-KY-HWZ">
+                                <rect key="frame" x="20" y="66" width="560" height="526"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">I will NOT abuse or specifically belittle others. This includes but not limited to defaming, bullying, harassing, stalking and threatening others.
+
+I will NOT post others people's personal information including but not limited to phone numbers, street adresses, or any personally identifiable information that is obscene or offensive. 
+
+I will NOT post repititive, spammy content or abuse the use of the "Report" button.
+
+If your posts are repeatedly reported, you may be suspended.
+
+Caution: This app uses your location to help find nearby teammates and pokemon users. Please note that we are not responsible for any action caused by others knowing your location.  </mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -905,12 +995,12 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                 <rect key="frame" x="20" y="28" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
-                                    <segue destination="YPu-Pe-b2G" kind="unwind" unwindAction="unwindFromUserPolicyScene:" id="Pic-5U-ZPS"/>
+                                    <action selector="close:" destination="ZPt-ks-ECo" eventType="touchUpInside" id="zDt-J5-WeX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slR-FZ-P8C">
-                                <rect key="frame" x="257" y="32" width="87" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="250" y="29" width="101" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -919,7 +1009,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="v1j-KY-HWZ" secondAttribute="trailing" constant="20" id="Fxg-xk-Fwn"/>
                             <constraint firstItem="slR-FZ-P8C" firstAttribute="baseline" secondItem="LQ0-32-dCQ" secondAttribute="baseline" id="NfO-lJ-luF"/>
-                            <constraint firstItem="v1j-KY-HWZ" firstAttribute="top" secondItem="LQ0-32-dCQ" secondAttribute="bottom" id="cDx-qj-4rB"/>
+                            <constraint firstItem="v1j-KY-HWZ" firstAttribute="top" secondItem="LQ0-32-dCQ" secondAttribute="bottom" constant="8" id="cDx-qj-4rB"/>
                             <constraint firstItem="slR-FZ-P8C" firstAttribute="centerX" secondItem="v1j-KY-HWZ" secondAttribute="centerX" id="meP-og-7Ke"/>
                             <constraint firstItem="LQ0-32-dCQ" firstAttribute="leading" secondItem="v1j-KY-HWZ" secondAttribute="leading" id="qbd-nH-xAQ"/>
                             <constraint firstItem="V21-y6-HrX" firstAttribute="top" secondItem="v1j-KY-HWZ" secondAttribute="bottom" constant="8" id="vgp-of-aui"/>
@@ -929,7 +1019,6 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKZ-dP-yvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="YPu-Pe-b2G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="144" y="-1403"/>
         </scene>
@@ -952,36 +1041,73 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                     <action selector="cancel:" destination="uyj-hn-2aH" eventType="touchUpInside" id="1m3-WU-8He"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="IFS-3v-xdq">
-                                <rect key="frame" x="175" y="49" width="250" height="503"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Yns-Gj-4oB">
+                                <rect key="frame" x="240" y="531" width="120" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
-                                        <rect key="frame" x="47" y="0.0" width="156" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="auto-login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-3A-BxC">
+                                        <rect key="frame" x="0.0" y="5" width="80" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-uz-MFo">
-                                        <rect key="frame" x="33" y="81" width="185" height="101"/>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsP-aB-lwk">
+                                        <rect key="frame" x="90" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="CeC-EI-Bbi"/>
+                                            <constraint firstAttribute="height" constant="30" id="dGB-pa-Muk"/>
+                                        </constraints>
+                                        <state key="normal" image="unchecked box"/>
+                                        <state key="disabled" image="unchecked box"/>
+                                        <state key="selected" image="checked box"/>
+                                        <connections>
+                                            <action selector="autoLoginCheckbox:" destination="4g5-2F-UuW" eventType="touchUpInside" id="eTa-zT-CvO"/>
+                                            <action selector="autologinCheckbox:" destination="uyj-hn-2aH" eventType="touchUpInside" id="YSg-1D-kyh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="UeO-2l-llL"/>
+                                    <constraint firstAttribute="height" constant="30" id="yF5-av-SJU"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make an Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
+                                <rect key="frame" x="204" y="50" width="193" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6nt-mm-ACw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="IFS-3v-xdq">
+                                <rect key="frame" x="175" y="99" width="251" height="402"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-uz-MFo">
+                                        <rect key="frame" x="33" y="0.0" width="185" height="112"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA2-Z3-h0v">
-                                                <rect key="frame" x="0.0" y="0.0" width="185" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="qNt-JD-obR"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6jS-HE-uRo">
-                                                <rect key="frame" x="0.0" y="31" width="185" height="30"/>
+                                                <rect key="frame" x="0.0" y="41" width="185" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="185" id="aOT-Iz-f5d"/>
+                                                    <constraint firstAttribute="height" constant="30" id="f6Y-KW-is4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEM-p6-kg6">
-                                                <rect key="frame" x="0.0" y="71" width="185" height="30"/>
+                                                <rect key="frame" x="0.0" y="82" width="185" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="185" id="QUq-1G-YpD"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ajC-48-FyV"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -989,20 +1115,24 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="62A-qh-IwR">
-                                        <rect key="frame" x="33" y="238" width="185" height="144"/>
+                                        <rect key="frame" x="33" y="142" width="185" height="165"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6P-pW-hho">
-                                                <rect key="frame" x="0.0" y="0.0" width="185" height="61"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIh-TF-fhu">
-                                                        <rect key="frame" x="22" y="0.0" width="141" height="21"/>
+                                                        <rect key="frame" x="22" y="0.0" width="141" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="yXJ-6l-1eW"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bTJ-T2-Nge">
-                                                        <rect key="frame" x="0.0" y="31" width="185" height="30"/>
+                                                        <rect key="frame" x="0.0" y="40" width="185" height="30"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="Om0-FQ-fH4"/>
                                                             <constraint firstAttribute="width" constant="185" id="ZCk-wZ-qRB"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1011,16 +1141,22 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93J-12-8Dg">
-                                                <rect key="frame" x="0.0" y="81" width="185" height="63"/>
+                                                <rect key="frame" x="0.0" y="90" width="185" height="75"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyu-uG-gHw">
-                                                        <rect key="frame" x="67" y="0.0" width="51" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Team: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyu-uG-gHw">
+                                                        <rect key="frame" x="67" y="0.0" width="51" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="lJM-4k-QEp"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="03A-Q3-9Ac">
-                                                        <rect key="frame" x="12" y="21" width="161" height="30"/>
+                                                        <rect key="frame" x="12" y="30" width="161" height="31"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="t7h-hN-Jjr"/>
+                                                        </constraints>
                                                         <segments>
                                                             <segment title="Yellow"/>
                                                             <segment title="Blue"/>
@@ -1028,7 +1164,10 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                         </segments>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="G9P-B0-Mct">
-                                                        <rect key="frame" x="32" y="50" width="121" height="13"/>
+                                                        <rect key="frame" x="32" y="60" width="121" height="15"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="15" id="Vau-wc-CH2"/>
+                                                        </constraints>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Your team decision is final">
                                                                 <attributes>
@@ -1052,18 +1191,19 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                 </variation>
                                             </stackView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="93J-12-8Dg" firstAttribute="top" secondItem="62A-qh-IwR" secondAttribute="top" constant="81" id="QUE-2J-thu"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ORW-Bw-SsT">
-                                        <rect key="frame" x="0.0" y="438" width="250" height="65"/>
+                                        <rect key="frame" x="1" y="337" width="250" height="65"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEA-OG-oca">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking below you agree to this policy =&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTt-h1-DNt">
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="125" id="em8-N6-tfS"/>
+                                                            <constraint firstAttribute="height" constant="30" id="zwm-TL-6i0"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1072,7 +1212,7 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                                         <rect key="frame" x="125" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Policy"/>
                                                         <connections>
-                                                            <segue destination="ZPt-ks-ECo" kind="presentation" id="7WZ-ec-RMj"/>
+                                                            <action selector="policyButton:" destination="uyj-hn-2aH" eventType="touchUpInside" id="aSU-cQ-hz3"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1113,33 +1253,38 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="nE5-uz-MFo" firstAttribute="leading" secondItem="IFS-3v-xdq" secondAttribute="leading" constant="33" id="AO2-OM-LQh"/>
                                     <constraint firstItem="nE5-uz-MFo" firstAttribute="leading" secondItem="62A-qh-IwR" secondAttribute="leading" id="CMd-8f-qbA"/>
-                                    <constraint firstItem="62A-qh-IwR" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="top" constant="238" id="CZq-Z1-ghY"/>
-                                    <constraint firstItem="nE5-uz-MFo" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="top" constant="81" id="V0R-Nu-L82"/>
-                                    <constraint firstItem="ORW-Bw-SsT" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="top" constant="438" id="Wfn-53-HKG"/>
+                                    <constraint firstItem="62A-qh-IwR" firstAttribute="top" secondItem="nE5-uz-MFo" secondAttribute="bottom" constant="30" id="EBm-vC-CR9"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.81169871790000003" green="0.81169871790000003" blue="0.81169871790000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="aXP-ux-y5v" firstAttribute="top" secondItem="dhY-wU-nEe" secondAttribute="bottom" constant="30" id="6PW-pS-MNa"/>
+                            <constraint firstItem="rh5-Kt-usg" firstAttribute="top" secondItem="Yns-Gj-4oB" secondAttribute="bottom" constant="20" id="8Zh-Ql-Sun"/>
                             <constraint firstItem="QDl-ko-sgc" firstAttribute="top" secondItem="dhY-wU-nEe" secondAttribute="bottom" id="CKs-IO-9fR"/>
+                            <constraint firstItem="Yns-Gj-4oB" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="CXj-de-YZR"/>
+                            <constraint firstItem="aXP-ux-y5v" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="VCl-4E-yp6"/>
                             <constraint firstItem="IFS-3v-xdq" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="bSB-xP-x20"/>
-                            <constraint firstItem="IFS-3v-xdq" firstAttribute="top" secondItem="dhY-wU-nEe" secondAttribute="bottom" constant="43" id="bgr-cO-bzI"/>
-                            <constraint firstItem="IFS-3v-xdq" firstAttribute="centerY" secondItem="elk-Si-E6l" secondAttribute="centerY" id="cVv-RZ-8J8"/>
+                            <constraint firstItem="Yns-Gj-4oB" firstAttribute="top" secondItem="IFS-3v-xdq" secondAttribute="bottom" constant="30" id="lpF-wN-LDB"/>
                             <constraint firstItem="QDl-ko-sgc" firstAttribute="leading" secondItem="elk-Si-E6l" secondAttribute="leadingMargin" id="tKo-20-Cyk"/>
+                            <constraint firstItem="IFS-3v-xdq" firstAttribute="centerY" secondItem="elk-Si-E6l" secondAttribute="centerY" id="zhb-Pb-xmZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="bgr-cO-bzI"/>
+                                <exclude reference="8Zh-Ql-Sun"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="autologinCheckbox" destination="CsP-aB-lwk" id="vc1-PI-Cxn"/>
                         <outlet property="createAccButton" destination="lhH-Ef-Nqq" id="Kn0-xR-vBG"/>
                         <outlet property="emailTextField" destination="6jS-HE-uRo" id="r45-2U-wmo"/>
                         <outlet property="nameTextField" destination="bTJ-T2-Nge" id="fMl-Dn-OTF"/>
                         <outlet property="passwordTextField" destination="JEM-p6-kg6" id="ACs-Kt-g7p"/>
                         <outlet property="teamSelection" destination="03A-Q3-9Ac" id="j7O-65-Oe2"/>
+                        <segue destination="ZPt-ks-ECo" kind="presentation" identifier="policy" id="LVj-ji-N70"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQx-vH-Cfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1203,9 +1348,14 @@ For any technical difficulties or questions plese email: pikanect@gmail.com or p
         </scene>
     </scenes>
     <resources>
+        <image name="Facebook_round" width="333" height="333"/>
         <image name="Image" width="238" height="212"/>
+        <image name="Mail_Icon_clip_art_medium" width="100" height="64"/>
+        <image name="Twitterbird_round" width="202" height="202"/>
+        <image name="checked box" width="170" height="170"/>
+        <image name="unchecked box" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="COU-0v-AZq"/>
+        <segue reference="Wts-gd-a0d"/>
     </inferredMetricsTieBreakers>
 </document>

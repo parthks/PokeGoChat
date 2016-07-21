@@ -14,6 +14,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 //	@IBOutlet weak var createAccLabel: UILabel!
 //	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
+	@IBOutlet weak var autologinCheckbox: UIButton!
 	@IBOutlet weak var createAccButton: UIButton!
 	@IBAction func cancel(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
@@ -65,15 +66,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			Firebase.saveUser(user, WithKey: userKey)
 			self.userMadeSuccessfully = true
 			
-			let defaults = NSUserDefaults.standardUserDefaults()
-			defaults.setObject(email, forKey: "email")
-			defaults.setObject(password, forKey: "password")
-			defaults.setObject(CurrentUser.currentUser.id, forKey: "id")
-			defaults.setObject(CurrentUser.currentUser.name, forKey: "name")
-			defaults.setObject(CurrentUser.currentUser.team, forKey: "team")
-			defaults.setBool(CurrentUser.currentUser.location, forKey: "location")
-			defaults.setObject(CurrentUser.currentUser.latitude, forKey: "latitude")
-			defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
+			if self.autologinCheckbox.selected {
+				let defaults = NSUserDefaults.standardUserDefaults()
+				defaults.setObject(email, forKey: "email")
+				defaults.setObject(password, forKey: "password")
+				defaults.setObject(CurrentUser.currentUser.id, forKey: "id")
+				defaults.setObject(CurrentUser.currentUser.name, forKey: "name")
+				defaults.setObject(CurrentUser.currentUser.team, forKey: "team")
+				defaults.setBool(CurrentUser.currentUser.location, forKey: "location")
+				defaults.setObject(CurrentUser.currentUser.latitude, forKey: "latitude")
+				defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
+			}
 			
 			self.performSegueWithIdentifier("madeNewuser", sender: nil)
 		}
@@ -127,6 +130,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		return true
 	}
 
+	@IBAction func policyButton(sender: AnyObject) {
+		performSegueWithIdentifier("policy", sender: nil)
+	}
+	
+	
+	
+	@IBAction func autologinCheckbox(sender: UIButton) {
+		sender.selected = !sender.selected
+	}
     /*
     // MARK: - Navigation
 

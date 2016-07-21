@@ -11,6 +11,7 @@ import Firebase
 
 class SIgnInViewController: UIViewController, UITextFieldDelegate {
 
+	@IBOutlet weak var checkboxButton: UIButton!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var signInButton: UIButton!
@@ -20,7 +21,6 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func signInButtonTapped(sender: UIButton) {
 		view.endEditing(true)
-		
 		signIn()
 	}
 	
@@ -37,7 +37,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		let email = emailTextField.text!
 		let password = passwordTextField.text!
 		
-		Firebase.loginWithEmail(email, AndPassword: password) { (userKey) in
+		Firebase.loginWithEmail(email, AndPassword: password) { [unowned self] (userKey) in
 			self.signInButton.enabled = false
 			print("finished logging in")
 			Firebase.getUserDataWithKey(userKey) { (user) in
@@ -45,15 +45,18 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 				print("LOGGED IN USER: \(user.name)")
 				self.userSignedInSucessfully = true
 				
-				let defaults = NSUserDefaults.standardUserDefaults()
-				defaults.setObject(email, forKey: "email")
-				defaults.setObject(password, forKey: "password")
-				defaults.setObject(CurrentUser.currentUser.id, forKey: "id")
-				defaults.setObject(CurrentUser.currentUser.name, forKey: "name")
-				defaults.setObject(CurrentUser.currentUser.team, forKey: "team")
-				defaults.setBool(CurrentUser.currentUser.location, forKey: "location")
-				defaults.setObject(CurrentUser.currentUser.latitude, forKey: "latitude")
-				defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
+				if self.checkboxButton.selected {
+					let defaults = NSUserDefaults.standardUserDefaults()
+					defaults.setObject(email, forKey: "email")
+					defaults.setObject(password, forKey: "password")
+					defaults.setObject(CurrentUser.currentUser.id, forKey: "id")
+					defaults.setObject(CurrentUser.currentUser.name, forKey: "name")
+					defaults.setObject(CurrentUser.currentUser.team, forKey: "team")
+					defaults.setBool(CurrentUser.currentUser.location, forKey: "location")
+					defaults.setObject(CurrentUser.currentUser.latitude, forKey: "latitude")
+					defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
+				}
+				
 				
 				self.performSegueWithIdentifier("loggedInUser", sender: nil)
 			}
@@ -141,6 +144,9 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		return true
 	}
     
+	@IBAction func autoLoginCheckbox(sender: UIButton) {
+		sender.selected = !sender.selected
+	}
 
     /*
     // MARK: - Navigation

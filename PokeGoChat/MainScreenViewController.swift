@@ -48,11 +48,15 @@ class MainScreenViewController: UIViewController {
 		locationManager.requestWhenInUseAuthorization()
 		//locationManager.requestLocation()
 		
-		let bgImage     = UIImage(named: CurrentUser.currentUser.team);
-		let imageView   = UIImageView(frame: self.view.bounds);
-		imageView.image = bgImage
-		self.view.addSubview(imageView)
-		self.view.sendSubviewToBack(imageView)
+		let bgImage     = UIImage(named: CurrentUser.currentUser.team)
+		let bgimageView   = UIImageView(frame: self.view.bounds)
+		bgimageView.image = bgImage
+		self.view.addSubview(bgimageView)
+		self.view.sendSubviewToBack(bgimageView)
+		
+		let teamBgImage = UIImage(named: "\(CurrentUser.currentUser.team)Rect")
+		teamChat.setBackgroundImage(teamBgImage, forState: .Normal)
+		
 	}
 
 	
