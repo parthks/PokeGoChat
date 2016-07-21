@@ -79,7 +79,15 @@ class Firebase {
 		let key = ref.key
 		fdata["messageKey"] = key
 		ref.setValue(fdata)
-
+		
+		//archiving message
+		let archivedMessage = [
+			"messageKey" : key,
+			"userID" : CurrentUser.currentUser.id,
+			"roomType" : type.rawValue
+		]
+		_rootRef.child("archivedMessages").childByAutoId().setValue(archivedMessage)
+		
 		print("sent message")
 	}
 	
@@ -142,7 +150,7 @@ class Firebase {
 				print("got into message listiner...")
 				if snap.exists(){
 					let data = snap.value as! [String: String]
-						
+					print("LISTINING FOR MESSAGES")
 					if !blockedUsers.contains(data["userId"]!) {
 						completion(snap)
 					}else{
@@ -280,14 +288,20 @@ class Firebase {
 	
 	
 	//MARK: Remove Observers
-	static func removeTeamMessageListener() {
+	static func removeTeamListeners() {
 		_rootRef.child(dataType.TeamMessages.rawValue).child(CurrentUser.currentTeamChatRoomKey).removeAllObservers()
-		
+		_rootRef.child(dataType.TeamUsers.rawValue).child(CurrentUser.currentTeamChatRoomKey).removeAllObservers()
 	}
 	
-	static func removeGeneralMessageListener() {
-		_rootRef.child(dataType.GeneralMessages.rawValue).child(CurrentUser.currentTeamChatRoomKey).removeAllObservers()
-		
+	static func removeGeneralChatListeners() {
+		_rootRef.child(dataType.GeneralMessages.rawValue).child(CurrentUser.currentGeneralChatRoomKey).removeAllObservers()
+	}
+	
+	
+	
+	static func removeListeningForBlockedUsers(){
+		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).removeAllObservers()
+
 	}
 	
 	
@@ -338,7 +352,10 @@ class Firebase {
 	}
 	
 	static func getAllBlockedUsersForCurrentUserWithBlock(completion: [String] -> Void) {
-		_rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id).observeEventType(.Value) { (snap, prevChildKey) in
+		
+		var handle:UInt = 0
+		let ref = _rootRef.child(dataType.BlockedUsers.rawValue).child(CurrentUser.currentUser.id)
+		handle = ref.observeEventType(.Value) { (snap, prevChildKey) in
 			let blockedUsers: [String]
 			if snap.exists() {
 				let data = snap.value as! [String: String]
@@ -347,30 +364,31 @@ class Firebase {
 				blockedUsers = []
 			}
 			
+			ref.removeObserverWithHandle(handle)
 			completion(blockedUsers)
 		}
 	}
 	
 	
 	//MARK: Friends
-	static func addUserWithKeyAsFriendToCurrentUser(key: String) {
-		_rootRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).setValue([key: "1"])
-	}
-	
-	static func getAllFrindsKeyOfCurrnetUserWithBlock(completion: [String] -> Void) {
-		_rootRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).observeSingleEventOfType(.Value) { snap, prevChildKey in
-			var friends = [String]()
-			guard snap.exists() else {completion(friends); return}
-			
-			for dictValue in snap.value as! [String: String] {
-				let key = dictValue.0
-				print(key)
-				friends.append(key)
-			}
-			
-			completion(friends)
-		}
-	}
+//	static func addUserWithKeyAsFriendToCurrentUser(key: String) {
+//		_rootRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).setValue([key: "1"])
+//	}
+//	
+//	static func getAllFrindsKeyOfCurrnetUserWithBlock(completion: [String] -> Void) {
+//		_rootRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).observeSingleEventOfType(.Value) { snap, prevChildKey in
+//			var friends = [String]()
+//			guard snap.exists() else {completion(friends); return}
+//			
+//			for dictValue in snap.value as! [String: String] {
+//				let key = dictValue.0
+//				print(key)
+//				friends.append(key)
+//			}
+//			
+//			completion(friends)
+//		}
+//	}
 	
 }
 

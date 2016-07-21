@@ -20,17 +20,21 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 				Firebase.removeBlockedUserWithId(blockedUsers[index].id)
 			}
 		}
-		
+		print("going back to profile")
 		self.navigationController?.popViewControllerAnimated(true)
 		
 	}
 	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		Firebase.removeListeningForBlockedUsers()
+	}
 	
 	@IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		Firebase.getAllBlockedUsersForCurrentUserWithBlock(){ allblockedUsers in
+		Firebase.getAllBlockedUsersForCurrentUserWithBlock(){ [unowned self] allblockedUsers in
 			for key in allblockedUsers {
 				Firebase.getUserDataWithKey(key) { user in
 					self.blockedUsers.append(user)

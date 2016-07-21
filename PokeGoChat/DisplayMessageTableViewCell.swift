@@ -37,10 +37,10 @@ class DisplayMessageTableViewCell: UITableViewCell {
 		delegate.blockUserOnCell(self)
 	}
 	
-	@IBAction func addFriend(sender: AnyObject) {
-		Firebase.addUserWithKeyAsFriendToCurrentUser(userID)
-		Firebase.displayAlertWithtitle("Congratulations", message: "You have made a new friend!")
-	}
+//	@IBAction func addFriend(sender: AnyObject) {
+//		Firebase.addUserWithKeyAsFriendToCurrentUser(userID)
+//		Firebase.displayAlertWithtitle("Congratulations", message: "You have made a new friend!")
+//	}
 	
     override func awakeFromNib() {
         super.awakeFromNib()

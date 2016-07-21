@@ -32,7 +32,24 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	
 	
 	@IBAction func unwindFromUserPolicyScene(segue:UIStoryboardSegue) {}
+
 	
+	let blackTextAttributes: [NSObject : AnyObject] = [
+		NSForegroundColorAttributeName: UIColor.blackColor()
+	]
+	
+	@IBAction func segmentControl(sender: UISegmentedControl) {
+		switch sender.selectedSegmentIndex {
+		case 0:
+			sender.tintColor = UIColor.yellowColor()
+		case 1:
+			sender.tintColor = UIColor.blueColor()
+		case 2:
+			sender.tintColor = UIColor.redColor()
+		default: break
+		}
+		
+	}
 	
 	@IBAction func createAccAndSignIn(sender: UIButton) {
 		view.endEditing(true)
@@ -40,7 +57,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	var userMadeSuccessfully: Bool = false
-	
 
 	func signUp(){
 		guard emailTextField.text != "" else {return}
@@ -54,9 +70,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		let email = emailTextField.text!
 		let password = passwordTextField.text!
 		let name = nameTextField.text!
-		let team = teamSelection.titleForSegmentAtIndex(teamSelection.selectedSegmentIndex)!
 		
-		Firebase.createUserWithEmail(email, AndPassword: password) { (userKey) in
+		let teamName = teamSelection.titleForSegmentAtIndex(teamSelection.selectedSegmentIndex)!
+		var team = ""
+		
+		if teamName == "Instinct" {
+			team = "Yellow"
+		} else if teamName == "Mystic" {
+			team = "Blue"
+		} else {
+			team = "Red"
+		}
+		
+		print(CurrentUser.acceptedPolicy)
+		if !CurrentUser.acceptedPolicy{
+			self.performSegueWithIdentifier("policy", sender: nil)
+			return
+		}
+		
+		
+		Firebase.createUserWithEmail(email, AndPassword: password) { [unowned self] (userKey) in
 			self.createAccButton.enabled = false
 			print("back in the program")
 			
@@ -78,7 +111,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 				defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
 			}
 			
-			self.performSegueWithIdentifier("madeNewuser", sender: nil)
+			self.performSegueWithIdentifier("madeNewUser", sender: nil)
 		}
 		
 		print("waiting for Firebase to make user")
@@ -107,6 +140,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		self.view.addSubview(imageView)
 		self.view.sendSubviewToBack(imageView)
 		
+		teamSelection.setTitleTextAttributes(blackTextAttributes, forState: .Selected)
         // Do any additional setup after loading the view.
     }
 

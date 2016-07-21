@@ -35,19 +35,20 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	
-	override func viewWillDisappear(animated: Bool) {
-		super.viewWillDisappear(animated)
-		print("removing team chat timer...")
-		//locationManager.stopUpdatingLocation()
-		NSNotificationCenter.defaultCenter().removeObserver(self)
-		timer.invalidate()
-		//Firebase.removeTeamMessageListener()
-	}
+//	override func viewWillDisappear(animated: Bool) {
+//		super.viewWillDisappear(animated)
+//		print("removing team chat timer...")
+//		//locationManager.stopUpdatingLocation()
+//		NSNotificationCenter.defaultCenter().removeObserver(self)
+//		timer.invalidate()
+//		Firebase.removeTeamListeners()
+//	}
 	
 	deinit {
 		print("removing team chat...")
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 		timer.invalidate()
+		Firebase.removeTeamListeners()
 	}
 	
 	
@@ -86,7 +87,15 @@ class TeamChatViewController: UIViewController {
 		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
-		self.navigationItem.title = "Team \(CurrentUser.currentUser.team)"
+		if CurrentUser.currentUser.team == "Yellow"{
+			self.navigationItem.title = "Team Instinct"
+		} else if CurrentUser.currentUser.team == "Blue" {
+			self.navigationItem.title = "Team Mystic"
+		} else {
+			self.navigationItem.title = "Team Valor"
+		}
+		
+		
 		myLocationSwitch.on = CurrentUser.currentUser.location
 		self.hideKeyboardWhenTappedAround()
 		
@@ -113,6 +122,10 @@ class TeamChatViewController: UIViewController {
 		imageView.image = bgImage
 		tableView.backgroundView = imageView
 		
+		let sendBg = UIImage(named: "\(CurrentUser.currentUser.team)OvalSendButton")
+		sendButton.setBackgroundImage(sendBg, forState: .Normal)
+
+		
 		listenForChatChanges()
     }
 	
@@ -135,7 +148,7 @@ class TeamChatViewController: UIViewController {
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		Firebase.removeUserAtCurrentTeamRoom()
 		CurrentUser.inAChatRoom = nil
-		
+		Firebase.removeTeamListeners()
 		let defaults = NSUserDefaults.standardUserDefaults()
 	
 		guard !defaults.boolForKey("doneAppRating") && defaults.boolForKey("quitApp") else {
@@ -351,8 +364,9 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 				Firebase.saveNewBlockedUserWithId(cell.userID)
 				//messages.removeAll()
 				self.messages = []
-				Firebase.removeTeamMessageListener()
-				//listenForChatChanges()
+				self.tableView.reloadData()
+				Firebase.removeTeamListeners()
+				self.listenForChatChanges()
 				//self.dismissViewControllerAnimated(true, completion: nil)
 			}
 			

@@ -50,7 +50,15 @@ class MyProfileViewController: UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		nameLabel.text = CurrentUser.currentUser.name
-		teamName.text = CurrentUser.currentUser.team
+		
+		if CurrentUser.currentUser.team == "Yellow"{
+			teamName.text = "Team Instinct"
+		} else if CurrentUser.currentUser.team == "Blue" {
+			teamName.text = "Team Mystic"
+		} else {
+			teamName.text = "Team Valor"
+		}
+		
 		locationSwitch.setOn(CurrentUser.currentUser.location, animated: false)
 		
 		let bgImage     = UIImage(named: CurrentUser.currentUser.team);

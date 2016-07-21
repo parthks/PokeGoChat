@@ -17,6 +17,7 @@ class GeneralChatViewController: UIViewController {
 	
 	@IBOutlet weak var bannerView: GADBannerView!
 	
+	@IBOutlet weak var sendButton: UIButton!
 	var messages: [FIRDataSnapshot] = []
 	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
@@ -25,9 +26,19 @@ class GeneralChatViewController: UIViewController {
 	deinit {
 		print("removing general view controller...")
 		NSNotificationCenter.defaultCenter().removeObserver(self)
+		//Firebase.removeGeneralChatListeners()
 	}
 	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		Firebase.removeGeneralChatListeners()
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+	
+	
+	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
 		//let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
@@ -43,6 +54,8 @@ class GeneralChatViewController: UIViewController {
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
 		
+		let sendBg = UIImage(named: "TricolorSendButton")
+		sendButton.setBackgroundImage(sendBg, forState: .Normal)
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
@@ -55,21 +68,23 @@ class GeneralChatViewController: UIViewController {
 		// Do any additional setup after loading the view.
 	}
 	
+	
 	func listenForChatChanges(){
 		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (snapshot) in
 			print("got a new message")
 			self.messages.append(snapshot)
 			//print(self.messages)
-			self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
+			//self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
-			//self.tableView.reloadData()
+			self.tableView.reloadData()
 		}
 	}
 	
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		Firebase.removeUserAtCurrentGeneralRoom()
-		self.dismissViewControllerAnimated(true, completion: nil)
 		CurrentUser.inAChatRoom = nil
+		Firebase.removeGeneralChatListeners()
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
 	/*
@@ -233,18 +248,19 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 			let alert = UIAlertController(title: "Are you sure you want to block this user?", message: "All messages from this user will be hidden", preferredStyle: .Alert)
 			let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 			
-			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { [unowned self] (alert) in
+			let blockButton = UIAlertAction(title: "Block!", style: .Destructive) { [unowned self] (alert) in
 				Firebase.displayAlertWithtitle("Successfully Blocked User", message: "All messages from this user have been blocked")
 				Firebase.saveNewBlockedUserWithId(cell.userID)
+				print("blocked user")
 				//messages.removeAll()
 				self.messages = []
-				Firebase.removeGeneralMessageListener()
-				//listenForChatChanges()
+				Firebase.removeGeneralChatListeners()
+				self.listenForChatChanges()
 				//self.dismissViewControllerAnimated(true, completion: nil)
 			}
 			
 			alert.addAction(cancelButton)
-			alert.addAction(reportButton)
+			alert.addAction(blockButton)
 			
 			presentViewController(alert, animated: true, completion: nil)
 			

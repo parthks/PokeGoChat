@@ -83,6 +83,7 @@ class MainScreenViewController: UIViewController {
 		if segue.identifier == "teamChat"{
 			let destinationNav = segue.destinationViewController as! UINavigationController
 			let destination = destinationNav.viewControllers[0] as! TeamChatViewController
+			
 			destination.chatRoomKey = sender as! String
 			
 		} else if segue.identifier == "generalChat"{

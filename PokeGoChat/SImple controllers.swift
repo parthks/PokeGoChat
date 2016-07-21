@@ -41,7 +41,7 @@ class UserPolicy: UIViewController {
 		
 		// Do any additional setup after loading the view.
 	}
-	
+	var acceptedPolicy = false
 	@IBAction func close(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -50,4 +50,11 @@ class UserPolicy: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 
+	@IBAction func agreeButton(sender: AnyObject) {
+		CurrentUser.acceptedPolicy = true
+		print(CurrentUser.acceptedPolicy)
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
+	
 }
