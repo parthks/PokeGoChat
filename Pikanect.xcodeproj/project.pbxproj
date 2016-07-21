@@ -32,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeGoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C6D7846DF943CDC01FA98E4 /* Pods-PokeGoChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.debug.xcconfig"; sourceTree = "<group>"; };
 		B217195B1D3EDC7800AA7DCE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B260C34D1D34565F0037A97D /* Pikanect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pikanect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260C3501D34565F0037A97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +56,6 @@
 		B2C1E71A1D401768007E36B6 /* SImple controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SImple controllers.swift"; sourceTree = "<group>"; };
 		B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pikanect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCD2EF3082668CBF8C44405 /* Pods-Pikanect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pikanect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pikanect/Pods-Pikanect.release.xcconfig"; sourceTree = "<group>"; };
-		DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGoChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGoChat/Pods-PokeGoChat.release.xcconfig"; sourceTree = "<group>"; };
 		E6B97804D01535C7BA1E0087 /* Pods-Pikanect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pikanect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pikanect/Pods-Pikanect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,8 +85,6 @@
 		49DAD48D644FDF1476C0A581 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7C6D7846DF943CDC01FA98E4 /* Pods-PokeGoChat.debug.xcconfig */,
-				DDF8D5F92F88AF5E1C406833 /* Pods-PokeGoChat.release.xcconfig */,
 				E6B97804D01535C7BA1E0087 /* Pods-Pikanect.debug.xcconfig */,
 				DBCD2EF3082668CBF8C44405 /* Pods-Pikanect.release.xcconfig */,
 			);

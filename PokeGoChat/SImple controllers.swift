@@ -26,7 +26,7 @@ class AppInfo: UIViewController {
 	}
 
 	@IBAction func facebook(sender: AnyObject) {
-		UIApplication.sharedApplication().openURL(NSURL(string : "https://m.facebook.com/pikanect/")!)
+		UIApplication.sharedApplication().openURL(NSURL(string : "https://facebook.com/pikanect/")!)
 	}
 	
 	@IBAction func twitter(sender: AnyObject) {

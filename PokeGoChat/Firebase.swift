@@ -20,6 +20,7 @@ enum dataType: String{
 	case GeneralLocations = "generalLocations"
 	case ReportedMessages = "reportedMessages"
 	case BlockedUsers = "userFollowedByBlockedUsers"
+	case Friends = "friendsOf"
 	
 }
 
@@ -77,14 +78,7 @@ class Firebase {
 		let ref = _rootRef.child(type.rawValue).child(key).childByAutoId()
 		let key = ref.key
 		fdata["messageKey"] = key
-		ref.setValue(fdata, withCompletionBlock: {
-			(error:NSError?, ref:FIRDatabaseReference!) in
-			if error != nil{
-				print("EEROR\n\n\n\n\n")
-				displayErrorAlert((error!.localizedDescription))
-			}
-			
-		})
+		ref.setValue(fdata)
 
 		print("sent message")
 	}
@@ -105,14 +99,7 @@ class Firebase {
 	
 	static func saveUser(user: User, WithKey key: String){
 		//print("saving user")
-		_rootRef.child(dataType.Users.rawValue).child(key).setValue(user.convertToFirebase(), withCompletionBlock: {
-			(error:NSError?, ref:FIRDatabaseReference!) in
-			if error != nil{
-				//print("EEROR\n\n\n\n\n")
-				displayErrorAlert((error!.localizedDescription))
-			}
-			
-		})
+		_rootRef.child(dataType.Users.rawValue).child(key).setValue(user.convertToFirebase())
 
 		//print("saved user")
 	}
@@ -120,14 +107,7 @@ class Firebase {
 	static func saveLocationOfUserWithKey(key: String, latitude: Double, longitude: Double){
 		//print("saving user location")
 		_rootRef.child(dataType.Users.rawValue).child(key).child("latitude").setValue(latitude)
-		_rootRef.child(dataType.Users.rawValue).child(key).child("longitude").setValue(longitude, withCompletionBlock: {
-			(error:NSError?, ref:FIRDatabaseReference!) in
-			if error != nil{
-				print("EEROR\n\n\n\n\n")
-				displayErrorAlert((error!.localizedDescription))
-			}
-			
-		})
+		_rootRef.child(dataType.Users.rawValue).child(key).child("longitude").setValue(longitude)
 		//print("saved user location")
 	}
 	
@@ -216,8 +196,6 @@ class Firebase {
 				completion(user)
 			}
 		
-		}, withCancelBlock: { error in
-			Firebase.displayErrorAlert(error.localizedDescription)
 		})
 	}
 	
@@ -372,6 +350,28 @@ class Firebase {
 			completion(blockedUsers)
 		}
 	}
+	
+	
+	//MARK: Friends
+	static func addUserWithKeyAsFriendToCurrentUser(key: String) {
+		_rootRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).setValue([key: "1"])
+	}
+	
+	static func getAllFrindsKeyOfCurrnetUserWithBlock(completion: [String] -> Void) {
+		_rootRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).observeSingleEventOfType(.Value) { snap, prevChildKey in
+			var friends = [String]()
+			guard snap.exists() else {completion(friends); return}
+			
+			for dictValue in snap.value as! [String: String] {
+				let key = dictValue.0
+				print(key)
+				friends.append(key)
+			}
+			
+			completion(friends)
+		}
+	}
+	
 }
 
 func getLocationString(latitude latitude: Double, longitude: Double) -> String{

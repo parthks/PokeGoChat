@@ -8,9 +8,10 @@
 
 import UIKit
 
-protocol ReportAndBlockUserButtonPressedDelegate: class{
+protocol ChatCellDelegate: class{
 	func reportUserOnCell(cell: DisplayMessageTableViewCell)
 	func blockUserOnCell(cell: DisplayMessageTableViewCell)
+	//func addFriendOnWithKey(friendKey: String)
 }
 
 class DisplayMessageTableViewCell: UITableViewCell {
@@ -18,11 +19,12 @@ class DisplayMessageTableViewCell: UITableViewCell {
 	@IBOutlet weak var nameOfUser: UILabel!
 	@IBOutlet weak var message: UILabel!
 	@IBOutlet weak var reportButton: UIButton!
+	@IBOutlet weak var addFriend: UIButton!
 	
-	weak var delegate: ReportAndBlockUserButtonPressedDelegate!
+	weak var delegate: ChatCellDelegate!
 	var messageKey: String = ""
 	var userID: String = ""
-	var reported: String = "false"
+	//var reported: String = "false"
 	
 	@IBAction func reportButton(sender: AnyObject) {
 		print("report message")
@@ -35,6 +37,10 @@ class DisplayMessageTableViewCell: UITableViewCell {
 		delegate.blockUserOnCell(self)
 	}
 	
+	@IBAction func addFriend(sender: AnyObject) {
+		Firebase.addUserWithKeyAsFriendToCurrentUser(userID)
+		Firebase.displayAlertWithtitle("Congratulations", message: "You have made a new friend!")
+	}
 	
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -19,7 +19,8 @@ class TeamChatViewController: UIViewController {
 	@IBOutlet weak var inputText: UITextField!
 	@IBOutlet weak var myLocationSwitch: UISwitch!
 	@IBOutlet weak var mapView: MKMapView!
-	
+	@IBOutlet weak var sendButton: UIButton!
+
 	var locationManager = CLLocationManager()
 	var users = [User]() {
 		didSet{
@@ -111,7 +112,6 @@ class TeamChatViewController: UIViewController {
 		let imageView   = UIImageView(frame: tableView.bounds)
 		imageView.image = bgImage
 		tableView.backgroundView = imageView
-		
 		
 		listenForChatChanges()
     }
@@ -291,7 +291,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 
 
 //MARK: tableView
-extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, ReportAndBlockUserButtonPressedDelegate{
+extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, ChatCellDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}

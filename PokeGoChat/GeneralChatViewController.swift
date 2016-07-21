@@ -43,6 +43,7 @@ class GeneralChatViewController: UIViewController {
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
 		
+		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
 //		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
@@ -179,7 +180,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 
 
 //MARK: tableView
-extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate, ReportAndBlockUserButtonPressedDelegate {
+extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate, ChatCellDelegate {
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
@@ -251,6 +252,7 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		
 		
 	}
+	
 
 }
 
