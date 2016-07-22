@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4g5-2F-UuW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -928,6 +928,30 @@ For any technical difficulties or questions plese contact using the links below:
             </objects>
             <point key="canvasLocation" x="2818" y="835"/>
         </scene>
+        <!--Google Sign In-->
+        <scene sceneID="tos-0v-Yfc">
+            <objects>
+                <viewController id="02a-AF-dVp" customClass="GoogleSignIn" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cxp-TX-hsG"/>
+                        <viewControllerLayoutGuide type="bottom" id="e6i-0i-uP7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h9l-x8-g8d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eF-jM-4XM" customClass="GIDSignInButton">
+                                <rect key="frame" x="20" y="28" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bEx-Pw-0uN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-597" y="90"/>
+        </scene>
         <!--Ign In View Controller-->
         <scene sceneID="NlD-VW-lSv">
             <objects>
@@ -1045,6 +1069,10 @@ For any technical difficulties or questions plese contact using the links below:
                                     <segue destination="uyj-hn-2aH" kind="presentation" identifier="goingToSignUp" id="Xhe-Vm-dAo"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQa-7Q-2zV" customClass="GIDSignInButton">
+                                <rect key="frame" x="20" y="20" width="185" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.81169871794871784" green="0.81169871794871784" blue="0.81169871794871784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1239,7 +1267,7 @@ Caution: This app uses your location to help find nearby teammates and pokemon u
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="03A-Q3-9Ac">
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="03A-Q3-9Ac">
                                                         <rect key="frame" x="3" y="30" width="179" height="31"/>
                                                         <color key="backgroundColor" red="0.53032852564102551" green="0.53032852564102551" blue="0.53032852564102551" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -1460,6 +1488,6 @@ Caution: This app uses your location to help find nearby teammates and pokemon u
         <image name="unchecked box" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IU5-C9-8eZ"/>
+        <segue reference="COU-0v-AZq"/>
     </inferredMetricsTieBreakers>
 </document>

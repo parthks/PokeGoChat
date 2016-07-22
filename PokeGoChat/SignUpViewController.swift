@@ -56,6 +56,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		signUp()
 	}
 	
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		print("SIGNING UP")
+		if CurrentUser.acceptedPolicy { signUp() }
+	}
+	
+	
 	var userMadeSuccessfully: Bool = false
 
 	func signUp(){

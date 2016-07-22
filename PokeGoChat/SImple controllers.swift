@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AppInfo: UIViewController {
 
@@ -56,5 +57,15 @@ class UserPolicy: UIViewController {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
+	
+}
+
+
+class GoogleSignIn: UIViewController, GIDSignInUIDelegate {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		GIDSignIn.sharedInstance().uiDelegate = self
+		
+	}
 	
 }

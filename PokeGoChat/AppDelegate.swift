@@ -10,58 +10,89 @@ import UIKit
 import Firebase
 import GoogleMobileAds
 
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	
 	var window: UIWindow?
 
+	func application(application: UIApplication,
+	                 openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+		return GIDSignIn.sharedInstance().handleURL(url,
+		                                            sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
+		                                            annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+	}
+	
+	func application(application: UIApplication,
+	                 openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+		var _: [String: AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!,
+		                                    UIApplicationOpenURLOptionsAnnotationKey: annotation]
+		return GIDSignIn.sharedInstance().handleURL(url,
+		                                            sourceApplication: sourceApplication,
+		                                            annotation: annotation)
+	}
+	
+
+	func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+	            withError error: NSError!) {
+		if let error = error {
+			print(error.localizedDescription)
+			return
+		}
+		let authentication = user.authentication
+		let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
+                                                               accessToken: authentication.accessToken)
+		
+		FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+			print("GOT USER USING GOOGLE")
+			// ...
+		}
+	}
+	
+	func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+	            withError error: NSError!) {
+		// Perform any operations when the user disconnects from app here.
+		// ...
+	}
+	
 	
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		FIRApp.configure()
+		
+		GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+		GIDSignIn.sharedInstance().delegate = self
 
-		let defaults = NSUserDefaults.standardUserDefaults()
-		let userID = defaults.stringForKey("id")
-		
-		self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		
-		
-		if userID != nil { //If user id is stored then everything is
-			print("going to main screen")
-			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreen")
-			CurrentUser.currentUser = User(id: defaults.stringForKey("id")!,
-			                               name: defaults.stringForKey("name")!,
-			                               team: defaults.stringForKey("team")!,
-			                               location: defaults.boolForKey("location"),
-			                               latitude: nil,
-			                               longitude: nil)
-			
-			
-			self.window?.rootViewController = initialViewController
-			self.window?.makeKeyAndVisible()
-			
-		} else {
-			print("going to login page")
-			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
-			self.window?.rootViewController = initialViewController
-			self.window?.makeKeyAndVisible()
-		}
-	
-		
-//		// Override point for customization after application launch.varFIRApp.configure()
-//		if let inAChat = defaults.stringForKey("inAChat"){
-//			if inAChat == "team"{
-//				CurrentUser.currentTeamChatRoomKey = defaults.stringForKey("teamRoomKey")!
-//				CurrentFirebaseLocationData.RoundedLocation = defaults.stringForKey("roundedLoc")!
-//				Firebase.removeTeamRoomAtRoundedCoor()
-//			}
-//		}
+//		let defaults = NSUserDefaults.standardUserDefaults()
+//		let userID = defaults.stringForKey("id")
 //		
-//		let initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
-//		self.window?.rootViewController = initialViewController
-//		//self.window?.makeKeyAndVisible()
+//		self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//		
+//		
+//		if userID != nil { //If user id is stored then everything is
+//			print("going to main screen")
+//			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreen")
+//			CurrentUser.currentUser = User(id: defaults.stringForKey("id")!,
+//			                               name: defaults.stringForKey("name")!,
+//			                               team: defaults.stringForKey("team")!,
+//			                               location: defaults.boolForKey("location"),
+//			                               latitude: nil,
+//			                               longitude: nil)
+//			
+//			
+//			self.window?.rootViewController = initialViewController
+//			self.window?.makeKeyAndVisible()
+//			
+//		} else {
+//			print("going to login page")
+//			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
+//			self.window?.rootViewController = initialViewController
+//			self.window?.makeKeyAndVisible()
+//		}
+	
+	
 		return true
 	}
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MyProfileViewController: UIViewController {
 	
@@ -23,6 +24,10 @@ class MyProfileViewController: UIViewController {
 	
 	
 	@IBAction func signOut(sender: UIButton) {
+		try! FIRAuth.auth()!.signOut()
+		GIDSignIn.sharedInstance().signOut()
+		print("SIGN OUT WORKS")
+		
 		
 		let defaults = NSUserDefaults.standardUserDefaults()
 		let doneAppRating = defaults.boolForKey("doneAppRating")

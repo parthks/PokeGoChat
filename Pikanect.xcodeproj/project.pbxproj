@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		68DC4B9273E9F81CE2BA229F /* Pods_Pikanect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */; };
 		8964EFD70C33A4DDA4B26882 /* Pods_PokeGoChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */; };
-		B217195C1D3EDC7800AA7DCE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B217195B1D3EDC7800AA7DCE /* GoogleService-Info.plist */; };
 		B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3501D34565F0037A97D /* AppDelegate.swift */; };
 		B260C3561D34565F0037A97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3541D34565F0037A97D /* Main.storyboard */; };
 		B260C3581D34565F0037A97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260C3571D34565F0037A97D /* Assets.xcassets */; };
@@ -28,11 +27,11 @@
 		B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */; };
 		B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */; };
 		B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C1E71A1D401768007E36B6 /* SImple controllers.swift */; };
+		B2C1E7221D41AD92007E36B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C9D927404E1F3E93A41081C /* Pods_PokeGoChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeGoChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B217195B1D3EDC7800AA7DCE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B260C34D1D34565F0037A97D /* Pikanect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pikanect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260C3501D34565F0037A97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B260C3551D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +53,8 @@
 		B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBlockedUsersViewController.swift; sourceTree = "<group>"; };
 		B2C1E71A1D401768007E36B6 /* SImple controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SImple controllers.swift"; sourceTree = "<group>"; };
+		B2C1E71C1D419F45007E36B6 /* Pikanect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pikanect-Bridging-Header.h"; sourceTree = "<group>"; };
+		B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pikanect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCD2EF3082668CBF8C44405 /* Pods-Pikanect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pikanect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pikanect/Pods-Pikanect.release.xcconfig"; sourceTree = "<group>"; };
 		E6B97804D01535C7BA1E0087 /* Pods-Pikanect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pikanect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pikanect/Pods-Pikanect.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,7 +95,7 @@
 		B260C3441D34565F0037A97D = {
 			isa = PBXGroup;
 			children = (
-				B260C34F1D34565F0037A97D /* PokeGoChat */,
+				B260C34F1D34565F0037A97D /* Pikanect */,
 				B260C34E1D34565F0037A97D /* Products */,
 				49DAD48D644FDF1476C0A581 /* Pods */,
 				3BC470FEA9F511B04E7F481D /* Frameworks */,
@@ -109,7 +110,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B260C34F1D34565F0037A97D /* PokeGoChat */ = {
+		B260C34F1D34565F0037A97D /* Pikanect */ = {
 			isa = PBXGroup;
 			children = (
 				B260C3791D3564AF0037A97D /* Model */,
@@ -118,8 +119,10 @@
 				B260C3761D3468100037A97D /* Views */,
 				B260C3571D34565F0037A97D /* Assets.xcassets */,
 				B260C35C1D34565F0037A97D /* Info.plist */,
-				B217195B1D3EDC7800AA7DCE /* GoogleService-Info.plist */,
+				B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */,
+				B2C1E71C1D419F45007E36B6 /* Pikanect-Bridging-Header.h */,
 			);
+			name = Pikanect;
 			path = PokeGoChat;
 			sourceTree = "<group>";
 		};
@@ -224,8 +227,8 @@
 			files = (
 				B260C35B1D34565F0037A97D /* LaunchScreen.storyboard in Resources */,
 				B260C3581D34565F0037A97D /* Assets.xcassets in Resources */,
-				B217195C1D3EDC7800AA7DCE /* GoogleService-Info.plist in Resources */,
 				B260C3561D34565F0037A97D /* Main.storyboard in Resources */,
+				B2C1E7221D41AD92007E36B6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,11 +417,14 @@
 			baseConfigurationReference = E6B97804D01535C7BA1E0087 /* Pods-Pikanect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PokeGoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat2;
 				PRODUCT_NAME = Pikanect;
+				SWIFT_OBJC_BRIDGING_HEADER = "PokeGoChat/Pikanect-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -427,11 +433,13 @@
 			baseConfigurationReference = DBCD2EF3082668CBF8C44405 /* Pods-Pikanect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PokeGoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat2;
 				PRODUCT_NAME = Pikanect;
+				SWIFT_OBJC_BRIDGING_HEADER = "PokeGoChat/Pikanect-Bridging-Header.h";
 			};
 			name = Release;
 		};

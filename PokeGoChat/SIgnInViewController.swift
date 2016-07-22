@@ -9,13 +9,33 @@
 import UIKit
 import Firebase
 
-class SIgnInViewController: UIViewController, UITextFieldDelegate {
+class SIgnInViewController: UIViewController, GIDSignInUIDelegate {
 
 	@IBOutlet weak var checkboxButton: UIButton!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var signInButton: UIButton!
+	
+	
+	
+	func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+	            withError error: NSError!) {
+		if let error = error {
+			print(error.localizedDescription)
+			return
+		}
 		
+		print("GOOGLE SIGN IN HAPPENING")
+		let authentication = user.authentication
+		let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
+                                                               accessToken: authentication.accessToken)
+		FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+			
+		}
+	}
+
+	
+	
 	//@IBOutlet weak var signInLabel: UILabel!
 	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
@@ -100,12 +120,23 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	@IBAction func createAccButtontapped(sender: UIButton) { } //segue in storyboard
 	
 	
+		
+	@IBOutlet weak var googleSignButton: GIDSignInButton!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		GIDSignIn.sharedInstance().uiDelegate = self
+
+		//GIDSignIn.sharedInstance().scopes.append("googleapis.com/auth/plus.login")
+		//GIDSignIn.sharedInstance().scopes.append("googleapis.com/auth/plus.me")
 		
-		self.hideKeyboardWhenTappedAround()
-		emailTextField.delegate = self
-		passwordTextField.delegate = self
+		// Uncomment to automatically sign in the user.
+		//GIDSignIn.sharedInstance().signInSilently()
+		
+		
+		//self.hideKeyboardWhenTappedAround()
+		//emailTextField.delegate = self
+		//passwordTextField.delegate = self
 		
 //		let backgroundImage = UIImage(named: "TriColor")
 //		if let image = backgroundImage {
