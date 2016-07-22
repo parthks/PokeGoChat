@@ -11,6 +11,7 @@ import Firebase
 
 class MyProfileViewController: UIViewController {
 	
+	
 	@IBOutlet weak var nameLabel: UITextField!
 	@IBOutlet weak var locationSwitch: UISwitch!
 	@IBOutlet weak var teamName: UILabel!
@@ -19,13 +20,18 @@ class MyProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
-		
+		if let pic = CurrentUser.imageUrl{
+			profilePic.image = UIImage(data: NSData(contentsOfURL: pic)!)
+		}
+		profilePic.layer.cornerRadius = 50
+		profilePic.clipsToBounds = true
 	}
 	
 	
 	@IBAction func signOut(sender: UIButton) {
 		try! FIRAuth.auth()!.signOut()
 		GIDSignIn.sharedInstance().signOut()
+		NSUserDefaults.standardUserDefaults().setBool(false, forKey: "autoLogin")
 		print("SIGN OUT WORKS")
 		
 		

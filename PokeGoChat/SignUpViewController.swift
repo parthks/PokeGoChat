@@ -9,186 +9,106 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController {
 
-//	@IBOutlet weak var createAccLabel: UILabel!
-//	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+	@IBOutlet weak var yellowTeam: UIButton!
+	@IBOutlet weak var blueTeam: UIButton!
+	@IBOutlet weak var redTeam: UIButton!
 	
-	@IBOutlet weak var autologinCheckbox: UIButton!
-	@IBOutlet weak var createAccButton: UIButton!
-	@IBAction func cancel(sender: AnyObject) {
+	@IBOutlet weak var createAccount: UIButton!
+	
+	var imageView = UIImageView()
+	
+	var image: UIImage! {
+		didSet {
+			imageView.removeFromSuperview()
+			imageView.image = image
+			self.view.addSubview(imageView)
+			self.view.sendSubviewToBack(imageView)
+		}
+	}
+	
+	@IBAction func cancel(sender: UIButton) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
-	//
 	
-//	Firebase.loginWithEmail("test1@test.com", AndPassword: "test123"){ userKey in
-//	print("user key: \(userKey)")
-//	}
-	@IBOutlet weak var emailTextField: UITextField!
-	@IBOutlet weak var passwordTextField: UITextField!
-	@IBOutlet weak var nameTextField: UITextField!
-	
-	@IBOutlet weak var teamSelection: UISegmentedControl!
-	
-	
-	@IBAction func unwindFromUserPolicyScene(segue:UIStoryboardSegue) {}
-
-	
-	let blackTextAttributes: [NSObject : AnyObject] = [
-		NSForegroundColorAttributeName: UIColor.blackColor()
-	]
-	
-	@IBAction func segmentControl(sender: UISegmentedControl) {
-		switch sender.selectedSegmentIndex {
-		case 0:
-			sender.tintColor = UIColor.yellowColor()
-		case 1:
-			sender.tintColor = UIColor.blueColor()
-		case 2:
-			sender.tintColor = UIColor.redColor()
-		default: break
-		}
-		
-	}
-	
-	@IBAction func createAccAndSignIn(sender: UIButton) {
-		view.endEditing(true)
-		signUp()
-	}
-	
-	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		print("SIGNING UP")
-		if CurrentUser.acceptedPolicy { signUp() }
-	}
-	
-	
-	var userMadeSuccessfully: Bool = false
-
-	func signUp(){
-		guard emailTextField.text != "" else {return}
-		guard passwordTextField.text != "" else {return}
-		guard nameTextField.text != "" else {return}
-		
-//		createAccLabel.hidden = false
-//		activityIndicator.startAnimating()
-		
-		print("signing up...")
-		let email = emailTextField.text!
-		let password = passwordTextField.text!
-		let name = nameTextField.text!
-		
-		let teamName = teamSelection.titleForSegmentAtIndex(teamSelection.selectedSegmentIndex)!
-		var team = ""
-		
-		if teamName == "Instinct" {
-			team = "Yellow"
-		} else if teamName == "Mystic" {
-			team = "Blue"
-		} else {
-			team = "Red"
-		}
-		
-		print(CurrentUser.acceptedPolicy)
-		if !CurrentUser.acceptedPolicy{
-			self.performSegueWithIdentifier("policy", sender: nil)
-			return
-		}
-		
-		
-		Firebase.createUserWithEmail(email, AndPassword: password) { [unowned self] (userKey) in
-			self.createAccButton.enabled = false
-			print("back in the program")
-			
-			let user = User(id: userKey, name: name, team: team, location: true, latitude: nil, longitude: nil)
-			CurrentUser.currentUser = user
-			print("MADE USER: \(name)")
-			Firebase.saveUser(user, WithKey: userKey)
-			self.userMadeSuccessfully = true
-			
-			if self.autologinCheckbox.selected {
-				let defaults = NSUserDefaults.standardUserDefaults()
-				defaults.setObject(email, forKey: "email")
-				defaults.setObject(password, forKey: "password")
-				defaults.setObject(CurrentUser.currentUser.id, forKey: "id")
-				defaults.setObject(CurrentUser.currentUser.name, forKey: "name")
-				defaults.setObject(CurrentUser.currentUser.team, forKey: "team")
-				defaults.setBool(CurrentUser.currentUser.location, forKey: "location")
-				defaults.setObject(CurrentUser.currentUser.latitude, forKey: "latitude")
-				defaults.setObject(CurrentUser.currentUser.longitude, forKey: "longitude")
-			}
-			
-			self.performSegueWithIdentifier("madeNewUser", sender: nil)
-		}
-		
-		print("waiting for Firebase to make user")
-	}
-	
-	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-		return userMadeSuccessfully
+	@IBAction func goToPolicy(sender: AnyObject) {
+		self.performSegueWithIdentifier("policy", sender: nil)
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.hideKeyboardWhenTappedAround()
-		//createAccLabel.hidden = true
-		nameTextField.delegate = self
-		passwordTextField.delegate = self
-		emailTextField.delegate = self
 		
-//		let backgroundImage = UIImage(named: "TriColor")
-//		if let image = backgroundImage {
-//			self.view.backgroundColor = UIColor(patternImage: image)
-//		}
+		imageView.frame = self.view.bounds
 		
-		let bgImage     = UIImage(named: "TriColor")
-		let imageView   = UIImageView(frame: self.view.bounds)
-		imageView.image = bgImage
-		self.view.addSubview(imageView)
-		self.view.sendSubviewToBack(imageView)
+		image = UIImage(named: "TriColor")
 		
-		teamSelection.setTitleTextAttributes(blackTextAttributes, forState: .Selected)
-        // Do any additional setup after loading the view.
-    }
+		
+//		let redImg     = UIImage(named: "Red")
+//		let redImageView   = UIImageView(frame: self.view.bounds)
+//		redImageView.image = redImg
+//		
+//		let blueImg     = UIImage(named: "Blue")
+//		let blueImageView   = UIImageView(frame: self.view.bounds)
+//		blueImageView.image = blueImg
+//		
+//		let yellowImg     = UIImage(named: "Yellow")
+//		let yellowImageView   = UIImageView(frame: self.view.bounds)
+//		yellowImageView.image = yellowImg
+		
+		
+		
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 	
-	func textFieldShouldReturn(textField: UITextField) -> Bool {
-		
-		if textField.tag == 0{
-			textField.endEditing(true)
-			passwordTextField.becomeFirstResponder()
-		}else if textField.tag == 1{
-			textField.endEditing(true)
-			nameTextField.becomeFirstResponder()
-		}else{
-			textField.endEditing(true)
-		}
-		
-		return true
-	}
-
-	@IBAction func policyButton(sender: AnyObject) {
+		@IBAction func policyButton(sender: AnyObject) {
 		performSegueWithIdentifier("policy", sender: nil)
 	}
 	
 	
 	
-	@IBAction func autologinCheckbox(sender: UIButton) {
-		sender.selected = !sender.selected
+	
+	@IBAction func redTeamButtonPressed(sender: UIButton) {
+		sender.selected = true
+		sender.titleLabel?.textColor = UIColor.blackColor()
+		blueTeam.selected = false
+		blueTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+		yellowTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+		yellowTeam.selected = false
+		sender.backgroundColor = UIColor.redColor()
+		image = UIImage(named: "Red")
+		CurrentUser.currentTeam = "Red"
+		
 	}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	
+	@IBAction func blueTeamButtonPressed(sender: UIButton) {
+		sender.selected = true
+		sender.titleLabel?.textColor = UIColor.blackColor()
+		redTeam.selected = false
+		yellowTeam.selected = false
+		redTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+		yellowTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+		sender.backgroundColor = UIColor.blueColor()
+		image = UIImage(named: "Blue")
+		CurrentUser.currentTeam = "Blue"
+		
+	}
+	
+	@IBAction func yellowTeamButtonPressed(sender: UIButton) {
+		sender.selected = true
+		sender.titleLabel?.textColor = UIColor.blackColor()
+		blueTeam.selected = false
+		redTeam.selected = false
+		blueTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+		redTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
+		sender.backgroundColor = UIColor.yellowColor()
+		image = UIImage(named: "Yellow")
+		CurrentUser.currentTeam = "Yellow"
+	}
+	
 }

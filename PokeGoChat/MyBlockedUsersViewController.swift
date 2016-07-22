@@ -37,7 +37,7 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 		Firebase.getAllBlockedUsersForCurrentUserWithBlock(){ [unowned self] allblockedUsers in
 			for key in allblockedUsers {
 				Firebase.getUserDataWithKey(key) { user in
-					self.blockedUsers.append(user)
+					self.blockedUsers.append(user!)
 					self.currentlyBlocked.append(true)
 					self.tableView.reloadData()
 				}

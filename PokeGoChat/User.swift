@@ -15,7 +15,12 @@ class CurrentUser {
 	static var currentGeneralChatRoomKey: String!
 	static var inAChatRoom: String? = nil //nil, "team", "general"
 	static var acceptedPolicy = false
-	//static var didFinishcheckingForNumOfusersUponTermination = false
+	static var imageUrl: NSURL?
+	
+	static var currentUserName: String!
+	static var currentTeam: String!
+	static var currentID: String!
+	
 }
 
 class CurrentFirebaseLocationData {

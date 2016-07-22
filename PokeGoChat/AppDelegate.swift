@@ -12,10 +12,10 @@ import GoogleMobileAds
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
-
+	
 	func application(application: UIApplication,
 	                 openURL url: NSURL, options: [String: AnyObject]) -> Bool {
 		return GIDSignIn.sharedInstance().handleURL(url,
@@ -26,43 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	func application(application: UIApplication,
 	                 openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
 		var _: [String: AnyObject] = [UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication!,
-		                                    UIApplicationOpenURLOptionsAnnotationKey: annotation]
+		                              UIApplicationOpenURLOptionsAnnotationKey: annotation]
 		return GIDSignIn.sharedInstance().handleURL(url,
 		                                            sourceApplication: sourceApplication,
 		                                            annotation: annotation)
 	}
-	
 
-	func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-	            withError error: NSError!) {
-		if let error = error {
-			print(error.localizedDescription)
-			return
-		}
-		let authentication = user.authentication
-		let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
-                                                               accessToken: authentication.accessToken)
 		
-		FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-			print("GOT USER USING GOOGLE")
-			// ...
-		}
-	}
-	
-	func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-	            withError error: NSError!) {
-		// Perform any operations when the user disconnects from app here.
-		// ...
-	}
-	
-	
-	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		FIRApp.configure()
 		
-		GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
-		GIDSignIn.sharedInstance().delegate = self
+		
 
 //		let defaults = NSUserDefaults.standardUserDefaults()
 //		let userID = defaults.stringForKey("id")

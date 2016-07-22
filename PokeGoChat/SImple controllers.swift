@@ -42,7 +42,6 @@ class UserPolicy: UIViewController {
 		
 		// Do any additional setup after loading the view.
 	}
-	var acceptedPolicy = false
 	@IBAction func close(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -52,20 +51,12 @@ class UserPolicy: UIViewController {
 	}
 
 	@IBAction func agreeButton(sender: AnyObject) {
-		CurrentUser.acceptedPolicy = true
-		print(CurrentUser.acceptedPolicy)
-		self.dismissViewControllerAnimated(true, completion: nil)
+		NSUserDefaults.standardUserDefaults().setBool(true, forKey: "madeAcoount")
+		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID)", name: "\(CurrentUser.currentUserName)", team: "\(CurrentUser.currentTeam)", location: true, latitude: nil, longitude: nil)
+		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentID)
+		self.performSegueWithIdentifier("agreedPolicy", sender: nil)
 	}
 	
 	
 }
 
-
-class GoogleSignIn: UIViewController, GIDSignInUIDelegate {
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		GIDSignIn.sharedInstance().uiDelegate = self
-		
-	}
-	
-}

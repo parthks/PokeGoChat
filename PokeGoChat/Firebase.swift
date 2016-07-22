@@ -165,12 +165,18 @@ class Firebase {
 		}
 	}
 	
-	static func getUserDataWithKey(key: String, WithBlock completion: (User) -> Void){
+	static func getUserDataWithKey(key: String, WithBlock completion: (User)? -> Void){
 		print("getting user data for key: \(key)")
 		_rootRef.child(dataType.Users.rawValue).child(key).observeSingleEventOfType(.Value) { (snap, prevChildKey) in
 			
-		
-			//print("got snap: \(snap)")
+			if !snap.exists() {
+				completion(nil)
+				print("NEW USER!")
+				return
+			}
+			
+			print("user has value")
+			print(snap.value)
 			print("got user")
 			let snappedUser = snap.value as! [String: AnyObject]
 			let name = snappedUser["name"] as! String
@@ -201,7 +207,7 @@ class Firebase {
 			//print("got userKey!")
 			Firebase.getUserDataWithKey(userKey){ (user) in
 				//print("got another user")
-				completion(user)
+				completion(user!)
 			}
 		
 		})
