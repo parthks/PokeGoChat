@@ -20,6 +20,7 @@ class TeamChatViewController: UIViewController {
 	@IBOutlet weak var myLocationSwitch: UISwitch!
 	@IBOutlet weak var mapView: MKMapView!
 	@IBOutlet weak var sendButton: UIButton!
+	@IBOutlet weak var bottomBarSpaceToAds: NSLayoutConstraint!
 
 	var locationManager = CLLocationManager()
 	var users = [User]() {
@@ -61,6 +62,7 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	var messages = [FIRDataSnapshot]()
+	var usersofMessages = [User]()
 	var chatRoomKey: String = ""
 	var timer: NSTimer = NSTimer()
 	let maxMesLength = 140 //in characters - a tweet!
@@ -136,9 +138,10 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ [unowned self] (snap) in
+		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ [unowned self] (snap, user) in
 			//print("got a new message")
 			self.messages.append(snap)
+			self.usersofMessages.append(user)
 			//print(self.messages)
 			//print("got message into tableView")
 			self.tableView.reloadData()
@@ -211,7 +214,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		//guard let text = textField.text else {return true}
 		guard textField.text != "" else {return true}
-		let data = ["name": CurrentUser.currentUser.name, "text": textField.text!]
+		let data = ["text": textField.text!]
 		//print(data)
 		inputText.endEditing(true)
 		inputText.text = ""
@@ -248,30 +251,18 @@ extension TeamChatViewController: UITextFieldDelegate{
 
 	
 	func keyboardWillShow(notification: NSNotification) {
-		if inputText.editing {
-			if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-				if view.frame.origin.y == 0{
-					self.view.frame.origin.y -= keyboardSize.height
-				}
-				else {
-					
-				}
-			}
+		if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue {
+			bottomBarSpaceToAds.constant = keyboardFrame.height
+			view.setNeedsLayout()
+			view.layoutIfNeeded()
 		}
-		
 	}
 	
 	func keyboardWillHide(notification: NSNotification) {
-		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-			if view.frame.origin.y != 0 {
-				self.view.frame.origin.y += keyboardSize.height
-			}
-			else {
-				
-			}
-		}
+		bottomBarSpaceToAds.constant = 0
+		view.setNeedsLayout()
+		view.layoutIfNeeded()
 	}
-
 	
 	
 	
@@ -317,14 +308,14 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 		//print("making cell...")
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
 		let message = messages[indexPath.row].value as! [String: String]
-		let name = message["name"]!
+		let user = usersofMessages[indexPath.row]
 		let text = message["text"]!
 		let key = message["messageKey"]!
 		let userID = message["userId"]!
 		
 		cell.userID = userID
 		cell.messageKey = key
-		cell.nameOfUser.text = name
+		cell.nameOfUser.text = user.name
 		cell.message.text = text
 		
 		
@@ -455,7 +446,7 @@ extension TeamChatViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		print("ERROR!!")
 		print("error:: \(error)")
-		Firebase.displayErrorAlert(error.localizedDescription)
+		Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating location")
 	}
 
 }

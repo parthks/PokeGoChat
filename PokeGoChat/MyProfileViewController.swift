@@ -16,15 +16,21 @@ class MyProfileViewController: UIViewController {
 	@IBOutlet weak var locationSwitch: UISwitch!
 	@IBOutlet weak var teamName: UILabel!
 	@IBOutlet weak var profilePic: UIImageView!
+	@IBOutlet weak var saveButton: UIBarButtonItem!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
 		if let pic = CurrentUser.imageUrl{
-			profilePic.image = UIImage(data: NSData(contentsOfURL: pic)!)
+			if let data = NSData(contentsOfURL: pic) {
+				profilePic.image = UIImage(data: data)
+			}
+			
 		}
 		profilePic.layer.cornerRadius = 50
 		profilePic.clipsToBounds = true
+		saveButton.tintColor = UIColor(red: 25/256, green: 161/256, blue: 57/256, alpha: 1)
+
 	}
 	
 	
@@ -63,11 +69,11 @@ class MyProfileViewController: UIViewController {
 		nameLabel.text = CurrentUser.currentUser.name
 		
 		if CurrentUser.currentUser.team == "Yellow"{
-			teamName.text = "Team Instinct"
+			teamName.text = "Instinct"
 		} else if CurrentUser.currentUser.team == "Blue" {
-			teamName.text = "Team Mystic"
+			teamName.text = "Mystic"
 		} else {
-			teamName.text = "Team Valor"
+			teamName.text = "Valor"
 		}
 		
 		locationSwitch.setOn(CurrentUser.currentUser.location, animated: false)
@@ -88,7 +94,12 @@ class MyProfileViewController: UIViewController {
 	
 	
 	@IBAction func save(sender: UIBarButtonItem) {
-		CurrentUser.currentUser.name = nameLabel.text ?? "Default Name"
+		guard nameLabel.text != "" else {
+			Firebase.displayAlertWithtitle("Name field empty", message: "Please enter a name for yourself")
+			return
+		}
+		
+		CurrentUser.currentUser.name = nameLabel.text!
 		CurrentUser.currentUser.location = locationSwitch.on
 		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentUser.id)
 		self.navigationController?.popViewControllerAnimated(true)

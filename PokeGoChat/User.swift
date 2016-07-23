@@ -19,7 +19,7 @@ class CurrentUser {
 	
 	static var currentUserName: String!
 	static var currentTeam: String!
-	static var currentID: String!
+	static var currentID: String?
 	
 }
 

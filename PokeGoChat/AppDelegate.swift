@@ -36,7 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		FIRApp.configure()
-		
+		UINavigationBar.appearance().tintColor = UIColor.blackColor()
+		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+
+		//FIRDatabase.database().persistenceEnabled = true
+
 		
 
 //		let defaults = NSUserDefaults.standardUserDefaults()

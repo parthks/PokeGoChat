@@ -11,8 +11,8 @@ import MapKit
 
 class GetChatRoomKey {
 	
-	let userLat: Double
-	let userLong: Double
+	let userLat: Double?
+	let userLong: Double?
 	
 	var roomKey: String = ""
 	var inATeamRoom = false
@@ -20,11 +20,17 @@ class GetChatRoomKey {
 	
 	let userLocation: CLLocation
 	
-	init() {
-		userLat = CurrentUser.currentUser.latitude!
-		userLong = CurrentUser.currentUser.longitude!
+	init?() {
+		if ((CurrentUser.currentUser.latitude == nil) || (CurrentUser.currentUser.longitude) == nil) {
+			Firebase.displayAlertWithtitle("Unable to get your location", message: "Please check your internet connection and location authorization for this app")
+			return nil
 		
-		userLocation = CLLocation(latitude: userLat, longitude: userLong)
+		} else {
+			userLat = CurrentUser.currentUser.latitude!
+			userLong = CurrentUser.currentUser.longitude!
+			userLocation = CLLocation(latitude: userLat!, longitude: userLong!)
+		}
+		
 	}
 	
 	//var lat = 37.787359000000002
@@ -34,7 +40,14 @@ class GetChatRoomKey {
 	func returnTeamRoomKeyWithBlock(completion: (key: String) -> Void){
 		
 		print("Getting all team chat rooms at rounded lat and long")
-		Firebase.getTeamRoomsAtLatitude(userLat, AndLongitude: userLong) { (teams) in
+		
+		guard userLat != nil && userLong != nil else {
+			print("DONT HAVE LOCATION TEAM")
+			Firebase.displayErrorAlert("Unable to enter chat. PLease check your internect connection and try again", error: "either userLat or userLong are nil in when trying to return a team chat room key", instance: "returnTeamRoomKeyWithBlock")
+			return
+		}
+		
+		Firebase.getTeamRoomsAtLatitude(userLat!, AndLongitude: userLong!) { (teams) in
 			if let teams = teams{
 				
 				//var tempLocToGetMin = [String: AnyObject]()
@@ -54,7 +67,7 @@ class GetChatRoomKey {
 				
 				if !self.inATeamRoom {
 					print("MAKING A TEAM CHAT ROOM")
-					self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+					self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat!, AndLongitude: self.userLong!)
 				}
 			
 			
@@ -62,7 +75,7 @@ class GetChatRoomKey {
 				
 			} else {
 				print("MAKING A CHAT ROOM IN A NEW LAT AND LONG")
-				self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+				self.roomKey = Firebase.saveNewTeamChatRoomAtLatitude(self.userLat!, AndLongitude: self.userLong!)
 				
 			}
 			
@@ -80,8 +93,14 @@ class GetChatRoomKey {
 	
 	func returnGeneralRoomKeyWithBlock(completion: (key: String) -> Void){
 		
+		guard userLat != nil && userLong != nil else {
+			print("DONT HAVE LOCATION GEN")
+			Firebase.displayErrorAlert("Unable to enter chat. PLease check your internect connection and try again", error: "either userLat or userLong are nil in when trying to return a general chat room key", instance: "returnGeneralRoomKeyWithBlock")
+			return
+		}
+		
 		print("Getting all general chat rooms at int lat and long")
-		Firebase.getGeneralRoomsAtLatitude(userLat, AndLongitude: userLong) { (generalRooms) in
+		Firebase.getGeneralRoomsAtLatitude(userLat!, AndLongitude: userLong!) { (generalRooms) in
 			if let generalRooms = generalRooms {
 				
 				
@@ -101,7 +120,7 @@ class GetChatRoomKey {
 				
 				if !self.inAGenRoom {
 					print("MAKING A GENERAL CHAT ROOM")
-					self.roomKey = Firebase.saveNewGeneralChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+					self.roomKey = Firebase.saveNewGeneralChatRoomAtLatitude(self.userLat!, AndLongitude: self.userLong!)
 				}
 				
 				
@@ -109,7 +128,7 @@ class GetChatRoomKey {
 				
 			} else {
 				print("MAKING A GENERAL CHAT ROOM IN A NEW LAT AND LONG")
-				self.roomKey = Firebase.saveNewGeneralChatRoomAtLatitude(self.userLat, AndLongitude: self.userLong)
+				self.roomKey = Firebase.saveNewGeneralChatRoomAtLatitude(self.userLat!, AndLongitude: self.userLong!)
 				
 			}
 			

@@ -37,11 +37,14 @@ class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
 		signInActivityLabel.hidden = false
 		activityIndicator.hidden = false
 		activityIndicator.startAnimating()
+		googleSignButton.userInteractionEnabled = false
 	}
 	
 	 func doneSigningIn() {
 		signInActivityLabel.hidden = true
 		activityIndicator.hidden = true
+		activityIndicator.stopAnimating()
+		googleSignButton.userInteractionEnabled = true
 	}
 	
     override func viewDidLoad() {
@@ -49,16 +52,7 @@ class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
 		GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
 		GIDSignIn.sharedInstance().uiDelegate = self
 		GIDSignIn.sharedInstance().delegate = self
-		
-		if NSUserDefaults.standardUserDefaults().boolForKey("autoLogin"){
-			signInButtonPressed()
-			GIDSignIn.sharedInstance().signIn()
-		} else {
-			signInActivityLabel.hidden = true
-			activityIndicator.hidden = true
-		}
-		
-		
+
 		
 		let bgImage		= UIImage(named: "TriColor")
 		let imageView   = UIImageView(frame: self.view.bounds)
@@ -70,16 +64,24 @@ class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
 	
 	
 	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		doneSigningIn()
 		
+		if NSUserDefaults.standardUserDefaults().boolForKey("autoLogin"){
+			signInButtonPressed()
+			GIDSignIn.sharedInstance().signIn()
+		}
+	}
 	
 	func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
 	            withError error: NSError!) {
+		
 		if let error = error {
-			Firebase.displayErrorAlert(error.localizedDescription)
+			doneSigningIn()
 			return
 		}
 		signInButtonPressed()
-		
 		CurrentUser.currentUserName = user.profile.name
 		CurrentUser.imageUrl = user.profile.imageURLWithDimension(50)
 		
@@ -89,8 +91,10 @@ class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
 		print("Signing in to Firebase")
 		FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
 			print("GOT USER USING GOOGLE")
-			if error != nil {
-				Firebase.displayAlertWithtitle("Error signing in", message: "Please try again")
+			if let error = error  {
+				print("\n\n\nERROR\n\n\n")
+				print(error)
+				//Firebase.displayErrorAlert("Please check your internet connection",error: error, instance: "signing in")
 				return
 			}
 			print(user)

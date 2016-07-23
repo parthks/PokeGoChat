@@ -13,7 +13,6 @@
 		B260C3561D34565F0037A97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3541D34565F0037A97D /* Main.storyboard */; };
 		B260C3581D34565F0037A97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260C3571D34565F0037A97D /* Assets.xcassets */; };
 		B260C35B1D34565F0037A97D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3591D34565F0037A97D /* LaunchScreen.storyboard */; };
-		B260C3691D3456EA0037A97D /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3621D3456EA0037A97D /* MapsViewController.swift */; };
 		B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3631D3456EA0037A97D /* MyProfileViewController.swift */; };
 		B260C37C1D3564D30037A97D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C37B1D3564D30037A97D /* Firebase.swift */; };
 		B260C3801D35716F0037A97D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C37F1D35716F0037A97D /* User.swift */; };
@@ -38,7 +37,6 @@
 		B260C3571D34565F0037A97D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B260C35A1D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B260C35C1D34565F0037A97D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B260C3621D3456EA0037A97D /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		B260C3631D3456EA0037A97D /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		B260C37B1D3564D30037A97D /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		B260C37F1D35716F0037A97D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		B260C3751D3467E60037A97D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B260C3621D3456EA0037A97D /* MapsViewController.swift */,
 				B260C3631D3456EA0037A97D /* MyProfileViewController.swift */,
 				B260C3811D35B13C0037A97D /* TeamChatViewController.swift */,
 				B260C3831D35B1500037A97D /* GeneralChatViewController.swift */,
@@ -288,7 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B260C38E1D3863100037A97D /* MapPin.swift in Sources */,
-				B260C3691D3456EA0037A97D /* MapsViewController.swift in Sources */,
 				B260C3821D35B13C0037A97D /* TeamChatViewController.swift in Sources */,
 				B260C36A1D3456EA0037A97D /* MyProfileViewController.swift in Sources */,
 				B260C37C1D3564D30037A97D /* Firebase.swift in Sources */,

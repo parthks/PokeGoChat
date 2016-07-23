@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import GoogleMobileAds
+import SystemConfiguration
 
 class MainScreenViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class MainScreenViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		print("enterned main screen")
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
@@ -32,16 +34,6 @@ class MainScreenViewController: UIViewController {
 		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
 		bannerView.loadRequest(request)
 		
-//		let defaults = NSUserDefaults.standardUserDefaults()
-//		if let inAChat = defaults.stringForKey("inAChat") {
-//			if inAChat == "team" {
-//				print("team stuff..")
-//				CurrentUser.currentTeamChatRoomKey = defaults.stringForKey("teamRoomKey")!
-//				CurrentFirebaseLocationData.RoundedLocation = defaults.stringForKey("roundedLoc")!
-//				Firebase.removeTeamRoomAtRoundedCoor()
-//			}
-//		}
-	
 		//Firebase.loginWithEmail("location@test.com", AndPassword: "123456"){ key in print("back...")}
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -61,21 +53,38 @@ class MainScreenViewController: UIViewController {
 
 	
 	@IBAction func teamChatGo(sender: UIButton) {
+		guard connectedToNetwork() else  {
+			Firebase.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "team chat button pressed")
+			return
+		}
+		
 		locationManager.requestLocation()
-		let roomKey = GetChatRoomKey()
-		roomKey.returnTeamRoomKeyWithBlock() { key in
-			self.performSegueWithIdentifier("teamChat", sender: key)
+		if let roomKey = GetChatRoomKey() {
+			print("trying to get the team room key")
+			roomKey.returnTeamRoomKeyWithBlock() { [unowned self]key in
+				print("GOT A GEN CHAT ROOM")
+				self.performSegueWithIdentifier("teamChat", sender: key)
+			}
 		}
 
 	}
 	
 	
 	@IBAction func generalChatGo(sender: UIButton) {
-		locationManager.requestLocation()
-		let roomKey = GetChatRoomKey()
-		roomKey.returnGeneralRoomKeyWithBlock() { key in
-			self.performSegueWithIdentifier("generalChat", sender: key)
+		guard connectedToNetwork() else  {
+			Firebase.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "general chat button pressed")
+			return
 		}
+		
+		locationManager.requestLocation()
+		if let roomKey = GetChatRoomKey() {
+			print("trying to get the gen room key")
+			roomKey.returnGeneralRoomKeyWithBlock() {[unowned self] key in
+				print("GOT A GEN CHAT ROOM")
+				self.performSegueWithIdentifier("generalChat", sender: key)
+			}
+		}
+		
 	}
 	
 	
@@ -129,8 +138,12 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 	}
  
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		activityIndicator.stopAnimating()
-		gettingLocationLabel.hidden = true
+		
+		if gettingLocationLabel.text == "Getting Location" {
+			activityIndicator.stopAnimating()
+			gettingLocationLabel.hidden = true
+		}
+		
 		
 		if let location = locations.last {
 			print("PRINTING LOCATION FROM MAIN")
@@ -155,5 +168,38 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		print("ERROR!!")
 		print("error:: \(error)")
+		Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating loaction")
 	}
+}
+
+
+extension MainScreenViewController {
+	
+	func connectedToNetwork() -> Bool {
+		
+		var zeroAddress = sockaddr_in()
+		zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+		zeroAddress.sin_family = sa_family_t(AF_INET)
+		
+		guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
+			SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+		}) else {
+			return false
+		}
+		
+		var flags : SCNetworkReachabilityFlags = []
+		if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+			return false
+		}
+		
+		let isReachable = flags.contains(.Reachable)
+		let needsConnection = flags.contains(.ConnectionRequired)
+		
+		// let isReachable = flags.contains(.reachable)
+		// let needsConnection = flags.contains(.connectionRequired)
+		
+		
+		return (isReachable && !needsConnection)
+	}
+
 }

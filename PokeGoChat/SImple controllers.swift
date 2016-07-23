@@ -13,7 +13,7 @@ class AppInfo: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
         // Do any additional setup after loading the view.
     }
 
@@ -52,8 +52,8 @@ class UserPolicy: UIViewController {
 
 	@IBAction func agreeButton(sender: AnyObject) {
 		NSUserDefaults.standardUserDefaults().setBool(true, forKey: "madeAcoount")
-		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID)", name: "\(CurrentUser.currentUserName)", team: "\(CurrentUser.currentTeam)", location: true, latitude: nil, longitude: nil)
-		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentID)
+		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID!)", name: "\(CurrentUser.currentUserName)", team: "\(CurrentUser.currentTeam)", location: true, latitude: nil, longitude: nil)
+		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentID!)
 		self.performSegueWithIdentifier("agreedPolicy", sender: nil)
 	}
 	

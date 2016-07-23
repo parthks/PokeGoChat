@@ -17,8 +17,11 @@ class GeneralChatViewController: UIViewController {
 	
 	@IBOutlet weak var bannerView: GADBannerView!
 	
+	@IBOutlet weak var bottomBarSpace: NSLayoutConstraint!
+	
 	@IBOutlet weak var sendButton: UIButton!
 	var messages: [FIRDataSnapshot] = []
+	var usersofMessages = [User]()
 	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
 	
@@ -40,6 +43,9 @@ class GeneralChatViewController: UIViewController {
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
+		print("KEY BELOW")
+		print(chatRoomKey)
+		print("KEY ABOVE")
 		//let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
@@ -70,9 +76,11 @@ class GeneralChatViewController: UIViewController {
 	
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (snapshot) in
+		print("listining for chat changes!!")
+		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (snapshot, user) in
 			print("got a new message")
 			self.messages.append(snapshot)
+			self.usersofMessages.append(user)
 			//print(self.messages)
 			//self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
@@ -113,7 +121,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		//guard let text = textField.text else {return true}
 		guard textField.text != "" else {return true}
-		let data = ["name": CurrentUser.currentUser.name, "text": textField.text!]
+		let data = ["text": textField.text!]
 		print(data)
 		inputText.endEditing(true)
 		inputText.text = ""
@@ -152,28 +160,17 @@ extension GeneralChatViewController: UITextFieldDelegate{
 
 	
 	func keyboardWillShow(notification: NSNotification) {
-		if inputText.editing {
-			if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-				if view.frame.origin.y == 0{
-					self.view.frame.origin.y -= keyboardSize.height
-				}
-				else {
-					
-				}
-			}
+		if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue {
+			bottomBarSpace.constant = keyboardFrame.height
+			view.setNeedsLayout()
+			view.layoutIfNeeded()
 		}
-		
 	}
 	
 	func keyboardWillHide(notification: NSNotification) {
-		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-			if view.frame.origin.y != 0 {
-				self.view.frame.origin.y += keyboardSize.height
-			}
-			else {
-				
-			}
-		}
+		bottomBarSpace.constant = 0
+		view.setNeedsLayout()
+		view.layoutIfNeeded()
 	}
 	
 	
@@ -208,14 +205,14 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		print("making cell...")
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
 		let message = messages[indexPath.row].value as! [String: String]
-		let name = message["name"]!
+		let user = usersofMessages[indexPath.row]
 		let text = message["text"]!
 		let key = message["messageKey"]!
 		let userID = message["userId"]!
 		
 		cell.userID = userID
 		cell.messageKey = key
-		cell.nameOfUser.text = name
+		cell.nameOfUser.text = user.name
 		cell.message.text = text
 		
 		cell.delegate = self

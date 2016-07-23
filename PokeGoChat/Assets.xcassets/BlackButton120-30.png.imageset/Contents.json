@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "add.png",
+      "filename" : "BlackButton120-30.png.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "add@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "add@3x.png",
       "scale" : "3x"
     }
   ],

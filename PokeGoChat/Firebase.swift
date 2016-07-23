@@ -33,9 +33,17 @@ class Firebase {
 	//Database reference
 	static var _rootRef = FIRDatabase.database().reference()
 	
-	static func displayErrorAlert(error: String){
-		let alert = UIAlertController(title: "ERROR!", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+	static func displayErrorAlert(message: String, error: String, instance: String){
+		let alert = UIAlertController(title: "ERROR!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
 		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+		let report = UIAlertAction(title: "Report", style: .Destructive) {e in
+			//UIApplication.topViewController()?.dismissViewControllerAnimated(true, completion: nil)
+			
+			Firebase.saveError(error, DuringInstance: instance)
+			displayAlertWithtitle("Error Message Confirmation", message: "Your error has been noted. Thank You for reporting.")
+		}
+		
+		alert.addAction(report)
 		UIApplication.topViewController()!.presentViewController(alert, animated: true, completion: nil)
 	}
 	
@@ -46,33 +54,45 @@ class Firebase {
 	}
 	
 	//MARK: Authentication
-	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void) {
-		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
-			if let error = error{
-				print("ERROR CREATING USER")
-				Firebase.displayErrorAlert(error.localizedDescription)
-			}else if let user = user{
-				takeKey(key: user.uid)
-			}
-		}
+//	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void) {
+//		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
+//			if let error = error{
+//				print("ERROR CREATING USER")
+//				Firebase.displayErrorAlert(error.localizedDescription)
+//			}else if let user = user{
+//				takeKey(key: user.uid)
+//			}
+//		}
+//	}
+//	
+//	static func loginWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void){
+//		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
+//			if let error = error{
+//				print("ERROR LOGGING IN USER")
+//				Firebase.displayErrorAlert(error.localizedDescription)
+//			}else if let user = user{
+//				takeKey(key: user.uid)
+//			}
+//		}
+//	}
+	
+	//MARK: Error saving
+	
+	static func saveError(error: String, DuringInstance instance: String){
+		print("saving error to firebase")
+		_rootRef.child("ERRORS").childByAutoId().setValue(
+			[
+			"userID": CurrentUser.currentID ?? "Not logged in yet",
+			"instance": instance,
+			"error": error
+			]
+		)
 	}
-	
-	static func loginWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void){
-		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
-			if let error = error{
-				print("ERROR LOGGING IN USER")
-				Firebase.displayErrorAlert(error.localizedDescription)
-			}else if let user = user{
-				takeKey(key: user.uid)
-			}
-		}
-	}
-	
-	
 	
 	//MARK: Saving data
 	static func saveMessageData(data: [String: String], OfType type: dataType, WithKey key: String){
 		print("saving message...\(type)")
+		//key is the room key
 		var fdata = data
 		fdata["userId"] = CurrentUser.currentUser.id
 		let ref = _rootRef.child(type.rawValue).child(key).childByAutoId()
@@ -141,20 +161,31 @@ class Firebase {
 	
 	
 	//MARK: Listeners
-	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (FIRDataSnapshot) -> Void){
+	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (FIRDataSnapshot, User) -> Void){
 		Firebase.getAllBlockedUsersForCurrentUserWithBlock() { (blockedUsers) in
 			
 			//print("setting up listener for \(dtype.rawValue) in room id \(key)")
 			_rootRef.child(dtype.rawValue).child(key).queryLimitedToLast(50).observeEventType(.ChildAdded){
 				(snap, prevChildKey) in
+				
 				print("got into message listiner...")
+				
 				if snap.exists(){
+					
 					let data = snap.value as! [String: String]
-					print("LISTINING FOR MESSAGES")
-					if !blockedUsers.contains(data["userId"]!) {
-						completion(snap)
-					}else{
-						return
+					let userID = data["userId"]!
+					Firebase.getUserDataWithKey(userID) { user in
+						print("LISTINING FOR MESSAGES")
+						guard (user != nil) else {
+							Firebase.displayErrorAlert("Could not find a user! If this error occurs repeatedly please report it", error: "didnt find user with id \(userID) while listening for messages", instance: "getUserDataWithKey(\(userID))")
+							return
+						}
+						
+						if !blockedUsers.contains(userID) {
+							completion(snap, user!)
+						}else{
+							return
+						}
 					}
 					
 				}
@@ -191,7 +222,7 @@ class Firebase {
 			let longitude = snappedUser["longitude"] as? Double
 			let latitude = snappedUser["latitude"] as? Double
 			let user = User(id: key, name: name, team: team, location: location, latitude: latitude, longitude: longitude)
-			//print("going back to controller...")
+			print("going back to controller...")
 			completion(user)
 			}
 		
@@ -372,6 +403,8 @@ class Firebase {
 			
 			ref.removeObserverWithHandle(handle)
 			completion(blockedUsers)
+			
+			
 		}
 	}
 	

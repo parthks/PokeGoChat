@@ -13,6 +13,8 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 	var blockedUsers: [User] = []
 	var currentlyBlocked: [Bool] = []
 	
+	@IBOutlet weak var saveButton: UIBarButtonItem!
+	
 	@IBAction func save(sender: UIBarButtonItem) {
 	
 		for index in 0..<blockedUsers.count {
@@ -31,18 +33,27 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 	}
 	
 	@IBOutlet weak var tableView: UITableView!
-    override func viewDidLoad() {
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-		
+		saveButton.tintColor = UIColor(red: 25/256, green: 161/256, blue: 57/256, alpha: 1)
 		Firebase.getAllBlockedUsersForCurrentUserWithBlock(){ [unowned self] allblockedUsers in
+		
 			for key in allblockedUsers {
 				Firebase.getUserDataWithKey(key) { user in
-					self.blockedUsers.append(user!)
-					self.currentlyBlocked.append(true)
-					self.tableView.reloadData()
+					if let user = user {
+						self.blockedUsers.append(user)
+						self.currentlyBlocked.append(true)
+						self.tableView.reloadData()
+					} else {
+						Firebase.displayErrorAlert("Could not find a user! If this error occurs repeatedly please report it", error: "Trying to find user with \(key) to see Current user's blocked users", instance: "Blocked View Controller")
+					}
+					
 				}
-
+				
 			}
+			
+			
 		}
         // Do any additional setup after loading the view.
     }
