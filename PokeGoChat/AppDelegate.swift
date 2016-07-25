@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FIRApp.configure()
 		UINavigationBar.appearance().tintColor = UIColor.blackColor()
 		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
+		
 
 		//FIRDatabase.database().persistenceEnabled = true
 

@@ -18,55 +18,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-vO-au7">
-                                <rect key="frame" x="20" y="72" width="560" height="380"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYM-vO-au7">
+                                <rect key="frame" x="20" y="84" width="560" height="363"/>
+                                <edgeInsets key="layoutMargins" top="20" left="20" bottom="8" right="20"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">Clicking Team Messages, will place you in a group chat with nearby members in your team. Similarly, clicking General Messages will place you in a group chat with nearby members of all teams.
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-If there are no messages in the chat room, please wait for someone to join or move a different location and try again.
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                        <attributes>
-                                            <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">To find another group, click on the leave chat on the top left. This will again use your location to find a group nearby. 
-Note: This may find your original group. Try moving to a different location and try again
+                                        <string key="content">Selecting "Team", will place you in a group chat with nearby members in your team. Similarly, clicking "General" will place you in a group chat with nearby members of all teams.
 
-For any technical difficulties or questions plese contact using the links below: </string>
+If there are no messages in the chat room, please wait for someone to join or move to a different location and try again.
+
+To find another group, click on "Leave Chat" on the top left corner. This will again use your location to find a group nearby.
+
+Note: This may find your original group. To find another group, try moving to a different location and try again
+
+For any technical difficulties or questions, please contact us using the links below: </string>
                                         <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="haF-AK-gTy">
-                                <rect key="frame" x="149" y="472" width="302" height="70"/>
+                                <rect key="frame" x="153" y="467" width="295" height="75"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eae-c7-Z3F">
-                                        <rect key="frame" x="0.0" y="9" width="52" height="52"/>
+                                        <rect key="frame" x="0.0" y="3" width="70" height="70"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="Gy0-OM-yyL"/>
-                                            <constraint firstAttribute="height" constant="52" id="hEw-9x-55b"/>
+                                            <constraint firstAttribute="width" constant="70" id="Gy0-OM-yyL"/>
+                                            <constraint firstAttribute="height" constant="70" id="hEw-9x-55b"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="Twitterbird_round"/>
                                         <connections>
@@ -74,19 +56,19 @@ For any technical difficulties or questions plese contact using the links below:
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oh3-tr-l2X">
-                                        <rect key="frame" x="92" y="3" width="100" height="64"/>
-                                        <state key="normal" image="Mail_Icon_clip_art_medium"/>
+                                        <rect key="frame" x="110" y="3" width="70" height="70"/>
+                                        <state key="normal" image="email"/>
                                         <connections>
                                             <action selector="mail:" destination="Qrf-Vn-ybO" eventType="touchUpInside" id="a8g-sM-oJm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VC0-rV-aYU">
-                                        <rect key="frame" x="232" y="0.0" width="70" height="70"/>
+                                        <rect key="frame" x="220" y="0.0" width="75" height="75"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="9MC-sQ-ueK"/>
-                                            <constraint firstAttribute="width" constant="70" id="KpI-ns-nSp"/>
+                                            <constraint firstAttribute="height" constant="75" id="9MC-sQ-ueK"/>
+                                            <constraint firstAttribute="width" constant="75" id="KpI-ns-nSp"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="Facebook_round"/>
+                                        <state key="normal" title="Button" image="facebook"/>
                                         <connections>
                                             <action selector="facebook:" destination="Qrf-Vn-ybO" eventType="touchUpInside" id="c9H-Yu-HgX"/>
                                         </connections>
@@ -96,11 +78,11 @@ For any technical difficulties or questions plese contact using the links below:
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rYM-vO-au7" firstAttribute="trailing" secondItem="cwf-Jk-Z1h" secondAttribute="trailingMargin" id="1iO-Ab-BSZ"/>
-                            <constraint firstItem="rYM-vO-au7" firstAttribute="leading" secondItem="cwf-Jk-Z1h" secondAttribute="leadingMargin" id="4fV-Uj-sPJ"/>
+                            <constraint firstItem="rYM-vO-au7" firstAttribute="trailing" secondItem="cwf-Jk-Z1h" secondAttribute="trailing" constant="-20" id="1iO-Ab-BSZ"/>
+                            <constraint firstItem="rYM-vO-au7" firstAttribute="leading" secondItem="cwf-Jk-Z1h" secondAttribute="leading" constant="20" id="4fV-Uj-sPJ"/>
                             <constraint firstItem="haF-AK-gTy" firstAttribute="top" secondItem="rYM-vO-au7" secondAttribute="bottom" constant="20" id="8wk-Ud-ndZ"/>
                             <constraint firstAttribute="bottom" secondItem="rYM-vO-au7" secondAttribute="bottom" constant="20" symbolic="YES" id="EQ8-Sq-79q"/>
-                            <constraint firstItem="rYM-vO-au7" firstAttribute="top" secondItem="IQh-b7-kdK" secondAttribute="bottom" constant="8" symbolic="YES" id="Xky-mi-brm"/>
+                            <constraint firstItem="rYM-vO-au7" firstAttribute="top" secondItem="IQh-b7-kdK" secondAttribute="bottom" constant="20" id="Xky-mi-brm"/>
                             <constraint firstItem="Cvf-2F-lc6" firstAttribute="top" secondItem="haF-AK-gTy" secondAttribute="bottom" constant="58" id="c1k-4Y-Trq"/>
                             <constraint firstItem="haF-AK-gTy" firstAttribute="centerX" secondItem="cwf-Jk-Z1h" secondAttribute="centerX" id="iS3-zz-pis"/>
                         </constraints>
@@ -110,7 +92,12 @@ For any technical difficulties or questions plese contact using the links below:
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="App Info" id="pIG-bb-Ntq"/>
+                    <navigationItem key="navigationItem" title="App Info" id="pIG-bb-Ntq">
+                        <barButtonItem key="backBarButtonItem" title="PIkanect" id="6Re-hD-GLE"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="rYM-vO-au7" id="5X8-nS-tr6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chq-aO-9aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,14 +116,14 @@ For any technical difficulties or questions plese contact using the links below:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="jjZ-nH-BZq">
-                                <rect key="frame" x="250" y="79" width="100" height="100"/>
+                                <rect key="frame" x="240" y="79" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="32y-VP-MHh"/>
-                                    <constraint firstAttribute="height" constant="100" id="4uh-Ux-equ"/>
+                                    <constraint firstAttribute="width" constant="120" id="32y-VP-MHh"/>
+                                    <constraint firstAttribute="height" constant="120" id="4uh-Ux-equ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xVz-bm-UDE">
-                                <rect key="frame" x="190" y="219" width="220" height="192"/>
+                                <rect key="frame" x="190" y="239" width="220" height="132"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cda-bO-SNo">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
@@ -144,7 +131,7 @@ For any technical difficulties or questions plese contact using the links below:
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFX-2E-mCO">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Igd-Ma-GlL">
@@ -163,56 +150,35 @@ For any technical difficulties or questions plese contact using the links below:
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dg-p7-s9u">
                                                 <rect key="frame" x="0.0" y="0.0" width="47" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gq3-IZ-aho">
                                                 <rect key="frame" x="67" y="0.0" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oNd-2P-WI5">
-                                        <rect key="frame" x="0.0" y="101" width="135" height="31"/>
+                                        <rect key="frame" x="0.0" y="101" width="206" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTD-3u-FDl">
-                                                <rect key="frame" x="0.0" y="0.0" width="66" height="31"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share my location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTD-3u-FDl">
+                                                <rect key="frame" x="0.0" y="0.0" width="137" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXx-wC-OMn">
-                                                <rect key="frame" x="86" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="157" y="0.0" width="51" height="31"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-Ft-XJd">
-                                        <rect key="frame" x="0.0" y="157" width="150" height="35"/>
-                                        <color key="backgroundColor" red="0.3167432449" green="0.31245951249999998" blue="0.32582131409999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="bQn-TI-T0A"/>
-                                            <constraint firstAttribute="height" constant="35" id="k8c-Ut-uSN"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title=" My Blocked Users  ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskedToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="aoY-YU-A2x" kind="show" id="y7x-oy-fp6"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2e-Zx-TBk">
-                                <rect key="frame" x="0.0" y="498" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="506" width="600" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.32167069858205322" blue="0.3181964818201517" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4rq-ER-Ua1"/>
@@ -224,17 +190,23 @@ For any technical difficulties or questions plese contact using the links below:
                                     <action selector="signOut:" destination="oQd-59-szp" eventType="touchUpInside" id="R1y-nj-QBI"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
-                                <rect key="frame" x="146" y="443" width="308" height="35"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="USd-yR-xzC">
+                                <rect key="frame" x="138" y="451" width="324" height="35"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay Free =&gt; " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
-                                        <rect key="frame" x="0.0" y="0.0" width="168" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help me stay FREE " textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xNa-oB-841">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="qAl-7m-Bpx">
+                                        <rect key="frame" x="154" y="0.0" width="25" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="1pK-Id-3SJ"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2h-7B-2Js">
-                                        <rect key="frame" x="168" y="0.0" width="140" height="35"/>
+                                        <rect key="frame" x="184" y="0.0" width="140" height="35"/>
                                         <color key="backgroundColor" red="0.099749744560000006" green="0.62974759619999998" blue="0.22444847339999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Bfa-hB-LgT"/>
@@ -246,7 +218,7 @@ For any technical difficulties or questions plese contact using the links below:
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                                <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskedToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -256,19 +228,50 @@ For any technical difficulties or questions plese contact using the links below:
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-Ft-XJd">
+                                <rect key="frame" x="225" y="401" width="150" height="35"/>
+                                <color key="backgroundColor" red="0.3167432449" green="0.31245951249999998" blue="0.32582131409999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bQn-TI-T0A"/>
+                                    <constraint firstAttribute="height" constant="35" id="k8c-Ut-uSN"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title=" My Blocked Users  ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskedToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" red="0.81193146201638144" green="0.88153044871794872" blue="0.75587964437804844" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="aoY-YU-A2x" kind="show" id="y7x-oy-fp6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RQf-Ft-XJd" firstAttribute="top" secondItem="xVz-bm-UDE" secondAttribute="bottom" priority="750" constant="30" id="0Hg-GV-Psl"/>
+                            <constraint firstItem="RQf-Ft-XJd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xVz-bm-UDE" secondAttribute="bottom" constant="8" id="47c-4o-GRT"/>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="4XC-fC-01U"/>
+                            <constraint firstItem="RQf-Ft-XJd" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="7Dp-RE-r21"/>
                             <constraint firstItem="a2e-Zx-TBk" firstAttribute="top" secondItem="USd-yR-xzC" secondAttribute="bottom" constant="20" id="A5d-pA-egH"/>
                             <constraint firstItem="USd-yR-xzC" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="FDv-et-kr0"/>
                             <constraint firstItem="a2e-Zx-TBk" firstAttribute="leading" secondItem="xDo-Eg-INf" secondAttribute="leading" id="NHZ-xZ-Z80"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerY" secondItem="xDo-Eg-INf" secondAttribute="centerY" id="Rir-vj-XIu"/>
-                            <constraint firstItem="800-vE-vGC" firstAttribute="top" secondItem="a2e-Zx-TBk" secondAttribute="bottom" constant="8" id="Ytu-pL-ewd"/>
+                            <constraint firstItem="800-vE-vGC" firstAttribute="top" secondItem="a2e-Zx-TBk" secondAttribute="bottom" id="Ytu-pL-ewd"/>
+                            <constraint firstItem="qAl-7m-Bpx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RQf-Ft-XJd" secondAttribute="bottom" constant="10" id="dme-j5-J9u"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="USd-yR-xzC" secondAttribute="trailing" constant="5" id="eWV-4i-7r5"/>
+                            <constraint firstItem="xVz-bm-UDE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jjZ-nH-BZq" secondAttribute="bottom" constant="8" id="l9e-HA-va3"/>
                             <constraint firstItem="jjZ-nH-BZq" firstAttribute="top" secondItem="2pe-RR-ojg" secondAttribute="bottom" constant="15" id="tnE-iL-dog"/>
                             <constraint firstAttribute="trailing" secondItem="a2e-Zx-TBk" secondAttribute="trailing" id="umW-nt-15p"/>
                             <constraint firstItem="xVz-bm-UDE" firstAttribute="centerX" secondItem="xDo-Eg-INf" secondAttribute="centerX" id="wI9-tf-bzi"/>
-                            <constraint firstItem="xVz-bm-UDE" firstAttribute="top" secondItem="jjZ-nH-BZq" secondAttribute="bottom" constant="40" id="xPJ-3F-i4K"/>
+                            <constraint firstItem="xVz-bm-UDE" firstAttribute="top" secondItem="jjZ-nH-BZq" secondAttribute="bottom" priority="750" constant="40" id="xPJ-3F-i4K"/>
+                            <constraint firstItem="USd-yR-xzC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xDo-Eg-INf" secondAttribute="leadingMargin" constant="5" id="xYr-jU-TRu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -279,6 +282,7 @@ For any technical difficulties or questions plese contact using the links below:
                     <tabBarItem key="tabBarItem" title="Item" id="ZwB-Xc-x8r"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="Pne-2c-fLd">
+                        <barButtonItem key="backBarButtonItem" title="PIkanect" id="Ciu-3k-hBF"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1MT-uC-hU9">
                             <color key="tintColor" red="0.099749744560000006" green="0.62974759619999998" blue="0.22444847339999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -326,7 +330,7 @@ For any technical difficulties or questions plese contact using the links below:
                                                     <rect key="frame" x="15" y="12" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qai-XD-Ck3">
@@ -371,7 +375,7 @@ For any technical difficulties or questions plese contact using the links below:
             </objects>
             <point key="canvasLocation" x="3004" y="-555"/>
         </scene>
-        <!--Pikanect-->
+        <!--Welcome to Pikanect-->
         <scene sceneID="Nbg-t2-WE9">
             <objects>
                 <viewController id="uKa-LV-nec" customClass="MainScreenViewController" customModule="Pikanect" customModuleProvider="target" sceneMemberID="viewController">
@@ -384,36 +388,13 @@ For any technical difficulties or questions plese contact using the links below:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-IU-5Ke">
-                                <rect key="frame" x="20" y="415" width="560" height="125"/>
+                                <rect key="frame" x="20" y="456" width="560" height="66"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-22-rk3">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="125"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="125" id="34a-r9-itj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Team Chat">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="disabled">
-                                            <color key="titleColor" red="0.01570512820512826" green="0.01570512820512826" blue="0.01570512820512826" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="teamChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="ctH-Gx-eyx"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NKO-S6-F8J">
-                                        <rect key="frame" x="290" y="0.0" width="270" height="125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="66"/>
                                         <color key="backgroundColor" red="0.81384214745384609" green="0.81384214745384609" blue="0.81384214745384609" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="General Chat">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="General">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="disabled">
@@ -421,7 +402,7 @@ For any technical difficulties or questions plese contact using the links below:
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
+                                                <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
@@ -429,14 +410,35 @@ For any technical difficulties or questions plese contact using the links below:
                                             <action selector="generalChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="DTE-mV-Xx0"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-22-rk3">
+                                        <rect key="frame" x="290" y="0.0" width="270" height="66"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="34a-r9-itj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Team">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" red="0.01570512820512826" green="0.01570512820512826" blue="0.01570512820512826" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="teamChatGo:" destination="uKa-LV-nec" eventType="touchUpInside" id="ctH-Gx-eyx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-p9-jTd">
-                                <rect key="frame" x="20" y="84" width="560" height="295"/>
-                                <connections>
-                                    <outlet property="delegate" destination="uKa-LV-nec" id="DUa-w3-FSD"/>
-                                </connections>
-                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Goh-d9-RJq" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -445,44 +447,68 @@ For any technical difficulties or questions plese contact using the links below:
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-di-Cw7">
-                                <rect key="frame" x="231" y="387" width="139" height="20"/>
+                                <rect key="frame" x="228" y="428" width="144" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7L-JL-28O">
-                                        <rect key="frame" x="0.0" y="0.0" width="114" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fNx-ma-Elw">
-                                        <rect key="frame" x="119" y="0.0" width="20" height="20"/>
+                                        <rect key="frame" x="124" y="0.0" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4LL-GV-eu2"/>
+                                    <constraint firstAttribute="width" constant="140" id="ta2-Sa-PB8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4LL-GV-eu2"/>
+                                        <exclude reference="ta2-Sa-PB8"/>
+                                    </mask>
+                                </variation>
                             </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-p9-jTd">
+                                <rect key="frame" x="0.0" y="64" width="600" height="478"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uKa-LV-nec" id="DUa-w3-FSD"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Qra-p9-jTd" firstAttribute="bottom" secondItem="iAH-IU-5Ke" secondAttribute="bottom" constant="20" id="0QY-Gz-gu4"/>
                             <constraint firstItem="EJb-fm-eFc" firstAttribute="top" secondItem="iAH-IU-5Ke" secondAttribute="bottom" constant="60" id="2kY-8W-1gg"/>
                             <constraint firstItem="Qra-p9-jTd" firstAttribute="centerX" secondItem="iAH-IU-5Ke" secondAttribute="centerX" id="7N4-Eh-0O7"/>
                             <constraint firstItem="Qra-p9-jTd" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leadingMargin" id="FrF-nZ-fmx"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="centerX" secondItem="6bp-5d-J9Z" secondAttribute="centerX" id="HmE-lz-IWE"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" constant="20" id="Hzt-CS-ZIZ"/>
-                            <constraint firstItem="Qra-p9-jTd" firstAttribute="top" secondItem="zLZ-FV-vFU" secondAttribute="bottom" constant="20" id="STS-W0-8ON"/>
+                            <constraint firstItem="Qra-p9-jTd" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" id="Nee-1Q-Fin"/>
+                            <constraint firstItem="Qra-p9-jTd" firstAttribute="top" secondItem="zLZ-FV-vFU" secondAttribute="bottom" id="STS-W0-8ON"/>
+                            <constraint firstItem="Goh-d9-RJq" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="8" id="SpN-ga-nWp"/>
                             <constraint firstItem="Goh-d9-RJq" firstAttribute="leading" secondItem="6bp-5d-J9Z" secondAttribute="leading" id="VMl-MT-R6G"/>
                             <constraint firstItem="SuY-di-Cw7" firstAttribute="centerX" secondItem="iAH-IU-5Ke" secondAttribute="centerX" id="dHN-0D-e8q"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="30" id="eJ4-Kr-yOp"/>
                             <constraint firstAttribute="trailing" secondItem="Goh-d9-RJq" secondAttribute="trailing" id="lmQ-0A-rjE"/>
                             <constraint firstItem="iAH-IU-5Ke" firstAttribute="top" secondItem="t7L-JL-28O" secondAttribute="bottom" constant="8" id="uVW-wy-i51"/>
                             <constraint firstAttribute="trailing" secondItem="iAH-IU-5Ke" secondAttribute="trailing" constant="20" id="wGC-eN-qE0"/>
+                            <constraint firstAttribute="trailing" secondItem="Qra-p9-jTd" secondAttribute="trailing" id="xDB-HD-8Mn"/>
                             <constraint firstItem="t7L-JL-28O" firstAttribute="top" secondItem="Qra-p9-jTd" secondAttribute="bottom" constant="8" id="xTJ-36-xeA"/>
                             <constraint firstItem="EJb-fm-eFc" firstAttribute="top" secondItem="Goh-d9-RJq" secondAttribute="bottom" id="xc7-nK-Sxm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="FrF-nZ-fmx"/>
                                 <exclude reference="eJ4-Kr-yOp"/>
+                                <exclude reference="xTJ-36-xeA"/>
+                                <exclude reference="2kY-8W-1gg"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Pikanect" id="Ebv-4L-dLp">
+                    <navigationItem key="navigationItem" title="Welcome to Pikanect" id="Ebv-4L-dLp">
+                        <barButtonItem key="backBarButtonItem" title="Pikanect" id="KpO-7l-VTE"/>
                         <barButtonItem key="leftBarButtonItem" title="Info" id="vmd-B1-DzD">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -523,37 +549,38 @@ For any technical difficulties or questions plese contact using the links below:
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-V5-G5G">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-V5-G5G">
                                 <rect key="frame" x="0.0" y="254" width="600" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="JkX-7L-JCG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="0AS-3J-Xcu"/>
+                                    <constraint firstAttribute="height" priority="750" constant="250" id="JkX-7L-JCG"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="4g9-XC-ssf" customClass="DisplayMessageTableViewCell" customModule="Pikanect" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="600" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="81" id="4g9-XC-ssf" customClass="DisplayMessageTableViewCell" customModule="Pikanect" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20" width="600" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4g9-XC-ssf" id="ohs-di-cap">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of user" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ea5-IW-u1o">
                                                     <rect key="frame" x="8" y="16" width="494" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message of user" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSE-mQ-UBY">
-                                                    <rect key="frame" x="8" y="45" width="489" height="24"/>
+                                                    <rect key="frame" x="8" y="45" width="489" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YY3-kK-XsK">
-                                                    <rect key="frame" x="510" y="-3" width="85" height="91"/>
+                                                    <rect key="frame" x="510" y="5" width="85" height="70"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OST-q3-DPE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="46"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="35"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <state key="normal" title="Report ">
                                                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -566,7 +593,7 @@ For any technical difficulties or questions plese contact using the links below:
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rb-Xd-chR">
-                                                            <rect key="frame" x="0.0" y="46" width="85" height="45"/>
+                                                            <rect key="frame" x="0.0" y="35" width="85" height="35"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <state key="normal" title="Block  ">
                                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -577,16 +604,16 @@ For any technical difficulties or questions plese contact using the links below:
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="91" id="m8f-48-2gQ"/>
+                                                        <constraint firstAttribute="height" constant="70" id="m8f-48-2gQ"/>
                                                         <constraint firstAttribute="width" constant="85" id="o9j-2w-8tB"/>
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzj-Rv-OrS">
-                                                    <rect key="frame" x="502" y="0.0" width="0.0" height="85"/>
+                                                    <rect key="frame" x="502" y="0.0" width="0.0" height="80"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="MaM-2V-0QI"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="kt8-dA-CGv"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="kt8-dA-CGv"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -621,6 +648,7 @@ For any technical difficulties or questions plese contact using the links below:
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-7s-4uh">
                                 <rect key="frame" x="0.0" y="64" width="600" height="182"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="24U-lJ-t2P"/>
                                     <constraint firstAttribute="height" constant="220" id="VHl-yO-ZqY"/>
                                 </constraints>
                                 <variation key="default">
@@ -630,20 +658,23 @@ For any technical difficulties or questions plese contact using the links below:
                                 </variation>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Message" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="146-uO-4BL">
-                                <rect key="frame" x="82" y="512" width="436" height="30"/>
+                                <rect key="frame" x="92" y="512" width="426" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5pC-mK-14E"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="ydW-Be-fiu" id="66D-GC-SnV"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFe-dQ-7Kk">
-                                <rect key="frame" x="5" y="505" width="69" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFe-dQ-7Kk">
+                                <rect key="frame" x="5" y="505" width="79" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="eLi-dX-evm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -659,13 +690,13 @@ For any technical difficulties or questions plese contact using the links below:
                                 </constraints>
                             </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-hb-IUE">
-                                <rect key="frame" x="15" y="515" width="51" height="31"/>
+                                <rect key="frame" x="20" y="515" width="51" height="27"/>
                                 <connections>
                                     <action selector="locationChanged:" destination="ydW-Be-fiu" eventType="valueChanged" id="JgK-zI-2vI"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk3-2r-z2l">
-                                <rect key="frame" x="526" y="512" width="54" height="30"/>
+                                <rect key="frame" x="526" y="512" width="54" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="QVG-mS-0xu"/>
                                 </constraints>
@@ -680,6 +711,8 @@ For any technical difficulties or questions plese contact using the links below:
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="top" id="3Ju-Xw-oa1"/>
+                            <constraint firstItem="kLt-Xk-xiA" firstAttribute="top" secondItem="Rk3-2r-z2l" secondAttribute="bottom" constant="12" id="3hI-MA-WMr"/>
+                            <constraint firstItem="C6x-hb-IUE" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="146-uO-4BL" secondAttribute="bottom" id="6et-06-EWq"/>
                             <constraint firstItem="n5l-V5-G5G" firstAttribute="top" secondItem="hnr-7s-4uh" secondAttribute="bottom" constant="8" id="7cO-Fm-NEL"/>
                             <constraint firstAttribute="trailing" secondItem="n5l-V5-G5G" secondAttribute="trailing" id="8ey-KY-0gx"/>
                             <constraint firstItem="rFe-dQ-7Kk" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="top" constant="-7" id="8kM-mL-FhO"/>
@@ -694,11 +727,18 @@ For any technical difficulties or questions plese contact using the links below:
                             <constraint firstItem="Rk3-2r-z2l" firstAttribute="leading" secondItem="146-uO-4BL" secondAttribute="trailing" constant="8" symbolic="YES" id="Wa3-a7-NUn"/>
                             <constraint firstAttribute="trailing" secondItem="hnr-7s-4uh" secondAttribute="trailing" id="Z2p-2U-Tab"/>
                             <constraint firstItem="146-uO-4BL" firstAttribute="leading" secondItem="rFe-dQ-7Kk" secondAttribute="trailing" constant="8" id="j6w-1i-Q3g"/>
+                            <constraint firstItem="Rk3-2r-z2l" firstAttribute="bottom" secondItem="146-uO-4BL" secondAttribute="bottom" constant="4" id="s3S-cT-g6a"/>
                             <constraint firstItem="hnr-7s-4uh" firstAttribute="top" secondItem="6V5-y9-0oC" secondAttribute="bottom" id="toU-Xe-0d9"/>
                             <constraint firstItem="kLt-Xk-xiA" firstAttribute="top" secondItem="146-uO-4BL" secondAttribute="bottom" constant="8" id="ty6-td-jPM"/>
                             <constraint firstItem="eMj-YP-HSM" firstAttribute="top" secondItem="kLt-Xk-xiA" secondAttribute="bottom" id="wWY-R6-HrN"/>
                             <constraint firstItem="kLt-Xk-xiA" firstAttribute="leading" secondItem="t5r-CL-0hp" secondAttribute="leading" id="ysU-3a-kOK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6et-06-EWq"/>
+                                <exclude reference="3hI-MA-WMr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Team (Color)" id="iYb-AZ-4mL">
                         <barButtonItem key="leftBarButtonItem" title="Leave Chat" id="lqg-Xx-PNp">
@@ -780,13 +820,13 @@ For any technical difficulties or questions plese contact using the links below:
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of user" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93L-v2-dJ4">
                                                             <rect key="frame" x="8" y="16" width="494" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message of user" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVO-gr-gli">
                                                             <rect key="frame" x="8" y="45" width="489" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3ee-ti-oGJ">
@@ -822,10 +862,10 @@ For any technical difficulties or questions plese contact using the links below:
                                                             </constraints>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvM-Cx-l40">
-                                                            <rect key="frame" x="502" y="0.0" width="0.0" height="85"/>
+                                                            <rect key="frame" x="502" y="0.0" width="0.0" height="80"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="5Xh-cY-OXy"/>
+                                                                <constraint firstAttribute="height" constant="80" id="5bn-bl-uuk"/>
                                                                 <constraint firstAttribute="width" id="9Ga-tA-jiM"/>
                                                             </constraints>
                                                         </view>
@@ -954,54 +994,57 @@ For any technical difficulties or questions plese contact using the links below:
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Pikanect" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-F2-KQM">
-                                <rect key="frame" x="40" y="100" width="520" height="47"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Pikanect!" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-F2-KQM">
+                                <rect key="frame" x="40" y="128" width="520" height="52"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="43"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.053846153846153877" green="0.053846153846153877" blue="0.053846153846153877" alpha="0.39765624999999999" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQa-7Q-2zV" customClass="GIDSignInButton">
-                                <rect key="frame" x="225" y="278" width="150" height="45"/>
+                                <rect key="frame" x="225" y="270" width="150" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="6wq-HM-bBQ"/>
-                                    <constraint firstAttribute="height" constant="45" id="kse-nu-KmL"/>
+                                    <constraint firstAttribute="height" constant="60" id="kse-nu-KmL"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BRS-st-mKY">
-                                <rect key="frame" x="261" y="359" width="79" height="40"/>
+                                <rect key="frame" x="261" y="354" width="79" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signing in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2em-gA-gSb">
                                         <rect key="frame" x="0.0" y="0.0" width="79" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="9k0-we-FMg"/>
+                                            <constraint firstAttribute="width" constant="80" id="UqW-6f-WKJ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="UqW-6f-WKJ"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7e5-nr-kHf">
                                         <rect key="frame" x="79" y="0.0" width="0.0" height="40"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="wOd-ON-Lx3"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.81169871794871784" green="0.81169871794871784" blue="0.81169871794871784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aQa-7Q-2zV" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="EZW-sw-fcA"/>
-                            <constraint firstItem="GMc-F2-KQM" firstAttribute="leading" secondItem="pTc-Q7-naA" secondAttribute="leadingMargin" constant="20" id="IPi-bv-0HZ"/>
-                            <constraint firstItem="aQa-7Q-2zV" firstAttribute="centerY" secondItem="pTc-Q7-naA" secondAttribute="centerY" id="Qjp-mc-uIy"/>
-                            <constraint firstItem="BRS-st-mKY" firstAttribute="top" secondItem="aQa-7Q-2zV" secondAttribute="bottom" constant="36" id="UsV-oh-WSO"/>
-                            <constraint firstItem="BRS-st-mKY" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="foo-hH-mpW"/>
-                            <constraint firstItem="GMc-F2-KQM" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="m2G-6h-G4Q"/>
-                            <constraint firstItem="GMc-F2-KQM" firstAttribute="top" secondItem="qBm-Wo-ijd" secondAttribute="bottom" constant="80" id="mNn-3x-TfR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GMc-F2-KQM" secondAttribute="trailing" constant="20" id="p7K-HC-wqM"/>
+                            <constraint firstItem="GMc-F2-KQM" firstAttribute="leading" secondItem="pTc-Q7-naA" secondAttribute="leadingMargin" constant="20" id="896-Kz-HK3"/>
+                            <constraint firstItem="BRS-st-mKY" firstAttribute="top" secondItem="aQa-7Q-2zV" secondAttribute="bottom" constant="24" id="G2x-0E-Wat"/>
+                            <constraint firstItem="aQa-7Q-2zV" firstAttribute="top" secondItem="GMc-F2-KQM" secondAttribute="bottom" constant="90" id="Ul9-vl-VaC"/>
+                            <constraint firstItem="GMc-F2-KQM" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="X4Q-Xf-0AB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GMc-F2-KQM" secondAttribute="trailing" constant="20" id="dgm-F1-EWv"/>
+                            <constraint firstItem="BRS-st-mKY" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="iaw-5m-k0Q"/>
+                            <constraint firstItem="aQa-7Q-2zV" firstAttribute="centerY" secondItem="pTc-Q7-naA" secondAttribute="centerY" id="tVf-1q-sVP"/>
+                            <constraint firstItem="aQa-7Q-2zV" firstAttribute="centerX" secondItem="pTc-Q7-naA" secondAttribute="centerX" id="zhA-Vp-fyD"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="m2G-6h-G4Q"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="7e5-nr-kHf" id="4RL-sy-a8q"/>
@@ -1027,10 +1070,10 @@ For any technical difficulties or questions plese contact using the links below:
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slR-FZ-P8C">
-                                <rect key="frame" x="250" y="28" width="101" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slR-FZ-P8C">
+                                <rect key="frame" x="238" y="40" width="124" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="0MM-EL-keP">
@@ -1042,7 +1085,7 @@ For any technical difficulties or questions plese contact using the links below:
                                             <constraint firstAttribute="width" constant="70" id="Wbs-pP-2Vm"/>
                                             <constraint firstAttribute="height" constant="30" id="ZEF-9m-DfF"/>
                                         </constraints>
-                                        <state key="normal" title="  I Decline " backgroundImage="BlackOvalButton70-30">
+                                        <state key="normal" title="  Decline " backgroundImage="BlackOvalButton70-30">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -1055,7 +1098,7 @@ For any technical difficulties or questions plese contact using the links below:
                                             <constraint firstAttribute="height" constant="30" id="0QY-5I-3kB"/>
                                             <constraint firstAttribute="width" constant="70" id="wgo-43-BUG"/>
                                         </constraints>
-                                        <state key="normal" title="I Agree " backgroundImage="BlackOvalButton70-30">
+                                        <state key="normal" title="Agree " backgroundImage="BlackOvalButton70-30">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -1065,119 +1108,115 @@ For any technical difficulties or questions plese contact using the links below:
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-KY-HWZ">
-                                <rect key="frame" x="20" y="67" width="560" height="418"/>
+                                <rect key="frame" x="20" y="79" width="560" height="406"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="388" id="Fie-Qo-UpG"/>
                                 </constraints>
-                                <mutableString key="text">As a user of Pikanect you will not submit material that is unlawful, obscene, defamatory, libelous, threatening, harassing, hateful, racially or ethnically offensive.
-
-Do not submit or post messages, links, information, relating to yourself or a third party, etc that you don’t want to be seen publically. 
-
-What you submit will not be confidential. 
-
-Pikanect uses your location to help find nearby Pikanect s. 
-
-Pikanect is not responsible for any action by users knowing your location. 
-
-
-Please read the Terms of Service &amp; Privacy Policy below for more detail and information.
- 
-
+                                <string key="text">Pikanect
  
 Terms of Service
+
 1. Your Acceptance
-This is an Agreement between the developer of Pikanect and you, a user of Pikanect. By using Pikanect, you acknowledge and agree to these Terms of Service and Pikanect PRIVACY POLICY incorporated herein by reference. If you choose to not agree with any of these terms you may not use Pikanect.
- 
+This is an Agreement between (who is the owner in the App Store) and you (“you” or “You”), a user of Pikanect. By using Pikanect, you acknowledge and agree to these Terms of Service and Pikanect PRIVACY POLICY incorporated herein by reference. If you choose not to agree with any of these terms you may not use Pikanect.
+
 2. Pikanect Service
 These Terms of Service apply to all users of the Pikanect. Pikanect uses your location to help find nearby Pikanect users. Pikanect is not responsible for any action by users knowing your location. Pikanect users, via Pikanect may receive messages, information, content, links to third party websites, etc. that are not owned or controlled by Pikanect. Pikanect has no control over, and assumes no responsibility for, the content, privacy policies, or practices of users or any third party websites. In addition, Pikanect will not and cannot censor or edit the content of any third-party site. By using the software, you expressly acknowledge and agree that Pikanect shall not be responsible for any damages, claims or other liability arising from or related to your use of Pikanect and / or your location information that is disclosed to Pikanect and / or any third-party website that is disclosed via Pikanect.
- 
+
+
 3. Pikanect Access
-A. Subject to your compliance with these Terms of Service, Pikanect hereby grants you permission to use the software, provided that: (i) your use of the Pikanect as permitted is solely for your personal use, and you are not permitted to resell or charge others for use of or access to Pikanect, or in any other manner inconsistent with these Terms of Service; (ii) you will not duplicate, transfer, give access to, copy or distribute any part of Pikanect in any medium without Pikanect’s prior written authorization; (iii) you will not attempt to reverse engineer, alter or modify any part of Pikanect; and (iv) you will otherwise comply with the terms and conditions of these Terms of Service and Privacy Policy.
+A. Subject to your compliance with these Terms of Service, Pikanect hereby grants you permission to use the software, provided that: (i) your use of Pikanect as permitted is solely for your personal use, and you are not permitted to resell or charge others for use of or access to Pikanect, or in any other manner inconsistent with these Terms of Service; (ii) you will not duplicate, transfer, give access to, copy or distribute any part of Pikanect in any medium without Pikanect’s prior written authorization; (iii) you will not attempt to reverse engineer, alter or modify any part of Pikanect; and (iv) you will otherwise comply with the terms and conditions of these Terms of Service and Privacy Policy.
+B. In order to access and use the features of Pikanect, you acknowledge and agree that you will have to provide Pikanect with your email address. You may also, with your assent, provide your location information during the use of Pikanect. You expressly acknowledge and agree that Pikanect may periodically access your information. You must provide accurate and complete information. You hereby give your express consent to Pikanect to access your information to provide and use Pikanect. You are solely responsible for the messages, information, content, links, location information etc. (herein after referred to as “Submissions”) that you submit on Pikanect. Pikanect will not be responsible for any breach of security or unauthorized use of your mobile phone and Pikanect. Although Pikanect will not be liable for your losses caused by any unauthorized use of Pikanect, you may be liable for the losses of Pikanect or others due to such unauthorized use.
+
  
-B. In order to access and use the features of Pikanect, you acknowledge and agree that you will have to provide Pikanect with your email address. You may also, with your assent, provide your location information during the use of Pikanect. You expressly acknowledge and agree that Pikanect may periodically access your information. You must provide accurate and complete information. You hereby give your express consent to Pikanect to access your information to provide and use Pikanect. You are solely responsible for the messages, information, content, links, location information etc. (herein after referred to as “Submissions”) that you submit and that are displayed on Pikanect. Pikanect will not be responsible for any breach of security or unauthorized use of your mobile phone and Pikanect. Although Pikanect will not be liable for your losses caused by any unauthorized use of your account, you may be liable for the losses of Pikanect or others due to such unauthorized use.
- 
-C. You agree not to use or launch any automated system that accesses Pikanect. Pikanect disallows tools and / or activities that will explore and / or harm and / or penetrate and / or test the site. You must secure our permission before you measure, test, health check or otherwise monitor any network equipment, servers or assets hosted on our domain. You agree not to collect or harvest any from Pikanect, nor to use the communication systems provided by Pikanect for any illegal, commercial solicitation or spam purposes. You agree not to spam, or solicit for commercial purposes any users of Pikanect.
- 
+
+C. You agree not to use or launch any automated system that accesses Pikanect. Pikanect disallows tools and / or activities that will explore and / or harm and / or penetrate and / or test the site. You must secure our permission before you measure, test, health check or otherwise monitor any network equipment, servers or assets hosted on our domain. You agree not to collect or harvest any information and / or data from Pikanect, nor to use the communication systems provided by Pikanect for any illegal, commercial, solicitation or spam purposes. You agree not to spam, or solicit for commercial purposes any users of Pikanect.
+
+
 4. Intellectual Property Rights
 The design of Pikanect created text, scripts, graphics, interactive features and the like are owned by or licensed to Pikanect, subject to copyright and other intellectual property rights under various laws and international conventions. Pikanect is provided to you AS IS for your information and personal use only. Pikanect reserves all rights not expressly granted in and to the Service. You agree to not engage in the use, copying, or distribution of any of the Service other than expressly permitted herein, including any use, copying, or distribution of information received of third parties obtained through Pikanect for any commercial purposes.
- 
+
 5. User Submissions
-A. Pikanect allows users to submit text and other messages, information, content or communication in various submissions and their own location information herein after referred to as “Submissions”. These Submissions may be hosted, shared, and/or published as part of the Pikanect Service, and may be visible to other users of Pikanect which you have not expressly blocked. For clarity, direct messages, location data and user(s) or group(s) you directly send such information; We have no method of providing different levels of visibility of your Submissions among users that in your group – you acknowledge and agree that any Submissions may be globally viewed by users. So don’t submit or post messages, links, information, etc that you don’t want to be seen globally. You can and should block Pikanect from accessing your location information and you will be solely responsible to block Pikanect from accessing your location information via your mobile phone. A good rule of thumb is if you don’t want the whole world to know something or see something, don’t submit it. You understand that Submissions that are published, Pikanect does not guarantee any confidentiality with respect to any submissions.
- 
+A. Pikanect allows users to submit text and other messages, information, content or communication in various submissions and their own location information herein after referred to as “Submissions”. These Submissions may be hosted, shared, and/or published as part of the Pikanect Service, and may be visible to other users of Pikanect. For clarity, direct messages, location data and user(s) or group(s) you directly send will be visible to other users of Pikanect We have no method of providing different levels of visibility of your Submissions among Pkanect users. You acknowledge and agree that any Submissions may be globally viewed by users. So don’t submit or post messages, links, information, etc that you don’t want to be seen globally. You can and should block Pikanect from accessing your location information and you will be solely responsible to block Pikanect from accessing your location information via your mobile phone. A good rule of thumb is if you don’t want the whole world to know something or see something, don’t submit it. You understand that for Submissions that are published, Pikanect does not guarantee any confidentiality with respect to any submissions.
 B. You shall be solely responsible for your own Submissions and the consequences of posting or publishing them. Because Pikanect is only acting as a repository of data, user submitted messages and information do not represent the views or opinions of Pikanect, and Pikanect makes no guarantees as to the validity, accuracy or legal status of any messages or information.
- 
-C. In connection with Submissions, you further agree that you will not: (i) submit material that is copyrighted, protected by trade secret or otherwise subject to third party proprietary rights, including privacy and publicity rights, unless you are the owner of such rights or have permission from their rightful owner to post the material and to grant Pikanect all of the license rights granted herein; (ii) publish falsehoods or misrepresentations that could damage Pikanect or any third party; (iii) submit material that is unlawful, obscene, defamatory, libelous, threatening, harassing, hateful, racially or ethnically offensive, or encourages conduct that would be considered a criminal offense, give rise to civil liability, violate any law, or is otherwise inappropriate; (iv) post advertisements or solicitations of business; (v) impersonate another person; (vi) send or store material containing software viruses, worms, Trojan horses or other harmful computer code, files, scripts, agents or programs; (vii) interfere with or disrupt the integrity or performance of Pikanect or the data contained therein; or (viii) attempt to gain unauthorized access to the Service or its related systems or networks.
- 
+C. In connection with Submissions, you further agree that you will not: (i) submit material that is copyrighted, protected by trade secret or otherwise subject to third party proprietary rights, including privacy and publicity rights, unless you are the owner of such rights or have permission from their rightful owner to post the material and to grant Pikanect all of the license rights granted herein; (ii) publish falsehoods or misrepresentations that could damage Pikanect or any third party; (iii) submit material that is unlawful, obscene, defamatory, libelous, threatening, harassing, hateful, racially or ethnically offensive, or encourages conduct that would be considered a criminal offense, give rise to civil liability, violate any law, or is otherwise inappropriate; (iv) post advertisements or solicitations of business; (v) impersonate another person; (vi) send or store material containing software viruses, worms, Trojan or other harmful computer code, files, scripts, agents or programs; (vii) interfere with or disrupt the integrity or performance of Pikanect or the data contained therein; or (viii) attempt to gain unauthorized access to the Service or its related systems or networks.
 D. Submissions should not contain adult content. Pikanect does not endorse any messages, information or any opinion, recommendation, or advice expressed therein, and Pikanect expressly disclaims any and all liability in connection with messages, information, opinions, etc exchanged or viewed by users of Pikanect. Pikanect does not permit copyright infringing activities and infringement of intellectual property rights and Pikanect will remove all content if properly notified that such content that infringes on another's intellectual property rights. Pikanect reserves the right to remove content without prior notice. Pikanect may also terminate a user's access for any or no reason. Pikanect also reserves the right to decide whether content is appropriate and complies with these Terms of Service for violations. Pikanect may remove such Submissions and/or terminate a User's access in violation of these Terms of Service at any time, without prior notice and at its sole discretion.
- 
 E. You understand that when using the Pikanect you will be exposed to Submissions from a variety of sources and users. Pikanect is not responsible for the accuracy, usefulness, safety, or intellectual property rights and these Submissions including messages, information and content are not the responsibility of Pikanect. You further understand and acknowledge that you may be exposed to Submissions including messages, information and / or content that are inaccurate, offensive, indecent, or objectionable, and you agree to waive, and hereby do waive, any legal or equitable rights or remedies you have or may have against Pikanect with respect thereto, and agree to indemnify and hold Pikanect, its officers, directors, employees, agents, affiliates, and/or licensors, harmless to the fullest extent allowed by law regarding all matters related to your use of Pikanect.
- 
 F. Pikanect reserves the right to discontinue any aspect of Pikanect at any time.
- 
+
 6. Warranty Disclaimer
-YOU AGREE THAT YOUR USE OF THE Pikanect SHALL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, Pikanect, ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICE AND YOUR USE THEREOF. Pikanect MAKES NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THIS SERVICE'S CONTENT AND ASSUMES NO LIABILITY OR RESPONSIBILITY FOR ANY (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF OUR SERVICE, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVICE, (IV) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICE THROUGH THE ACTIONS OF ANY THIRD PARTY, AND/OR Pikanect(V) ANY ERRORS OR OMISSIONSIN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE Pikanect. Pikanect DOES NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH Pikanect OR ANY HYPERLINKED WEBSITE OR FEATURED IN ANY USER SUBMISSION OR OTHER ADVERTISING, AND Pikanect WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE. AND AGAIN, USE THIS JUST FOR FUN.
- 
+YOU AGREE THAT YOUR USE OF PIKANECT SHALL BE AT YOUR SOLE RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, PIKANECT, ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SERVICE AND YOUR USE THEREOF. PIKANECT MAKES NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THIS SERVICE'S CONTENT AND ASSUMES NO LIABILITY OR RESPONSIBILITY FOR ANY (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF OUR SERVICE, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVICE, (IV) ANY BUGS, VIRUSES, TROJANS, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICE THROUGH THE ACTIONS OF ANY THIRD PARTY, AND/OR PIKANECT(V) ANY ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA PIKANECT. PIKANECT DOES NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH PIKANECT OR ANY HYPERLINKED WEBSITE OR FEATURED IN ANY USER SUBMISSION OR OTHER ADVERTISING, AND PIKANECT WILL NOT BE A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE. AND AGAIN, USE THIS JUST FOR FUN.
+
 7. Limitation of Liability
-IN NO EVENT SHALL Pikanect, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS, BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES WHATSOEVER RESULTING FROM ANY (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF Pikanect, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVERS, (IV) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE, WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICE BY ANY THIRD PARTY, (V) ANY ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF YOUR USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA Pikanect, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT THE COMPANY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, AND/OR (VI) THE DISCLOSURE OF INFORMATION PURSUANT TO THESE TERMS OF SERVICE OR PRIVACY POLICY. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.
+IN NO EVENT SHALL PIKANECT, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS, BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES WHATSOEVER RESULTING FROM ANY (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF Pikanect, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION AND/OR FINANCIAL INFORMATION STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM OUR SERVERS, (IV) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE, WHICH MAY BE TRANSMITTED TO OR THROUGH OUR SERVICE BY ANY THIRD PARTY, (V) ANY ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF YOUR USE OF ANY CONTENT POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA PIKANECT, WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT THE COMPANY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, AND/OR (VI) THE DISCLOSURE OF INFORMATION PURSUANT TO THESE TERMS OF SERVICE OR PRIVACY POLICY. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.
+
  
+
 YOU SPECIFICALLY ACKNOWLEDGE THAT Pikanect SHALL NOT BE LIABLE FOR USER SUBMISSIONS OR THE DEFAMATORY, OFFENSIVE, OR ILLEGAL CONDUCT OF ANY THIRD PARTY AND THAT THE RISK OF HARM OR DAMAGE FROM THE FOREGOING RESTS ENTIRELY WITH YOU.
- 
+
 Pikanect is offered in the United States of America. Pikanect makes no representations that it is  is appropriate or available for use in other locations. Those who access or use Pikanect from other jurisdictions do so at their own volition and are responsible for compliance with local law.
- 
+
 8. Indemnity
-You agree to defend, indemnify and hold harmless Pikanect, its owner, officers, directors, employees and agents, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) arising from: (i) your use of and access to Pikanect; (ii) your violation of any term of these Terms of Service; (iii) your violation of any third party right, including without limitation any copyright, property, or privacy right; or (iv) any claim that one of your Submissions caused damage to a third party. This defence and indemnification obligation will survive these Terms of Service and your use of the Pikanect. We don't support or encourage illegal consumption of alcohol or tobacco, so there.
- 
+You agree to defend, indemnify and hold harmless Pikanect, its owner, officers, directors, employees and agents, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) arising from: (i) your use of and access to Pikanect; (ii) your violation of any term of these Terms of Service; (iii) your violation of any third party right, including without limitation any copyright, property, or privacy right; or (iv) any claim that one of your Submissions caused damage to a third party. This defence and indemnification obligation will survive these Terms of Service and your use of Pikanect. We don't support or encourage illegal consumption of alcohol, tobacco or other addictive substances.
+
 9. Ability to Accept Terms of Service
 You affirm that you are either more than 16 years of age, or an emancipated minor, or possess legal parental or guardian consent, and are fully able and competent to enter into the terms, conditions, obligations, affirmations, representations, and warranties set forth in these Terms of Service, and to abide by and comply with these Terms of Service. In any case, you affirm that you are at least 16 years old as Pikanect is not intended for children under 16. If you are under 16 years of age, you are not permitted to use Pikanect. You further represent and warrant that you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a” terrorist-supporting” country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.
- 
+
 10. Assignment
 These Terms of Service, and any rights and licenses granted hereunder, may not be transferred or assigned by you, but may be assigned by Pikanect without restriction.
- 
+
 11. General
 You agree that: (i) Pikanect shall be deemed solely based in California, United States of America (California, USA); (ii) Pikanect shall be deemed a passive server that does not give rise to personal jurisdiction over Pikanect, either specific or general, in jurisdictions other than California, USA ; and (iii) that you agree to subject to the jurisdiction of California, USA in the event of any legal dispute. These Terms of Service shall be governed by the internal substantive laws of the State of California, without respect to its conflict of laws principles. Any claim or dispute between you and Pikanect shall be decided exclusively by a court of competent jurisdiction located in California. If any provision of these Terms of Service is deemed invalid by a court of competent jurisdiction, the invalidity of such provision shall not affect the validity of the remaining provisions of these Terms of Service, which shall remain in full force and effect. No waiver of any term of this these Terms of Service shall be deemed a further or continuing waiver of such term or any other term, and Pikanect’s failure to assert any right or provision under these Terms of Service shall not constitute a waiver of such right or provision. Pikanect reserves the right to amend or modify these Terms of Service at any time, and it is your responsibility to review these Terms of Service for any changes. If you do not agree to the revised Terms, your only recourse is to discontinue the use of Pikanect. Your continued use of Pikanect following any amendment of these Terms of Service will signify your assent to and acceptance of its revised terms. YOU AND Pikanect AGREE THAT ANY CAUSE OF ACTION ARISING OUT OF OR RELATED TO THE USE OF Pikanect MUST COMMENCE WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES. OTHERWISE, SUCH CAUSE OF ACTION IS PERMANENTLY BARRED.
- 
+
 Privacy Notice
 Pikanect recognizes that its customers, visitors and users, want to know what's up with privacy. Pikanect provides this Privacy Policy to help you make an informed decision about whether to use or continue using the Pikanect. If you do not agree to our practices, please do not use Pikanect.
- 
-This Privacy Policy is incorporated into and is subject to the Pikanect Terms of Service. Your use of Pikanect remains subject to the terms of this Privacy Policy and our Terms of Service.
- 
-Please note that any Submissions or other content posted at the direction or discretion of users of the Pikanect becomes published content and is not considered personally identifiable information subject to this Privacy Policy.
- 
+
+This Privacy Policy is incorporated into and is subject to Pikanect Terms of Service. Your use of Pikanect remains subject to the terms of this Privacy Policy and our Terms of Service.
+
+Please note that any Submissions or other content posted at the direction or discretion of users of Pikanect becomes published content and is not considered personally identifiable information subject to this Privacy Policy.
+
 What Does This Privacy Policy Cover?
 This Privacy Policy is part of Pikanect Terms of Service and covers the treatment of user information, including personally identifying information, obtained by Pikanect or any features of the software provided by Pikanect.
- 
+
 This Privacy Policy does not apply to the practices of companies that Pikanect does not own or control, or to individuals whom Pikanect does not employ or manage, including any of the third parties to which Pikanect may disclose user information as set forth in this Privacy Policy.
- 
+
 The Information Pikanect Collects
 Pikanect may obtain the following types of information from or concerning you or your device, which may include information that can be used to identify you as specified below (“Personally Identifying Information”):
+
  
-User Provided Information: Expressly or with your permissions, you provide certain Personally Identifiable Information including information of your location and when choosing to participate in various uses of the Pikanect, it means that Pikanect will periodically access your information.
- 
+
+User Provided Information: Expressly or with your permissions, you provide certain Personally Identifiable Information including information of your location and when choosing to participate in various uses of Pikanect, it means that Pikanect will periodically access your information. 
+
 The Information Pikanect Does Not Collect
- 
-The contents of messages that have been delivered by Pikanect are not copied, kept or archived by Pikanect in the normal course of business. Users type their messages, which are sent via data service to our servers, and routed to the intended recipient(s) and other user(s) who must also be a Pikanect user(s). Pikanect may collect and / or retain some / or all information associated with Submissions and / or the location of the user and / or any other information including which Pikanect is legally compelled to collect. Submissions including messages, content and information that are sent through Pikanect will reside with Pikanect  in line with our general retention policies.
- 
+The contents of messages that have been delivered by Pikanect are not copied, kept or archived by Pikanect in the normal course of business. Users type their messages, which are sent via data service to our servers, and routed to the intended recipient(s) and other user(s) who must also be a Pikanect user(s). Pikanect may collect and / or retain some / or all information associated with Submissions and / or the location of the user and / or any other information.
+
 The Way Pikanect Uses Information
-If you submit Personally Identifiable Information it may be visible to other users. Some and / or of Any Personally Identifiable Information that you voluntarily disclose on Pikanect becomes publicly available in the services and may be collected and used by other users of Pikanect. Your name will be displayed to other users and other users may contact you through Pikanect.
- 
+If you submit Personally Identifiable Information it may be visible to other users. Some and / or of Any Personally Identifiable Information that you voluntarily disclose on Pikanect becomes publicly available in the services and may be collected and used by other users of Pikanect. Your Pikanect name will be displayed to other users and other users may contact you through Pikanect.
+
 When Pikanect Discloses Information
-We may share your Personally Identifiable Information with third party service providers to the extent that it is reasonably necessary to perform, improve or maintain Pikanect. We may share non-personally-identifiable information with interested third-parties to assist them in understanding the usage patterns for certain content, services, advertisements, promotions, and/or functionality of Pikanect. We may collect and release Personally Identifiable Information and/or non-personally-identifiable information if required to do so by law, or in the good-faith belief that such action is necessary to comply with laws or respond to a court order, subpoena, or search warrant or equivalent, or where in our reasonable belief, an individual’s physical safety may be at risk or threatened. Pikanect also reserves the right to disclose Personally Identifiable Information and/or non-personally-identifiable information that Pikanect believes, in good faith, is appropriate or necessary to enforce our Terms of Service, take precautions against liability, to investigate and defend itself against any third-party claims or allegations, to assist government enforcement agencies, to protect the security or integrity of the Pikanect and to protect the rights, property, or personal safety of Pikanect, our users or others.
- 
+We may share your Personally Identifiable Information with third party service providers to the extent that it is reasonably necessary to perform, improve or maintain Pikanect. We may share non-personally-identifiable information with interested third-parties to assist them in understanding the usage patterns for certain content, services, advertisements, promotions, and/or functionality of Pikanect. We may collect and release Personally Identifiable Information and/or non-personally-identifiable information if required to do so by law, or in the good faith and belief that such action is necessary to comply with laws or respond to a court order, subpoena, or search warrant or equivalent, or where in our reasonable belief, an individual’s physical safety may be at risk or threatened. Pikanect also reserves the right to disclose Personally Identifiable Information and/or non-personally-identifiable information that Pikanect believes, in good faith, is appropriate or necessary to enforce our Terms of Service, take precautions against liability, to investigate and defend itself against any third-party claims or allegations, to assist government enforcement agencies, to protect the security or integrity of the Pikanect and to protect the rights, property, or personal safety of Pikanect, our users or others.
+
+
 Your Choices
 You may, of course, decline to submit Personally Identifiable Information through Pikanect, in which case Pikanect may not be able to provide certain services to you. If you do not agree with our Privacy Policy or Terms of Service, please delete your account, uninstall the Pikanect mobile application and discontinue use of Pikanect; your continued usage of Pikanect will signify your assent to and acceptance of our Privacy Policy and Terms of Service. Please contact Pikanect via email to support at pikanect@gmail.com with any questions or comments about this Privacy Policy, your personal information, your consent, or your opt-in or opt-out choices.
- 
+
 Our Commitment To Data Security
+
 Pikanect uses commercially reasonable physical, managerial, and technical safeguards to preserve the integrity and security of your personal information. We cannot, however, ensure or warrant the security of any information you transmit to Pikanect and you do so at your own risk. Using unsecured wifi or other unprotected networks to submit messages through Pikanect is never recommended. Once we receive your transmission of information, Pikanect makes commercially reasonable efforts to ensure the security of our systems. However, please note that this is not a guarantee that such information may not be accessed, disclosed, altered, or destroyed by breach of any of our physical, technical, or managerial safeguards. If Pikanect learns of a security systems breach, then we will attempt to take appropriate protective steps.
- 
+
+
 In the Event of Merger, Sale, or Bankruptcy
 In the event that Pikanect is acquired by or merged with a third party entity, we reserve the right to transfer or assign the information we have collected from our users as part of such merger, acquisition, sale, or other change of control. In the (hopefully) unlikely event of our bankruptcy, insolvency, reorganization, receivership, or assignment for the benefit of creditors, or the application of laws or equitable principles affecting creditors' rights generally, we may not be able to control how your personal information is treated, transferred, or used.
- 
-Changes and updates to this Privacy Notice
-This Privacy Policy may be revised periodically and this will be reflected by the "effective date" below. Please revisit this page to stay aware of any changes. Your continued use of Pikanect constitutes your agreement to this Privacy Policy and any amendments.
- 
- 
-Date Last Modified: </mutableString>
+
+
+Changes and updates to this Privacy Notice / Terms of Service
+This Privacy Policy / Terms of Service may be revised periodically and this will be reflected by the "effective date" below. Please revisit this page to stay aware of any changes. Your first installation and subsequent downloads of any updates including the continued use of Pikanect constitutes your agreement to this Privacy Policy / Terms of Service and any amendments.
+
+Date Last Modified:
+
+Effective Date:
+
+Date:</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
@@ -1195,7 +1234,7 @@ Date Last Modified: </mutableString>
                             <constraint firstItem="0MM-EL-keP" firstAttribute="top" secondItem="v1j-KY-HWZ" secondAttribute="bottom" constant="25" id="WPJ-gn-fSC"/>
                             <constraint firstItem="v1j-KY-HWZ" firstAttribute="centerX" secondItem="0MM-EL-keP" secondAttribute="centerX" id="al7-Gg-9hr"/>
                             <constraint firstItem="v1j-KY-HWZ" firstAttribute="top" secondItem="slR-FZ-P8C" secondAttribute="bottom" constant="15" id="buY-aY-LG5"/>
-                            <constraint firstItem="slR-FZ-P8C" firstAttribute="top" secondItem="2hA-Ic-M3B" secondAttribute="bottom" constant="8" id="c2u-Z5-Xuj"/>
+                            <constraint firstItem="slR-FZ-P8C" firstAttribute="top" secondItem="2hA-Ic-M3B" secondAttribute="bottom" constant="20" id="c2u-Z5-Xuj"/>
                             <constraint firstItem="slR-FZ-P8C" firstAttribute="centerX" secondItem="v1j-KY-HWZ" secondAttribute="centerX" id="meP-og-7Ke"/>
                             <constraint firstItem="0MM-EL-keP" firstAttribute="centerX" secondItem="1Lz-T5-vSD" secondAttribute="centerX" id="rHK-Ip-rwW"/>
                             <constraint firstItem="v1j-KY-HWZ" firstAttribute="leading" secondItem="1Lz-T5-vSD" secondAttribute="leading" constant="20" id="z1p-Tb-YaW"/>
@@ -1208,6 +1247,7 @@ Date Last Modified: </mutableString>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="textView" destination="v1j-KY-HWZ" id="6l9-Y9-N7n"/>
                         <segue destination="aUQ-Ll-X0A" kind="show" identifier="agreedPolicy" id="fe0-A0-Mos"/>
                     </connections>
                 </viewController>
@@ -1236,13 +1276,14 @@ Date Last Modified: </mutableString>
                                     <action selector="cancel:" destination="uyj-hn-2aH" eventType="touchUpInside" id="oui-0D-wax"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new Account" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
-                                <rect key="frame" x="40" y="60" width="520" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a New Account" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="aXP-ux-y5v">
+                                <rect key="frame" x="40" y="60" width="520" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6nt-mm-ACw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="79b-a7-PRF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1251,15 +1292,21 @@ Date Last Modified: </mutableString>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-Ef-Nqq">
-                                <rect key="frame" x="175" y="480" width="250" height="30"/>
+                                <rect key="frame" x="175" y="480" width="250" height="40"/>
                                 <color key="backgroundColor" red="0.15376602564102559" green="0.15376602564102559" blue="0.15376602564102559" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="wMM-uH-MHw"/>
-                                    <constraint firstAttribute="height" constant="30" id="wsL-MQ-QRe"/>
+                                    <constraint firstAttribute="height" constant="40" id="wsL-MQ-QRe"/>
                                 </constraints>
                                 <state key="normal" title="Start Chatting!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskedToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="goToPolicy:" destination="uyj-hn-2aH" eventType="touchUpInside" id="8cd-cj-SgP"/>
                                 </connections>
@@ -1272,7 +1319,7 @@ Date Last Modified: </mutableString>
                                 <attributedString key="attributedText">
                                     <fragment content="Your team decision is final">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="20" name="HelveticaNeue-LightItalic"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -1285,7 +1332,8 @@ Date Last Modified: </mutableString>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-2g-pQW">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="130"/>
-                                        <color key="backgroundColor" red="0.61580528846153859" green="0.61580528846153859" blue="0.61580528846153859" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.67600160254871788" green="0.67600160254871788" blue="0.67600160254871788" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Instinct">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1311,7 +1359,8 @@ Date Last Modified: </mutableString>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZWD-QJ-nMd">
                                         <rect key="frame" x="177" y="0.0" width="166" height="130"/>
-                                        <color key="backgroundColor" red="0.61580528850000005" green="0.61580528850000005" blue="0.61580528850000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.67600160249999997" green="0.67600160249999997" blue="0.67600160249999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Mystic">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1337,7 +1386,8 @@ Date Last Modified: </mutableString>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="47h-MZ-6AN">
                                         <rect key="frame" x="353" y="0.0" width="167" height="130"/>
-                                        <color key="backgroundColor" red="0.61580528850000005" green="0.61580528850000005" blue="0.61580528850000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.67600160249999997" green="0.67600160249999997" blue="0.67600160249999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Valor">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1372,7 +1422,7 @@ Date Last Modified: </mutableString>
                                     <constraint firstAttribute="height" constant="30" id="lJM-4k-QEp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1383,13 +1433,16 @@ Date Last Modified: </mutableString>
                             <constraint firstItem="aXP-ux-y5v" firstAttribute="top" secondItem="dhY-wU-nEe" secondAttribute="bottom" constant="40" id="6PW-pS-MNa"/>
                             <constraint firstItem="QDl-ko-sgc" firstAttribute="top" secondItem="dhY-wU-nEe" secondAttribute="bottom" id="CKs-IO-9fR"/>
                             <constraint firstItem="G9P-B0-Mct" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="IJn-fZ-X2G"/>
+                            <constraint firstItem="rh5-Kt-usg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lhH-Ef-Nqq" secondAttribute="bottom" constant="20" id="Lvq-vD-ecs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aXP-ux-y5v" secondAttribute="trailing" constant="20" id="MS6-xT-Mbe"/>
                             <constraint firstItem="lhH-Ef-Nqq" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="UzX-St-oPq"/>
                             <constraint firstItem="G9P-B0-Mct" firstAttribute="top" secondItem="MxX-yH-xNf" secondAttribute="bottom" constant="50" id="V9k-Nc-AC7"/>
                             <constraint firstItem="aXP-ux-y5v" firstAttribute="centerX" secondItem="elk-Si-E6l" secondAttribute="centerX" id="VCl-4E-yp6"/>
                             <constraint firstItem="aXP-ux-y5v" firstAttribute="leading" secondItem="elk-Si-E6l" secondAttribute="leadingMargin" constant="20" id="Vz8-Hk-dh9"/>
+                            <constraint firstItem="Cyu-uG-gHw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aXP-ux-y5v" secondAttribute="bottom" constant="25" id="Zb7-xz-dP0"/>
                             <constraint firstItem="lhH-Ef-Nqq" firstAttribute="top" secondItem="G9P-B0-Mct" secondAttribute="bottom" constant="50" id="cwg-S9-LoN"/>
                             <constraint firstItem="MxX-yH-xNf" firstAttribute="centerY" secondItem="elk-Si-E6l" secondAttribute="centerY" id="fzF-lB-dc4"/>
+                            <constraint firstItem="Cyu-uG-gHw" firstAttribute="top" secondItem="aXP-ux-y5v" secondAttribute="bottom" priority="750" constant="50" id="lDW-5l-dGx"/>
                             <constraint firstItem="MxX-yH-xNf" firstAttribute="leading" secondItem="elk-Si-E6l" secondAttribute="leadingMargin" constant="20" id="rsP-Ra-OSr"/>
                             <constraint firstItem="MxX-yH-xNf" firstAttribute="top" secondItem="Cyu-uG-gHw" secondAttribute="bottom" constant="30" id="saU-ly-ZS6"/>
                             <constraint firstItem="QDl-ko-sgc" firstAttribute="leading" secondItem="elk-Si-E6l" secondAttribute="leadingMargin" id="tKo-20-Cyk"/>
@@ -1478,12 +1531,13 @@ Date Last Modified: </mutableString>
     </scenes>
     <resources>
         <image name="BlackOvalButton70-30" width="70" height="30"/>
-        <image name="Facebook_round" width="333" height="333"/>
         <image name="Image" width="238" height="212"/>
-        <image name="Mail_Icon_clip_art_medium" width="100" height="64"/>
         <image name="Twitterbird_round" width="202" height="202"/>
+        <image name="arrow" width="202" height="166"/>
+        <image name="email" width="70" height="70"/>
+        <image name="facebook" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IU5-C9-8eZ"/>
+        <segue reference="fe0-A0-Mos"/>
     </inferredMetricsTieBreakers>
 </document>

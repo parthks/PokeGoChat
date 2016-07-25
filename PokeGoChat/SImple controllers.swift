@@ -11,10 +11,21 @@ import Firebase
 
 class AppInfo: UIViewController {
 
+	@IBOutlet weak var textView: UITextView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		UIBarButtonItem.appearance().tintColor = UIColor.blackColor()
-        // Do any additional setup after loading the view.
+		let bgImage     = UIImage(named: CurrentUser.currentUser.team);
+		let imageView   = UIImageView(frame: self.view.bounds);
+		imageView.image = bgImage
+		self.view.addSubview(imageView)
+		self.view.sendSubviewToBack(imageView)
+		
+		textView.contentOffset = CGPointMake(0, -220)
+		textView.contentOffset = CGPointMake(0, -textView.contentSize.height)
+		
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +48,12 @@ class AppInfo: UIViewController {
 
 
 class UserPolicy: UIViewController {
+	@IBOutlet weak var textView: UITextView!
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		textView.contentOffset = CGPointMake(0, -220)
+		textView.contentOffset = CGPointMake(0, -textView.contentSize.height)
+
 		
 		// Do any additional setup after loading the view.
 	}

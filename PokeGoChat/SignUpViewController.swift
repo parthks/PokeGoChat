@@ -45,6 +45,13 @@ class SignUpViewController: UIViewController {
 		
 		imageView.frame = self.view.bounds
 		
+		redTeam.layer.borderColor = UIColor.blackColor().CGColor
+		redTeam.layer.borderWidth = 2
+		blueTeam.layer.borderColor = UIColor.blackColor().CGColor
+		blueTeam.layer.borderWidth = 2
+		yellowTeam.layer.borderColor = UIColor.blackColor().CGColor
+		yellowTeam.layer.borderWidth = 2
+		
 		image = UIImage(named: "TriColor")
 		
 		
@@ -84,6 +91,9 @@ class SignUpViewController: UIViewController {
 		yellowTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
 		yellowTeam.selected = false
 		sender.backgroundColor = UIColor.redColor()
+		sender.titleLabel?.font = UIFont.boldSystemFontOfSize(20.0)
+		blueTeam.titleLabel?.font = UIFont.systemFontOfSize(20.0)
+		yellowTeam.titleLabel?.font = UIFont.systemFontOfSize(20.0)
 		image = UIImage(named: "Red")
 		CurrentUser.currentTeam = "Red"
 		
@@ -97,6 +107,9 @@ class SignUpViewController: UIViewController {
 		redTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
 		yellowTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
 		sender.backgroundColor = UIColor.blueColor()
+		sender.titleLabel?.font = UIFont.boldSystemFontOfSize(20.0)
+		redTeam.titleLabel?.font = UIFont.systemFontOfSize(20.0)
+		yellowTeam.titleLabel?.font = UIFont.systemFontOfSize(20.0)
 		image = UIImage(named: "Blue")
 		CurrentUser.currentTeam = "Blue"
 		
@@ -110,6 +123,9 @@ class SignUpViewController: UIViewController {
 		blueTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
 		redTeam.backgroundColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
 		sender.backgroundColor = UIColor.yellowColor()
+		sender.titleLabel?.font = UIFont.boldSystemFontOfSize(20.0)
+		redTeam.titleLabel?.font = UIFont.systemFontOfSize(20.0)
+		blueTeam.titleLabel?.font = UIFont.systemFontOfSize(20.0)
 		image = UIImage(named: "Yellow")
 		CurrentUser.currentTeam = "Yellow"
 	}

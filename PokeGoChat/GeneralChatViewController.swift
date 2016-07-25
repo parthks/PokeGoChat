@@ -251,6 +251,7 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 				print("blocked user")
 				//messages.removeAll()
 				self.messages = []
+				self.usersofMessages = []
 				Firebase.removeGeneralChatListeners()
 				self.listenForChatChanges()
 				//self.dismissViewControllerAnimated(true, completion: nil)

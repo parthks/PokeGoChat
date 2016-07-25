@@ -26,7 +26,7 @@ class MainScreenViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		self.view.sendSubviewToBack(mapView)
 		print("enterned main screen")
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
@@ -40,14 +40,27 @@ class MainScreenViewController: UIViewController {
 		locationManager.requestWhenInUseAuthorization()
 		//locationManager.requestLocation()
 		
-		let bgImage     = UIImage(named: CurrentUser.currentUser.team)
-		let bgimageView   = UIImageView(frame: self.view.bounds)
-		bgimageView.image = bgImage
-		self.view.addSubview(bgimageView)
-		self.view.sendSubviewToBack(bgimageView)
+//		let bgImage     = UIImage(named: CurrentUser.currentUser.team)
+//		let bgimageView   = UIImageView(frame: self.view.bounds)
+//		bgimageView.image = bgImage
+//		self.view.addSubview(bgimageView)
+//		self.view.sendSubviewToBack(bgimageView)
 		
 		let teamBgImage = UIImage(named: "\(CurrentUser.currentUser.team)Rect")
 		teamChat.setBackgroundImage(teamBgImage, forState: .Normal)
+		
+		let navImage     = UIImage(named: "\(CurrentUser.currentUser.team)NavBar")
+		generalChat.layer.borderColor = UIColor.blackColor().CGColor
+		generalChat.layer.borderWidth = 2
+		teamChat.layer.borderColor = UIColor.yellowColor().CGColor
+		teamChat.layer.borderWidth = 2
+//		let imageView   = UIImageView(frame: UINavigationBar.appearance().bounds);
+//		imageView.image = bgImage
+//		UINavigationBar.appearance().addSubview(imageView)
+//		UINavigationBar.appearance().sendSubviewToBack(imageView)
+		UINavigationBar.appearance().setBackgroundImage(navImage!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
+
+		UINavigationBar.appearance().shadowImage = UIImage()
 		
 	}
 
@@ -122,10 +135,10 @@ class MainScreenViewController: UIViewController {
 		main_timer.invalidate()
 	}
 	
-	deinit {
-		print("removed main timer...")
-		main_timer.invalidate()
-	}
+//	deinit {
+//		print("removed main timer...")
+//		main_timer.invalidate()
+//	}
 	
 }
 
@@ -143,8 +156,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 			activityIndicator.stopAnimating()
 			gettingLocationLabel.hidden = true
 		}
-		
-		
+	
 		if let location = locations.last {
 			print("PRINTING LOCATION FROM MAIN")
 			print("location:: \(location.coordinate)")

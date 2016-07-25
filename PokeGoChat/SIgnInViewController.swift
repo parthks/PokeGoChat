@@ -77,7 +77,7 @@ class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
 	func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
 	            withError error: NSError!) {
 		
-		if let error = error {
+		if let _ = error {
 			doneSigningIn()
 			return
 		}

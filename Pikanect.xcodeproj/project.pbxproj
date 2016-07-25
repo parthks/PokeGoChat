@@ -421,6 +421,7 @@
 				PRODUCT_NAME = Pikanect;
 				SWIFT_OBJC_BRIDGING_HEADER = "PokeGoChat/Pikanect-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -436,6 +437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = theKillingMac.PokeGoChat2;
 				PRODUCT_NAME = Pikanect;
 				SWIFT_OBJC_BRIDGING_HEADER = "PokeGoChat/Pikanect-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

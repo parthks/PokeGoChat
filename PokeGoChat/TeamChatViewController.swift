@@ -36,21 +36,21 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	
-//	override func viewWillDisappear(animated: Bool) {
-//		super.viewWillDisappear(animated)
-//		print("removing team chat timer...")
-//		//locationManager.stopUpdatingLocation()
-//		NSNotificationCenter.defaultCenter().removeObserver(self)
-//		timer.invalidate()
-//		Firebase.removeTeamListeners()
-//	}
-	
-	deinit {
-		print("removing team chat...")
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		print("removing team chat timer...")
+		//locationManager.stopUpdatingLocation()
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 		timer.invalidate()
 		Firebase.removeTeamListeners()
 	}
+	
+//	deinit {
+//		print("removing team chat...")
+//		NSNotificationCenter.defaultCenter().removeObserver(self)
+//		timer.invalidate()
+//		Firebase.removeTeamListeners()
+//	}
 	
 	
 	
@@ -69,7 +69,7 @@ class TeamChatViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		print("\n\nDOING THE VIEW DID LOAD IN TEAM CHAT\n\n")
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
 		let request = GADRequest()
@@ -355,6 +355,7 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 				Firebase.saveNewBlockedUserWithId(cell.userID)
 				//messages.removeAll()
 				self.messages = []
+				self.usersofMessages = []
 				self.tableView.reloadData()
 				Firebase.removeTeamListeners()
 				self.listenForChatChanges()
@@ -429,9 +430,10 @@ extension TeamChatViewController: MKMapViewDelegate {
 }
 extension TeamChatViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard CurrentUser.currentUser.location else { return }
 		
 		if let location = locations.last {
-			print("PRINTING LOCATION FROM TEAM")
+			print("\n\nPRINTING LOCATION FROM TEAM\n\n")
 			print("location:: \(location.coordinate)")
 			Firebase.saveLocationOfUserWithKey(CurrentUser.currentUser.id, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 			

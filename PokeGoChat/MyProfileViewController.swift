@@ -27,7 +27,7 @@ class MyProfileViewController: UIViewController {
 			}
 			
 		}
-		profilePic.layer.cornerRadius = 50
+		profilePic.layer.cornerRadius = 60
 		profilePic.clipsToBounds = true
 		saveButton.tintColor = UIColor(red: 25/256, green: 161/256, blue: 57/256, alpha: 1)
 
