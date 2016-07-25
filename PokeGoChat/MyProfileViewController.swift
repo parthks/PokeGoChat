@@ -21,16 +21,24 @@ class MyProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
-		if let pic = CurrentUser.imageUrl{
-			if let data = NSData(contentsOfURL: pic) {
-				profilePic.image = UIImage(data: data)
-			}
-			
+		
+		getImageWithCompletion() { [unowned self] image in
+			self.profilePic.image = image
 		}
+		
 		profilePic.layer.cornerRadius = 60
 		profilePic.clipsToBounds = true
 		saveButton.tintColor = UIColor(red: 25/256, green: 161/256, blue: 57/256, alpha: 1)
 
+	}
+	
+	func getImageWithCompletion(completion: (image: UIImage?)-> Void) {
+		if let pic = CurrentUser.imageUrl{
+			if let data = NSData(contentsOfURL: pic) {
+				let image = UIImage(data: data)
+				completion(image: image!)
+			}
+		}
 	}
 	
 	

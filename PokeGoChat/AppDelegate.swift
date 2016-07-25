@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import GoogleMobileAds
-
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,42 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		FIRApp.configure()
+		Mixpanel.sharedInstanceWithToken("4dc19af9258cdb8701b85e717fdde54f")
+		let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+		mixpanel.track("App launched")
 		UINavigationBar.appearance().tintColor = UIColor.blackColor()
 		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
-		
-
-		//FIRDatabase.database().persistenceEnabled = true
-
-		
-
-//		let defaults = NSUserDefaults.standardUserDefaults()
-//		let userID = defaults.stringForKey("id")
-//		
-//		self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//		
-//		
-//		if userID != nil { //If user id is stored then everything is
-//			print("going to main screen")
-//			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreen")
-//			CurrentUser.currentUser = User(id: defaults.stringForKey("id")!,
-//			                               name: defaults.stringForKey("name")!,
-//			                               team: defaults.stringForKey("team")!,
-//			                               location: defaults.boolForKey("location"),
-//			                               latitude: nil,
-//			                               longitude: nil)
-//			
-//			
-//			self.window?.rootViewController = initialViewController
-//			self.window?.makeKeyAndVisible()
-//			
-//		} else {
-//			print("going to login page")
-//			let initialViewController = storyboard.instantiateViewControllerWithIdentifier("loginScreen")
-//			self.window?.rootViewController = initialViewController
-//			self.window?.makeKeyAndVisible()
-//		}
-	
 	
 		return true
 	}

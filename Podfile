@@ -13,4 +13,6 @@ target 'Pikanect' do
   pod 'Firebase/Database'
   pod 'Firebase/AdMob'
   pod 'Google/SignIn'
+  pod 'Mixpanel'
+  
 end

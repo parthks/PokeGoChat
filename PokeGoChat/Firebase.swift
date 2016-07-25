@@ -161,17 +161,18 @@ class Firebase {
 	
 	
 	//MARK: Listeners
-	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (FIRDataSnapshot, User) -> Void){
+	static func listenForMessageDataOfType(dtype: dataType, WithKey key: String, WithBlock completion: (Message) -> Void){
 		Firebase.getAllBlockedUsersForCurrentUserWithBlock() { (blockedUsers) in
 			
 			//print("setting up listener for \(dtype.rawValue) in room id \(key)")
 			_rootRef.child(dtype.rawValue).child(key).queryLimitedToLast(50).observeEventType(.ChildAdded){
-				(snap, prevChildKey) in
+				(snap, _) in
 				
 				print("got into message listiner...")
 				
 				if snap.exists(){
-					
+					print("\n\n\n\nGOT SNAP!!!..")
+					print(snap.value)
 					let data = snap.value as! [String: String]
 					let userID = data["userId"]!
 					Firebase.getUserDataWithKey(userID) { user in
@@ -182,7 +183,10 @@ class Firebase {
 						}
 						
 						if !blockedUsers.contains(userID) {
-							completion(snap, user!)
+							print("\n\n\n\nSNAP AFTER GETTING USER!!!..")
+							print(snap.value)
+							let message = Message(user: user!, message: snap)
+							completion(message)
 						}else{
 							return
 						}

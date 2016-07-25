@@ -25,6 +25,7 @@
 		B260C38E1D3863100037A97D /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C38D1D3863100037A97D /* MapPin.swift */; };
 		B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */; };
 		B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */; };
+		B26937BA1D468DFC003F1189 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26937B91D468DFC003F1189 /* Message.swift */; };
 		B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C1E71A1D401768007E36B6 /* SImple controllers.swift */; };
 		B2C1E7221D41AD92007E36B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		B260C38F1D3C64530037A97D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBlockedUsersViewController.swift; sourceTree = "<group>"; };
+		B26937B91D468DFC003F1189 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B2C1E71A1D401768007E36B6 /* SImple controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SImple controllers.swift"; sourceTree = "<group>"; };
 		B2C1E71C1D419F45007E36B6 /* Pikanect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pikanect-Bridging-Header.h"; sourceTree = "<group>"; };
 		B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				B260C37F1D35716F0037A97D /* User.swift */,
 				B260C38B1D3840320037A97D /* GetChatRoomKey.swift */,
 				B260C38D1D3863100037A97D /* MapPin.swift */,
+				B26937B91D468DFC003F1189 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */,
 				B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */,
 				B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */,
+				B26937BA1D468DFC003F1189 /* Message.swift in Sources */,
 				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,
 				B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */,
 			);

@@ -61,8 +61,20 @@ class TeamChatViewController: UIViewController {
 		print("UPDATED LOCATION")
 	}
 	
-	var messages = [FIRDataSnapshot]()
-	var usersofMessages = [User]()
+	var messages: [Message] = [] {
+		didSet {
+			messages.sortInPlace(orderMessages)
+		}
+	}
+	
+	func orderMessages(one: Message, two: Message) -> Bool{
+		if one.messageSnap.key < two.messageSnap.key {
+			return true
+		} else {
+			return false
+		}
+	}
+	
 	var chatRoomKey: String = ""
 	var timer: NSTimer = NSTimer()
 	let maxMesLength = 140 //in characters - a tweet!
@@ -73,7 +85,7 @@ class TeamChatViewController: UIViewController {
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
 		let request = GADRequest()
-		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+		//request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
 		bannerView.loadRequest(request)
 
 		
@@ -138,10 +150,9 @@ class TeamChatViewController: UIViewController {
 	}
 	
 	func listenForChatChanges(){
-		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ [unowned self] (snap, user) in
+		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ [unowned self] (message) in
 			//print("got a new message")
-			self.messages.append(snap)
-			self.usersofMessages.append(user)
+			self.messages.append(message)
 			//print(self.messages)
 			//print("got message into tableView")
 			self.tableView.reloadData()
@@ -307,8 +318,8 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		//print("making cell...")
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
-		let message = messages[indexPath.row].value as! [String: String]
-		let user = usersofMessages[indexPath.row]
+		let message = messages[indexPath.row].messageSnap.value as! [String: String]
+		let user = messages[indexPath.row].user
 		let text = message["text"]!
 		let key = message["messageKey"]!
 		let userID = message["userId"]!
@@ -355,7 +366,6 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 				Firebase.saveNewBlockedUserWithId(cell.userID)
 				//messages.removeAll()
 				self.messages = []
-				self.usersofMessages = []
 				self.tableView.reloadData()
 				Firebase.removeTeamListeners()
 				self.listenForChatChanges()
@@ -448,7 +458,10 @@ extension TeamChatViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		print("ERROR!!")
 		print("error:: \(error)")
-		Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating location")
+		if self.presentedViewController == nil {
+			Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating location")
+		}
+		
 	}
 
 }

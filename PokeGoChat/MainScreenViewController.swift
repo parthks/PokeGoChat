@@ -31,7 +31,7 @@ class MainScreenViewController: UIViewController {
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
 		let request = GADRequest()
-		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+//		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
 		bannerView.loadRequest(request)
 		
 		//Firebase.loginWithEmail("location@test.com", AndPassword: "123456"){ key in print("back...")}
@@ -52,13 +52,16 @@ class MainScreenViewController: UIViewController {
 		let navImage     = UIImage(named: "\(CurrentUser.currentUser.team)NavBar")
 		generalChat.layer.borderColor = UIColor.blackColor().CGColor
 		generalChat.layer.borderWidth = 2
-		teamChat.layer.borderColor = UIColor.yellowColor().CGColor
+		if CurrentUser.currentUser.team == "Yellow" {
+			teamChat.layer.borderColor = UIColor.yellowColor().CGColor
+		} else if CurrentUser.currentUser.team == "Red" {
+			teamChat.layer.borderColor = UIColor.redColor().CGColor
+		} else {
+			teamChat.layer.borderColor = UIColor.blueColor().CGColor
+		}
 		teamChat.layer.borderWidth = 2
-//		let imageView   = UIImageView(frame: UINavigationBar.appearance().bounds);
-//		imageView.image = bgImage
-//		UINavigationBar.appearance().addSubview(imageView)
-//		UINavigationBar.appearance().sendSubviewToBack(imageView)
-		UINavigationBar.appearance().setBackgroundImage(navImage!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
+
+	UINavigationBar.appearance().setBackgroundImage(navImage!.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .Stretch), forBarMetrics: .Default)
 
 		UINavigationBar.appearance().shadowImage = UIImage()
 		
@@ -71,6 +74,7 @@ class MainScreenViewController: UIViewController {
 			return
 		}
 		
+		teamChat.enabled = false
 		locationManager.requestLocation()
 		if let roomKey = GetChatRoomKey() {
 			print("trying to get the team room key")
@@ -79,6 +83,7 @@ class MainScreenViewController: UIViewController {
 				self.performSegueWithIdentifier("teamChat", sender: key)
 			}
 		}
+		teamChat.enabled = true
 
 	}
 	
@@ -88,7 +93,7 @@ class MainScreenViewController: UIViewController {
 			Firebase.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "general chat button pressed")
 			return
 		}
-		
+		generalChat.enabled = false
 		locationManager.requestLocation()
 		if let roomKey = GetChatRoomKey() {
 			print("trying to get the gen room key")
@@ -97,6 +102,7 @@ class MainScreenViewController: UIViewController {
 				self.performSegueWithIdentifier("generalChat", sender: key)
 			}
 		}
+		generalChat.enabled = true
 		
 	}
 	
@@ -180,7 +186,10 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		print("ERROR!!")
 		print("error:: \(error)")
-		Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating loaction")
+		if self.presentedViewController == nil {
+			Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating loaction")
+		}
+		
 	}
 }
 

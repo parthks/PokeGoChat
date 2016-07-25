@@ -20,8 +20,21 @@ class GeneralChatViewController: UIViewController {
 	@IBOutlet weak var bottomBarSpace: NSLayoutConstraint!
 	
 	@IBOutlet weak var sendButton: UIButton!
-	var messages: [FIRDataSnapshot] = []
-	var usersofMessages = [User]()
+	var messages: [Message] = [] {
+		didSet {
+			messages.sortInPlace(orderMessages)
+		}
+	}
+	
+	func orderMessages(one: Message, two: Message) -> Bool{
+		if one.messageSnap.key < two.messageSnap.key {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	
 	var chatRoomKey: String = ""
 	let maxMesLength = 140 //in characters
 	
@@ -50,7 +63,7 @@ class GeneralChatViewController: UIViewController {
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
 		let request = GADRequest()
-		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+//		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
 		bannerView.loadRequest(request)
 		
 		let bgImage     = UIImage(named: "TriColor")
@@ -77,10 +90,11 @@ class GeneralChatViewController: UIViewController {
 	
 	func listenForChatChanges(){
 		print("listining for chat changes!!")
-		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (snapshot, user) in
+		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (message) in
 			print("got a new message")
-			self.messages.append(snapshot)
-			self.usersofMessages.append(user)
+			self.messages.append(message)
+			//print(self.messages)
+			//print("PRINTED MESSAGES!")
 			//print(self.messages)
 			//self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
@@ -135,30 +149,6 @@ extension GeneralChatViewController: UITextFieldDelegate{
 	}
 	
 	
-//	func moveKeyboardUp(sender: NSNotification) {
-//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-//		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
-//		
-//		if keyboardSize.height == offset.height {
-//			UIView.animateWithDuration(0.1, animations: { () -> Void in
-//				self.view.frame.origin.y -= keyboardSize.height
-//			})
-//		} else {
-//			UIView.animateWithDuration(0.1, animations: { () -> Void in
-//				self.view.frame.origin.y += keyboardSize.height - offset.height
-//			})
-//		}
-//		
-//	}
-//	
-//	func moveKeyboardDown(sender: NSNotification) {
-//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-//		self.view.frame.origin.y += keyboardSize.height
-//	}
-
-	
 	func keyboardWillShow(notification: NSNotification) {
 		if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue {
 			bottomBarSpace.constant = keyboardFrame.height
@@ -172,21 +162,6 @@ extension GeneralChatViewController: UITextFieldDelegate{
 		view.setNeedsLayout()
 		view.layoutIfNeeded()
 	}
-	
-	
-	
-//	func appEnteredBackground(sender: NSNotification) {
-//		//inputText.resignFirstResponder()
-//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-//	}
-//	
-//	func appHasComeBackFromBackground(sender: NSNotification) {
-//		print("back from background")
-//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-//		inputText.becomeFirstResponder()
-//	}
 	
 }
 
@@ -204,8 +179,8 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		print("making cell...")
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
-		let message = messages[indexPath.row].value as! [String: String]
-		let user = usersofMessages[indexPath.row]
+		let message = messages[indexPath.row].messageSnap.value as! [String: String]
+		let user = messages[indexPath.row].user
 		let text = message["text"]!
 		let key = message["messageKey"]!
 		let userID = message["userId"]!
@@ -251,7 +226,6 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 				print("blocked user")
 				//messages.removeAll()
 				self.messages = []
-				self.usersofMessages = []
 				Firebase.removeGeneralChatListeners()
 				self.listenForChatChanges()
 				//self.dismissViewControllerAnimated(true, completion: nil)
