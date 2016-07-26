@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 import GoogleMobileAds
-import Mixpanel
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,12 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		FIRApp.configure()
-		Mixpanel.sharedInstanceWithToken("4dc19af9258cdb8701b85e717fdde54f")
-		let mixpanel: Mixpanel = Mixpanel.sharedInstance()
-		mixpanel.track("App launched")
+		Fabric.with([Crashlytics.self])
+		
 		UINavigationBar.appearance().tintColor = UIColor.blackColor()
 		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
-	
+		//fatalError()
 		return true
 	}
 

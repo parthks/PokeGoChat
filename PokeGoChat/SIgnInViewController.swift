@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Crashlytics
 
 class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -85,10 +86,13 @@ class SIgnInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
 		CurrentUser.currentUserName = user.profile.name
 		CurrentUser.imageUrl = user.profile.imageURLWithDimension(50)
 		
+		Crashlytics.sharedInstance().setUserEmail(user.profile.email)
+		
 		let authentication = user.authentication
 		let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken,
                                                                accessToken: authentication.accessToken)
 		print("Signing in to Firebase")
+		//fatalError()
 		FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
 			print("GOT USER USING GOOGLE")
 			if let error = error  {
