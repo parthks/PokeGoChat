@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		FIRApp.configure()
 		Fabric.with([Crashlytics.self])
-		
 		UINavigationBar.appearance().tintColor = UIColor.blackColor()
 		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
 		//fatalError()
