@@ -26,6 +26,15 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	@IBAction func signInButtonTapped(sender: UIButton) {
+		
+		guard emailTextField.text != "" else {doneSigningIn();emailOrPasswordMissing();return}
+		guard passwordTextField.text != "" else {doneSigningIn();emailOrPasswordMissing();return}
+		
+		print("signing in...")
+		
+		loginDetailsForSIgnUp.emailID = emailTextField.text
+		loginDetailsForSIgnUp.password = passwordTextField.text
+		
 		print("sign in button pressed")
 		signInButtonPressed()
 		view.endEditing(true)
@@ -38,8 +47,8 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		print("create acc button pressed")
 		signInButtonPressed()
 		
-		guard emailTextField.text != "" else {doneSigningIn();return}
-		guard passwordTextField.text != "" else {doneSigningIn();return}
+		guard emailTextField.text != "" else {doneSigningIn();emailOrPasswordMissing();return}
+		guard passwordTextField.text != "" else {doneSigningIn();emailOrPasswordMissing();return}
 
 		loginDetailsForSIgnUp.emailID = emailTextField.text
 		loginDetailsForSIgnUp.password = passwordTextField.text
@@ -81,15 +90,20 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		doneSigningIn()
+		checkboxButton.selected = true
 		let defaults = NSUserDefaults.standardUserDefaults()
-		if defaults.boolForKey("autoLogin"){
+		if defaults.boolForKey("autoLogin") && defaults.stringForKey("email") != nil {
 			signInButtonPressed()
 			emailTextField.text = defaults.stringForKey("email")
 			passwordTextField.text = defaults.stringForKey("password")
+			
+			loginDetailsForSIgnUp.emailID = defaults.stringForKey("email")
+			loginDetailsForSIgnUp.password = defaults.stringForKey("password")
+			
 			signIn()
 			
 		}
-		NSUserDefaults.standardUserDefaults().setBool(true, forKey: "autoLogin")
+		
 	}
 	
 	
@@ -120,6 +134,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 			
 				if self.checkboxButton.selected {
 					let defaults = NSUserDefaults.standardUserDefaults()
+					defaults.setBool(true, forKey: "autoLogin")
 					defaults.setObject(loginDetailsForSIgnUp.emailID, forKey: "email")
 					defaults.setObject(loginDetailsForSIgnUp.password, forKey: "password")
 				}
@@ -131,16 +146,13 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	
 	}
 	
-	func signIn(){
-		guard emailTextField.text != "" else {doneSigningIn();return}
-		guard passwordTextField.text != "" else {doneSigningIn();return}
+	func emailOrPasswordMissing(){
+		Firebase.displayAlertWithtitle("Please fill in email and password", message: "The email and password fields must contain information")
+	}
 	
+	func signIn(){
 		
-		print("signing in...")
-		let email = emailTextField.text!
-		let password = passwordTextField.text!
-		
-		Firebase.loginWithEmail(email, AndPassword: password) { [unowned self] (userKey, error) in
+		Firebase.loginWithEmail(loginDetailsForSIgnUp.emailID, AndPassword: loginDetailsForSIgnUp.password) { [unowned self] (userKey, error) in
 			if let _ = error {
 				self.doneSigningIn()
 				return
@@ -161,8 +173,9 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 				
 				if self.checkboxButton.selected {
 					let defaults = NSUserDefaults.standardUserDefaults()
-					defaults.setObject(email, forKey: "email")
-					defaults.setObject(password, forKey: "password")
+					defaults.setBool(true, forKey: "autoLogin")
+					defaults.setObject(loginDetailsForSIgnUp.emailID, forKey: "email")
+					defaults.setObject(loginDetailsForSIgnUp.password, forKey: "password")
 				}
 				
 				self.performSegueWithIdentifier("loggedInUser", sender: nil)
