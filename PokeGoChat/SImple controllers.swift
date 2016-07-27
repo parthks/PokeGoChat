@@ -66,10 +66,18 @@ class UserPolicy: UIViewController {
 	}
 
 	@IBAction func agreeButton(sender: AnyObject) {
-		NSUserDefaults.standardUserDefaults().setBool(true, forKey: "madeAcoount")
-		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID!)", name: "\(CurrentUser.currentUserName)", team: "\(CurrentUser.currentTeam)", location: true, latitude: nil, longitude: nil)
+		//NSUserDefaults.standardUserDefaults().setBool(true, forKey: "madeAcoount")
+		
+		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID!)", name: "Default name", team: "\(CurrentUser.currentTeam)", location: true, latitude: nil, longitude: nil)
 		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentID!)
+		
 		self.performSegueWithIdentifier("agreedPolicy", sender: nil)
+		Firebase.displayAlertWithtitle("Please change your name", message: "A \"Default name\" has been given to you, please go to \"Profile\" and change your name")
+		
+
+			
+		
+		
 	}
 	
 	

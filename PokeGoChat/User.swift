@@ -21,7 +21,16 @@ class CurrentUser {
 	static var currentTeam: String!
 	static var currentID: String?
 	
+	static var ip: String!
+	static var netmask: String!
+	
 }
+
+struct loginDetailsForSIgnUp {
+	static var emailID: String!
+	static var password: String!
+}
+
 
 class CurrentFirebaseLocationData {
 	static var RoundedLocation: String!

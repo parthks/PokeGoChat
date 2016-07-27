@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SignUpViewController: UIViewController {
+class TeamSelectViewController: UIViewController {
 
 
 	@IBOutlet weak var yellowTeam: UIButton!

@@ -44,7 +44,6 @@ class MyProfileViewController: UIViewController {
 	
 	@IBAction func signOut(sender: UIButton) {
 		try! FIRAuth.auth()!.signOut()
-		GIDSignIn.sharedInstance().signOut()
 		NSUserDefaults.standardUserDefaults().setBool(false, forKey: "autoLogin")
 		print("SIGN OUT WORKS")
 		
@@ -74,8 +73,9 @@ class MyProfileViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		nameLabel.text = CurrentUser.currentUser.name
 		
+		nameLabel.text = CurrentUser.currentUser.name ?? "Default name"
+
 		if CurrentUser.currentUser.team == "Yellow"{
 			teamName.text = "Instinct"
 		} else if CurrentUser.currentUser.team == "Blue" {

@@ -93,10 +93,6 @@ class GeneralChatViewController: UIViewController {
 		Firebase.listenForMessageDataOfType(dataType.GeneralMessages, WithKey: chatRoomKey){ [unowned self] (message) in
 			print("got a new message")
 			self.messages.append(message)
-			//print(self.messages)
-			//print("PRINTED MESSAGES!")
-			//print(self.messages)
-			//self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
 			print("got messages into tableView")
 			self.tableView.reloadData()
 		}
@@ -109,15 +105,6 @@ class GeneralChatViewController: UIViewController {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-	/*
-	// MARK: - Navigation
-	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-	// Get the new view controller using segue.destinationViewController.
-	// Pass the selected object to the new view controller.
-	}
-	*/
 	
 }
 
@@ -216,26 +203,10 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		if CurrentUser.currentUser.id == cell.userID {
 			Firebase.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
 		} else{
-			
-			let alert = UIAlertController(title: "Are you sure you want to block this user?", message: "All messages from this user will be hidden", preferredStyle: .Alert)
-			let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-			
-			let blockButton = UIAlertAction(title: "Block!", style: .Destructive) { [unowned self] (alert) in
-				Firebase.displayAlertWithtitle("Successfully Blocked User", message: "All messages from this user have been blocked")
-				Firebase.saveNewBlockedUserWithId(cell.userID)
-				print("blocked user")
-				//messages.removeAll()
-				self.messages = []
-				Firebase.removeGeneralChatListeners()
-				self.listenForChatChanges()
-				//self.dismissViewControllerAnimated(true, completion: nil)
-			}
-			
-			alert.addAction(cancelButton)
-			alert.addAction(blockButton)
-			
-			presentViewController(alert, animated: true, completion: nil)
-			
+			AlertControllers.blockUserWithID(cell.userID)
+			self.messages = []
+			Firebase.removeGeneralChatListeners()
+			self.listenForChatChanges()
 		}
 		
 		

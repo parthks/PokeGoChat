@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit //for alert controllers
 import Firebase
 
 
@@ -53,28 +54,39 @@ class Firebase {
 		UIApplication.topViewController()!.presentViewController(alert, animated: true, completion: nil)
 	}
 	
+	//MARK: Ip and netmask
+	//For security reasons in case user keeps spamming or harming others
+	static func storeIpNetmaskOfCurrentUser(){
+		_rootRef.child("NETWORK INFO").child(CurrentUser.currentID!).setValue(["Ip": CurrentUser.ip,
+		                                                                      "netmask": CurrentUser.netmask])
+	}
+	
+	
 	//MARK: Authentication
-//	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void) {
-//		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
-//			if let error = error{
-//				print("ERROR CREATING USER")
-//				Firebase.displayErrorAlert(error.localizedDescription)
-//			}else if let user = user{
-//				takeKey(key: user.uid)
-//			}
-//		}
-//	}
-//	
-//	static func loginWithEmail(email: String, AndPassword password: String, takeKey: (key: String) -> Void){
-//		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
-//			if let error = error{
-//				print("ERROR LOGGING IN USER")
-//				Firebase.displayErrorAlert(error.localizedDescription)
-//			}else if let user = user{
-//				takeKey(key: user.uid)
-//			}
-//		}
-//	}
+	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String?, error: NSError?) -> Void) {
+		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
+			if let error = error{
+				print("ERROR CREATING USER")
+				Firebase.displayErrorAlert(error.localizedDescription, error: error.description, instance: "createUserWithEmail")
+				takeKey(key: nil, error: error)
+			}else if let user = user{
+				takeKey(key: user.uid, error: nil)
+			}
+		}
+	}
+	
+	static func loginWithEmail(email: String, AndPassword password: String, takeKey: (key: String?, error: NSError?) -> Void){
+		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
+			if let error = error{
+				print("ERROR LOGGING IN USER")
+				Firebase.displayErrorAlert(error.localizedDescription, error: error.description, instance: "loginWithEmail")
+				takeKey(key: nil, error: error)
+			}else if let user = user{
+				takeKey(key: user.uid, error: nil
+				)
+			}
+		}
+	}
 	
 	//MARK: Error saving
 	
