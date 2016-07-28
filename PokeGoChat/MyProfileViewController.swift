@@ -103,7 +103,7 @@ class MyProfileViewController: UIViewController {
 	
 	@IBAction func save(sender: UIBarButtonItem) {
 		guard nameLabel.text != "" else {
-			Firebase.displayAlertWithtitle("Name field empty", message: "Please enter a name for yourself")
+			AlertControllers.displayAlertWithtitle("Name field empty", message: "Please enter a name for yourself")
 			return
 		}
 		

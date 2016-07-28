@@ -25,7 +25,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	//@IBOutlet weak var signInLabel: UILabel!
 	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
-	@IBAction func signInButtonTapped(sender: UIButton) {
+	@IBAction func signInButtonTapped(sender: UIButton?) {
 		
 		guard emailTextField.text != "" else {doneSigningIn();emailOrPasswordMissing();return}
 		guard passwordTextField.text != "" else {doneSigningIn();emailOrPasswordMissing();return}
@@ -71,6 +71,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		activityIndicator.stopAnimating()
 		signInButton.enabled = true
 		createAccountButton.enabled = true
+		
 		//googleSignButton.userInteractionEnabled = true
 	}
 	
@@ -114,7 +115,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 			passwordTextField.becomeFirstResponder()
 		}else {
 			textField.endEditing(true)
-			signIn()
+			signInButtonTapped(nil)
 		}
 		
 		return true
@@ -139,7 +140,6 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 					defaults.setObject(loginDetailsForSIgnUp.password, forKey: "password")
 				}
 				CurrentUser.currentID = key!
-				Firebase.storeIpNetmaskOfCurrentUser()
 				self.performSegueWithIdentifier("teamSelect", sender: nil)
 
 		}
@@ -147,7 +147,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func emailOrPasswordMissing(){
-		Firebase.displayAlertWithtitle("Please fill in email and password", message: "The email and password fields must contain information")
+		AlertControllers.displayAlertWithtitle("Please fill in email and password", message: "The email and password fields must contain information")
 	}
 	
 	func signIn(){
@@ -177,7 +177,6 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 					defaults.setObject(loginDetailsForSIgnUp.emailID, forKey: "email")
 					defaults.setObject(loginDetailsForSIgnUp.password, forKey: "password")
 				}
-				
 				self.performSegueWithIdentifier("loggedInUser", sender: nil)
 				
 			}

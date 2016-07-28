@@ -71,7 +71,7 @@ class MainScreenViewController: UIViewController {
 	
 	@IBAction func teamChatGo(sender: UIButton) {
 		guard connectedToNetwork() else  {
-			Firebase.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "team chat button pressed")
+			AlertControllers.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "team chat button pressed")
 			return
 		}
 		
@@ -91,7 +91,7 @@ class MainScreenViewController: UIViewController {
 	
 	@IBAction func generalChatGo(sender: UIButton) {
 		guard connectedToNetwork() else  {
-			Firebase.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "general chat button pressed")
+			AlertControllers.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "general chat button pressed")
 			return
 		}
 		generalChat.enabled = false
@@ -188,7 +188,7 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 		print("ERROR!!")
 		print("error:: \(error)")
 		if self.presentedViewController == nil {
-			Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating loaction")
+			AlertControllers.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating loaction")
 		}
 		
 	}

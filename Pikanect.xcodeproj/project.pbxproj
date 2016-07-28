@@ -27,6 +27,7 @@
 		B26937BA1D468DFC003F1189 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26937B91D468DFC003F1189 /* Message.swift */; };
 		B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C1E71A1D401768007E36B6 /* SImple controllers.swift */; };
 		B2C1E7221D41AD92007E36B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */; };
+		B2E0D36D1D49BF9000739D70 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E0D36C1D49BF9000739D70 /* Network.swift */; };
 		B2E2ACA11D47E035002C2ABB /* AlertControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E2ACA01D47E035002C2ABB /* AlertControllers.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		B2C1E71A1D401768007E36B6 /* SImple controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SImple controllers.swift"; sourceTree = "<group>"; };
 		B2C1E71C1D419F45007E36B6 /* Pikanect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pikanect-Bridging-Header.h"; sourceTree = "<group>"; };
 		B2C1E7211D41AD92007E36B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B2E0D36C1D49BF9000739D70 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B2E2ACA01D47E035002C2ABB /* AlertControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllers.swift; sourceTree = "<group>"; };
 		B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pikanect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCD2EF3082668CBF8C44405 /* Pods-Pikanect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pikanect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pikanect/Pods-Pikanect.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				B260C38D1D3863100037A97D /* MapPin.swift */,
 				B26937B91D468DFC003F1189 /* Message.swift */,
 				B2E2ACA01D47E035002C2ABB /* AlertControllers.swift */,
+				B2E0D36C1D49BF9000739D70 /* Network.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
+				B2E0D36D1D49BF9000739D70 /* Network.swift in Sources */,
 				B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */,
 				B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */,
 				B260C3921D3D585D0037A97D /* DisplayMessageTableViewCell.swift in Sources */,

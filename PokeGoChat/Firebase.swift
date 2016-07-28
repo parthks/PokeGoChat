@@ -34,40 +34,13 @@ class Firebase {
 	//Database reference
 	static var _rootRef = FIRDatabase.database().reference()
 	
-	static func displayErrorAlert(message: String, error: String, instance: String){
-		let alert = UIAlertController(title: "ERROR!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-		let report = UIAlertAction(title: "Report", style: .Destructive) {e in
-			//UIApplication.topViewController()?.dismissViewControllerAnimated(true, completion: nil)
-			
-			Firebase.saveError(error, DuringInstance: instance)
-			displayAlertWithtitle("Error Message Confirmation", message: "Your error has been noted. Thank You for reporting.")
-		}
-		
-		alert.addAction(report)
-		UIApplication.topViewController()!.presentViewController(alert, animated: true, completion: nil)
-	}
-	
-	static func displayAlertWithtitle(title: String, message: String){
-		let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-		alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
-		UIApplication.topViewController()!.presentViewController(alert, animated: true, completion: nil)
-	}
-	
-	//MARK: Ip and netmask
-	//For security reasons in case user keeps spamming or harming others
-	static func storeIpNetmaskOfCurrentUser(){
-		_rootRef.child("NETWORK INFO").child(CurrentUser.currentID!).setValue(["Ip": CurrentUser.ip,
-		                                                                      "netmask": CurrentUser.netmask])
-	}
-	
 	
 	//MARK: Authentication
 	static func createUserWithEmail(email: String, AndPassword password: String, takeKey: (key: String?, error: NSError?) -> Void) {
 		FIRAuth.auth()?.createUserWithEmail(email, password: password) { (user, error) in
 			if let error = error{
 				print("ERROR CREATING USER")
-				Firebase.displayErrorAlert(error.localizedDescription, error: error.description, instance: "createUserWithEmail")
+				AlertControllers.displayErrorAlert(error.localizedDescription, error: error.description, instance: "createUserWithEmail")
 				takeKey(key: nil, error: error)
 			}else if let user = user{
 				takeKey(key: user.uid, error: nil)
@@ -79,7 +52,7 @@ class Firebase {
 		FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
 			if let error = error{
 				print("ERROR LOGGING IN USER")
-				Firebase.displayErrorAlert(error.localizedDescription, error: error.description, instance: "loginWithEmail")
+				AlertControllers.displayErrorAlert(error.localizedDescription, error: error.description, instance: "loginWithEmail")
 				takeKey(key: nil, error: error)
 			}else if let user = user{
 				takeKey(key: user.uid, error: nil
@@ -109,16 +82,25 @@ class Firebase {
 		fdata["userId"] = CurrentUser.currentUser.id
 		let ref = _rootRef.child(type.rawValue).child(key).childByAutoId()
 		let key = ref.key
+
 		fdata["messageKey"] = key
 		ref.setValue(fdata)
 		
+		let timestamp: AnyObject = FIRServerValue.timestamp()
+		let public_ip = Network.getPublicIpAddress() ?? "nil"
+		let localNetworkInfo = Network.getLocalAddress()
 		//archiving message
-		let archivedMessage = [
+		let archivedMessage: [String: AnyObject] = [
 			"messageKey" : key,
 			"userID" : CurrentUser.currentUser.id,
-			"roomType" : type.rawValue
+			"roomType" : type.rawValue,
+			"timestamp": timestamp,
+			"public IP": public_ip,
+			"local IP": localNetworkInfo?.ip ?? "nil",
+			"netmask": localNetworkInfo?.netmask ?? "nil"
 		]
 		_rootRef.child("archivedMessages").childByAutoId().setValue(archivedMessage)
+		
 		
 		print("sent message")
 	}
@@ -190,7 +172,7 @@ class Firebase {
 					Firebase.getUserDataWithKey(userID) { user in
 						print("LISTINING FOR MESSAGES")
 						guard (user != nil) else {
-							Firebase.displayErrorAlert("Could not find a user! If this error occurs repeatedly please report it", error: "didnt find user with id \(userID) while listening for messages", instance: "getUserDataWithKey(\(userID))")
+							AlertControllers.displayErrorAlert("Could not find a user! If this error occurs repeatedly please report it", error: "didnt find user with id \(userID) while listening for messages", instance: "getUserDataWithKey(\(userID))")
 							return
 						}
 						

@@ -46,7 +46,7 @@ class MyBlockedUsersViewController: UIViewController, UITableViewDataSource, UIT
 						self.currentlyBlocked.append(true)
 						self.tableView.reloadData()
 					} else {
-						Firebase.displayErrorAlert("Could not find a user! If this error occurs repeatedly please report it", error: "Trying to find user with \(key) to see Current user's blocked users", instance: "Blocked View Controller")
+						AlertControllers.displayErrorAlert("Could not find a user! If this error occurs repeatedly please report it", error: "Trying to find user with \(key) to see Current user's blocked users", instance: "Blocked View Controller")
 					}
 					
 				}

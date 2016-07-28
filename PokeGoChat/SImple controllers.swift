@@ -72,7 +72,7 @@ class UserPolicy: UIViewController {
 		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentID!)
 		
 		self.performSegueWithIdentifier("agreedPolicy", sender: nil)
-		Firebase.displayAlertWithtitle("Please change your name", message: "A \"Default name\" has been given to you, please go to \"Profile\" and change your name")
+		AlertControllers.displayAlertWithtitle("Please change your name", message: "A \"Default name\" has been given to you, please go to \"Profile\" and change your name")
 		
 
 			

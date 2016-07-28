@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit //need UIColor
 
 class CurrentUser {
 	
@@ -45,6 +46,15 @@ struct User: FirebaseCompatible {
 	var latitude: Double?
 	var longitude: Double?
 	
+	func getTeamUIColor() -> UIColor{
+		if self.team == "Red"{
+			return UIColor.redColor()
+		}else if self.team == "Blue"{
+			return UIColor.blueColor()
+		}else{
+			return UIColor.yellowColor()
+		}
+	}
 	
 	func convertToFirebase() -> [String : AnyObject] {
 		var firebaseUserData = [String: AnyObject]()

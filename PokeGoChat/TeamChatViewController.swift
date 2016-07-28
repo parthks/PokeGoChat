@@ -341,7 +341,7 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 		let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 		
 		let reportButton = UIAlertAction(title: "Report!", style: .Destructive) { (alert) in
-			Firebase.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
+			AlertControllers.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
 			Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "Team")
 			//self.dismissViewControllerAnimated(true, completion: nil)
 		}
@@ -355,27 +355,14 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 	
 	func blockUserOnCell(cell: DisplayMessageTableViewCell) {
 		if CurrentUser.currentUser.id == cell.userID {
-			Firebase.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
+			AlertControllers.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
 		} else{
-			
-			let alert = UIAlertController(title: "Are you sure you want to block this user?", message: "All messages from this user will be hidden", preferredStyle: .Alert)
-			let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-			
-			let reportButton = UIAlertAction(title: "Block!", style: .Destructive) { [unowned self] (alert) in
-				Firebase.displayAlertWithtitle("Successfully Blocked User", message: "All messages from this user have been blocked")
-				Firebase.saveNewBlockedUserWithId(cell.userID)
-				//messages.removeAll()
+			AlertControllers.blockUserWithIDWithCompletionIfBlocked(cell.userID) {
 				self.messages = []
-				self.tableView.reloadData()
 				Firebase.removeTeamListeners()
 				self.listenForChatChanges()
-				//self.dismissViewControllerAnimated(true, completion: nil)
+				self.tableView.reloadData()
 			}
-			
-			alert.addAction(cancelButton)
-			alert.addAction(reportButton)
-			
-			presentViewController(alert, animated: true, completion: nil)
 			
 		}
 
@@ -409,6 +396,7 @@ extension TeamChatViewController: MKMapViewDelegate {
 		}
 	}
 	
+	//put annotation of the map. Function called automatically by mapView
 	func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
 		if let annotation = annotation as? MapPin {
 			let identifier = "pin"
@@ -423,14 +411,7 @@ extension TeamChatViewController: MKMapViewDelegate {
 				view.calloutOffset = CGPoint(x: -5, y: 5)
 			}
 			
-			
-			if CurrentUser.currentUser.team == "Red"{
-				view.pinTintColor = UIColor.redColor()
-			}else if CurrentUser.currentUser.team == "Blue"{
-				view.pinTintColor = UIColor.blueColor()
-			}else{
-				view.pinTintColor = UIColor.yellowColor()
-			}
+			view.pinTintColor = CurrentUser.currentUser.getTeamUIColor()
 
 			
 			return view
@@ -443,8 +424,8 @@ extension TeamChatViewController: CLLocationManagerDelegate {
 		guard CurrentUser.currentUser.location else { return }
 		
 		if let location = locations.last {
-			print("\n\nPRINTING LOCATION FROM TEAM\n\n")
-			print("location:: \(location.coordinate)")
+			//print("\n\nPRINTING LOCATION FROM TEAM\n\n")
+			//print("location:: \(location.coordinate)")
 			Firebase.saveLocationOfUserWithKey(CurrentUser.currentUser.id, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 			
 			CurrentUser.currentUser.latitude = location.coordinate.latitude
@@ -459,7 +440,7 @@ extension TeamChatViewController: CLLocationManagerDelegate {
 		print("ERROR!!")
 		print("error:: \(error)")
 		if self.presentedViewController == nil {
-			Firebase.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating location")
+			AlertControllers.displayErrorAlert("Please check that location services are turned on for this app", error: error.debugDescription, instance: "updating location")
 		}
 		
 	}

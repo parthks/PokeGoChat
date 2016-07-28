@@ -35,7 +35,7 @@ class TeamSelectViewController: UIViewController {
 	
 	@IBAction func goToPolicy(sender: AnyObject) {
 		if !(redTeam.selected || yellowTeam.selected || blueTeam.selected) {
-			Firebase.displayAlertWithtitle("Please select a Team", message: "Please click the team you wish to join to conect with teammates")
+			AlertControllers.displayAlertWithtitle("Please select a Team", message: "Please click the team you wish to join to conect with teammates")
 		}
 		self.performSegueWithIdentifier("policy", sender: nil)
 	}

@@ -22,7 +22,7 @@ class GetChatRoomKey {
 	
 	init?() {
 		if ((CurrentUser.currentUser.latitude == nil) || (CurrentUser.currentUser.longitude) == nil) {
-			Firebase.displayAlertWithtitle("Unable to get your location", message: "Please check your internet connection and location authorization for this app")
+			AlertControllers.displayAlertWithtitle("Unable to get your location", message: "Please check your internet connection and location authorization for this app")
 			return nil
 		
 		} else {
@@ -43,7 +43,7 @@ class GetChatRoomKey {
 		
 		guard userLat != nil && userLong != nil else {
 			print("DONT HAVE LOCATION TEAM")
-			Firebase.displayErrorAlert("Unable to enter chat. PLease check your internect connection and try again", error: "either userLat or userLong are nil in when trying to return a team chat room key", instance: "returnTeamRoomKeyWithBlock")
+			AlertControllers.displayErrorAlert("Unable to enter chat. PLease check your internect connection and try again", error: "either userLat or userLong are nil in when trying to return a team chat room key", instance: "returnTeamRoomKeyWithBlock")
 			return
 		}
 		
@@ -95,7 +95,7 @@ class GetChatRoomKey {
 		
 		guard userLat != nil && userLong != nil else {
 			print("DONT HAVE LOCATION GEN")
-			Firebase.displayErrorAlert("Unable to enter chat. PLease check your internect connection and try again", error: "either userLat or userLong are nil in when trying to return a general chat room key", instance: "returnGeneralRoomKeyWithBlock")
+			AlertControllers.displayErrorAlert("Unable to enter chat. PLease check your internect connection and try again", error: "either userLat or userLong are nil in when trying to return a general chat room key", instance: "returnGeneralRoomKeyWithBlock")
 			return
 		}
 		

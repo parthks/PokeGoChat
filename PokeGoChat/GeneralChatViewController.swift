@@ -187,7 +187,7 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
 		
 		let reportButton = UIAlertAction(title: "Report!", style: .Destructive) { (alert) in
-			Firebase.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
+			AlertControllers.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
 			Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "General")
 			//self.dismissViewControllerAnimated(true, completion: nil)
 		}
@@ -201,12 +201,14 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 	
 	func blockUserOnCell(cell: DisplayMessageTableViewCell) {
 		if CurrentUser.currentUser.id == cell.userID {
-			Firebase.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
+			AlertControllers.displayAlertWithtitle("That's You!", message: "You can't block yourself!")
 		} else{
-			AlertControllers.blockUserWithID(cell.userID)
-			self.messages = []
-			Firebase.removeGeneralChatListeners()
-			self.listenForChatChanges()
+			AlertControllers.blockUserWithIDWithCompletionIfBlocked(cell.userID){
+				self.messages = []
+				Firebase.removeGeneralChatListeners()
+				self.listenForChatChanges()
+
+			}
 		}
 		
 		
