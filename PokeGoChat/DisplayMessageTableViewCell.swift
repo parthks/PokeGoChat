@@ -20,6 +20,7 @@ class DisplayMessageTableViewCell: UITableViewCell {
 	@IBOutlet weak var message: UILabel!
 	@IBOutlet weak var reportButton: UIButton!
 	@IBOutlet weak var addFriend: UIButton!
+	@IBOutlet weak var profilePic: UIImageView!
 	
 	weak var delegate: ChatCellDelegate!
 	var messageKey: String = ""

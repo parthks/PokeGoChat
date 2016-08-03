@@ -16,10 +16,11 @@ class GeneralChatViewController: UIViewController {
 	@IBOutlet weak var inputText: UITextField!
 	
 	@IBOutlet weak var bannerView: GADBannerView!
-	
 	@IBOutlet weak var bottomBarSpace: NSLayoutConstraint!
-	
 	@IBOutlet weak var sendButton: UIButton!
+	
+	var images = [String: UIImage]()
+	
 	var messages: [Message] = [] {
 		didSet {
 			messages.sortInPlace(orderMessages)
@@ -36,14 +37,41 @@ class GeneralChatViewController: UIViewController {
 	
 	
 	var chatRoomKey: String = ""
-	let maxMesLength = 140 //in characters
+	let maxMesLength = 140 //in characters - a tweet!
 	
-	
-	deinit {
-		print("removing general view controller...")
-		NSNotificationCenter.defaultCenter().removeObserver(self)
-		//Firebase.removeGeneralChatListeners()
+	func initBanner(){
+		bannerView.adUnitID = Constants.bannerAdUnitID
+		bannerView.rootViewController = self
+		bannerView.loadRequest(Constants.bannerAdRequest)
 	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		initBanner()
+		
+		tableView.backgroundView = Constants.getImageViewWithName(Constants.image_TriColor, WithBounds: tableView.bounds)
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 140
+		
+		let sendBg = UIImage(named: "TricolorSendButton")
+		sendButton.setBackgroundImage(sendBg, forState: .Normal)
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+		
+		self.hideKeyboardWhenTappedAround()
+		inputText.delegate = self
+		listenForChatChanges()
+		
+	}
+
+	
+	
+//	deinit {
+//		print("removing general view controller...")
+//		NSNotificationCenter.defaultCenter().removeObserver(self)
+//		//Firebase.removeGeneralChatListeners()
+//	}
 	
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
@@ -53,39 +81,6 @@ class GeneralChatViewController: UIViewController {
 	
 	
 	
-	override func viewDidLoad() {
-		
-		super.viewDidLoad()
-		print("KEY BELOW")
-		print(chatRoomKey)
-		print("KEY ABOVE")
-		//let bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
-		bannerView.rootViewController = self
-		let request = GADRequest()
-//		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
-		bannerView.loadRequest(request)
-		
-		let bgImage     = UIImage(named: "TriColor")
-		let imageView   = UIImageView(frame: tableView.bounds)
-		imageView.image = bgImage
-		tableView.backgroundView = imageView
-		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.estimatedRowHeight = 140
-		
-		let sendBg = UIImage(named: "TricolorSendButton")
-		sendButton.setBackgroundImage(sendBg, forState: .Normal)
-		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
-//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appEnteredBackground), name: UIApplicationWillResignActiveNotification, object: nil)
-//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(appHasComeBackFromBackground), name: UIApplicationDidBecomeActiveNotification, object: nil)
-		
-		self.hideKeyboardWhenTappedAround()
-		inputText.delegate = self
-		listenForChatChanges()
-		// Do any additional setup after loading the view.
-	}
 	
 	
 	func listenForChatChanges(){
@@ -168,6 +163,15 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
 		let message = messages[indexPath.row].messageSnap.value as! [String: String]
 		let user = messages[indexPath.row].user
+		
+		if images.indexForKey(user.id) == nil {
+			Network.downloadedFrom(user.profilePicUrl) { [unowned self] image in
+				guard ((UIApplication.topViewController() as? GeneralChatViewController) != nil) else {return}
+				self.images[user.id] = image
+				tableView.reloadData()
+			}
+		}
+		
 		let text = message["text"]!
 		let key = message["messageKey"]!
 		let userID = message["userId"]!
@@ -177,25 +181,26 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		cell.nameOfUser.text = user.name
 		cell.message.text = text
 		
+		//let image = images[user.id]
+		
+		cell.profilePic?.layer.cornerRadius = 32
+		cell.profilePic?.clipsToBounds = true
+		cell.profilePic.contentMode = .ScaleAspectFill
+		if images[user.id] != nil {
+			cell.profilePic?.image = images[user.id]
+		}
+		
+	
+		
 		cell.delegate = self
 		return cell
 	}
 	
 	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
-		
-		let alert = UIAlertController(title: "Are you sure you want to report this message?", message: cell.message.text, preferredStyle: .Alert)
-		let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-		
-		let reportButton = UIAlertAction(title: "Report!", style: .Destructive) { (alert) in
-			AlertControllers.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
+		AlertControllers.reportUserWithIDWithCompletionIfReported(cell.userID, messageText: cell.message.text!) {
 			Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "General")
-			//self.dismissViewControllerAnimated(true, completion: nil)
+			
 		}
-		
-		alert.addAction(cancelButton)
-		alert.addAction(reportButton)
-		
-		presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	

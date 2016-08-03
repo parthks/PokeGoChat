@@ -55,7 +55,7 @@ class GetChatRoomKey {
 				for (roomKey, loc) in teams{
 					let latNlong = loc as! [String: Double]
 					let location = CLLocation(latitude: latNlong["latitude"]!, longitude: latNlong["longitude"]!)
-					if self.userLocation.distanceFromLocation(location) < 1000{
+					if self.userLocation.distanceFromLocation(location) < CurrentUser.findUsersRadius {
 						self.roomKey = roomKey
 						self.inATeamRoom = true
 //						tempLocToGetMin["roomkey"] = roomKey
@@ -111,7 +111,7 @@ class GetChatRoomKey {
 					print("\n\n\n")
 					print(self.userLocation.distanceFromLocation(location))
 					print("\n\n\n")
-					if self.userLocation.distanceFromLocation(location) < 1000{
+					if self.userLocation.distanceFromLocation(location) < CurrentUser.findUsersRadius{
 						self.roomKey = roomKey
 						self.inAGenRoom = true
 						break

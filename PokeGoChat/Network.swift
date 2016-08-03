@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit //for download image function
 
 
 struct NetInfo {
@@ -70,6 +70,27 @@ class Network {
 		}
 	
 	}
+	
+	static func downloadedFrom(link: String?, completion: UIImage? -> Void) {
+		guard let url = NSURL(string: link ?? "") else { return }
+		
+		print("TRYING TO GET IMAGE")
+		
+		NSURLSession.sharedSession().dataTaskWithURL(url) { (data, _, error) in
+			guard
+				let data = data where error == nil,
+				let image = UIImage(data: data)
+				else { print("ERROR GETTING IMAGE") ;completion(nil); return }
+			
+			print("GOT IMAGE!")
+			dispatch_async(dispatch_get_main_queue()) {
+				completion(image)
+			}
+			
+			return
+		}.resume()
+	}
+
 	
 	
 

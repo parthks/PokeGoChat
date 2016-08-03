@@ -15,15 +15,41 @@ class MyProfileViewController: UIViewController {
 	@IBOutlet weak var nameLabel: UITextField!
 	@IBOutlet weak var locationSwitch: UISwitch!
 	@IBOutlet weak var teamName: UILabel!
-	@IBOutlet weak var profilePic: UIImageView!
 	@IBOutlet weak var saveButton: UIBarButtonItem!
+	@IBOutlet weak var profilePic: UIButton!
+	
+	var picker: PhotoTakingHelper!
+	var setImage = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.hideKeyboardWhenTappedAround()
 		
-		getImageWithCompletion() { [unowned self] image in
-			self.profilePic.image = image
+//		getImageWithCompletion() { [unowned self] image in
+//			self.profilePic.setImage(image, forState: .Normal)
+//		}
+//
+//		do {
+//			Firebase.getProfilePicWithUid(CurrentUser.currentID!) { [unowned self] image in
+//				if let image = image {
+//					self.profilePic.setImage(image, forState: .Normal)
+//				}
+//			}
+//		}
+		
+		print(CurrentUser.currentUser.profilePicUrl)
+		Network.downloadedFrom(CurrentUser.currentUser.profilePicUrl) { image in
+			if let image = image {
+				//self.profilePic.selected = false
+				self.profilePic.setImage(image, forState: .Normal)
+				self.profilePic.setImage(image, forState: .Selected)
+				//self.profilePic.setNeedsDisplay()
+				print(image)
+				print("HAVE PUT THE IMAGE")
+			}
+		
+		
+			
 		}
 		
 		profilePic.layer.cornerRadius = 60
@@ -32,14 +58,14 @@ class MyProfileViewController: UIViewController {
 
 	}
 	
-	func getImageWithCompletion(completion: (image: UIImage?)-> Void) {
-		if let pic = CurrentUser.imageUrl{
-			if let data = NSData(contentsOfURL: pic) {
-				let image = UIImage(data: data)
-				completion(image: image!)
-			}
-		}
-	}
+//	func getImageWithCompletion(completion: (image: UIImage?)-> Void) {
+//		if let pic = CurrentUser.imageUrl{
+//			if let data = NSData(contentsOfURL: pic) {
+//				let image = UIImage(data: data)
+//				completion(image: image!)
+//			}
+//		}
+//	}
 	
 	
 	@IBAction func signOut(sender: UIButton) {
@@ -109,30 +135,29 @@ class MyProfileViewController: UIViewController {
 		
 		CurrentUser.currentUser.name = nameLabel.text!
 		CurrentUser.currentUser.location = locationSwitch.on
+		
+		if setImage {
+			Firebase.saveProfilePic(profilePic.imageView!.image!)
+			NSCache().setObject(profilePic.imageView!.image!, forKey: CurrentUser.currentID!)
+		}
+		
 		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentUser.id)
 		self.navigationController?.popViewControllerAnimated(true)
 	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-
-extension UIViewController {
-	func hideKeyboardWhenTappedAround() {
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-		view.addGestureRecognizer(tap)
+	
+	
+	
+	@IBAction func setImage(sender: UIButton) {
+		picker = PhotoTakingHelper(viewController: self) { [unowned self] image in
+			print("got image")
+			print(image)
+			self.profilePic.setImage(image, forState: .Normal)
+			self.profilePic.setImage(image, forState: .Selected)
+			self.setImage = true
+		}
 	}
 	
-	func dismissKeyboard() {
-		view.endEditing(true)
-	}
+
 }
+
+

@@ -11,6 +11,7 @@ target 'Pikanect' do
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Storage'
   pod 'Firebase/AdMob'
   pod 'Firebase/Crash'
   pod 'Google/SignIn'

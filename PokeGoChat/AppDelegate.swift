@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
 	
-		
+	static let ADRequest = GADRequest()
+	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		FIRApp.configure()
@@ -27,14 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().tintColor = UIColor.blackColor()
 		UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blackColor()]
 		
-		//Network.getIFAddresses()
-		//print(Network.getIFAddresses())
-		//print(Network.getWiFiAddress())
-		//need to store for security reasons
-//		print(Network.getIFAddresses().last!.netmask)
-//		print(Network.getIFAddresses().last!.ip)
-//		let dev = UIDevice()
-//		print(dev.identifierForVendor)
 		//let public_ip = try! String(contentsOfURL: NSURL(string: "https://icanhazip.com/")!)
 		//print(public_ip)
 		return true

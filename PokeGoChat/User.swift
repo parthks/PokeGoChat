@@ -25,6 +25,8 @@ class CurrentUser {
 	static var ip: String!
 	static var netmask: String!
 	
+	static var findUsersRadius = 1000.0 //in meters (double)
+	
 }
 
 struct loginDetailsForSIgnUp {
@@ -45,6 +47,7 @@ struct User: FirebaseCompatible {
 	var location: Bool
 	var latitude: Double?
 	var longitude: Double?
+	var profilePicUrl: String?
 	
 	func getTeamUIColor() -> UIColor{
 		if self.team == "Red"{
@@ -68,6 +71,7 @@ struct User: FirebaseCompatible {
 		firebaseUserData["location"] = locationString
 		firebaseUserData["longitude"] = longitude ?? "nil"
 		firebaseUserData["latitude"] = latitude ?? "nil"
+		firebaseUserData["profilePicUrl"] = profilePicUrl
 		
 		return firebaseUserData
 	}

@@ -168,6 +168,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 				}
 				
 				CurrentUser.currentUser = user
+				CurrentUser.currentUser.location = false //making the default location sharing to "off"
 				print(user)
 				self.userSignedInSucessfully = true
 				

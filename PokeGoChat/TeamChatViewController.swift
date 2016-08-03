@@ -23,6 +23,8 @@ class TeamChatViewController: UIViewController {
 	@IBOutlet weak var bottomBarSpaceToAds: NSLayoutConstraint!
 
 	var locationManager = CLLocationManager()
+	
+	var images = [String: UIImage]()
 	var users = [User]() {
 		didSet{
 			if (users.count > 0) {
@@ -45,14 +47,7 @@ class TeamChatViewController: UIViewController {
 		Firebase.removeTeamListeners()
 	}
 	
-//	deinit {
-//		print("removing team chat...")
-//		NSNotificationCenter.defaultCenter().removeObserver(self)
-//		timer.invalidate()
-//		Firebase.removeTeamListeners()
-//	}
-	
-	
+
 	
 	
 	@IBAction func locationChanged(sender: UISwitch) {
@@ -79,17 +74,17 @@ class TeamChatViewController: UIViewController {
 	var timer: NSTimer = NSTimer()
 	let maxMesLength = 140 //in characters - a tweet!
 	
+	
+	func initBanner(){
+		bannerView.adUnitID = Constants.bannerAdUnitID
+		bannerView.rootViewController = self
+		bannerView.loadRequest(Constants.bannerAdRequest)
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		print("\n\nDOING THE VIEW DID LOAD IN TEAM CHAT\n\n")
-		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
-		bannerView.rootViewController = self
-		let request = GADRequest()
-		//request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
-		bannerView.loadRequest(request)
+		initBanner()
 
-		
-		print("entered TeamChatViewConctroller")
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
@@ -98,25 +93,16 @@ class TeamChatViewController: UIViewController {
 		
 		
 		
-		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
-		if CurrentUser.currentUser.team == "Yellow"{
-			self.navigationItem.title = "Team Instinct"
-		} else if CurrentUser.currentUser.team == "Blue" {
-			self.navigationItem.title = "Team Mystic"
-		} else {
-			self.navigationItem.title = "Team Valor"
-		}
+		
+		self.navigationItem.title = Constants.getPokemonTeamNameOfColorTeam(CurrentUser.currentUser.team)
 		
 		
-		myLocationSwitch.on = CurrentUser.currentUser.location
-		self.hideKeyboardWhenTappedAround()
 		
-		inputText.delegate = self
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
-		//locationManager.requestWhenInUseAuthorization()
 		
 		let span = MKCoordinateSpanMake(0.02, 0.02)
 		let location = CLLocationCoordinate2D.init(latitude: (CurrentUser.currentUser.latitude!),
@@ -124,30 +110,35 @@ class TeamChatViewController: UIViewController {
 		
 		let region = MKCoordinateRegion(center: location, span: span)
 		mapView.setRegion(region, animated: true)
-		//locationManager.startUpdatingLocation()
 		locationManager.requestLocation()
 		
+		
+		
+		
+		myLocationSwitch.on = CurrentUser.currentUser.location
+		myLocationSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75)
+
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 140
-		myLocationSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75)
-		
-		let bgImage     = UIImage(named: CurrentUser.currentUser.team)
-		let imageView   = UIImageView(frame: tableView.bounds)
-		imageView.image = bgImage
-		tableView.backgroundView = imageView
+		tableView.backgroundView = Constants.getImageViewWithName(CurrentUser.currentUser.team, WithBounds: tableView.bounds)
+
 		
 		let sendBg = UIImage(named: "\(CurrentUser.currentUser.team)OvalSendButton")
 		sendButton.setBackgroundImage(sendBg, forState: .Normal)
-
 		
+		self.hideKeyboardWhenTappedAround()
+		inputText.delegate = self
 		listenForChatChanges()
     }
+	
 	
 	func getLocation() {
 		if CurrentUser.currentUser.location{
 			locationManager.requestLocation()
 		}
+		refreshMapView()
 	}
+	
 	
 	func listenForChatChanges(){
 		Firebase.listenForMessageDataOfType(dataType.TeamMessages, WithKey: chatRoomKey){ [unowned self] (message) in
@@ -159,6 +150,7 @@ class TeamChatViewController: UIViewController {
 		}
 	}
 	
+	
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		Firebase.removeUserAtCurrentTeamRoom()
 		CurrentUser.inAChatRoom = nil
@@ -166,50 +158,14 @@ class TeamChatViewController: UIViewController {
 		let defaults = NSUserDefaults.standardUserDefaults()
 	
 		guard !defaults.boolForKey("doneAppRating") && defaults.boolForKey("quitApp") else {
-			self.dismissViewControllerAnimated(true, completion: nil);
+			self.dismissViewControllerAnimated(true, completion: nil)
 			return
 		}
-		
-		
-		
-		let alert = UIAlertController(title: "Rate Pikanect", message: "How do you like this app? We would love to hear your feedback ", preferredStyle: .Alert)
-		let rateButton = UIAlertAction(title: "Rate Now!", style: .Default) { [unowned self] (alert) in
-			UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id1136003010")!)
-			defaults.setBool(true, forKey: "doneAppRating")
-			self.dismissViewControllerAnimated(true, completion: nil)
-		}
-		
-		let dontWantToRate = UIAlertAction(title: "Never remind me again!", style: .Cancel) { (alert) in
-			defaults.setBool(true, forKey: "doneAppRating")
-		}
-		
-		
-		let remindLater = UIAlertAction(title: "Remind Me Later", style: .Default) { [unowned self] alert in
-			defaults.setBool(false, forKey: "doneAppRating")
-			defaults.setBool(false, forKey: "quitApp")
-			self.dismissViewControllerAnimated(true, completion: nil)
-		}
-		
-		
-		alert.addAction(dontWantToRate)
-		alert.addAction(remindLater)
-		alert.addAction(rateButton)
-		
-		presentViewController(alert, animated: true, completion: nil)
+		self.dismissViewControllerAnimated(true, completion: nil)
+		//AlertControllers.rateMyApp()
 		
 	}
 	
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
@@ -223,10 +179,9 @@ extension TeamChatViewController: UITextFieldDelegate{
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
-		//guard let text = textField.text else {return true}
 		guard textField.text != "" else {return true}
 		let data = ["text": textField.text!]
-		//print(data)
+
 		inputText.endEditing(true)
 		inputText.text = ""
 		Firebase.saveMessageData(data, OfType: dataType.TeamMessages, WithKey: chatRoomKey)
@@ -237,29 +192,6 @@ extension TeamChatViewController: UITextFieldDelegate{
 		textFieldShouldReturn(inputText)
 	}
 	
-	
-//	func moveKeyboardUp(sender: NSNotification) {
-//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-//		let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
-//		
-//		if keyboardSize.height == offset.height {
-//			UIView.animateWithDuration(0.1, animations: { () -> Void in
-//				self.view.frame.origin.y -= keyboardSize.height
-//			})
-//		} else {
-//			UIView.animateWithDuration(0.1, animations: { () -> Void in
-//				self.view.frame.origin.y += keyboardSize.height - offset.height
-//			})
-//		}
-//	}
-//	
-//	func moveKeyboardDown(sender: NSNotification) {
-//		let userInfo: [NSObject : AnyObject] = sender.userInfo!
-//		let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-//		self.view.frame.origin.y += keyboardSize.height
-//	}
-
 	
 	func keyboardWillShow(notification: NSNotification) {
 		if let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue {
@@ -278,10 +210,6 @@ extension TeamChatViewController: UITextFieldDelegate{
 	
 	
 	func appEnteredBackground(sender: NSNotification) {
-
-//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-//		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-		//self.view.userInteractionEnabled = false
 		timer.invalidate()
 		
 	}
@@ -289,12 +217,7 @@ extension TeamChatViewController: UITextFieldDelegate{
 	func appHasComeBackFromBackground(sender: NSNotification) {
 		print("back from background")
 		
-		
-//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardUp), name: UIKeyboardWillShowNotification, object: nil)
-//		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(moveKeyboardDown), name: UIKeyboardWillHideNotification, object: nil)
-//		inputText.becomeFirstResponder()
-		
-		timer = NSTimer(timeInterval: 10.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
+		timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(getLocation), userInfo: nil, repeats: true)
 		timer.fire()
 		NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
 		
@@ -320,6 +243,15 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DisplayMessageTableViewCell
 		let message = messages[indexPath.row].messageSnap.value as! [String: String]
 		let user = messages[indexPath.row].user
+		
+		if images.indexForKey(user.id) == nil {
+			Network.downloadedFrom(user.profilePicUrl) { [unowned self] image in
+				guard ((UIApplication.topViewController() as? TeamChatViewController) != nil) else {return}
+				self.images[user.id] = image
+				tableView.reloadData()
+			}
+		}
+		
 		let text = message["text"]!
 		let key = message["messageKey"]!
 		let userID = message["userId"]!
@@ -329,6 +261,12 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 		cell.nameOfUser.text = user.name
 		cell.message.text = text
 		
+		cell.profilePic?.layer.cornerRadius = 32
+		cell.profilePic?.clipsToBounds = true
+		cell.profilePic.contentMode = .ScaleAspectFill
+		if images[user.id] != nil {
+			cell.profilePic?.image = images[user.id]
+		}
 		
 		cell.delegate = self
 		
@@ -336,20 +274,10 @@ extension TeamChatViewController: UITableViewDataSource, UITableViewDelegate, Ch
 	}
 	
 	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
-		
-		let alert = UIAlertController(title: "Are you sure you want to report this message?", message: cell.message.text, preferredStyle: .Alert)
-		let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-		
-		let reportButton = UIAlertAction(title: "Report!", style: .Destructive) { (alert) in
-			AlertControllers.displayAlertWithtitle("Reported Message Confirmation", message: "The meesage has been reported to the admins")
+		AlertControllers.reportUserWithIDWithCompletionIfReported(cell.userID, messageText: cell.message.text!) {
 			Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "Team")
-			//self.dismissViewControllerAnimated(true, completion: nil)
+
 		}
-		
-		alert.addAction(cancelButton)
-		alert.addAction(reportButton)
-		
-		presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	
@@ -419,6 +347,8 @@ extension TeamChatViewController: MKMapViewDelegate {
 		return nil
 	}
 }
+
+
 extension TeamChatViewController: CLLocationManagerDelegate {
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard CurrentUser.currentUser.location else { return }

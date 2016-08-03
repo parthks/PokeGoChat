@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68DC4B9273E9F81CE2BA229F /* Pods_Pikanect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */; };
+		B2393CF41D4AD08D00332229 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CF31D4AD08D00332229 /* Constants.swift */; };
+		B2393CF61D511FBC00332229 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CF51D511FBC00332229 /* PhotoTakingHelper.swift */; };
 		B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3501D34565F0037A97D /* AppDelegate.swift */; };
 		B260C3561D34565F0037A97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3541D34565F0037A97D /* Main.storyboard */; };
 		B260C3581D34565F0037A97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260C3571D34565F0037A97D /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2393CF31D4AD08D00332229 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B2393CF51D511FBC00332229 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		B260C34D1D34565F0037A97D /* Pikanect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pikanect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260C3501D34565F0037A97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B260C3551D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		B260C34F1D34565F0037A97D /* Pikanect */ = {
 			isa = PBXGroup;
 			children = (
+				B2393CF31D4AD08D00332229 /* Constants.swift */,
 				B260C3791D3564AF0037A97D /* Model */,
 				B260C3501D34565F0037A97D /* AppDelegate.swift */,
 				B260C3751D3467E60037A97D /* Controllers */,
@@ -160,6 +165,7 @@
 				B260C38D1D3863100037A97D /* MapPin.swift */,
 				B26937B91D468DFC003F1189 /* Message.swift */,
 				B2E2ACA01D47E035002C2ABB /* AlertControllers.swift */,
+				B2393CF51D511FBC00332229 /* PhotoTakingHelper.swift */,
 				B2E0D36C1D49BF9000739D70 /* Network.swift */,
 			);
 			name = Model;
@@ -325,6 +331,7 @@
 				B260C38A1D36F0650037A97D /* TeamSelectViewController.swift in Sources */,
 				B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */,
 				B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */,
+				B2393CF61D511FBC00332229 /* PhotoTakingHelper.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
 				B2E0D36D1D49BF9000739D70 /* Network.swift in Sources */,
@@ -334,6 +341,7 @@
 				B26937BA1D468DFC003F1189 /* Message.swift in Sources */,
 				B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */,
 				B260C3841D35B1500037A97D /* GeneralChatViewController.swift in Sources */,
+				B2393CF41D4AD08D00332229 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

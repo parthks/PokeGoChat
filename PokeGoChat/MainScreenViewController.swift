@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import GoogleMobileAds
-import SystemConfiguration
 
 
 class MainScreenViewController: UIViewController {
@@ -70,7 +69,7 @@ class MainScreenViewController: UIViewController {
 
 	
 	@IBAction func teamChatGo(sender: UIButton) {
-		guard connectedToNetwork() else  {
+		guard self.connectedToNetwork() else  {
 			AlertControllers.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "team chat button pressed")
 			return
 		}
@@ -80,7 +79,7 @@ class MainScreenViewController: UIViewController {
 		if let roomKey = GetChatRoomKey() {
 			print("trying to get the team room key")
 			roomKey.returnTeamRoomKeyWithBlock() { [unowned self]key in
-				print("GOT A GEN CHAT ROOM")
+				print("GOT A TEAM CHAT ROOM")
 				self.performSegueWithIdentifier("teamChat", sender: key)
 			}
 		}
@@ -90,7 +89,7 @@ class MainScreenViewController: UIViewController {
 	
 	
 	@IBAction func generalChatGo(sender: UIButton) {
-		guard connectedToNetwork() else  {
+		guard self.connectedToNetwork() else  {
 			AlertControllers.displayErrorAlert("Invalid Internet connection. Please try later.", error: "lost internet connection", instance: "general chat button pressed")
 			return
 		}
@@ -141,12 +140,7 @@ class MainScreenViewController: UIViewController {
 		super.viewWillDisappear(animated)
 		main_timer.invalidate()
 	}
-	
-//	deinit {
-//		print("removed main timer...")
-//		main_timer.invalidate()
-//	}
-	
+		
 }
 
 
@@ -194,34 +188,3 @@ extension MainScreenViewController: CLLocationManagerDelegate {
 	}
 }
 
-
-extension MainScreenViewController {
-	
-	func connectedToNetwork() -> Bool {
-		
-		var zeroAddress = sockaddr_in()
-		zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
-		zeroAddress.sin_family = sa_family_t(AF_INET)
-		
-		guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
-			SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-		}) else {
-			return false
-		}
-		
-		var flags : SCNetworkReachabilityFlags = []
-		if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
-			return false
-		}
-		
-		let isReachable = flags.contains(.Reachable)
-		let needsConnection = flags.contains(.ConnectionRequired)
-		
-		// let isReachable = flags.contains(.reachable)
-		// let needsConnection = flags.contains(.connectionRequired)
-		
-		
-		return (isReachable && !needsConnection)
-	}
-
-}

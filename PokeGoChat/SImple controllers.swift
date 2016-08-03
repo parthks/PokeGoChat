@@ -68,7 +68,7 @@ class UserPolicy: UIViewController {
 	@IBAction func agreeButton(sender: AnyObject) {
 		//NSUserDefaults.standardUserDefaults().setBool(true, forKey: "madeAcoount")
 		
-		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID!)", name: "Default name", team: "\(CurrentUser.currentTeam)", location: true, latitude: nil, longitude: nil)
+		CurrentUser.currentUser = User(id: "\(CurrentUser.currentID!)", name: "Default name", team: "\(CurrentUser.currentTeam)", location: false, latitude: nil, longitude: nil, profilePicUrl: nil)
 		Firebase.saveUser(CurrentUser.currentUser, WithKey: CurrentUser.currentID!)
 		
 		self.performSegueWithIdentifier("agreedPolicy", sender: nil)
