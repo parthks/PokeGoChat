@@ -83,12 +83,12 @@ class MyProfileViewController: UIViewController {
 		print(self.scrollView.frame)
 		
 		//print(self.scrollView.frame)
-		let visibleRect = CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, self.scrollView.contentOffset.x + self.scrollView.bounds.size.width, self.scrollView.contentOffset.y + self.scrollView.bounds.size.height)
-		print(visibleRect)
+		//let visibleRect = CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, self.scrollView.contentOffset.x + self.scrollView.bounds.size.width, self.scrollView.contentOffset.y + self.scrollView.bounds.size.height)
+		//print(visibleRect)
 		//print(visibleRect.minY)
 		//print(visibleRect.maxY)
 		
-		let fixedVisibleHeightOfScrollView = self.scrollView.contentOffset.y + self.scrollView.bounds.size.height
+		//let fixedVisibleHeightOfScrollView = self.scrollView.contentOffset.y + self.scrollView.bounds.size.height
 		//print(fixedVisibleHeightOfScrollView)
 		let currentScrollViewHeight = self.scrollView.frame.height
 		//print(currentScrollViewHeight)
