@@ -211,7 +211,9 @@ class Firebase {
 			let snappedUser = snap.value as! [String: AnyObject]
 			let name = snappedUser["name"] as! String
 			let team = snappedUser["team"] as! String
+			let bio = snappedUser["bio"] as? String ?? "Bio..."
 			let locationString = snappedUser["location"] as! String
+			
 			var location = true
 			if locationString == "false"{
 				location = false
@@ -221,7 +223,8 @@ class Firebase {
 			let longitude = snappedUser["longitude"] as? Double
 			let latitude = snappedUser["latitude"] as? Double
 			let profilePicUrl = snappedUser["profilePicUrl"] as? String
-			let user = User(id: key, name: name, team: team, location: location, latitude: latitude, longitude: longitude, profilePicUrl: profilePicUrl)
+			
+			let user = User(id: key, name: name, team: team, bio: bio, location: location, latitude: latitude, longitude: longitude, profilePicUrl: profilePicUrl)
 			
 			print("going back to controller...")
 			completion(user)

@@ -44,6 +44,7 @@ struct User: FirebaseCompatible {
 	let id: String
 	var name: String
 	var team: String
+	var bio: String
 	var location: Bool
 	var latitude: Double?
 	var longitude: Double?
@@ -64,6 +65,7 @@ struct User: FirebaseCompatible {
 		firebaseUserData["id"] = id
 		firebaseUserData["name"] = name
 		firebaseUserData["team"] = team
+		firebaseUserData["bio"] = bio
 		var locationString = "false"
 		if location{
 			locationString = "true"
