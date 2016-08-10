@@ -304,6 +304,8 @@ class Firebase {
 			print("Checking if snap(team rooms at int lat and long) exists")
 			if !snap.exists() {
 				Firebase.removeTeamRoomAtRoundedCoor()
+			} else {
+				print(snap.value)
 			}
 		}
 	}
@@ -413,24 +415,56 @@ class Firebase {
 	
 	
 	//MARK: Friends
-//	static func addUserWithKeyAsFriendToCurrentUser(key: String) {
-//		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).setValue([key: "1"])
-//	}
-//	
-//	static func getAllFrindsKeyOfCurrnetUserWithBlock(completion: [String] -> Void) {
-//		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).observeSingleEventOfType(.Value) { snap, prevChildKey in
-//			var friends = [String]()
-//			guard snap.exists() else {completion(friends); return}
-//			
-//			for dictValue in snap.value as! [String: String] {
-//				let key = dictValue.0
-//				print(key)
-//				friends.append(key)
-//			}
-//			
-//			completion(friends)
-//		}
-//	}
+	//KEY MAP
+	//1 -> Normal friend
+	//2 -> Pending friend - waiting for other person to accept
+	//0 -> Invited friend - needs to accept or deny friend request
+	//-1 -> Not a friend - NOT NEEDED HERE
+	//-2 -> Current user - NOT NEEDED HERE
+
+	static func addUserWithKeyAsFriendToCurrentUser(key: String) {
+		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).setValue([key: "2"])
+		databaseRef.child(dataType.Friends.rawValue).child(key).setValue([CurrentUser.currentUser.id: "0"])
+	}
+	
+	static func acceptFriendWithKey(key: String) {
+		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).setValue([key: "1"])
+		databaseRef.child(dataType.Friends.rawValue).child(key).setValue([CurrentUser.currentUser.id: "1"])
+	}
+	
+	static func getStatusOfFriendWithKeyWithCurrentUser(key: String, WithBlock completion: Int? -> Void) {
+		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).observeSingleEventOfType(.Value) { snap, prevChildKey in
+			guard snap.exists() else {completion(nil); return}
+			for dictValue in snap.value as! [String: String] {
+				if dictValue.0 == key {
+					completion(Int(dictValue.1))
+					return
+				}
+			}
+		}
+	}
+	
+	
+	static func getAllFriendsKeyOfCurrnetUserWithBlock(completion: (User, Int) -> Void) {
+		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).observeEventType(.ChildAdded) { snap, prevChildKey in
+			guard snap.exists() else {completion(CurrentUser.currentUser, -2); return}
+			print(snap)
+			print(snap.value)
+			let friendStatus = Int(snap.value as! String)!
+			Firebase.getUserDataWithKey(snap.key) { user in
+				if let user = user {
+					completion(user, friendStatus)
+				}
+			}
+			
+			
+		}
+	}
+	
+	static func removeFriendWithKey(key: String) {
+		databaseRef.child(dataType.Friends.rawValue).child(CurrentUser.currentUser.id).child(key).removeValue()
+		databaseRef.child(dataType.Friends.rawValue).child(key).child(CurrentUser.currentUser.id).removeValue()
+	}
 	
 
 	//MARK: Storage
@@ -448,30 +482,10 @@ class Firebase {
 				
 			}
 		}
-		
-//		storageRef.child(dataType.ProfilePic.rawValue).child("\(CurrentUser.currentID!).jpg").downloadURLWithCompletion { url, error in
-//			if error == nil {
-//				CurrentUser.imageUrl = url
-//			} else {
-//				print("ERROR")
-//				print(error!.localizedDescription)
-//			}
-//		}
 	}
 	
-//	static func getProfilePicWithUid(id: String, completion: UIImage? -> Void) {
-//		
-//		if let pic = CurrentUser.imageUrl{
-//			if let data = NSData(contentsOfURL: pic) {
-//				let image = UIImage(data: data)
-//				completion(image!)
-//				
-//			} else { print("ERROR\n\n\(pic)"); completion(nil) }
-//			
-//		} else { print("error"); completion(nil) }
-//		
-//	
-//	}
+	
+	
 }
 
 

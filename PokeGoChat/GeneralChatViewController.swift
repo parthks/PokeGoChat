@@ -21,6 +21,9 @@ class GeneralChatViewController: UIViewController {
 	
 	var images = [String: UIImage]()
 	
+	var selectedCellUser:User!
+	var selectedCellUserStatus: Int = -2
+	
 	var messages: [Message] = [] {
 		didSet {
 			messages.sortInPlace(orderMessages)
@@ -56,10 +59,7 @@ class GeneralChatViewController: UIViewController {
 		let sendBg = UIImage(named: "TricolorSendButton")
 		sendButton.setBackgroundImage(sendBg, forState: .Normal)
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
 		
-		self.hideKeyboardWhenTappedAround()
 		inputText.delegate = self
 		listenForChatChanges()
 		
@@ -75,11 +75,16 @@ class GeneralChatViewController: UIViewController {
 	
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
-		Firebase.removeGeneralChatListeners()
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
-	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+		tableView.reloadData()
+	}
 	
 	
 	
@@ -96,6 +101,7 @@ class GeneralChatViewController: UIViewController {
 	@IBAction func leaveChat(sender: UIBarButtonItem) {
 		Firebase.removeUserAtCurrentGeneralRoom()
 		CurrentUser.inAChatRoom = nil
+		NSNotificationCenter.defaultCenter().removeObserver(self)
 		Firebase.removeGeneralChatListeners()
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -136,6 +142,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 			bottomBarSpace.constant = keyboardFrame.height
 			view.setNeedsLayout()
 			view.layoutIfNeeded()
+			self.hideKeyboardWhenTappedAround()
 		}
 	}
 	
@@ -143,6 +150,7 @@ extension GeneralChatViewController: UITextFieldDelegate{
 		bottomBarSpace.constant = 0
 		view.setNeedsLayout()
 		view.layoutIfNeeded()
+		self.removeKeyboardTappingRecognizer()
 	}
 	
 }
@@ -167,8 +175,10 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		if images.indexForKey(user.id) == nil {
 			Network.downloadedFrom(user.profilePicUrl) { [unowned self] image in
 				guard ((UIApplication.topViewController() as? GeneralChatViewController) != nil) else {return}
-				self.images[user.id] = image
-				tableView.reloadData()
+				if let image = image {
+					self.images[user.id] = image
+					tableView.reloadData()
+				}
 			}
 		}
 		
@@ -196,6 +206,7 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 		return cell
 	}
 	
+	
 	func reportUserOnCell(cell: DisplayMessageTableViewCell) {
 		AlertControllers.reportUserWithIDWithCompletionIfReported(cell.userID, messageText: cell.message.text!) {
 			Firebase.reportMessageWithKey(cell.messageKey, WithMessage: cell.message.text!, ByUser: cell.userID, inRoomType: "General")
@@ -215,8 +226,58 @@ extension GeneralChatViewController: UITableViewDataSource, UITableViewDelegate,
 
 			}
 		}
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		print("selected!!")
+		let cell = tableView.cellForRowAtIndexPath(indexPath) as! DisplayMessageTableViewCell
+		cell.selected = false
 		
+		if cell.userID == CurrentUser.currentUser.id  {
+			self.selectedCellUser = CurrentUser.currentUser
+			self.selectedCellUserStatus = -2
+			self.performSegueWithIdentifier("showFriend", sender: nil)
+		} else {
+			Firebase.getStatusOfFriendWithKeyWithCurrentUser(cell.userID) { [unowned self] status in
+				Firebase.getUserDataWithKey(cell.userID) { [unowned self] user in
+					
+					if let status = status {
+						self.selectedCellUserStatus = status
+					} else {
+						print("NOT A FRIEND!!")
+						self.selectedCellUserStatus = -1
+					}
+					
+					
+					if let user = user {
+						print("got user!!")
+						self.selectedCellUser = user
+						
+					}else {
+						print("ERROR!!!")
+						AlertControllers.displayErrorAlert("Could not display the selected User", error: "Could not find the user that was selected with id\(cell.userID) in general chat room \(self.chatRoomKey)", instance: "selecting cell in team chat")
+						self.selectedCellUser = CurrentUser.currentUser
+						self.selectedCellUserStatus = -2
+					}
+					
+					
+					self.performSegueWithIdentifier("showFriend", sender: nil)
+					
+				}
+			}
+
+		}
 		
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		print("SEGUE!!")
+		if segue.identifier == "showFriend" {
+			let destination = segue.destinationViewController as! DisplayFriendInfoViewController
+			
+			destination.friendStatus = selectedCellUserStatus
+			destination.friend = selectedCellUser
+		}
 	}
 	
 

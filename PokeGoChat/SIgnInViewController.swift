@@ -19,11 +19,11 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet weak var checkboxButton: UIButton!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	
 	@IBOutlet weak var signInButton: UIButton!
 	@IBOutlet weak var createAccountButton: UIButton!
+	@IBOutlet weak var forgotPassword: UIButton!
 	
-	//@IBOutlet weak var signInLabel: UILabel!
-	//@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 	
 	@IBAction func signInButtonTapped(sender: UIButton?) {
 		
@@ -62,7 +62,7 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		activityIndicator.startAnimating()
 		signInButton.enabled = false
 		createAccountButton.enabled = false
-		//googleSignButton.userInteractionEnabled = false
+		forgotPassword.enabled = false
 	}
 	
 	 func doneSigningIn() {
@@ -71,12 +71,12 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 		activityIndicator.stopAnimating()
 		signInButton.enabled = true
 		createAccountButton.enabled = true
-		
-		//googleSignButton.userInteractionEnabled = true
+		forgotPassword.enabled = true
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		signInActivityLabel.text = "Signing in"
 		hideKeyboardWhenTappedAround()
 		let bgImage		= UIImage(named: "TriColor")
 		let imageView   = UIImageView(frame: self.view.bounds)
@@ -199,15 +199,24 @@ class SIgnInViewController: UIViewController, UITextFieldDelegate {
 	
 	@IBAction func forgotPassButtonTapped(sender: UIButton) {
 		let prompt = UIAlertController.init(title: "Password Reset", message: "Enter Email:", preferredStyle: UIAlertControllerStyle.Alert)
-		let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
+		let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { [unowned self](action) in
 			let userInput = prompt.textFields![0].text
 			if (userInput!.isEmpty) {
 				return
 			}
-			FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { (error) in
+			self.dismissKeyboard()
+			self.signInActivityLabel.text = "Sending Email"
+			self.signInButtonPressed()
+			FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { [unowned self] (error) in
 				if let error = error {
-					print(error.localizedDescription)
+					self.doneSigningIn()
+					self.signInActivityLabel.text = "Signing in"
+					AlertControllers.displayErrorAlert("Please enter the exact email you used to create your account", error: error.description, instance: "Forgot Password Reset with email \(userInput)")
 					return
+				} else {
+					self.doneSigningIn()
+					self.signInActivityLabel.text = "Signing in"
+					AlertControllers.displayAlertWithtitle("Password Reset Email Sent", message: "Reset password link sent to \(userInput!)")
 				}
 			}
 		}

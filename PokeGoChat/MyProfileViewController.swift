@@ -40,25 +40,14 @@ class MyProfileViewController: UIViewController {
 
 		
 		print(CurrentUser.currentUser.profilePicUrl)
-		Network.downloadedFrom(CurrentUser.currentUser.profilePicUrl) { image in
-			if let image = image {
-				//self.profilePic.selected = false
-				self.profilePic.setImage(image, forState: .Normal)
-				self.profilePic.setImage(image, forState: .Selected)
-				//self.profilePic.setNeedsDisplay()
-				print(image)
-				print("HAVE PUT THE IMAGE")
-			}
-		
-		
-			
-		}
 		
 		profilePic.layer.cornerRadius = 60
 		profilePic.clipsToBounds = true
 		saveButton.tintColor = UIColor(red: 25/256, green: 161/256, blue: 57/256, alpha: 1)
 
 	}
+	
+	
 	
 
 	func keyboardWillShow(notification:NSNotification){
@@ -89,20 +78,23 @@ class MyProfileViewController: UIViewController {
 		//print(visibleRect.maxY)
 		
 		//let fixedVisibleHeightOfScrollView = self.scrollView.contentOffset.y + self.scrollView.bounds.size.height
-		//print(fixedVisibleHeightOfScrollView)
+		//print(fixedVisibleHeigh`tOfScrollView)
 		let currentScrollViewHeight = self.scrollView.frame.height
 		//print(currentScrollViewHeight)
 		let heightDifference = Double(350 - currentScrollViewHeight)
 		//print(heightDifference)
 		//print(heightDifference - Double(self.scrollView.contentOffset.y))
 		let keyboardAtHeight = Double(keyboardFrame.minY)
-		let relativeBottomOfTextView = Double(self.scrollView.frame.maxY) - 20.0 - 35.0 - 20.0
+		let relativeBottomOfTextView = Double(self.scrollView.frame.maxY) - 20.0 - 40.0 - 20.0
 		
 		let bottomOfTextView = relativeBottomOfTextView + heightDifference - Double(self.scrollView.contentOffset.y) //when scroll view is at bottom
 		
 		//print(bottomOfTextView)
 		//print(keyboardAtHeight)
 		let offset = CGFloat(bottomOfTextView - keyboardAtHeight)
+		
+		
+		
 		//print(self.view.bounds)
 		//print(self.view.frame)
 		
@@ -175,6 +167,20 @@ class MyProfileViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		Network.downloadedFrom(CurrentUser.currentUser.profilePicUrl) { image in
+			guard ((UIApplication.topViewController() as? MyProfileViewController) != nil) else {return}
+			if let image = image {
+				//self.profilePic.selected = false
+				self.profilePic.setImage(image, forState: .Normal)
+				self.profilePic.setImage(image, forState: .Selected)
+				//self.profilePic.setNeedsDisplay()
+				print(image)
+				print("HAVE PUT THE IMAGE")
+			}
+			
+		}
+		
 		nameField.text = CurrentUser.currentUser.name ?? "Default name"
 		bioTextView.text = CurrentUser.currentUser.bio ?? "Bio..."
 		
@@ -193,6 +199,8 @@ class MyProfileViewController: UIViewController {
 		imageView.image = bgImage
 		self.view.addSubview(imageView)
 		self.view.sendSubviewToBack(imageView)
+		
+		
 		
 	}
 	

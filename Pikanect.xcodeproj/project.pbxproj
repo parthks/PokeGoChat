@@ -10,6 +10,11 @@
 		68DC4B9273E9F81CE2BA229F /* Pods_Pikanect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FC3E9C9DFC09338DD86CEB /* Pods_Pikanect.framework */; };
 		B2393CF41D4AD08D00332229 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CF31D4AD08D00332229 /* Constants.swift */; };
 		B2393CF61D511FBC00332229 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CF51D511FBC00332229 /* PhotoTakingHelper.swift */; };
+		B2393CF81D53AEFD00332229 /* MyFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CF71D53AEFD00332229 /* MyFriendsViewController.swift */; };
+		B2393CFA1D53B77600332229 /* FriendPicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CF91D53B77600332229 /* FriendPicCollectionViewCell.swift */; };
+		B2393CFC1D53F52300332229 /* DisplayFriendInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CFB1D53F52300332229 /* DisplayFriendInfoViewController.swift */; };
+		B2393CFE1D5A99DB00332229 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CFD1D5A99DB00332229 /* AddFriendViewController.swift */; };
+		B2393D001D5AA2E300332229 /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2393CFF1D5AA2E300332229 /* AddFriendTableViewCell.swift */; };
 		B260C3511D34565F0037A97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260C3501D34565F0037A97D /* AppDelegate.swift */; };
 		B260C3561D34565F0037A97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B260C3541D34565F0037A97D /* Main.storyboard */; };
 		B260C3581D34565F0037A97D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B260C3571D34565F0037A97D /* Assets.xcassets */; };
@@ -36,6 +41,11 @@
 /* Begin PBXFileReference section */
 		B2393CF31D4AD08D00332229 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B2393CF51D511FBC00332229 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		B2393CF71D53AEFD00332229 /* MyFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFriendsViewController.swift; sourceTree = "<group>"; };
+		B2393CF91D53B77600332229 /* FriendPicCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPicCollectionViewCell.swift; sourceTree = "<group>"; };
+		B2393CFB1D53F52300332229 /* DisplayFriendInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayFriendInfoViewController.swift; sourceTree = "<group>"; };
+		B2393CFD1D5A99DB00332229 /* AddFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		B2393CFF1D5AA2E300332229 /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
 		B260C34D1D34565F0037A97D /* Pikanect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pikanect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B260C3501D34565F0037A97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B260C3551D34565F0037A97D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +152,9 @@
 				B260C3891D36F0650037A97D /* TeamSelectViewController.swift */,
 				B260C3931D3DFA050037A97D /* MyBlockedUsersViewController.swift */,
 				B2C1E71A1D401768007E36B6 /* SImple controllers.swift */,
+				B2393CF71D53AEFD00332229 /* MyFriendsViewController.swift */,
+				B2393CFB1D53F52300332229 /* DisplayFriendInfoViewController.swift */,
+				B2393CFD1D5A99DB00332229 /* AddFriendViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +165,8 @@
 				B260C3541D34565F0037A97D /* Main.storyboard */,
 				B260C3591D34565F0037A97D /* LaunchScreen.storyboard */,
 				B260C3911D3D585D0037A97D /* DisplayMessageTableViewCell.swift */,
+				B2393CF91D53B77600332229 /* FriendPicCollectionViewCell.swift */,
+				B2393CFF1D5AA2E300332229 /* AddFriendTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -323,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2393CF81D53AEFD00332229 /* MyFriendsViewController.swift in Sources */,
 				B2E2ACA11D47E035002C2ABB /* AlertControllers.swift in Sources */,
 				B260C38E1D3863100037A97D /* MapPin.swift in Sources */,
 				B260C3821D35B13C0037A97D /* TeamChatViewController.swift in Sources */,
@@ -330,10 +346,14 @@
 				B260C37C1D3564D30037A97D /* Firebase.swift in Sources */,
 				B260C38A1D36F0650037A97D /* TeamSelectViewController.swift in Sources */,
 				B260C3941D3DFA050037A97D /* MyBlockedUsersViewController.swift in Sources */,
+				B2393CFE1D5A99DB00332229 /* AddFriendViewController.swift in Sources */,
 				B260C3881D36F0340037A97D /* SIgnInViewController.swift in Sources */,
+				B2393CFA1D53B77600332229 /* FriendPicCollectionViewCell.swift in Sources */,
+				B2393D001D5AA2E300332229 /* AddFriendTableViewCell.swift in Sources */,
 				B2393CF61D511FBC00332229 /* PhotoTakingHelper.swift in Sources */,
 				B260C3801D35716F0037A97D /* User.swift in Sources */,
 				B260C3861D36E3630037A97D /* MainScreenViewController.swift in Sources */,
+				B2393CFC1D53F52300332229 /* DisplayFriendInfoViewController.swift in Sources */,
 				B2E0D36D1D49BF9000739D70 /* Network.swift in Sources */,
 				B2C1E71B1D401768007E36B6 /* SImple controllers.swift in Sources */,
 				B260C38C1D3840320037A97D /* GetChatRoomKey.swift in Sources */,

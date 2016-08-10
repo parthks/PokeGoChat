@@ -69,7 +69,7 @@ class AlertControllers {
 	
 	static func rateMyApp() {
 		let alert = UIAlertController(title: "Rate Pikanect", message: "How do you like this app? We would love to hear your feedback ", preferredStyle: .Alert)
-		let rateButton = UIAlertAction(title: "Rate Now!", style: .Cancel) { (alert) in
+		let rateButton = UIAlertAction(title: "Rate Now!", style: .Default) { (alert) in
 			UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id1136003010")!)
 			NSUserDefaults.standardUserDefaults().setBool(true, forKey: "doneAppRating")
 			
@@ -100,7 +100,13 @@ class AlertControllers {
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-		view.addGestureRecognizer(tap)
+		self.view.addGestureRecognizer(tap)
+	}
+	
+	func removeKeyboardTappingRecognizer(){
+		for recognizer in self.view.gestureRecognizers! {
+			self.view.removeGestureRecognizer(recognizer)
+		}
 	}
 	
 	func dismissKeyboard() {

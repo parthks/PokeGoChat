@@ -31,7 +31,7 @@ class MainScreenViewController: UIViewController {
 		bannerView.adUnitID = "ca-app-pub-5358505853496020/9547069190"
 		bannerView.rootViewController = self
 		let request = GADRequest()
-//		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
+		request.testDevices = ["9ad72e72a0ec1557d7c004795a25aab9"]
 		bannerView.loadRequest(request)
 		
 		//Firebase.loginWithEmail("location@test.com", AndPassword: "123456"){ key in print("back...")}
